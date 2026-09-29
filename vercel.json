@@ -1,12 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/academy.html",
-      "destination": "/academy",
-      "permanent": true
-    },
-    {
-      "source": "/academy-workspace.html",
+      "source": "/AcademyWorkspace.dc.html",
       "destination": "/academy/workspace",
       "permanent": true
     },
@@ -164,11 +159,11 @@
     },
     {
       "source": "/academy",
-      "destination": "/academy.html"
+      "destination": "/Academy.dc.html"
     },
     {
       "source": "/academy/workspace",
-      "destination": "/academy-workspace.html"
+      "destination": "/AcademyWorkspace.dc.html"
     },
     {
       "source": "/talent",

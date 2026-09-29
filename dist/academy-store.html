@@ -1,351 +1,88 @@
 <div class="ac" id="ac-root-inner">
-<div id="main">
-
-<!-- VISITOR / LEARNER / INSTRUCTOR / ADMIN — all share the catalogue -->
 <section class="db-hero" aria-labelledby="page-hero-title"><hero-reel slides="25,12,24" interval="7000" style="position:absolute;inset:0;z-index:-2"></hero-reel>
   <div class="db-hero-shade" aria-hidden="true"></div>
   <div class="db-hero-content"><div class="db-hero-grid">
     <div>
       <div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">DigitalBurj Academy</p><span class="db-hero-badge">Bundles from $3</span></div>
       <h1 id="page-hero-title" class="db-hero-title">Learn it. Apply it. <span class="db-hero-accent">Prove it.</span></h1>
-      <p class="db-hero-lead">Capability built through real missions, human feedback and assessed evidence — one-time purchase, lifetime access. Content consumption is never the primary proof of skill.</p>
+      <p class="db-hero-lead">Capability built through real missions, human feedback and assessed evidence — one-time purchase, lifetime access.</p>
       <div class="db-hero-actions">
-        <a class="hero-cta primary" id="heroStart" data-app="/start" href="https://academy.digitalburj.com/start">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="hero-cta secondary" data-app="/signin" href="https://academy.digitalburj.com/signin">Sign in</a>
+        <a class="hero-cta primary" data-app href="#">Open Academy<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="hero-cta secondary" href="#pricing">See pricing</a>
       </div>
     </div>
     <aside class="db-hero-panel" aria-label="Academy overview">
       <div class="db-panel-head"><img class="db-panel-icon" src="brand/mark-academy.webp" alt=""/><div><span class="db-panel-label">DigitalBurj · Academy</span><strong class="db-panel-title">Learn. Apply. Prove.</strong></div></div>
       <p class="db-panel-note">The path forward</p>
       <div style="position:relative;display:grid;gap:10px;margin-top:20px">
-        <div class="db-panel-row"><span style="color:#ff8b68">01</span><span style="flex:1">Bundles from $3 to $50</span><span class="db-panel-badge">↗</span></div>
+        <div class="db-panel-row"><span style="color:#ff8b68">01</span><span style="flex:1">14 courses, plain English</span><span class="db-panel-badge">↗</span></div>
         <div class="db-panel-row"><span style="color:#ff8b68">02</span><span style="flex:1">12-stage missions, human review</span><span class="db-panel-badge">↗</span></div>
         <div class="db-panel-row"><span style="color:#ff8b68">03</span><span style="flex:1">Independent verification</span><span class="db-panel-badge">↗</span></div>
       </div>
     </aside>
   </div></div>
 </section>
+<div class="ac-ann" id="acAnn" role="region" aria-label="Announcement"><p><b>Starter Pack — $3.</b> The full Digital Foundations course, one-time purchase. <a data-app href="#">Open Academy →</a></p><button type="button" id="acAnnX" aria-label="Dismiss announcement">✕</button></div>
 <div class="ac-subnav-wrap"><nav class="ac-subnav" aria-label="Academy sections">
   <span class="lab">Academy</span>
-  <div class="ac-subnav-links">
-    <a href="#bundles" data-scroll="bundles">Bundles</a><a href="#courses" data-scroll="courses">Courses</a><a href="#paths" data-scroll="paths">Paths</a>
-    <a href="#how" data-scroll="how">How it works</a><a href="#assessment" data-scroll="assessment">Credentials</a><a href="#labs" data-scroll="labs">Tools &amp; labs</a>
-    <a href="#pricing" data-scroll="pricing">Pricing</a><a href="#support" data-scroll="support">Support</a><a class="ext" data-app="/" href="https://academy.digitalburj.com/">Academy app →</a>
-  </div>
-  <div class="ac-subnav-actions">
-    <button class="cart-btn" id="cartBtn" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="badge" id="cartBadge" style="display:none">0</span></button>
-    <a class="btn btn-primary btn-sm" id="signInBtn" data-app="/start" href="https://academy.digitalburj.com/start">Get started</a>
-  </div>
+  <div class="ac-subnav-links"><a href="#why">Why Academy</a><a href="#courses">Courses</a><a href="#how">How it works</a><a href="#credentials">Credentials</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+  <a class="ac-btn ac-btn-sm" data-app href="#">Open Academy</a>
 </nav></div>
-<!-- BUNDLES -->
-<section class="sec" id="bundles">
-  <div class="container">
 
-    <!-- My Learning strip (visible to learner/instructor/admin when they own things) -->
-    <div class="my-learning" id="acctStrip" style="display:none">
-      <div class="ml-inner">
-        <div class="ml-text"><h3 id="acctHello">Your Academy</h3><p id="acctLine">Everything you own, in one place.</p></div>
-        <div class="ml-stats">
-          <div class="ml-stat"><b id="mlCourses">0</b><span>Courses</span></div>
-          <div class="ml-stat"><b id="mlBundles">0</b><span>Bundles</span></div>
-          <div class="ml-stat"><b id="mlPaid">$0</b><span>Paid</span></div>
-        </div>
-        <div><a class="btn btn-primary" data-app="/" href="https://academy.digitalburj.com/">Continue learning →</a></div>
-      </div>
-    </div>
-
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Course bundles</p>
-      <h2 class="h-section">Buy a bundle. Save up to 70%.</h2>
-      <p class="lede">Every bundle is a one-time purchase with lifetime access. Prices from $3 to $50. After purchase you create your account on academy.digitalburj.com and continue there.</p>
-    </div>
-
-    <div class="filter-bar reveal d1" style="margin-top:36px">
-      <div class="filter-tabs" id="bundleTabs">
-        <button class="filter-tab active" data-filter="all">All bundles</button>
-        <button class="filter-tab" data-filter="starter">Starter</button>
-        <button class="filter-tab" data-filter="technology">Technology</button>
-        <button class="filter-tab" data-filter="professional">Professional</button>
-        <button class="filter-tab" data-filter="career">Career</button>
-        <button class="filter-tab" data-filter="complete">Complete</button>
-      </div>
-      <div class="search-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input type="search" id="bundleSearch" placeholder="Search bundles and courses…">
-      </div>
-    </div>
-
-    <div class="bundle-grid" id="bundleGrid"></div>
+<section class="ac-sec" id="why"><div class="ac-wrap">
+  <header class="ac-head"><p class="ac-eyebrow">Why DigitalBurj Academy</p><h2>Built for proof, not seats.</h2><p>Most platforms measure attendance. We measure what you can demonstrably do — with evidence you own.</p></header>
+  <div class="ac-grid ac-g3">
+    <article class="ac-card"><span class="ac-ico">12</span><h3>12-stage missions</h3><p>Every mission follows the same spine, from brief to evidence, so effort is comparable and reviewable.</p></article>
+    <article class="ac-card"><span class="ac-ico">5</span><h3>Five layers of proof</h3><p>Knowledge check, practical mission, project assessment, human review and independent verification.</p></article>
+    <article class="ac-card"><span class="ac-ico">✓</span><h3>Evidence you own</h3><p>Original artefacts, versions and review notes stay private until you choose to share them.</p></article>
+    <article class="ac-card"><span class="ac-ico">$</span><h3>One-time purchase</h3><p>No subscription. Courses from $3 and bundles from $3 to $50, with lifetime access.</p></article>
+    <article class="ac-card"><span class="ac-ico">R</span><h3>Human review</h3><p>A qualified person assesses your work against a published rubric. AI may coach; it never certifies.</p></article>
+    <article class="ac-card"><span class="ac-ico">Aa</span><h3>Plain English</h3><p>Lessons assume no technical background: real examples, step-by-step actions and key words explained.</p></article>
   </div>
-</section>
+</div></section>
 
-<hr class="divider" />
+<section class="ac-sec ac-alt" id="courses"><div class="ac-wrap">
+  <header class="ac-head"><p class="ac-eyebrow">Courses</p><h2>Fourteen courses. Buy only what you need.</h2><p>Each course is a standalone product with lessons, checkpoints and a practice lab on fictional data.</p></header>
+  <div class="ac-group"><div class="ac-group-head"><h3>Technology track</h3><p>Nine courses from digital foundations to the final assessment challenge.</p></div><div class="ac-grid ac-g3"><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-00</span><span class="ac-tag">Foundation</span></div><h3>Digital Foundations</h3><p>Devices, accounts, files, structured data, online communication, permissions and AI literacy — from zero.</p><div class="ac-card-foot"><span>15 hours</span><b>$3</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-01</span><span class="ac-tag">Skill</span></div><h3>Product Discovery &amp; Validation</h3><p>Interview stakeholders, validate a problem and recommend Build, Reshape or Stop.</p><div class="ac-card-foot"><span>28 hours</span><b>$5</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-02</span><span class="ac-tag">Skill</span></div><h3>Interface Design &amp; Accessibility</h3><p>Information architecture, wireframes, UI, design systems and accessible prototypes.</p><div class="ac-card-foot"><span>38 hours</span><b>$5</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-03</span><span class="ac-tag">Skill</span></div><h3>Web Workflow Engineering</h3><p>Forms, validation, data display, navigation and permission-aware frontend work.</p><div class="ac-card-foot"><span>50 hours</span><b>$7</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-04</span><span class="ac-tag">Skill</span></div><h3>Backend, Database &amp; API Contracts</h3><p>Records, authorization, audit, migrations and server-enforced API contracts.</p><div class="ac-card-foot"><span>50 hours</span><b>$7</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-05</span><span class="ac-tag">Specialist</span></div><h3>AI-Native Engineering Practice</h3><p>Precise task briefs, inspecting diffs, debugging and documenting AI contribution.</p><div class="ac-card-foot"><span>35 hours</span><b>$8</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-06</span><span class="ac-tag">Specialist</span></div><h3>Operations, Monitoring &amp; Incident Handling</h3><p>Staging deployment, monitoring, defect response, backup and restore.</p><div class="ac-card-foot"><span>28 hours</span><b>$6</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-07</span><span class="ac-tag">Specialist</span></div><h3>Client Delivery &amp; Handoff</h3><p>Scope, estimating, change control, handoff packages and responsible support.</p><div class="ac-card-foot"><span>26 hours</span><b>$6</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">DB-08</span><span class="ac-tag">Advanced</span></div><h3>DB-22 Final Assessment Challenge</h3><p>A fresh fictional SME workflow, timed change request and live defence.</p><div class="ac-card-foot"><span>18 hours</span><b>$12</b></div></article></div></div>
+  <div class="ac-group"><div class="ac-group-head"><h3>Professional careers</h3><p>Five career courses for office, logistics, service, purchasing and finance roles.</p></div><div class="ac-grid ac-g3"><article class="ac-card"><div class="ac-card-top"><span class="ac-id">PC-AD01</span><span class="ac-tag">Career</span></div><h3>Office Administration</h3><p>Calendar, inbox, meetings, spreadsheets, purchasing and confidential information.</p><div class="ac-card-foot"><span>55 hours</span><b>$10</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">PC-LG01</span><span class="ac-tag">Career</span></div><h3>Logistics &amp; Freight Operations</h3><p>Shipment lifecycle, documents, quotes, milestones and exception handling.</p><div class="ac-card-foot"><span>70 hours</span><b>$12</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">PC-CS01</span><span class="ac-tag">Career</span></div><h3>Customer Service</h3><p>Response handling, complaints, escalation, tone and case records.</p><div class="ac-card-foot"><span>38 hours</span><b>$8</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">PC-PR01</span><span class="ac-tag">Career</span></div><h3>Procurement</h3><p>Sourcing, RFQ, vendor evaluation, purchase orders and three-way match.</p><div class="ac-card-foot"><span>55 hours</span><b>$10</b></div></article><article class="ac-card"><div class="ac-card-top"><span class="ac-id">PC-AC01</span><span class="ac-tag">Career</span></div><h3>Accounting Support</h3><p>Invoicing, payables, reconciliation, month-end support and controls.</p><div class="ac-card-foot"><span>55 hours</span><b>$10</b></div></article></div></div>
+</div></section>
 
-<!-- INDIVIDUAL COURSES -->
-<section class="sec" id="courses">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Individual courses</p>
-      <h2 class="h-section">Buy only what you need.</h2>
-      <p class="lede">Every course is a standalone product with its own price. Bundles are cheaper per course — but you can start small.</p>
-    </div>
-    <div class="course-grid" id="courseGrid" style="margin-top:44px"></div>
+<section class="ac-sec" id="how"><div class="ac-wrap">
+  <header class="ac-head"><p class="ac-eyebrow">How it works</p><h2>Every mission runs the same 12 stages.</h2><p>A predictable route from brief to evidence, with human feedback along the way.</p></header>
+  <ol class="ac-grid ac-g4 ac-stages"><li class="ac-card"><span class="ac-num">01</span><h3>BRIEF</h3><p>Understand the scenario, audience and definition of done.</p></li><li class="ac-card"><span class="ac-num">02</span><h3>LEARN</h3><p>Study the concepts, patterns and safety points the task needs.</p></li><li class="ac-card"><span class="ac-num">03</span><h3>INVESTIGATE</h3><p>Gather requirements, inspect evidence and test assumptions.</p></li><li class="ac-card"><span class="ac-num">04</span><h3>TRY</h3><p>Run a small guided experiment before committing.</p></li><li class="ac-card"><span class="ac-num">05</span><h3>BUILD</h3><p>Create the requested artefact against the constraints.</p></li><li class="ac-card"><span class="ac-num">06</span><h3>BREAK</h3><p>Probe failure cases, edge cases and resilience.</p></li><li class="ac-card"><span class="ac-num">07</span><h3>FIX</h3><p>Correct defects and document meaningful changes.</p></li><li class="ac-card"><span class="ac-num">08</span><h3>TEST</h3><p>Run checks and capture repeatable results.</p></li><li class="ac-card"><span class="ac-num">09</span><h3>EXPLAIN</h3><p>Explain choices, trade-offs and limitations.</p></li><li class="ac-card"><span class="ac-num">10</span><h3>DEFEND</h3><p>Answer questions and evidence-based challenge.</p></li><li class="ac-card"><span class="ac-num">11</span><h3>SHIP</h3><p>Package the result for a defined handoff.</p></li><li class="ac-card"><span class="ac-num">12</span><h3>EVIDENCE</h3><p>Submit the evidence pack and notes for assessment.</p></li></ol>
+</div></section>
+
+<section class="ac-sec ac-alt" id="credentials"><div class="ac-wrap">
+  <header class="ac-head"><p class="ac-eyebrow">Credentials</p><h2>Learning, assessment and verification stay separate.</h2><p>Each record says exactly what it proves — nothing more.</p></header>
+  <div class="ac-grid ac-g4">
+    <article class="ac-card"><span class="ac-ico">1</span><h3>Completion record</h3><p>You finished the learning activity.</p></article>
+    <article class="ac-card"><span class="ac-ico">2</span><h3>Assessed submission</h3><p>A reviewer scored your work against the published rubric.</p></article>
+    <article class="ac-card"><span class="ac-ico">3</span><h3>Verified capability</h3><p>A different qualified person verified the evidence after a conflict check.</p></article>
+    <article class="ac-card"><span class="ac-ico">4</span><h3>Workplace experience</h3><p>Real delivery in a real workplace — never created by a course.</p></article>
   </div>
-</section>
+  <p class="ac-note"><b>Not a promise of employment or accreditation.</b> Participation does not by itself provide employment, a visa, a licence, accreditation or a guaranteed outcome.</p>
+</div></section>
 
-<hr class="divider" />
-
-<!-- LEARNING PATHS -->
-<section class="sec" id="paths">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Learning paths</p>
-      <h2 class="h-section">Routes, prerequisites and what unlocks next.</h2>
-      <p class="lede">Each path connects programmes in order. Take the diagnostic and we recommend a first step from your experience, goal, weekly time and target market.</p>
-      <div class="btn-row" style="justify-content:center"><button class="btn btn-primary" id="openDiagnostic">Take the diagnostic <span class="arrow">→</span></button></div>
-    </div>
-    <div class="path-grid" id="pathGrid"></div>
-    <div class="disclaimer"><b>Foundation bypass rule.</b> A valid foundation bypass may skip introductory content, but it can never skip assessment, evidence, verification, safety or regulatory content. International Workplace Readiness and the Advanced Professional pathways are separate products and are not included in these bundles.</div>
+<section class="ac-sec" id="pricing"><div class="ac-wrap">
+  <header class="ac-head"><p class="ac-eyebrow">Pricing</p><h2>Simple, one-time pricing.</h2><p>Pay once, keep access for life. No subscription, no hidden fees.</p></header>
+  <div class="ac-grid ac-g3 ac-price">
+    <article class="ac-card"><h3>Starter</h3><p class="ac-p">Digital Foundations — 1 course</p><div class="ac-amt"><b>$3</b><span>one-time</span></div><ul><li>Full course and practice lab</li><li>Completion record</li><li>Lifetime access</li></ul><a class="ac-btn ac-btn-ghost" data-app href="#">Get Starter</a></article>
+    <article class="ac-card ac-feat"><span class="ac-flag">Most popular</span><h3>AI-Native Builder</h3><p class="ac-p">Five technology courses</p><div class="ac-amt"><b>$19</b><span>one-time</span></div><ul><li>Discovery to AI-native engineering</li><li>Assessed evidence route</li><li>Lifetime access</li></ul><a class="ac-btn" data-app href="#">Get Builder</a></article>
+    <article class="ac-card"><h3>Complete Academy</h3><p class="ac-p">All 14 courses</p><div class="ac-amt"><b>$50</b><span>one-time</span></div><ul><li>Technology and professional tracks</li><li>DB-22 final challenge</li><li>Lifetime access</li></ul><a class="ac-btn ac-btn-ghost" data-app href="#">Get Complete</a></article>
   </div>
-</section>
+  <p class="ac-note">Also available: Web Essentials $9 · Full-Stack Product $29 · Office Career $25 · Logistics Career $29 · single courses from $3. 14&#8209;day refund if no assessment has been submitted.</p>
+  <div class="ac-finder" id="acFinder" aria-label="Find your bundle"><div><b>Not sure where to start?</b><span>Answer one question and we will suggest a bundle.</span></div>
+    <div class="ac-chips" role="group" aria-label="What is your goal?"><button type="button" data-g="new">I am new to digital work</button><button type="button" data-g="build">I want to build software</button><button type="button" data-g="career">I want an office or logistics career</button><button type="button" data-g="all">I want everything</button></div>
+    <p class="ac-rec" id="acRec" aria-live="polite"></p></div>
+</div></section>
 
-<hr class="divider" />
+<section class="ac-sec ac-alt" id="faq"><div class="ac-wrap ac-narrow">
+  <header class="ac-head"><p class="ac-eyebrow">FAQ</p><h2>Questions we get asked.</h2></header>
+  <div class="ac-faq"><details><summary>How much does it cost?<i aria-hidden="true"></i></summary><p>Courses start at $3 and bundles run from $3 to $50. Every purchase is one-time, with lifetime access and no subscription.</p></details><details><summary>What is included in a purchase?<i aria-hidden="true"></i></summary><p>Every lesson, checkpoint and practice lab in the course or bundle, plus the assessed evidence route. You only see what you have bought.</p></details><details><summary>Can I upgrade from a course to a bundle?<i aria-hidden="true"></i></summary><p>Yes. Buying a bundle that contains a course you already own credits the value of that course, so you pay only the difference.</p></details><details><summary>Who reviews my work?<i aria-hidden="true"></i></summary><p>A qualified human reviewer marks your lab evidence against a published rubric. AI may coach, but it never issues a credential.</p></details><details><summary>Is a certificate a job guarantee?<i aria-hidden="true"></i></summary><p>No. Learning, assessment and independent verification are separate records. Participation does not by itself provide employment, a visa, a licence or accreditation.</p></details><details><summary>Can my employer see my progress?<i aria-hidden="true"></i></summary><p>Not by default. Evidence is private until you choose to share it, and only for the purpose you approve.</p></details><details><summary>What is the refund policy?<i aria-hidden="true"></i></summary><p>Refunds are available within 14 days of purchase, provided no assessment has been submitted.</p></details><details><summary>Where do I sign in and study?<i aria-hidden="true"></i></summary><p>Everything happens in the Academy app. Use any “Open Academy” button on this page to continue.</p></details></div>
+</div></section>
 
-<!-- HOW LEARNING WORKS -->
-<section class="sec" id="how">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">How learning works</p>
-      <h2 class="h-section">Every mission runs the same 12 stages.</h2>
-      <p class="lede">Diagnostic, missions, stages, assessment, evidence and progression. Every mission states its scenario, task type, constraints, deliverables, evidence, definition of done, effort, tools, failure cases, rubric, checkpoints and next action.</p>
-    </div>
-    <div class="stage-rail" id="stageRail"></div>
-  </div>
-</section>
+<section class="ac-cta"><div class="ac-wrap"><h2>Learn it. Apply it. Prove it.</h2><p>Start with the $3 Starter Pack and upgrade whenever you are ready — you only pay the difference.</p><a class="ac-btn" data-app href="#">Open Academy →</a></div></section>
 
-<hr class="divider" />
-
-<!-- ASSESSMENT & CREDENTIALS -->
-<section class="sec" id="assessment">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Assessment &amp; credentials</p>
-      <h2 class="h-section">Learning, assessment and verification are separate claims.</h2>
-      <p class="lede">Completing learning does not by itself establish independent verification, production delivery, employment, licensing, accreditation or workplace experience.</p>
-    </div>
-
-    <div class="card-box" style="margin-top:36px">
-      <h3>Submission lifecycle</h3>
-      <div class="chip-row" id="lifecycleChips"></div>
-      <p>Learners submit and revise; reviewers evaluate assigned work; verifiers decide independently within scope; admins govern configuration. Reviewers cannot verify their own approvals, and verifiers cannot verify work they reviewed, approved, coached or have a declared relationship with.</p>
-    </div>
-
-    <div class="cap-grid" id="capGrid"></div>
-
-    <div class="grid g-2" style="margin-top:16px">
-      <div class="card-box">
-        <h3>Four records that stay visibly separate</h3>
-        <div class="list-rows" style="margin-top:10px">
-          <div class="r"><div><b>Completion Record</b><small>You finished the learning activity.</small></div></div>
-          <div class="r"><div><b>Assessed Submission</b><small>A reviewer scored your work against the published rubric.</small></div></div>
-          <div class="r"><div><b>Independently Verified Capability</b><small>A different qualified person verified the evidence, with a conflict check.</small></div></div>
-          <div class="r"><div><b>Actual Workplace Experience</b><small>Real delivery in a real workplace — never created by a course.</small></div></div>
-        </div>
-      </div>
-      <div class="card-box">
-        <h3>DB-22 final challenge <span class="pill ok" style="margin-left:6px">Included in DB-08</span></h3>
-        <p>Not attendance-based. Readiness and prerequisites → assessment contract → constrained build or demo window → injected incidents → live defence → evidence pack, evaluator notes, approval → independent verification → audit log, appeals → Capability Record.</p>
-        <p>You work through the assessment contract, a timed build on a fictional SME workflow, an injected change request and a defence dossier. A human reviewer assesses it against the published rubric, and independent verification is recorded separately.</p>
-      </div>
-    </div>
-
-    <div class="grid g-3" style="margin-top:16px">
-      <div class="card-box"><h3>Attempt history &amp; failure passport</h3><p>Submissions, revisions, feedback, corrections, timestamps and rubric results are kept. The Failure Passport records useful failures, causes, corrections and lessons — never as a negative employment claim.</p></div>
-      <div class="card-box"><h3>Appeals</h3><p>A defined appeal route for reviews, verification, evidence and records, with review ownership, status, decision and audit trail.</p></div>
-      <div class="card-box"><h3>Consent &amp; talent profile</h3><p>Evidence is private by default. The optional Talent Profile is shared only with your explicit consent and only for the stated purpose.</p></div>
-    </div>
-    <div class="disclaimer"><b>Not a promise of employment or accreditation.</b> Participation does not automatically provide employment, a visa, a licence, accreditation, regulatory approval, professional-authority recognition, job matching, workplace experience or a guaranteed outcome.</div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- TOOLS & LABS -->
-<section class="sec" id="labs">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Tool library &amp; simulation labs</p>
-      <h2 class="h-section">Practise with real tools and fictional data.</h2>
-      <p class="lede">Every course ends in a lab with fictional data, a task list and a deliverable you submit as evidence. Labs are never access to live customer, employer, government, banking, healthcare or production systems.</p>
-    </div>
-    <div class="grid g-2" style="margin-top:36px">
-      <div class="card-box"><h3>Dedicated tool library</h3><div class="list-rows" id="toolRows" style="margin-top:10px"></div></div>
-      <div class="card-box"><h3>Practice labs (one per course)</h3><div class="list-rows" id="labRows" style="margin-top:10px"></div>
-        <p style="margin-top:14px">Every lab requires a maturity level, scenario, task queue, fictional records, templates, exceptions, escalation, rubric, evidence pack, reset action, jurisdiction warning, owner and review date.</p></div>
-    </div>
-    
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- PRICING & ACCESS -->
-<section class="sec" id="pricing">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Pricing &amp; access</p>
-      <h2 class="h-section">Paid access is separate from signing in.</h2>
-      <p class="lede">Signing in or registering never unlocks paid content. Access follows an active entitlement created from a confirmed payment. The clearly labelled demo account is a separate sandbox with sample data — its certificates are watermarked DEMO.</p>
-    </div>
-    <div class="grid g-2" style="margin-top:36px">
-      <div class="card-box"><h3>Access states</h3><div class="list-rows" style="margin-top:10px">
-        <div class="r"><div><b>Preview</b><small>Public or free content only.</small></div><span class="pill neutral">Free</span></div>
-        <div class="r"><div><b>Payment required</b><small>No active paid entitlement exists.</small></div><span class="pill warn">Locked</span></div>
-        <div class="r"><div><b>Checkout ready</b><small>Product and payable amount are prepared for confirmation.</small></div><span class="pill cool">Ready</span></div>
-        <div class="r"><div><b>Payment pending / failed</b><small>Outcome unresolved or unsuccessful — access is never granted.</small></div><span class="pill warn">Pending</span></div>
-        <div class="r"><div><b>Active · Expired · Refunded · Suspended</b><small>Entitlement is active, ended, refunded or administratively paused.</small></div><span class="pill ok">Entitlement</span></div>
-      </div></div>
-      <div class="card-box"><h3>What you get, what you pay</h3><div class="list-rows" style="margin-top:10px">
-        <div class="r"><div><b>One-time purchase, lifetime access</b><small>No subscription. Courses from $3, bundles from $3 to $50.</small></div></div>
-        <div class="r"><div><b>Upgrade credit</b><small>Owning a course then buying a bundle that includes it: you pay the difference.</small></div></div>
-        <div class="r"><div><b>Promotion code</b><small>Enter it at checkout. It applies only to Live products, needs your explicit confirmation and can be used once per product.</small></div></div>
-        <div class="r"><div><b>Refunds</b><small>Within 14 days, provided no assessment has been submitted.</small></div></div>
-        <div class="r"><div><b>Taxes &amp; fees</b><small>Currency, taxes and fees are shown before you confirm.</small></div></div>
-      </div>
-      <div class="btn-row"><button class="btn btn-primary btn-sm" data-scroll="bundles">Browse bundles</button><button class="btn btn-ghost btn-sm" id="pricingCart">Open cart</button></div></div>
-    </div>
-    <div class="disclaimer"><b>How payment works.</b> Card payment is taken by Stripe. Access is granted only when Stripe confirms the payment to our server — never from a return page. You then create your account (use the same email) and continue on academy.digitalburj.com. If online payment is not available, checkout sends an enrolment request instead.</div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- SUPPORT -->
-<section class="sec" id="support">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Support</p>
-      <h2 class="h-section">Get help — including accessibility and appeals.</h2>
-      <p class="lede">Categories: Account, Payment, Course, Assessment, Technical, Refund, Accessibility and Appeal. Ticket states: Submitted → In Progress → Waiting for Learner → Resolved → Closed.</p>
-    </div>
-    <form class="support-form" id="supportForm" novalidate>
-      <div class="field-row">
-        <div class="field"><label for="sp-name">Name</label><input id="sp-name" type="text" autocomplete="name" /><span class="err">Please enter your name.</span></div>
-        <div class="field"><label for="sp-email">Email</label><input id="sp-email" type="email" autocomplete="email" /><span class="err">Please enter a valid email.</span></div>
-      </div>
-      <div class="field"><label for="sp-topic">Category</label><select id="sp-topic"></select></div>
-      <div class="field"><label for="sp-msg">How can we help?</label><textarea id="sp-msg" placeholder="Describe the issue. Never include passwords or API keys."></textarea><span class="err">Please add a short description (10+ characters).</span></div>
-      <input type="text" id="sp-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
-      <button class="btn btn-primary" type="submit" id="sp-submit">Submit case</button>
-      <div class="cases" id="supportCases" aria-live="polite"></div>
-    </form>
-    <div class="grid g-3" style="margin-top:36px">
-      <div class="card-box"><h3>Accessibility</h3><p>Keyboard Enter and Space controls, visible focus, labelled fields, meaningful structure, status announcements and accessible errors across supported screen sizes.</p></div>
-      <div class="card-box"><h3>Privacy</h3><p>Consent, private-by-default evidence, controlled sharing, retention rules and no silent data deletion.</p></div>
-      <div class="card-box"><h3>Security</h3><p>No passwords or API keys in the browser, role separation, least privilege and audit trails. Access is enforced by the server, not by hiding the interface.</p></div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- FEATURES -->
-<section class="sec" id="features">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">Why DigitalBurj Academy</p>
-      <h2 class="h-section">Built for proof, not seats.</h2>
-      <p class="lede">Most platforms measure attendance. We measure what you can demonstrably do — with evidence you own.</p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature reveal">
-        <div class="f-icon">12</div>
-        <h3>12-stage mission lifecycle</h3>
-        <p>BRIEF → LEARN → INVESTIGATE → TRY → BUILD → BREAK → FIX → TEST → EXPLAIN → DEFEND → SHIP → EVIDENCE. Every mission follows the same spine.</p>
-      </div>
-      <div class="feature reveal d1">
-        <div class="f-icon">5</div>
-        <h3>Five layers of proof</h3>
-        <p>Knowledge check, practical mission, project assessment, human review, independent verification. Each layer is a separate record.</p>
-      </div>
-      <div class="feature reveal d2">
-        <div class="f-icon">✓</div>
-        <h3>Evidence you own</h3>
-        <p>Original artifacts, versions, review notes, outcome mapping, provenance and consent-controlled visibility. Private until you opt in.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="f-icon">$</div>
-        <h3>One-time purchase, lifetime access</h3>
-        <p>No subscription. Bundles from $3 to $50. Individual courses from $3. Own what you buy.</p>
-      </div>
-      <div class="feature reveal d1">
-        <div class="f-icon">◐</div>
-        <h3>Human review, not AI grading</h3>
-        <p>Every assessment is reviewed by a qualified human against a published rubric. AI may coach; it never issues a credential.</p>
-      </div>
-      <div class="feature reveal d2">
-        <div class="f-icon">⚙</div>
-        <h3>Role-based access</h3>
-        <p>Learners see what they own. Reviewers, verifiers and admins get separate least-privilege views as they are staffed. Your account and purchases are checked on our servers.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- FAQ -->
-<section class="sec" id="faq">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow center">FAQ</p>
-      <h2 class="h-section">Questions we get asked.</h2>
-    </div>
-    <div class="faq reveal d1" style="margin-top:44px">
-      <details><summary>How much do bundles cost? <span class="plus"></span></summary><div class="faq-body"><p>Bundles range from <strong>$3</strong> (Starter Pack) to <strong>$50</strong> (Complete Academy). Individual courses are also available from $3. Every purchase is one-time with lifetime access.</p></div></details>
-      <details><summary>What does "purchase-based usage" mean? <span class="plus"></span></summary><div class="faq-body"><p>You only see the content you have purchased. Buy a bundle and every course inside it unlocks for your account. Buy a single course and only that course unlocks. There is no subscription and no recurring charge.</p></div></details>
-      <details><summary>Can I upgrade from a course to a bundle? <span class="plus"></span></summary><div class="faq-body"><p>Yes. When you own a course and later buy a bundle that includes it, you are charged the bundle price minus the value of the course you already own. The upgrade is calculated at checkout.</p></div></details>
-      <details><summary>Who reviews my work? <span class="plus"></span></summary><div class="faq-body"><p>A qualified human assessor assigned to your mission. Independent verification is a separate step by a different qualified person with a declared conflict check. AI may assist with coaching but never issues a credential.</p></div></details>
-      <details><summary>Can my employer see my learning? <span class="plus"></span></summary><div class="faq-body"><p>Not by default. Employer views are tenant-scoped and only show aggregate progress and the evidence you have explicitly consented to share. Private attempts and failures stay private.</p></div></details>
-      <details><summary>What if I fail a mission? <span class="plus"></span></summary><div class="faq-body"><p>Failed attempts lead to targeted remediation and a new variant. Unlimited retries of the same answer do not establish transfer. A pass normally requires all critical safety criteria, at least "independent-in-scenario" on required outcomes, a valid artifact and an explain/defend response.</p></div></details>
-      <details><summary>Is there a refund policy? <span class="plus"></span></summary><div class="faq-body"><p>Yes. Bundles and courses are refundable within 14 days provided no assessment has been submitted. Once a mission submission has been assessed, the entitlement is consumed. Refund terms are published at checkout.</p></div></details>
-      <details><summary>How do roles work? <span class="plus"></span></summary><div class="faq-body"><p>Visitors browse. Learners see the courses they own and their own records. Administrators review lab evidence, manage learners and access, and oversee credentials. Every request is checked on our servers.</p></div></details>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="final-cta">
-  <div class="container reveal">
-    <p class="pre">A skill you cannot demonstrate is a skill you cannot claim.</p>
-    <h2 class="h-display" style="max-width:16ch;margin-inline:auto">Learn it. Apply it. Prove it.</h2>
-    <p style="color:rgba(255,255,255,.72);font-size:15px;margin:22px auto 0;max-width:52ch;line-height:1.65">Start with the $3 Starter Pack. Upgrade to a bundle whenever you're ready — you only pay the difference.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="#bundles" data-scroll="bundles">Browse bundles <span class="arrow">→</span></a>
-      <a class="btn btn-ghost" href="#courses" data-scroll="courses">Browse courses</a>
-    </div>
-  </div>
-</section>
-
-</div>
-
-<div class="ac-linkstrip"><div class="container"><b>DigitalBurj Academy</b><a data-app="/" href="https://academy.digitalburj.com/">My Academy</a><a data-app="/signin" href="https://academy.digitalburj.com/signin">Sign in</a><a href="#support" data-scroll="support">Support</a><a href="#faq" data-scroll="faq">FAQ</a><a href="#" data-notice="Privacy">Privacy</a><a href="#" data-notice="Terms">Terms</a><a href="#" data-notice="Security">Security</a></div></div>
-
-<!-- MODAL -->
-<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
-  <div class="modal" id="modalBox">
-    <div class="modal-head">
-      <div>
-        <p style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 8px" id="modalKicker"></p>
-        <h3 id="modalTitle"></h3>
-      </div>
-      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-    </div>
-    <div id="modalBody"></div>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
-
+<div class="ac-mobile" id="acMobile"><a class="ac-btn" data-app href="#">Open Academy</a></div>
+<button type="button" class="ac-top" id="acTop" aria-label="Back to top">↑</button>
 </div>

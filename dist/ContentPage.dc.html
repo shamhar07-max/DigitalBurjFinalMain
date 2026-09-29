@@ -320,7 +320,7 @@ class Component extends DCLogic {
       if (s.type === "pricing") base.plans = this.state.plans.map((p, i) => {
         const f = !!p.featured;
         return { ...p, featured: f, delay: String((i % 4) * 70), cta: p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan",
-          style: `position:relative;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
+          style: `position:relative;height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
           btn: `margin-top:22px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;transition:background .25s,color .25s;${f ? "background:#f23a1d;color:#fff" : "background:#f6f5f1;color:#0f1714;border:1px solid rgba(15,23,20,.1)"}` };
       });
       if (s.type === "pairs") base.rows = s.items.map(([a, b]) => ({ a, b }));

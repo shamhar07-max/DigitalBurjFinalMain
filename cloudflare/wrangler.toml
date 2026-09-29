@@ -3,7 +3,7 @@ main = "worker.js"
 compatibility_date = "2026-09-01"
 
 [vars]
-COMMIT = "5c49bf4cb97545d1c047a08507342cbf29851ac1"
+COMMIT = "1e6888437b082125b3ad9400cf55c3f16138f172"
 CONTACT_TO = "support@digitalburj.com"
 MAIL_FROM = "DigitalBurj <support@digitalburj.com>"
 RESEND_SEGMENT_ID = "88a89ee2-94b2-4fea-a785-44132c73ff05"

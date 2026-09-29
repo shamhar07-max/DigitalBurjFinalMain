@@ -13,33 +13,29 @@
 </head>
 <body>
 <x-dc>
-<footer style="font-family:'Instrument Sans',system-ui,sans-serif;background:#0f1714;color:#f6f5f1;margin-top:0">
-  <div style="max-width:76rem;margin:0 auto;padding:44px 24px 0">
-    <div style="display:flex;flex-wrap:wrap;gap:48px 64px;padding-bottom:56px;border-bottom:1px solid rgba(246,245,241,.1)">
-      <div style="flex:1 1 22rem;min-width:min(100%,20rem);max-width:30rem">
-        <p style="margin:0;font:700 clamp(1.6rem,1.2rem + 1.6vw,2.6rem)/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;max-width:28rem">Learn. Build. <span style="color:#f23a1d">Transform.</span></p>
-        <p style="margin:18px 0 0;max-width:26rem;font-size:15px;line-height:1.6;color:rgba(246,245,241,.66)">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
-        <form onsubmit="{{ subscribe }}" style="margin-top:26px;display:flex;gap:8px;max-width:26rem;flex-wrap:wrap">
-          <label for="nl-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
-          <input id="nl-email" type="email" required placeholder="you@company.com" style="flex:1;min-width:12rem;height:46px;border-radius:12px;border:1px solid rgba(246,245,241,.16);background:rgba(246,245,241,.05);color:#f6f5f1;padding:0 14px;font:500 14px 'Instrument Sans';outline:none"/>
-          <button type="submit" style="height:46px;padding:0 18px;border-radius:12px;border:none;background:#f23a1d;color:#fff;font:600 14px 'Instrument Sans';cursor:pointer;transition:transform .2s,background .2s" style-hover="background:#ff5533;transform:translateY(-1px)">{{ subLabel }}</button>
-        </form>
-        <p style="margin:10px 0 0;font-size:12px;color:rgba(246,245,241,.45)">Monthly field notes on automation and building software. No spam.</p>
+<footer class="db-foot" style="font-family:'Instrument Sans',system-ui,sans-serif">
+  <div class="db-foot-inner" style="max-width:76rem;margin:0 auto">
+    <div class="db-foot-top">
+      <div class="db-foot-brand">
+        <p class="db-foot-tag">Learn. Build. <span>Transform.</span></p>
+        <p class="db-foot-copy">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
+        <div class="db-foot-actions">
+          <a class="db-foot-cta" href="GetStarted.dc.html">Start with a problem <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="db-foot-ghost" href="mailto:hello@digitalburj.com">hello@digitalburj.com</a>
+        </div>
       </div>
-      <div style="flex:2 1 30rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px">
       <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
-        <nav aria-label="{{ c.h }}">
-          <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,245,241,.45)">{{ c.h }}</p>
-          <ul style="list-style:none;margin:18px 0 0;padding:0;display:grid;gap:11px">
-            <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}" style="font-size:14px;color:rgba(246,245,241,.82);transition:color .2s" style-hover="color:#ff7a45">{{ l.label }}</a></li></sc-for>
+        <nav class="db-foot-col" aria-label="{{ c.h }}">
+          <p class="db-foot-h">{{ c.h }}</p>
+          <ul>
+            <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}">{{ l.label }}</a></li></sc-for>
           </ul>
         </nav>
       </sc-for>
-      </div>
     </div>
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:30px 0 30px;font-size:13px;color:rgba(246,245,241,.5)">
-      <p style="margin:0">© 2026 DigitalBurj. All rights reserved.</p>
-      <div style="display:flex;gap:20px;flex-wrap:wrap"><a href="#" style-hover="color:#fff">Privacy</a><a href="#" style-hover="color:#fff">Terms</a><a href="#" style-hover="color:#fff">Cookies</a><a href="#" style-hover="color:#fff">Sitemap</a></div>
+    <div class="db-foot-bar">
+      <p>© 2026 DigitalBurj. All rights reserved.</p>
+      <button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
     </div>
   </div>
 </footer>
@@ -50,18 +46,13 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:640}}">
 class Component extends DCLogic {
-  state = { done: false };
   cols = [
-    { h: "Platform", links: [["Business OS", "BusinessOS.dc.html"], ["DigitalBurj AI", "BusinessAI.dc.html"], ["Growth", "Growth.dc.html"], ["Studio", "Studio.dc.html"], ["Industry Solutions", "Industries.dc.html"]] },
-    { h: "People", links: [["Academy", "Academy.dc.html"], ["Verified Talent", "Talent.dc.html"], ["Jobs", "Jobs.dc.html"], ["Insights", "Insights.dc.html"]] },
-    { h: "Company", links: [["About", "Company.dc.html"], ["Pricing", "Pricing.dc.html"], ["Portfolio", "Portfolio.dc.html"], ["Contact", "Contact.dc.html"], ["Get Started", "GetStarted.dc.html"]] },
+    { h: "Ecosystem", links: [["Business OS", "BusinessOS.dc.html"], ["DigitalBurj AI", "BusinessAI.dc.html"], ["Growth", "Growth.dc.html"], ["Studio", "Studio.dc.html"], ["Industry Solutions", "Industries.dc.html"], ["Academy", "Academy.dc.html"], ["Verified Talent", "Talent.dc.html"]] },
+    { h: "Explore", links: [["Solutions", "Solutions.dc.html"], ["Pricing", "Pricing.dc.html"], ["Portfolio", "Portfolio.dc.html"], ["Insights", "Insights.dc.html"]] },
+    { h: "Company", links: [["About", "Company.dc.html"], ["Jobs", "Jobs.dc.html"], ["Contact", "Contact.dc.html"], ["Get Started", "GetStarted.dc.html"]] },
   ].map((c) => ({ h: c.h, links: c.links.map(([label, href]) => ({ label, href })) }));
   renderVals() {
-    return {
-      cols: this.cols,
-      subLabel: this.state.done ? "Subscribed ✓" : "Subscribe",
-      subscribe: (e) => { e.preventDefault(); this.setState({ done: true }); },
-    };
+    return { cols: this.cols, toTop: () => window.scrollTo({ top: 0, behavior: "smooth" }) };
   }
 }
 

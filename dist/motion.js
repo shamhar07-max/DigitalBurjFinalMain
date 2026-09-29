@@ -88,3 +88,28 @@
     }).observe(document.body, { childList: true, subtree: true });
   });
 })();
+
+/* DigitalBurj support chat — bottom-left, opposite the WhatsApp button. Loaded lazily (idle / first interaction) to keep first paint fast. */
+(function () {
+  if (window.__dbChat) return; window.__dbChat = true;
+  function load() {
+    if (window.__dbChatLoaded) return; window.__dbChatLoaded = true;
+    var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'https://storage.googleapis.com/mychatbot-widget-assets/v1/style.css'; document.head.appendChild(css);
+    var box = document.createElement('div'); box.id = 'my-chat-widget-container'; document.body.appendChild(box);
+    var js = document.createElement('script'); js.src = 'https://storage.googleapis.com/mychatbot-widget-assets/v1/widget.js'; js.async = true;
+    js.onload = function () {
+      try {
+        window.MyChatBot.mount('#my-chat-widget-container', {
+          account_id: '823ac6fd-b211-4d21-a3d6-33579e5d1935', widget_id: 'digitalburj-support', api_url: 'https://api.mychatbot.app',
+          assistant_name: 'DigitalBurj Support', color: '#f23a1d', lang: 'en', button_position: 'left', button_scale: 1.17, button_margin: 20, button_margin_mobile: 20,
+          logo: new URL('brand/favicon.png', location.href).href
+        });
+      } catch (e) { /* chat is optional — never break the page */ }
+    };
+    document.body.appendChild(js);
+  }
+  var armed = false;
+  function arm() { if (armed) return; armed = true; ['pointerdown', 'scroll', 'keydown', 'touchstart'].forEach(function (t) { removeEventListener(t, arm, true); }); load(); }
+  ['pointerdown', 'scroll', 'keydown', 'touchstart'].forEach(function (t) { addEventListener(t, arm, { capture: true, passive: true }); });
+  addEventListener('load', function () { setTimeout(function () { setTimeout(arm, 2500); }, 1500); });
+})();

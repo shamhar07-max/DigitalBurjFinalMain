@@ -106,7 +106,7 @@ function run(){
      ============================================================ */
   function renderAccount(){
     var strip = $('#acctStrip'), btn = $('#signInBtn');
-    if (!ACCT || !ACCT.user){ strip.style.display = 'none'; btn.textContent = 'Get started'; btn.setAttribute('data-app', '/signup'); btn.href = DBA.appUrl('/signup'); var hs = $('#heroStart'); if (hs){ hs.setAttribute('data-app', '/signup'); hs.href = DBA.appUrl('/signup'); } return; }
+    if (!ACCT || !ACCT.user){ strip.style.display = 'none'; btn.textContent = 'Get started'; btn.setAttribute('data-app', '/start'); btn.href = DBA.appUrl('/start'); var hs = $('#heroStart'); if (hs){ hs.setAttribute('data-app', '/start'); hs.href = DBA.appUrl('/start'); } return; }
     btn.textContent = 'Continue learning'; btn.setAttribute('data-app', '/'); btn.href = DBA.appUrl('/');
     var e = ACCT.entitlements, paid = 0;
     if (e) e.orders.forEach(function(o){ if (o.status !== 'refunded') paid += o.amount || 0; });
@@ -526,8 +526,8 @@ function run(){
     { name: 'Web builder', who: 'New to tech — discovery, design and a first web workflow.', steps: ['DB-00', 'DB-01', 'DB-02', 'DB-03'], bundle: 'b-web', next: 'Unlocks AI-Native Builder' },
     { name: 'AI-native product builder', who: 'Ship responsibly with AI in the loop, backend included.', steps: ['DB-00', 'DB-01', 'DB-02', 'DB-03', 'DB-04', 'DB-05'], bundle: 'b-ai', next: 'Unlocks Full-Stack Product' },
     { name: 'Full-stack product delivery', who: 'Discovery to operations and client handoff, then the DB-22 challenge.', steps: ['DB-01', 'DB-02', 'DB-03', 'DB-04', 'DB-05', 'DB-06', 'DB-07', 'DB-08'], bundle: 'b-fullstack', next: 'DB-22 is assessed and verified separately' },
-    { name: 'Office career', who: 'Administration and customer-service roles.', steps: ['DB-00', 'PC-AD01', 'PC-CS01'], bundle: 'b-office', next: 'Opens as pilot courses go Live' },
-    { name: 'Logistics career', who: 'Freight, warehouse and supply-chain operations.', steps: ['DB-00', 'PC-LG01', 'PC-PR01'], bundle: 'b-logistics', next: 'Opens as pilot courses go Live' }
+    { name: 'Office career', who: 'Administration and customer-service roles.', steps: ['DB-00', 'PC-AD01', 'PC-CS01'], bundle: 'b-office', next: 'Everything in this route is available now' },
+    { name: 'Logistics career', who: 'Freight, warehouse and supply-chain operations.', steps: ['DB-00', 'PC-LG01', 'PC-PR01'], bundle: 'b-logistics', next: 'Everything in this route is available now' }
   ];
   var TOOLS_PUB = [
     ['Canva', 'Design and content'], ['OpenCode', 'Software development'], ['Git / GitHub', 'Software development'], ['Figma', 'Design and content'],
@@ -552,8 +552,9 @@ function run(){
     }).join('');
     $('#lifecycleChips').innerHTML = DBA.LIFECYCLE.map(function(s, i){ return '<span class="chip' + (i === DBA.LIFECYCLE.length - 1 ? ' on' : '') + '"><span class="i">' + (i + 1) + '</span>' + esc(s) + '</span>'; }).join('');
     $('#capGrid').innerHTML = DBA.CAPABILITY.map(function(c, i){ return '<div class="cap' + (i > 2 ? ' sep' : '') + '"><b>' + esc(c[0]) + '</b><span>' + esc(c[1]) + '</span><p>' + esc(c[2]) + '</p></div>'; }).join('');
-    $('#toolRows').innerHTML = TOOLS_PUB.map(function(t){ return '<div class="r"><div><b>' + esc(t[0]) + '</b><small>' + esc(t[1]) + '</small></div><span class="pill warn">Setup required</span></div>'; }).join('');
-    $('#labRows').innerHTML = LABS_PUB.map(function(l){ return '<div class="r"><div><b>' + esc(l) + ' lab</b></div><span class="pill neutral">Planning</span></div>'; }).join('');
+    $('#toolRows').innerHTML = TOOLS_PUB.map(function(t){ return '<div class="r"><div><b>' + esc(t[0]) + '</b><small>' + esc(t[1]) + '</small></div><span class="pill ok">Used in courses</span></div>'; }).join('');
+    var CURX = window.DBA_CUR || {};
+    $('#labRows').innerHTML = DBA.COURSES.filter(function(c){ return CURX[c.id]; }).map(function(c){ return '<div class="r"><div><b>' + esc(CURX[c.id].lab.title) + '</b><small>' + esc(c.title) + ' · ' + esc(c.id) + '</small></div><span class="pill ok">Included</span></div>'; }).join('');
     $('#sp-topic').innerHTML = DBA.SUPPORT_TOPICS.map(function(t){ return '<option>' + esc(t) + '</option>'; }).join('');
     renderSupportCases();
     observeReveals();
@@ -580,8 +581,8 @@ function run(){
   function showRecommendation(a){
     var target = 'b-starter', why = 'You are starting out, so Digital Foundations comes first.';
     var newbie = a.exp === 'New to digital work';
-    if (a.goal === 'Office administration career') { target = 'b-office'; why = 'Your goal is an office role. The Office Career route opens as its pilot courses go Live — start with Digital Foundations now.'; }
-    else if (a.goal === 'Logistics career') { target = 'b-logistics'; why = 'Your goal is logistics. That route opens as its pilot courses go Live — start with Digital Foundations now.'; }
+    if (a.goal === 'Office administration career') { target = 'b-office'; why = 'Your goal is an office role. The Office Career bundle covers Digital Foundations, Office Administration and Customer Service.'; }
+    else if (a.goal === 'Logistics career') { target = 'b-logistics'; why = 'Your goal is logistics. The Logistics Career bundle covers Digital Foundations, Logistics & Freight Operations and Procurement.'; }
     else if (!newbie && a.goal === 'Build websites and software') { target = 'b-web'; why = 'You have some experience and want to build for the web.'; }
     else if (!newbie && a.goal === 'Build with AI') { target = 'b-ai'; why = 'You want to build with AI, and the AI-Native Builder covers discovery through AI-native engineering.'; }
     else if (!newbie && a.goal === 'Deliver client products end to end') { target = 'b-fullstack'; why = 'You want end-to-end delivery, including operations and client handoff.'; }

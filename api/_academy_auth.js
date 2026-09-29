@@ -87,7 +87,7 @@ async function sessionUser(deps) {
   const user = await getJSON(deps.kv, K.user(p.e));
   return user && user.sv === p.sv ? user : null;
 }
-const publicUser = (u) => ({ name: u.name, email: u.email, verified: !!u.verified, role: u.role, country: u.country || "", goal: u.goal || "", language: u.language || "", createdAt: u.createdAt });
+const publicUser = (u) => ({ name: u.name, email: u.email, verified: !!u.verified, role: u.role, demo: !!u.demo, country: u.country || "", goal: u.goal || "", language: u.language || "", createdAt: u.createdAt });
 
 /* ------------------------------------------------------------------ entitlements */
 // Items are always derived from non-refunded orders, so a refund revokes exactly what that order granted.
@@ -149,6 +149,7 @@ async function signup(b, deps) {
   if (name.length < 2 || !EMAIL.test(email)) return fail(400, "Please enter your name and a valid email.");
   if (b.consent !== true) return fail(400, "Please accept the terms and privacy notice.");
   const problem = passwordProblem(b.password, email); if (problem) return fail(400, problem);
+  if (/@demo\.digitalburj\.com$/.test(email)) return fail(400, "Please use your own email address.");
   if (await deps.kv.get(K.user(email))) return fail(409, "An account with this email already exists. Sign in instead.", { exists: true });
   const user = { name, email, pw: await hashPassword(b.password), role: "learner", verified: false, sv: 1, country: clean(b.country, 80), goal: clean(b.goal, 120), language: clean(b.language, 20), a11y: clean(b.a11y, 80), marketing: b.marketing === true, createdAt: new Date().toISOString() };
   await putJSON(deps.kv, K.user(email), user);
@@ -164,6 +165,7 @@ async function signin(b, deps) {
   const user = await getJSON(deps.kv, K.user(email));
   const good = await verifyPassword(pw, user ? user.pw : "pbkdf2$100000$AAAAAAAAAAAAAAAAAAAAAA==$AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="); // equalise timing for unknown emails
   if (!user || !good) { await putJSON(deps.kv, K.fail(email), { n: f.n + 1 }, 900); return fail(401, "Email or password is incorrect."); }
+  if (user.suspended) return fail(403, "This account is suspended. Contact support@digitalburj.com.");
   await deps.kv.delete(K.fail(email));
   return ok({ ok: true, user: publicUser(user) }, await startSession(deps, user));
 }
@@ -174,7 +176,9 @@ async function me(b, deps) {
   if (!user) return ok({ ok: true, signedIn: false });
   if (!user.verified) return ok({ ok: true, signedIn: true, user: publicUser(user), entitlements: null, entitlementsLocked: "Verify your email to unlock what you have purchased." });
   const e = await entitlement(deps, user.email);
-  return ok({ ok: true, signedIn: true, user: publicUser(user), entitlements: e });
+  const admins = new Set(String((deps.env && deps.env.ADMIN_EMAILS) || "").toLowerCase().split(/[,\s;]+/).filter(Boolean));
+  const admin = !user.demo && !user.suspended && admins.has(user.email); // admin tools are also gated server-side on every call
+  return ok({ ok: true, signedIn: true, user: publicUser(user), entitlements: e, admin });
 }
 async function verifyEmail(b, deps) {
   const bad = ready(deps); if (bad) return bad;
@@ -339,4 +343,5 @@ async function webhook(raw, sigHeader, deps, now) {
 }
 
 const actions = { signup, signin, signout, me, verify: verifyEmail, resend: resendVerification, forgot, reset, redeem, checkout, welcome };
-module.exports = { actions, webhook, verifyStripeSignature, hashPassword, verifyPassword, sign, unsign, entitlement, passwordProblem, hmacHex };
+module.exports = { actions, webhook, verifyStripeSignature, hashPassword, verifyPassword, sign, unsign, entitlement, passwordProblem, hmacHex,
+  _: { K, getJSON, putJSON, clean, normEmail, ok, fail, rid, esc, cfg, sessionUser, entitlement, addOrder, ready, publicUser, startSession } };

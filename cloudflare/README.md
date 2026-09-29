@@ -33,3 +33,17 @@ falls back to an enrolment request e-mailed to the team (nothing is unlocked). V
 **Data model (KV):** `acad:user:<email>`, `acad:ent:<email>` (orders; access is derived from non-refunded orders), `acad:order:<checkout id>`
 (idempotency), `acad:pi:<payment intent>` (refund lookup), `acad:redeem:<email>:<product>` (promotion single-use).
 Entitlements are shown only to **e-mail-verified** accounts, so nobody can claim a purchase by signing up with someone else's address.
+
+## Learning, documents, demo and admin
+
+- **Curriculum** lives in `curriculum/src.js` (14 courses × 4 units + a lab). Run `node tools/build-curriculum.js` after editing it: it writes
+  `dist/academy-curriculum.js` (lessons/questions/labs, no answers) and `api/_academy_answers.js` (answer keys, graded on the server).
+- **Learner flow:** checkpoints are graded by `checkpoint`; the lab unlocks when all units are passed; `submit` issues a *completion record*
+  and queues the evidence for review; an admin approving it upgrades the same credential to *assessed*. Public verification: `/credential?id=…`.
+- **Documents** (`/invoice`, `/receipt`, `/certificate`) are rendered from server-side order/credential data; only the owner (or an admin) can open an invoice/receipt.
+- **Demo sandbox:** `demo` creates a session-only account (`demo-…@demo.digitalburj.com`) with every course, auto-reviewed labs, watermarked DEMO
+  certificates and a read-only sample admin view. Demo accounts are excluded from admin totals and cannot be signed back into.
+- **Admin:** set the plain-text variable `ADMIN_EMAILS` (comma-separated). A listed address that has *verified its email* gets the `/admin` dashboard
+  (learners, reviews, orders, credentials, grant/revoke access, suspend). Every admin call re-checks this on the server.
+- **Routing:** the app host serves `/start /signin /signup /verify /forgot /reset /welcome /redeem /dashboard /learn /admin /invoice /receipt /certificate /credential`;
+  any marketing path requested there (e.g. `/pricing`) is redirected to the main site, and header/footer links inside the app are rewritten to digitalburj.com.

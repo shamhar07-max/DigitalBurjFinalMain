@@ -11,17 +11,17 @@ DBA.BUNDLES.forEach((b) => assert(b.price >= 3 && b.price <= 50, `${b.id} outsid
 
 // Only Live products are purchasable.
 assert(DBA.isLive("b-starter") && DBA.isLive("b-ai") && DBA.isLive("DB-08"));
-assert(!DBA.isLive("b-office") && !DBA.isLive("PC-AD01") && !DBA.isLive("nope"));
+assert(DBA.isLive("b-office") && DBA.isLive("PC-AD01") && DBA.isLive("b-complete") && !DBA.isLive("nope"));
 
 // Coupon: exact code, case-insensitive, 100% off Live only, never on non-Live.
-let q = DBA.quote(["b-web", "b-complete"], "DIGITALBURJ100");
+let q = DBA.quote(["b-web", "b-complete"], "DIGITALBURJ100");   // every product is Live now: both are covered by the promotion
 assert.strictEqual(q.coupon.state, "applied");
 assert.strictEqual(q.total, 0);
-assert.strictEqual(q.lines.length, 1);
-assert.strictEqual(q.blocked[0].id, "b-complete");
+assert.strictEqual(q.lines.length, 2);
+assert.strictEqual(DBA.quote(["nope"], "DIGITALBURJ100").blocked[0].id, "nope");
 assert.strictEqual(DBA.quote(["b-web"], "digitalburj101").coupon.state, "invalid");
 assert.strictEqual(DBA.quote(["b-web"], "digitalburj101").total, 9);
-assert.strictEqual(DBA.quote(["b-office"], "digitalburj100").coupon.state, "not-eligible");
+assert.strictEqual(DBA.quote(["nope"], "digitalburj100").coupon.state, "not-eligible");
 // Upgrade credit: own DB-01 ($5) then buy Web Essentials ($9) -> $4.
 assert.strictEqual(DBA.quote(["b-web"], "", ["DB-01"]).total, 4);
 
@@ -33,7 +33,7 @@ assert.strictEqual(DBA.quote(["b-web"], "", ["DB-01"]).total, 4);
   assert.strictEqual(r.status, 200); assert.strictEqual(r.json.entitlementGranted, false);
   assert(/payments are not live/i.test(r.json.status));
   assert.strictEqual((await run({ ...good, consent: false }, deps)).status, 400, "consent required");
-  assert.strictEqual((await run({ ...good, items: ["b-office"] }, deps)).status, 400, "non-Live blocked");
+  assert.strictEqual((await run({ ...good, items: ["nope"] }, deps)).status, 400, "unknown product blocked");
   const free = { ...good, items: ["DB-00"], coupon: "digitalburj100" };
   assert.strictEqual((await run(free, deps)).status, 400, "zero-payable needs explicit confirmation");
   r = await run({ ...free, confirmZero: true }, deps);

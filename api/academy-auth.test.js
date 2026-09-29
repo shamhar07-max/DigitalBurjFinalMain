@@ -51,7 +51,7 @@ const tokenFrom = (subject) => { const m = mails.filter((x) => x.subject && x.su
   const rd = { action: "redeem", items: ["b-web"], coupon: "DIGITALBURJ100", consent: true, confirmZero: true };
   assert.strictEqual((await run(rd, dep())).status, 401, "must be signed in");
   assert.strictEqual((await run({ ...rd, confirmZero: false }, dep(c2))).status, 400);
-  assert.strictEqual((await run({ ...rd, items: ["b-office"] }, dep(c2))).status, 400, "non-Live");
+  assert.strictEqual((await run({ ...rd, items: ["nope"] }, dep(c2))).status, 400, "unknown product");
   assert.strictEqual((await run({ ...rd, coupon: "nope" }, dep(c2))).status, 400);
   r = await run(rd, dep(c2)); assert.strictEqual(r.status, 200); assert.deepStrictEqual(r.json.entitlements.items, ["b-web"]);
   assert.deepStrictEqual(r.json.entitlements.courses.sort(), ["DB-01", "DB-02", "DB-03"]);
@@ -74,7 +74,7 @@ const tokenFrom = (subject) => { const m = mails.filter((x) => x.subject && x.su
   // ---- Stripe checkout (server recomputes price; amounts in cents)
   const co = { action: "checkout", items: ["b-ai", "DB-06"], consent: true, email: "buyer@example.com" };
   assert.strictEqual((await run({ ...co, consent: false }, dep())).status, 400);
-  assert.strictEqual((await run({ ...co, items: ["b-office"] }, dep())).status, 400, "non-Live not purchasable");
+  assert.strictEqual((await run({ ...co, items: ["nope"] }, dep())).status, 400, "unknown product not purchasable");
   assert.strictEqual((await run(co, { ...dep(), env: { ...env, STRIPE_SECRET_KEY: "" } })).status, 503);
   r = await run({ ...co, price: 1, amount: 1 }, dep()); assert.strictEqual(r.status, 200); assert(r.json.url.startsWith("https://checkout.stripe.com"));
   const body = new URLSearchParams(stripeCalls.pop().o.body);

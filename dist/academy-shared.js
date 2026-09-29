@@ -21,11 +21,11 @@
     { id: "DB-06", title: "Operations, Monitoring & Incident Handling", pillar: "Technology", desc: "Staging deployment, monitoring, defect response, backup and restore, explaining limitations.", price: 6, hours: 28, level: "Specialist", status: "live" },
     { id: "DB-07", title: "Client Delivery & Handoff", pillar: "Technology", desc: "Scope, estimating, change request discipline, handoff packaging, responsible marketing and support.", price: 6, hours: 26, level: "Specialist", status: "live" },
     { id: "DB-08", title: "DB-22 Final Assessment Challenge", pillar: "Technology", desc: "A fresh fictional SME workflow, timed change request and live defence with an independent verifier.", price: 12, hours: 18, level: "Advanced", status: "live" },
-    { id: "PC-AD01", title: "Office Administration", pillar: "Professional", desc: "Calendar, inbox, meetings, procurement, spreadsheet controls, confidential information and escalation.", price: 10, hours: 55, level: "Career", status: "pilot" },
-    { id: "PC-LG01", title: "Logistics & Freight Operations", pillar: "Professional", desc: "Shipment lifecycle, documents, quotes, milestones, exception handling, warehouse handoffs and reconciliation.", price: 12, hours: 70, level: "Career", status: "pilot" },
-    { id: "PC-CS01", title: "Customer Service", pillar: "Professional", desc: "Response handling, complaint management, escalation, tone and records.", price: 8, hours: 38, level: "Career", status: "planned" },
-    { id: "PC-PR01", title: "Procurement", pillar: "Professional", desc: "Sourcing, RFQ, vendor evaluation, purchase orders, three-way match and contract basics.", price: 10, hours: 55, level: "Career", status: "planned" },
-    { id: "PC-AC01", title: "Accounting Support", pillar: "Professional", desc: "Invoicing, accounts payable, reconciliation, month-end support and controls.", price: 10, hours: 55, level: "Career", status: "planned" }
+    { id: "PC-AD01", title: "Office Administration", pillar: "Professional", desc: "Calendar, inbox, meetings, procurement, spreadsheet controls, confidential information and escalation.", price: 10, hours: 55, level: "Career", status: "live" },
+    { id: "PC-LG01", title: "Logistics & Freight Operations", pillar: "Professional", desc: "Shipment lifecycle, documents, quotes, milestones, exception handling, warehouse handoffs and reconciliation.", price: 12, hours: 70, level: "Career", status: "live" },
+    { id: "PC-CS01", title: "Customer Service", pillar: "Professional", desc: "Response handling, complaint management, escalation, tone and records.", price: 8, hours: 38, level: "Career", status: "live" },
+    { id: "PC-PR01", title: "Procurement", pillar: "Professional", desc: "Sourcing, RFQ, vendor evaluation, purchase orders, three-way match and contract basics.", price: 10, hours: 55, level: "Career", status: "live" },
+    { id: "PC-AC01", title: "Accounting Support", pillar: "Professional", desc: "Invoicing, accounts payable, reconciliation, month-end support and controls.", price: 10, hours: 55, level: "Career", status: "live" }
   ];
 
   var BUNDLES = [
@@ -38,11 +38,11 @@
     { id: "b-fullstack", name: "Full-Stack Product", tagline: "Enquiry to measurement", category: "technology", theme: "ai", featured: false, price: 29, includes: ["DB-01", "DB-02", "DB-03", "DB-04", "DB-05", "DB-06", "DB-07"], savings: "$44 individual",
       desc: "Seven courses covering the full product lifecycle from discovery through delivery, operations and client handoff." },
     { id: "b-office", name: "Office Career", tagline: "Administration-ready", category: "professional", theme: "professional", featured: false, price: 25, includes: ["DB-00", "PC-AD01", "PC-CS01"], savings: "$21 individual",
-      desc: "Digital foundations plus office administration and customer service. A career bundle for administrative roles — opens as its courses go live." },
+      desc: "Digital foundations plus office administration and customer service. A career bundle for administrative roles." },
     { id: "b-logistics", name: "Logistics Career", tagline: "Freight & warehouse ready", category: "career", theme: "career", featured: false, price: 29, includes: ["DB-00", "PC-LG01", "PC-PR01"], savings: "$25 individual",
-      desc: "Digital foundations plus logistics operations and procurement. Built for freight, warehouse and supply-chain roles — opens as its courses go live." },
+      desc: "Digital foundations plus logistics operations and procurement. Built for freight, warehouse and supply-chain roles." },
     { id: "b-complete", name: "Complete Academy", tagline: "Every course. Lifetime access.", category: "complete", theme: "career", featured: false, price: 50, includes: ["DB-00", "DB-01", "DB-02", "DB-03", "DB-04", "DB-05", "DB-06", "DB-07", "DB-08", "PC-AD01", "PC-LG01", "PC-CS01", "PC-PR01", "PC-AC01"], savings: "$94 individual",
-      desc: "The full catalogue — 14 courses across technology and professional careers, plus the DB-22 final challenge with independent verification — opens as every course goes live." }
+      desc: "The full catalogue — 14 courses across technology and professional careers, plus the DB-22 final challenge with independent verification." }
   ];
 
   /* The exact 12-stage mission lifecycle (handbook §8). */

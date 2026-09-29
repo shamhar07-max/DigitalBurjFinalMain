@@ -2,6 +2,7 @@
 // Runtime-agnostic: the caller supplies `resend(path, body)` and the environment values.
 const DBA = require("../dist/academy-shared.js");
 const auth = require("./_academy_auth");
+const learn = require("./_academy_learn");
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const clean = (s, max) => String(s ?? "").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "").trim().slice(0, max);
@@ -108,6 +109,7 @@ async function run(b, deps) {
     case "register": return register(b, deps);
     default:
       if (Object.prototype.hasOwnProperty.call(auth.actions, b.action)) return auth.actions[b.action](b, deps);
+      if (Object.prototype.hasOwnProperty.call(learn.actions, b.action)) return learn.actions[b.action](b, deps);
       return fail(400, "Unknown action.");
   }
 }
@@ -115,7 +117,7 @@ async function run(b, deps) {
 // Per-IP rate classes: cheap reads are generous (the app calls `me` on every navigation), credential and
 // email-sending actions are tight. Per-account lockout for sign-in lives in the auth module.
 const RATE = { read: { n: 120, bucket: "|r" }, auth: { n: 20, bucket: "|a" }, mail: { n: 10, bucket: "|m" } };
-const READS = ["quote", "me", "welcome", "signout", "verify"], AUTH = ["signin", "signup", "forgot", "reset", "resend"];
-const rateClass = (action) => (READS.includes(action) ? RATE.read : AUTH.includes(action) ? RATE.auth : RATE.mail);
+const READS = ["quote", "me", "welcome", "signout", "verify", "progress", "checkpoint", "submit", "document", "credential"], AUTH = ["signin", "signup", "forgot", "reset", "resend", "demo"];
+const rateClass = (action) => (READS.includes(action) || /^admin_/.test(action || "") ? RATE.read : AUTH.includes(action) ? RATE.auth : RATE.mail);
 
 module.exports = { run, quote, webhook: auth.webhook, rateClass };

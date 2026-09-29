@@ -3,16 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
 <script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
 <x-dc>
 <footer style="font-family:'Instrument Sans',system-ui,sans-serif;background:#0f1714;color:#f6f5f1;margin-top:0">
-  <div style="max-width:76rem;margin:0 auto;padding:72px 24px 0">
+  <div style="max-width:76rem;margin:0 auto;padding:44px 24px 0">
     <div style="display:flex;flex-wrap:wrap;gap:48px 64px;padding-bottom:56px;border-bottom:1px solid rgba(246,245,241,.1)">
       <div style="flex:1 1 22rem;min-width:min(100%,20rem);max-width:30rem">
-        <p style="margin:0;font:700 clamp(1.6rem,1.2rem + 1.6vw,2.6rem)/1.1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;max-width:28rem">Learn. Build. <span style="color:#f23a1d">Transform.</span></p>
+        <p style="margin:0;font:700 clamp(1.6rem,1.2rem + 1.6vw,2.6rem)/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;max-width:28rem">Learn. Build. <span style="color:#f23a1d">Transform.</span></p>
         <p style="margin:18px 0 0;max-width:26rem;font-size:15px;line-height:1.6;color:rgba(246,245,241,.66)">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
         <form onsubmit="{{ subscribe }}" style="margin-top:26px;display:flex;gap:8px;max-width:26rem;flex-wrap:wrap">
           <label for="nl-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>

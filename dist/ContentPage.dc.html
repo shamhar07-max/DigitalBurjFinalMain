@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
 <script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
@@ -13,7 +17,6 @@
 <section class="db-hero" aria-labelledby="page-hero-title"><x-import component-from-global-scope="hero-reel" slides="{{ p.reel }}" interval="7000" style="position:absolute;inset:0;z-index:-2" hint-size="100%,100%"></x-import>
   <div class="db-hero-shade" aria-hidden="true"></div>
   <div class="db-hero-content">
-    <nav aria-label="Breadcrumb" class="db-hero-crumb"><a href="Homepage.dc.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">{{ p.crumb }}</span></nav>
     <div class="db-hero-grid">
       <div>
         <div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">{{ p.hero.eyebrow }}</p><sc-if value="{{ p.badge }}"><span class="db-hero-badge">{{ p.badge }}</span></sc-if></div>
@@ -39,14 +42,14 @@
 <sc-for list="{{ p.sections }}" as="s" hint-placeholder-count="3">
   <!-- LOOP -->
   <sc-if value="{{ s.isLoop }}">
-    <section style="max-width:76rem;margin:0 auto;padding:72px 24px 24px">
-      <div data-reveal="up" style="border-radius:28px;background:#fff;border:1px solid rgba(15,23,20,.08);padding:clamp(28px,4vw,48px)">
+    <section style="max-width:76rem;margin:0 auto;padding:44px 24px 12px">
+      <div data-reveal="up" style="border-radius:20px;background:#fff;border:1px solid rgba(15,23,20,.08);padding:clamp(22px,3vw,34px)">
         <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">{{ s.eyebrow }}</p>
-        <h2 style="margin:14px 0 0;font:700 clamp(1.4rem,1.1rem + 1.2vw,2.2rem)/1.15 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        <h2 style="margin:14px 0 0;font:700 clamp(1.25rem,1.05rem + .8vw,1.7rem)/1.15 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
         <ol style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
           <sc-for list="{{ s.loop }}" as="l" hint-placeholder-count="4">
             <li style="display:flex;align-items:center;gap:10px">
-              <span style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:#f6f5f1;font-weight:600;font-size:15px;transition:background .3s,color .3s" style-hover="background:#0f1714;color:#fff"><span style="font:700 12px 'IBM Plex Sans',sans-serif;color:#f23a1d">{{ l.n }}</span>{{ l.label }}</span>
+              <span style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:#f6f5f1;font-weight:600;font-size:15px;transition:background .3s,color .3s" style-hover="background:#0f1714;color:#fff"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ l.n }}</span>{{ l.label }}</span>
               <sc-if value="{{ l.arrow }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b9bfbb" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></sc-if>
             </li>
           </sc-for>
@@ -57,16 +60,16 @@
 
   <!-- STEPS -->
   <sc-if value="{{ s.isSteps }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:72px 24px">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
       <div data-reveal="up" style="max-width:44rem">
         <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-        <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
       </div>
-      <ol style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
+      <ol style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
         <sc-for list="{{ s.steps }}" as="st" hint-placeholder-count="5">
-          <li data-reveal="up" data-reveal-delay="{{ st.delay }}" style="{{ s.item }}"><div style="height:100%;box-sizing:border-box;position:relative;padding:26px 24px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .4s cubic-bezier(.22,.8,.24,1),border-color .3s" style-hover="transform:translateY(-4px);border-color:#0f1714">
-            <span style="font:700 34px 'IBM Plex Sans',sans-serif;color:transparent;-webkit-text-stroke:1.2px #f23a1d">{{ st.n }}</span>
-            <h3 style="margin:18px 0 0;font:700 18px 'IBM Plex Sans',sans-serif">{{ st.t }}</h3>
+          <li data-reveal="up" data-reveal-delay="{{ st.delay }}" style="{{ s.item }}"><div style="height:100%;box-sizing:border-box;position:relative;padding:20px 20px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .4s cubic-bezier(.22,.8,.24,1),border-color .3s" style-hover="transform:translateY(-4px);border-color:#0f1714">
+            <span style="font:700 34px 'Plus Jakarta Sans',sans-serif;color:transparent;-webkit-text-stroke:1.2px #f23a1d">{{ st.n }}</span>
+            <h3 style="margin:12px 0 0;font:700 16px 'Plus Jakarta Sans',sans-serif">{{ st.t }}</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#4a544f">{{ st.b }}</p>
           </div></li>
         </sc-for>
@@ -80,15 +83,15 @@
       <div style="max-width:76rem;margin:0 auto">
         <div data-reveal="up" style="max-width:44rem">
           <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:{{ s.accent }}"><span style="width:18px;height:2px;background:{{ s.accent }}"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:{{ s.ink }}">{{ s.h }}</h2>
+          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:{{ s.ink }}">{{ s.h }}</h2>
           <sc-if value="{{ s.lead }}"><p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:{{ s.sub }}">{{ s.lead }}</p></sc-if>
         </div>
-        <ul style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
+        <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
           <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6">
             <li data-reveal="up" data-reveal-delay="{{ c.delay }}" style="{{ s.item }}">
               <a href="{{ c.href }}" data-spot="" style="{{ c.style }}" style-hover="{{ c.hover }}">
-                <span style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 12px 'IBM Plex Sans',sans-serif;color:{{ s.accent }}">{{ c.n }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-                <span style="margin-top:28px;font:700 18px/1.25 'IBM Plex Sans',sans-serif">{{ c.t }}</span>
+                <span style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:{{ s.accent }}">{{ c.n }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+                <span style="margin-top:16px;font:700 16px/1.25 'Plus Jakarta Sans',sans-serif">{{ c.t }}</span>
                 <span style="margin-top:10px;font-size:14px;line-height:1.55;color:{{ s.sub }}">{{ c.b }}</span>
               </a>
             </li>
@@ -100,14 +103,14 @@
 
   <!-- SPLIT -->
   <sc-if value="{{ s.isSplit }}">
-    <section style="max-width:76rem;margin:0 auto;padding:72px 24px">
+    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:48px;align-items:center">
-        <div data-reveal="{{ s.imgDir }}" style="{{ s.imgOrder }}"><img src="{{ s.media }}" alt="{{ s.eyebrow }}" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:26px"/>
+        <div data-reveal="{{ s.imgDir }}" style="{{ s.imgOrder }}"><img src="{{ s.media }}" alt="{{ s.eyebrow }}" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px"/>
           
         </div>
         <div data-reveal="up">
           <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
           <p style="margin:18px 0 0;font-size:16px;line-height:1.65;color:#3b4541">{{ s.body }}</p>
           <ul style="list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px">
             <sc-for list="{{ s.bl }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:12px;font-size:15px;line-height:1.5"><span style="flex-shrink:0;width:22px;height:22px;border-radius:7px;background:#f23a1d;color:#fff;display:grid;place-items:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>{{ b.t }}</li></sc-for>
@@ -120,9 +123,9 @@
 
   <!-- FAQ -->
   <sc-if value="{{ s.isFaq }}">
-    <section style="max-width:76rem;margin:0 auto;padding:72px 24px">
+    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px">
-        <div data-reveal="up"><p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">FAQ</p><h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Questions.</h2></div>
+        <div data-reveal="up"><p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">FAQ</p><h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Questions.</h2></div>
         <div style="border-top:1px solid rgba(15,23,20,.12)">
           <sc-for list="{{ s.faqs }}" as="f" hint-placeholder-count="3">
             <div style="border-bottom:1px solid rgba(15,23,20,.12)">
@@ -137,19 +140,19 @@
 
   <!-- MODULES -->
   <sc-if value="{{ s.isModules }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:72px 24px">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
       <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
         <div style="max-width:44rem">
           <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
         </div>
-        <p style="margin:0;font:700 14px 'IBM Plex Sans',sans-serif;color:#6b746f">{{ s.count }} items</p>
+        <p style="margin:0;font:700 14px 'Plus Jakarta Sans',sans-serif;color:#6b746f">{{ s.count }} items</p>
       </div>
-      <ul style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
+      <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
         <sc-for list="{{ s.mods }}" as="m" hint-placeholder-count="6">
-          <li data-reveal="up" data-reveal-delay="{{ m.delay }}" style="{{ s.item }}"><div data-spot="" style="height:100%;box-sizing:border-box;position:relative;display:flex;flex-direction:column;padding:26px 24px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;background-image:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.07),transparent 50%)" style-hover="transform:translateY(-5px);border-color:rgba(242,58,29,.4);box-shadow:0 34px 60px -40px rgba(15,23,20,.5)">
-            <span style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:700 12px 'IBM Plex Sans',sans-serif;color:#f23a1d">{{ m.n }}</span><sc-if value="{{ m.for }}"><span style="font-size:11px;font-weight:600;color:#6b746f;text-align:right;line-height:1.3">{{ m.for }}</span></sc-if></span>
-            <h3 style="margin:20px 0 0;font:700 19px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.005em">{{ m.t }}</h3>
+          <li data-reveal="up" data-reveal-delay="{{ m.delay }}" style="{{ s.item }}"><div data-spot="" style="height:100%;box-sizing:border-box;position:relative;display:flex;flex-direction:column;padding:20px 20px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;background-image:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.07),transparent 50%)" style-hover="transform:translateY(-5px);border-color:rgba(242,58,29,.4);box-shadow:0 34px 60px -40px rgba(15,23,20,.5)">
+            <span style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ m.n }}</span><sc-if value="{{ m.for }}"><span style="font-size:11px;font-weight:600;color:#6b746f;text-align:right;line-height:1.3">{{ m.for }}</span></sc-if></span>
+            <h3 style="margin:14px 0 0;font:700 17px/1.25 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em">{{ m.t }}</h3>
             <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px">
               <sc-for list="{{ m.bl }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:10px;font-size:14px;line-height:1.5;color:#3b4541"><span style="flex-shrink:0;margin-top:7px;width:6px;height:6px;border-radius:2px;background:#f23a1d"></span>{{ b.t }}</li></sc-for>
             </ul>
@@ -162,18 +165,18 @@
 
   <!-- PRICING -->
   <sc-if value="{{ s.isPricing }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:72px 24px">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
       <div data-reveal="up" style="max-width:44rem">
         <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-        <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
         <p style="margin:14px 0 0;font-size:15px;color:#4a544f">{{ s.lead }}</p>
       </div>
-      <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:14px">
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:14px">
         <sc-for list="{{ s.plans }}" as="pl" hint-placeholder-count="8">
           <div data-reveal="up" data-reveal-delay="{{ pl.delay }}" style="{{ s.item }}"><div style="{{ pl.style }}" style-hover="transform:translateY(-6px)">
             <sc-if value="{{ pl.featured }}"><span style="position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px;background:#f23a1d;color:#fff">Most popular</span></sc-if>
-            <p style="margin:0;font:700 15px 'IBM Plex Sans',sans-serif">{{ pl.name }}</p>
-            <p style="margin:22px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font:700 clamp(1.9rem,1.5rem + 1vw,2.5rem) 'IBM Plex Sans',sans-serif">{{ pl.price }}</span><span style="font-size:13px;opacity:.65">{{ pl.per }}</span></p>
+            <p style="margin:0;font:700 15px 'Plus Jakarta Sans',sans-serif">{{ pl.name }}</p>
+            <p style="margin:22px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font:700 clamp(1.6rem,1.3rem + .8vw,2.1rem) 'Plus Jakarta Sans',sans-serif">{{ pl.price }}</span><span style="font-size:13px;opacity:.65">{{ pl.per }}</span></p>
             <p style="margin:14px 0 0;font-size:14px;line-height:1.55;opacity:.78;flex:1">{{ pl.scope }}</p>
             <a href="Contact.dc.html" style="{{ pl.btn }}">{{ pl.cta }}</a>
           </div></div>
@@ -184,11 +187,11 @@
 
   <!-- PAIRS -->
   <sc-if value="{{ s.isPairs }}">
-    <section style="max-width:76rem;margin:0 auto;padding:72px 24px">
+    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px;align-items:start">
         <div data-reveal="up">
           <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
         </div>
         <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(15,23,20,.12)">
           <sc-for list="{{ s.rows }}" as="r" hint-placeholder-count="4">
@@ -205,11 +208,11 @@
 
   <!-- CHIPS -->
   <sc-if value="{{ s.isChips }}">
-    <section style="max-width:76rem;margin:0 auto;padding:56px 24px">
-      <div data-reveal="up" style="border-radius:28px;background:#0f1714;color:#f6f5f1;padding:clamp(28px,4vw,52px);position:relative;overflow:hidden">
+    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
+      <div data-reveal="up" style="border-radius:20px;background:#0f1714;color:#f6f5f1;padding:clamp(22px,3vw,36px);position:relative;overflow:hidden">
         <div aria-hidden="true" style="position:absolute;right:-8rem;top:-8rem;width:24rem;height:24rem;border-radius:50%;background:radial-gradient(circle,rgba(242,58,29,.3),transparent 65%)"></div>
         <p style="position:relative;margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ff7a45">{{ s.eyebrow }}</p>
-        <h2 style="position:relative;margin:14px 0 0;font:700 clamp(1.5rem,1.2rem + 1.4vw,2.4rem)/1.12 'IBM Plex Sans',sans-serif;color:#f6f5f1">{{ s.h }}</h2>
+        <h2 style="position:relative;margin:14px 0 0;font:700 clamp(1.3rem,1.1rem + 1vw,1.85rem)/1.12 'Plus Jakarta Sans',sans-serif;color:#f6f5f1">{{ s.h }}</h2>
         <sc-if value="{{ s.lead }}"><p style="position:relative;margin:14px 0 0;max-width:36rem;font-size:15px;line-height:1.6;color:rgba(246,245,241,.68)">{{ s.lead }}</p></sc-if>
         <ul style="position:relative;list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
           <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="6"><li style="padding:10px 16px;border-radius:12px;border:1px solid rgba(246,245,241,.16);background:rgba(246,245,241,.04);font-size:14px;font-weight:600;transition:border-color .25s,background .25s" style-hover="border-color:#f23a1d;background:rgba(242,58,29,.12)">{{ c.t }}</li></sc-for>
@@ -218,13 +221,35 @@
     </section>
   </sc-if>
 
+  <!-- DIRECTORY -->
+  <sc-if value="{{ s.isDirectory }}">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
+      <div data-reveal="up" style="max-width:46rem">
+        <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+        <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.12 'Plus Jakarta Sans',sans-serif;letter-spacing:-.015em">{{ s.h }}</h2>
+        <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#4a544f">{{ s.lead }}</p>
+      </div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr));gap:12px">
+        <sc-for list="{{ s.groups }}" as="g" hint-placeholder-count="6">
+          <div data-reveal="up" style="{{ g.box }}">
+            <p style="margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font:700 15px 'Plus Jakarta Sans',sans-serif"><span>{{ g.t }}</span><span style="{{ g.countStyle }}">{{ g.n }}</span></p>
+            <ul style="list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ g.chips }}" as="c" hint-placeholder-count="6"><li style="{{ g.chipStyle }}">{{ c.t }}</li></sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ s.note }}"><p style="margin:16px 0 0;font-size:12px;color:#6b746f">{{ s.note }}</p></sc-if>
+    </section>
+  </sc-if>
+
   <!-- CTA -->
   <sc-if value="{{ s.isCta }}">
-    <section style="padding:48px 12px 12px">
-      <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:32px;overflow:hidden;background:#0f1714;color:#fff;padding:clamp(56px,7vw,96px) 24px;text-align:center">
+    <section style="padding:28px 12px 8px">
+      <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:22px;overflow:hidden;background:#0f1714;color:#fff;padding:clamp(36px,5vw,64px) 24px;text-align:center">
         <div aria-hidden="true" style="position:absolute;left:50%;top:-40%;width:44rem;height:44rem;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(242,58,29,.35),transparent 62%)"></div>
         <div style="position:relative">
-          <h2 style="margin:0 auto;max-width:44rem;font:700 clamp(1.9rem,1.3rem + 2.6vw,3.8rem)/1.02 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#fff">{{ s.h }}</h2>
+          <h2 style="margin:0 auto;max-width:44rem;font:700 clamp(1.6rem,1.2rem + 1.6vw,2.4rem)/1.02 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#fff">{{ s.h }}</h2>
           <sc-if value="{{ s.lead }}"><p style="margin:20px auto 0;max-width:30rem;font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)">{{ s.lead }}</p></sc-if>
           <div style="margin-top:32px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
             <a href="{{ s.primary.href }}" style="height:54px;padding:0 26px;border-radius:14px;background:#f23a1d;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#ff5533;color:#fff">{{ s.primary.label }} →</a>
@@ -235,7 +260,7 @@
     </section>
   </sc-if>
 </sc-for>
-<div style="height:72px"></div>
+<div style="height:32px"></div>
 </div>
 
 </x-dc>
@@ -264,17 +289,17 @@ class Component extends DCLogic {
       return `media/${String(id).padStart(2,"0")}-d.webp`;
     };
     const sections = d.sections.map((s, si) => {
-      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", lead: s.lead || "", link: s.link || null, item: item(s.type === "pricing" ? this.state.plans.length : (s.items || []).length, s.type === "modules" ? 17 : 15) };
+      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", isDirectory: s.type === "directory", note: s.note || "", lead: s.lead || "", link: s.link || null, item: item(s.type === "pricing" ? this.state.plans.length : (s.items || []).length, s.type === "modules" ? 17 : 15) };
       if (s.type === "loop") base.loop = s.items.map((label, i) => ({ label, n: n(i), arrow: i < s.items.length - 1 }));
       if (s.type === "steps") base.steps = s.items.map((x, i) => ({ ...x, n: n(i), delay: String((i % 3) * 90) }));
       if (s.type === "cards") {
         const dark = !!s.dark;
         Object.assign(base, {
-          wrapStyle: dark ? "background:#0f1714;padding:96px 24px;margin:48px 0" : "padding:72px 24px",
+          wrapStyle: dark ? "background:#0f1714;padding:36px 24px;margin:48px 0" : "padding:44px 24px",
           accent: dark ? "#ff7a45" : "#f23a1d", ink: dark ? "#f6f5f1" : "#0f1714", sub: dark ? "rgba(246,245,241,.62)" : "#4a544f",
           cards: s.items.map((c, i) => ({
             ...c, n: n(i), href: c.href || "Contact.dc.html", delay: String((i % 3) * 80),
-            style: `height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:24px;border-radius:22px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;color:${dark ? "#f6f5f1" : "#0f1714"};background-color:${dark ? "rgba(246,245,241,.04)" : "#fff"};border:1px solid ${dark ? "rgba(246,245,241,.1)" : "rgba(15,23,20,.08)"};background-image:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${dark ? ".18" : ".08"}),transparent 50%)`,
+            style: `height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:18px;border-radius:16px;min-height:9.5rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;color:${dark ? "#f6f5f1" : "#0f1714"};background-color:${dark ? "rgba(246,245,241,.04)" : "#fff"};border:1px solid ${dark ? "rgba(246,245,241,.1)" : "rgba(15,23,20,.08)"};background-image:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${dark ? ".18" : ".08"}),transparent 50%)`,
             hover: `transform:translateY(-5px);border-color:${dark ? "rgba(242,58,29,.5)" : "rgba(242,58,29,.4)"};box-shadow:0 34px 60px -40px rgba(15,23,20,.55);color:${dark ? "#fff" : "#0f1714"}`,
           })),
         });
@@ -290,10 +315,16 @@ class Component extends DCLogic {
       if (s.type === "pricing") base.plans = this.state.plans.map((p, i) => {
         const f = !!p.featured;
         return { ...p, featured: f, delay: String((i % 4) * 70), cta: p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan",
-          style: `position:relative;display:flex;flex-direction:column;padding:26px 22px;border-radius:22px;min-height:17rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
+          style: `position:relative;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
           btn: `margin-top:22px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;transition:background .25s,color .25s;${f ? "background:#f23a1d;color:#fff" : "background:#f6f5f1;color:#0f1714;border:1px solid rgba(15,23,20,.1)"}` };
       });
       if (s.type === "pairs") base.rows = s.items.map(([a, b]) => ({ a, b }));
+      if (s.type === "directory") base.groups = s.groups.map((g) => ({
+        t: g.t, n: g.items.length, chips: g.items.map((t) => ({ t })),
+        box: `padding:16px 16px 18px;border-radius:16px;box-sizing:border-box;${g.more ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
+        countStyle: `font:700 12px 'Plus Jakarta Sans',sans-serif;color:${g.more ? "#ff7a45" : "#f23a1d"}`,
+        chipStyle: `font-size:12.5px;font-weight:600;line-height:1.2;padding:6px 9px;border-radius:8px;${g.more ? "background:rgba(246,245,241,.09);color:#f6f5f1;border:1px solid rgba(246,245,241,.14)" : "background:#f6f5f1;color:#2c3531;border:1px solid rgba(15,23,20,.06)"}`,
+      }));
       if (s.type === "chips") base.chips = s.items.map((t) => ({ t }));
       if (s.type === "cta") Object.assign(base, { hasSecondary: !!s.secondary, secondary: s.secondary || { label: "", href: "#" } });
       return base;

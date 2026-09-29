@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
 <script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
@@ -14,23 +18,24 @@
     <a href="Homepage.dc.html" aria-label="DigitalBurj home" style="display:flex;align-items:center;flex-shrink:0;margin-right:12px"><img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/></a>
     <nav aria-label="Primary" style="{{ navStyle }}">
       <div onmouseenter="{{ openMega }}" onmouseleave="{{ closeMega }}" style="position:relative">
-        <button onclick="{{ toggleMega }}" aria-expanded="{{ megaOpen }}" style="height:40px;padding:0 14px;border:none;background:transparent;border-radius:10px;font:500 14px 'Instrument Sans',sans-serif;color:#0f1714;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:rgba(15,23,20,.05)">Divisions<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="{{ chevStyle }}"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button onclick="{{ toggleMega }}" aria-expanded="{{ megaOpen }}" style="height:40px;padding:0 14px;border:none;background:transparent;border-radius:10px;font:500 14px 'Instrument Sans',sans-serif;color:#0f1714;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:rgba(15,23,20,.05)">Ecosystem<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="{{ chevStyle }}"><path d="M6 9l6 6 6-6"/></svg></button>
         <sc-if value="{{ megaOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="position:absolute;top:100%;left:-16px;padding-top:12px;width:min(52rem,92vw)">
-            <div style="border-radius:20px;background:#fff;border:1px solid rgba(15,23,20,.08);box-shadow:0 40px 80px -30px rgba(15,23,20,.4);padding:10px;display:grid;grid-template-columns:1.25fr 1fr;gap:8px">
+          <div style="position:absolute;top:100%;left:-16px;padding-top:12px;width:min(44rem,92vw)">
+            <div style="border-radius:20px;background:#fff;border:1px solid rgba(15,23,20,.08);box-shadow:0 40px 80px -30px rgba(15,23,20,.4);padding:8px;display:grid;grid-template-columns:1.35fr 1fr;gap:8px">
               <div style="display:grid;gap:4px">
                 <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="5">
-                  <a href="{{ d.href }}" style="display:flex;gap:14px;align-items:center;padding:12px;border-radius:14px;transition:background .25s" style-hover="background:#f6f5f1">
+                  <a href="{{ d.href }}" style="display:flex;gap:12px;align-items:center;padding:9px 10px;border-radius:12px;transition:background .25s" style-hover="background:#f6f5f1">
                     <img src="{{ d.icon }}" alt="" class="db-nav-brandmark"/>
-                    <span><span style="display:block;font-weight:600;font-size:14px;color:#0f1714">{{ d.name }}</span><span style="display:block;font-size:13px;color:#5d6560;margin-top:2px">{{ d.line }}</span></span><img src="{{ d.thumb }}" alt="" loading="lazy" style="margin-left:auto;width:84px;height:56px;object-fit:cover;border-radius:9px;flex-shrink:0"/>
+                    <span><span style="display:block;font-weight:600;font-size:14px;color:#0f1714">{{ d.name }}</span><span style="display:block;font-size:12.5px;line-height:1.4;color:#5d6560;margin-top:1px">{{ d.line }}</span></span>
                   </a>
                 </sc-for>
               </div>
-              <a href="GetStarted.dc.html" style="position:relative;overflow:hidden;border-radius:14px;background:#0f1714;color:#f6f5f1;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:15rem">
-                
-                <span style="position:relative;font:600 11px 'Instrument Sans';letter-spacing:.16em;text-transform:uppercase;color:#ff7a45">Not sure where to start?</span>
-                <span style="position:relative;margin-top:8px;font:700 20px/1.2 'IBM Plex Sans',sans-serif">Tell us the problem. We'll route it.</span>
-                <span style="position:relative;margin-top:14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">Get started →</span>
+              <a href="GetStarted.dc.html" style="position:relative;overflow:hidden;border-radius:14px;background:#0f1714;color:#f6f5f1;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;min-height:15rem;isolation:isolate">
+                <img src="media/01-m.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%"/>
+                <span aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(11,16,14,.96) 0%,rgba(11,16,14,.78) 42%,rgba(11,16,14,.12) 100%)"></span>
+                <span style="position:relative;font:600 11px 'Instrument Sans';letter-spacing:.16em;text-transform:uppercase;color:#ff9a75">Not sure where to start?</span>
+                <span style="position:relative;margin-top:6px;font:700 18px/1.25 'Plus Jakarta Sans',sans-serif">Tell us the problem. We'll route it.</span>
+                <span style="position:relative;margin-top:12px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">Get started →</span>
               </a>
             </div>
           </div>
@@ -51,10 +56,10 @@
 
 <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
   <div onclick="{{ toggleSheet }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,23,20,.55);backdrop-filter:blur(4px);font-family:'Instrument Sans',sans-serif">
-    <div onclick="{{ stop }}" style="position:absolute;top:10px;left:10px;bottom:10px;width:min(22rem,calc(100% - 20px));border-radius:22px;background:#f6f5f1;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)">
+    <div onclick="{{ stop }}" style="position:absolute;top:10px;left:10px;bottom:10px;width:min(22rem,calc(100% - 20px));border-radius:16px;background:#f6f5f1;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)">
       <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px 10px"><img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/><button onclick="{{ toggleSheet }}" aria-label="Close menu" style="width:36px;height:36px;border-radius:10px;border:1px solid rgba(15,23,20,.1);background:#fff;cursor:pointer">✕</button></div>
       <div style="flex:1;overflow:auto;padding:8px 12px">
-        <p style="margin:10px 6px 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a918c">Divisions</p>
+        <p style="margin:10px 6px 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a918c">Ecosystem</p>
         <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="5">
           <a href="{{ d.href }}" style="display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:12px" style-hover="background:#fff"><img src="{{ d.icon }}" alt="" style="width:30px;height:30px;object-fit:contain"/><span style="font-weight:600;color:#0f1714">{{ d.name }}</span></a>
         </sc-for>
@@ -95,13 +100,13 @@ class Component extends DCLogic {
   state = { megaOpen: false, sheetOpen: false, searchOpen: false, query: "", narrow: false };
   searchRef = React.createRef();
   divisions = [
-    { name: "Business OS", line: "CRM, finance, HR, payroll and operations in one core.", href: "BusinessOS.dc.html", icon: "brand/mark-business-os.webp", thumb: "division-thumbs/business-os.webp" },
-    { name: "DigitalBurj AI", line: "AI employees that act through controlled tools.", href: "BusinessAI.dc.html", icon: "brand/mark-business-ai.webp", thumb: "division-thumbs/business-ai.webp" },
-    { name: "Growth", line: "Websites, SEO, AEO, AI search, social and ads.", href: "Growth.dc.html", icon: "brand/mark-growth.webp", thumb: "division-thumbs/growth.webp" },
-    { name: "Studio", line: "Web apps, mobile apps, custom ERP and integrations.", href: "Studio.dc.html", icon: "brand/mark-studio.webp", thumb: "division-thumbs/studio.webp" },
-    { name: "Industry Solutions", line: "Vertical modules for 13 sectors on one core.", href: "Industries.dc.html", icon: "brand/mark-industries.webp", thumb: "division-thumbs/industries.webp" },
-    { name: "Academy", line: "Onboarding, certification and digital skills.", href: "Academy.dc.html", icon: "brand/mark-academy.webp", thumb: "division-thumbs/academy.webp" },
-    { name: "Verified Talent", line: "Specialists with the evidence attached.", href: "Talent.dc.html", icon: "brand/mark-talent.webp", thumb: "division-thumbs/talent.webp" },
+    { name: "Business OS", line: "CRM, finance, HR, payroll and operations in one core.", href: "BusinessOS.dc.html", icon: "brand/mark-business-os.webp" },
+    { name: "DigitalBurj AI", line: "AI employees that act through controlled tools.", href: "BusinessAI.dc.html", icon: "brand/mark-business-ai.webp" },
+    { name: "Growth", line: "Websites, SEO, AEO, AI search, social and ads.", href: "Growth.dc.html", icon: "brand/mark-growth.webp" },
+    { name: "Studio", line: "Web apps, mobile apps, custom ERP and integrations.", href: "Studio.dc.html", icon: "brand/mark-studio.webp" },
+    { name: "Industry Solutions", line: "Vertical modules for 13 sectors on one core.", href: "Industries.dc.html", icon: "brand/mark-industries.webp" },
+    { name: "Academy", line: "Onboarding, certification and digital skills.", href: "Academy.dc.html", icon: "brand/mark-academy.webp" },
+    { name: "Verified Talent", line: "Specialists with the evidence attached.", href: "Talent.dc.html", icon: "brand/mark-talent.webp" },
   ];
   linkData = [
     { label: "Pricing", href: "Pricing.dc.html", key: "pricing" },
@@ -111,7 +116,7 @@ class Component extends DCLogic {
     { label: "Contact", href: "Contact.dc.html", key: "contact" },
   ];
   index = [
-    ...this.divisions.map((d) => ({ label: d.name, href: d.href, kind: "Division" })),
+    ...this.divisions.map((d) => ({ label: d.name, href: d.href, kind: "Ecosystem" })),
     ...this.linkData.map((l) => ({ label: l.label, href: l.href, kind: "Page" })),
     { label: "Portfolio", href: "Portfolio.dc.html", kind: "Page" },
     { label: "Jobs", href: "Jobs.dc.html", kind: "Page" },

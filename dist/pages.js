@@ -12,6 +12,47 @@ export const PLANS = [
   { name: "Enterprise", price: "Custom", per: "", scope: "Dedicated deployment, advanced integration and support." },
 ];
 
+
+// Odoo-class ERP apps + Wafeq-class accounting — the full service catalogue DigitalBurj implements, and what it adds on top.
+const odooWafeq = () => ({
+  type: "directory", id: "odoo-wafeq", eyebrow: "Odoo · Wafeq · and more",
+  h: "Everything Odoo and Wafeq do — we deliver it, and go further.",
+  lead: "Already run on Odoo or Wafeq, or planning to? DigitalBurj implements, customises, migrates and supports every app below — natively in the Business OS or on your existing stack — and adds the AI, growth and industry layers they don't.",
+  groups: [
+    { t: "Finance & accounting", items: ["Accounting & GL", "Invoicing & quotes", "Purchase orders & bills", "Expenses", "Bank feeds & reconciliation", "Multi-currency", "VAT / tax returns", "e-Invoicing (UAE · KSA)", "Fixed assets", "40+ financial reports", "Budgets & cost centres", "Documents & e-sign"] },
+    { t: "Sales & CRM", items: ["CRM & pipelines", "Sales orders", "Point of Sale", "Subscriptions", "Rental", "Quotation builder", "Commissions & targets", "Customer portal"] },
+    { t: "Websites & eCommerce", items: ["Website builder", "eCommerce", "Blog", "Forum", "Live chat", "eLearning", "SEO & AEO", "Payments & delivery"] },
+    { t: "Supply chain", items: ["Inventory & warehouse", "Manufacturing (MRP)", "Purchase & procurement", "Barcode scanning", "Quality control", "PLM", "Repair", "Maintenance", "Dropshipping", "Landed cost"] },
+    { t: "HR & payroll", items: ["Employees", "Recruitment", "Time off & attendance", "Appraisals", "Payroll & WPS", "Expenses & claims", "Fleet", "Referrals", "Employee portal"] },
+    { t: "Marketing", items: ["Email marketing", "SMS marketing", "Social marketing", "Marketing automation", "Events", "Surveys", "WhatsApp campaigns", "Lead scoring"] },
+    { t: "Services & projects", items: ["Projects & tasks", "Timesheets", "Field service", "Planning & shifts", "Helpdesk", "Appointments & booking", "Contracts & SLAs", "Client portal"] },
+    { t: "Productivity & platform", items: ["Discuss & chat", "Approvals", "Knowledge base", "VoIP", "WhatsApp Business", "IoT", "Studio (no-code)", "API & integrations", "Data migration"] },
+    { t: "And more — only at DigitalBurj", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "13 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
+  ],
+  note: "Odoo and Wafeq are trademarks of their respective owners. Named here to describe the services we deliver."
+});
+
+// Full sector directory — 95+ business types across 10 categories.
+const allSectors = () => ({
+  type: "directory", id: "all-sectors", eyebrow: "Every sector",
+  h: "If you run a business, there's a setup for it.",
+  lead: "Beyond our 13 deep vertical modules, DigitalBurj configures the Business OS for the sectors below — the same core, tuned to how each one actually works.",
+  groups: [
+    { t: "Business services", items: ["Accounting firm", "Audit & certification", "Law firm", "Marketing agency", "Talent acquisition", "IT hardware & support", "Software reseller", "Billboard rental", "Environmental agency"] },
+    { t: "Culture & arts", items: ["Arts & crafts", "Gallery", "Museum", "Library", "Theater", "Concert halls", "Photography", "Tattoo shop"] },
+    { t: "Education & training", items: ["Driving school", "eLearning platform", "DIY workshops", "Student organisation", "Training centre", "School"] },
+    { t: "Events, community & nonprofit", items: ["Event management", "Wedding planner", "Nonprofit", "Public institution", "Coworking", "Members club", "Sports facilities", "Team sports club", "Summer camps", "Community care"] },
+    { t: "Food & beverage", items: ["Restaurant", "Fast food", "Bakery", "Bar & pub", "Catering", "Food trucks", "Takeaway", "Candy shop", "Beverage distributor"] },
+    { t: "Health, wellness & care", items: ["Clinic", "Pharmacy", "Fitness centre", "Yoga & pilates", "Hair salon", "Beauty parlour", "Physical therapy", "Mental therapy", "Personal trainer", "Veterinary clinic", "Pet groomer", "Eyewear store"] },
+    { t: "Hospitality & leisure", items: ["Hotel", "Guest house", "Holiday house", "Campsite", "Spa resort", "Guided tours", "Outdoor activities", "Escape rooms", "Bowling alleys", "Night clubs"] },
+    { t: "Manufacturing & supply chain", items: ["3PL & logistics", "Custom furniture", "Metal fabricator", "Textile manufacturing", "Food distribution", "Microbrewery", "Vineyard", "Carpenter", "Corporate gifts", "Industrial equipment", "Agri-equipment rental"] },
+    { t: "Real estate, construction & maintenance", items: ["Real estate agency", "Property management", "Property developer", "General contractor", "Architecture firm", "Interior design", "HVAC services", "Solar energy", "Machine & tool rental", "Property owner association"] },
+    { t: "Retail & eCommerce", items: ["Clothing store", "Electronics store", "Furniture store", "Grocery store", "Hardware store", "Bookstore", "Cosmetics store", "Florist", "Toy store", "Wine shop", "Auto spare parts", "Dropshipping", "Thrift store", "Agricultural store"] },
+    { t: "Trades & home services", items: ["Cleaning services", "Electrician", "Gardening", "Handyman", "Surveying & mapping", "Bike shop", "Bike leasing"] },
+  ],
+  note: ""
+});
+
 export const PAGES = {
   "business-os": {
     crumb: "Business OS", lockup: "brand/business-os-lockup.webp", badge: "The reusable core",
@@ -34,6 +75,7 @@ export const PAGES = {
         M("Workflow Automation", "SMEs with repetitive admin", ["Triggers, conditions, actions, delays, escalations and retries", "Overdue invoice reminders, lead assignment, stock and licence-expiry alerts", "Execution history for every run"], "Automation is auditable and never bypasses business controls."),
         M("Communications & Dashboards", "Owners and every department", ["WhatsApp Business for enquiries, quotes, payments and owner briefs", "Unified inbox across WhatsApp, email and website chat", "Owner Command Center: cash, receivables, profit, approvals and exceptions", "Department dashboards for sales, finance, HR, inventory and more"], "The owner sees the business in one view, on their phone."),
       ] },
+      odooWafeq(),
       { type: "chips", eyebrow: "Where we never cut cost", h: "Cheaper, never weaker.", lead: "Shared modules and self-service onboarding keep prices low. These stay non-negotiable.", items: ["Security", "Accounting accuracy", "Tax logic", "Backups & restore testing", "Tenant isolation", "Permissions", "Audit logs", "Privacy controls", "Regulatory validation"] },
       { type: "faq", items: [
         { q: "Do industry modules duplicate CRM or finance?", a: "No. Industry modules extend the Business OS. CRM, finance, HR, identity and documents are shared, so data is never entered twice." },
@@ -116,6 +158,7 @@ export const PAGES = {
         M("Professional Services", "Consultancies and firms", ["CRM, projects and time", "Contracts, billing and documents", "Client portal"], ""),
         M("Healthcare Administration", "Clinics and medical groups", ["Appointments and patient administration", "Billing, inventory, staff and procurement", "Clinical systems kept separate"], "Administration only — clinical records stay in clinical systems."),
       ] },
+      allSectors(),
       cta("Industry OS: the core plus your sector.", null, { label: "See Industry OS", href: "Pricing.dc.html" }, { label: "Talk to us", href: "Contact.dc.html" }),
     ],
   },

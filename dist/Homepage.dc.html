@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
 <script src="./support.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700;800&amp;display=swap">
 <link rel="preload" as="image" href="media/01-m.webp" media="(max-width:700px)" fetchpriority="high">
 <link rel="preload" as="image" href="media/01-d.webp" media="(min-width:701px)" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
@@ -21,9 +22,6 @@
 <meta property="og:description" content="Business AI, software engineering, project-based training and verified hiring from one technology partner."/>
 <meta property="og:type" content="website"/><meta property="og:image" content="https://digitalburj-imagefree-0929.loadbyton569388.chatgpt.site/brand/opengraph.png"/>
 <meta name="twitter:card" content="summary"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"DigitalBurj","slogan":"Learn. Build. Transform.","description":"Business AI, software studio, technology academy, verified talent and jobs.","department":[{"@type":"Organization","name":"DigitalBurj Business AI"},{"@type":"Organization","name":"DigitalBurj Studio"},{"@type":"Organization","name":"DigitalBurj Academy"}]}</script>
 <script src="motion.js" defer=""></script>
 <script src="cinema-bg.js" defer=""></script>
@@ -58,31 +56,31 @@ a:hover{color:#f23a1d}
         <a href="GetStarted.dc.html" style="height:54px;padding:0 26px;border-radius:14px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -14px rgba(242,58,29,.9);transition:background-position .9s cubic-bezier(.22,.8,.24,1),transform .25s" style-hover="background-position:0 0;transform:translateY(-2px);color:#fff">Start with a problem
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#divisions" style="height:54px;padding:0 24px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.22);color:#f6f5f1;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:border-color .25s,background .25s,transform .25s" style-hover="border-color:#f6f5f1;background:rgba(246,245,241,.1);transform:translateY(-2px);color:#fff">Explore divisions</a>
+        <a href="#divisions" style="height:54px;padding:0 24px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.22);color:#f6f5f1;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:border-color .25s,background .25s,transform .25s" style-hover="border-color:#f6f5f1;background:rgba(246,245,241,.1);transform:translateY(-2px);color:#fff">Explore the ecosystem</a>
       </div>
       <dl class="db-hero-meta">
-        <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Divisions</dt><dd data-count="7" style="margin:6px 0 0;font:700 30px 'IBM Plex Sans',sans-serif;color:#f6f5f1">7</dd></div>
-        <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Business OS modules</dt><dd data-count="14" style="margin:6px 0 0;font:700 30px 'IBM Plex Sans',sans-serif;color:#f6f5f1">14</dd></div>
-        <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Industries</dt><dd data-count="15" style="margin:6px 0 0;font:700 30px 'IBM Plex Sans',sans-serif;color:#f6f5f1">15</dd></div>
+        <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Divisions</dt><dd data-count="7" style="margin:6px 0 0;font:700 30px 'Plus Jakarta Sans',sans-serif;color:#f6f5f1">7</dd></div>
+        <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Business OS modules</dt><dd data-count="14" style="margin:6px 0 0;font:700 30px 'Plus Jakarta Sans',sans-serif;color:#f6f5f1">14</dd></div>
+        <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Industries</dt><dd data-count="15" style="margin:6px 0 0;font:700 30px 'Plus Jakarta Sans',sans-serif;color:#f6f5f1">15</dd></div>
       </dl>
     </div>
 
     <div class="db-hero-stage" aria-label="Connected workflow previews">
-      <div data-reveal="right" class="db-float-card" style="position:absolute;right:0;top:4%;width:min(21rem,78%);border-radius:20px;background:rgba(28,34,31,.92);border:1px solid rgba(246,245,241,.14);padding:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)">
+      <div data-reveal="right" class="db-float-card" style="position:absolute;right:0;top:0;width:min(17.5rem,52%);border-radius:20px;background:rgba(28,34,31,.92);border:1px solid rgba(246,245,241,.14);padding:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)">
         <div style="display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:12px;background:#f6f5f1;display:grid;place-items:center"><img src="brand/mark-business-ai.webp" alt="" style="width:32px;height:32px"/></span><span><span style="display:block;font-weight:600;font-size:14px">Enquiry workflow</span><span style="display:block;font-size:12px;color:rgba(246,245,241,.55)">Running · live</span></span></div>
         <div style="margin-top:16px;display:flex;justify-content:space-between;font-size:12px;color:rgba(246,245,241,.65)"><span>Automated steps</span><span style="color:#ff7a45;font-weight:700">4 of 6</span></div>
         <div style="margin-top:8px;height:6px;border-radius:9px;background:rgba(246,245,241,.1);overflow:hidden"><div style="height:100%;width:66%;background:linear-gradient(90deg,#f23a1d,#ff7a45);border-radius:9px"></div></div>
         <div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap"><span style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(246,245,241,.08)">WhatsApp</span><span style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(246,245,241,.08)">CRM</span><span style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(242,58,29,.2);color:#ff9a75">Needs approval</span></div>
       </div>
-      <div class="db-hero-mini db-float-card" style="left:0;top:2%"><img src="brand/mark-business-os.webp" alt=""/><span><strong>Business OS sync</strong><small>14 modules connected</small></span></div>
-      <div class="db-hero-mini db-float-card" style="right:2%;top:54%"><img src="brand/mark-growth.webp" alt=""/><span><strong>Owner pulse</strong><small>New signal · reviewed</small></span></div>
-      <div data-reveal="left" data-reveal-delay="140" class="db-float-card" style="position:absolute;left:4%;top:42%;width:min(18rem,68%);border-radius:20px;background:#f6f5f1;color:#0f1714;padding:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)">
+      <div class="db-hero-mini db-float-card" style="left:0;top:6%"><img src="brand/mark-business-os.webp" alt=""/><span><strong>Business OS sync</strong><small>14 modules connected</small></span></div>
+      <div class="db-hero-mini db-float-card" style="right:0;top:41%"><img src="brand/mark-growth.webp" alt=""/><span><strong>Owner pulse</strong><small>New signal · reviewed</small></span></div>
+      <div data-reveal="left" data-reveal-delay="140" class="db-float-card" style="position:absolute;left:0;top:38%;width:min(15rem,52%);border-radius:20px;background:#f6f5f1;color:#0f1714;padding:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)">
         <p style="margin:0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#c9260e;font-weight:700;display:flex;align-items:center;gap:8px"><img src="brand/mark-academy.webp" alt="" style="width:26px;height:26px"/>Academy · Module 3</p>
-        <p style="margin:10px 0 0;font:700 18px 'IBM Plex Sans',sans-serif">Build → Break → Fix</p>
+        <p style="margin:10px 0 0;font:700 18px 'Plus Jakarta Sans',sans-serif">Build → Break → Fix</p>
         <div style="margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px"><span style="height:4px;border-radius:4px;background:#f23a1d"></span><span style="height:4px;border-radius:4px;background:#f23a1d"></span><span style="height:4px;border-radius:4px;background:#f23a1d"></span><span style="height:4px;border-radius:4px;background:#dcd9d0"></span></div>
         <p style="margin:12px 0 0;font-size:12px;color:#5d6560">Next: explain your fix to a reviewer</p>
       </div>
-      <div data-reveal="up" data-reveal-delay="260" class="db-float-card" style="position:absolute;right:6%;bottom:2%;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;border-radius:16px;background:rgba(20,26,23,.92);border:1px solid rgba(246,245,241,.14)">
+      <div data-reveal="up" data-reveal-delay="260" class="db-float-card" style="position:absolute;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;border-radius:16px;background:rgba(20,26,23,.92);border:1px solid rgba(246,245,241,.14)">
         
         <img src="brand/mark-talent.webp" alt="" style="width:34px;height:34px;background:#f6f5f1;border-radius:10px"/><span style="font-size:13px"><span style="display:block;font-weight:600">Skill reviewed</span><span style="color:rgba(246,245,241,.55)">Evidence attached · 2 projects</span></span>
       </div>
@@ -93,23 +91,34 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- ECOSYSTEM MARQUEE -->
-<section aria-label="DigitalBurj ecosystem" class="db-ecosystem-strip"><p class="db-kicker">One account · One ecosystem</p><div class="db-ecosystem-grid"><a href="BusinessOS.dc.html" class="db-ecosystem-tile"><img src="brand/mark-business-os.webp" alt="" loading="lazy"/><span>Business OS</span></a><a href="BusinessAI.dc.html" class="db-ecosystem-tile"><img src="brand/mark-business-ai.webp" alt="" loading="lazy"/><span>Business AI</span></a><a href="Growth.dc.html" class="db-ecosystem-tile"><img src="brand/mark-growth.webp" alt="" loading="lazy"/><span>Growth</span></a><a href="Studio.dc.html" class="db-ecosystem-tile"><img src="brand/mark-studio.webp" alt="" loading="lazy"/><span>Studio</span></a><a href="Industries.dc.html" class="db-ecosystem-tile"><img src="brand/mark-industries.webp" alt="" loading="lazy"/><span>Industry Solutions</span></a><a href="Academy.dc.html" class="db-ecosystem-tile"><img src="brand/mark-academy.webp" alt="" loading="lazy"/><span>Academy</span></a><a href="Talent.dc.html" class="db-ecosystem-tile"><img src="brand/mark-talent.webp" alt="" loading="lazy"/><span>Verified Talent</span></a></div></section>
+<section aria-label="DigitalBurj ecosystem" class="db-ecosystem-strip"><p class="db-kicker">One account · One ecosystem</p><div class="db-ecosystem-grid"><a href="BusinessOS.dc.html" class="db-ecosystem-tile"><img src="brand/mark-business-os.webp" alt="" loading="lazy" decoding="async"/><span>Business OS</span></a><a href="BusinessAI.dc.html" class="db-ecosystem-tile"><img src="brand/mark-business-ai.webp" alt="" loading="lazy" decoding="async"/><span>Business AI</span></a><a href="Growth.dc.html" class="db-ecosystem-tile"><img src="brand/mark-growth.webp" alt="" loading="lazy" decoding="async"/><span>Growth</span></a><a href="Studio.dc.html" class="db-ecosystem-tile"><img src="brand/mark-studio.webp" alt="" loading="lazy" decoding="async"/><span>Studio</span></a><a href="Industries.dc.html" class="db-ecosystem-tile"><img src="brand/mark-industries.webp" alt="" loading="lazy" decoding="async"/><span>Industry Solutions</span></a><a href="Academy.dc.html" class="db-ecosystem-tile"><img src="brand/mark-academy.webp" alt="" loading="lazy" decoding="async"/><span>Academy</span></a><a href="Talent.dc.html" class="db-ecosystem-tile"><img src="brand/mark-talent.webp" alt="" loading="lazy" decoding="async"/><span>Verified Talent</span></a></div></section>
+
+<!-- ODOO / WAFEQ -->
+<section aria-label="Odoo and Wafeq services" style="max-width:76rem;margin:0 auto;padding:8px 24px 0">
+  <a href="BusinessOS.dc.html#odoo-wafeq" data-reveal="up" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding:16px 20px;border-radius:16px;background:#0f1714;color:#f6f5f1;border:1px solid rgba(246,245,241,.08)" style-hover="border-color:rgba(242,58,29,.5);color:#fff">
+    <span style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
+      <span style="font:700 11px 'Instrument Sans';letter-spacing:.16em;text-transform:uppercase;color:#ff9a75">Also delivered</span>
+      <span style="font:700 16px 'Plus Jakarta Sans',sans-serif">Odoo &amp; Wafeq services — every app, plus the AI, growth and industry layers they don't have.</span>
+    </span>
+    <span style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;white-space:nowrap">See everything we deliver →</span>
+  </a>
+</section>
 
 <!-- DIVISIONS -->
-<section id="divisions" aria-labelledby="div-h" style="max-width:76rem;margin:0 auto;padding:96px 24px 40px">
+<section id="divisions" aria-labelledby="div-h" style="max-width:76rem;margin:0 auto;padding:44px 24px 16px">
   <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-    <div style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Seven divisions · one ecosystem</p><h2 id="div-h" style="margin:18px 0 0;font:700 clamp(1.8rem,1.2rem + 2.3vw,3.2rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Everything an SME needs to run, grow and scale.</h2></div>
+    <div style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Seven divisions · one ecosystem</p><h2 id="div-h" style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Everything an SME needs to run, grow and scale.</h2></div>
     <p style="margin:0;max-width:24rem;font-size:15px;line-height:1.6;color:#4a544f">Not another ERP. Not another agency. Business software, AI, growth, custom development, industry modules, training and talent — connected.</p>
   </div>
-  <ul style="list-style:none;margin:52px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:16px">
+  <ul style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:16px">
     <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="7">
       <li data-reveal="up" data-reveal-delay="{{ d.delay }}" style="flex:1 1 calc((100% - 48px) / 4);min-width:min(100%,16rem);display:flex">
         <a href="{{ d.href }}" data-spot="" style="{{ d.style }}" style-hover="{{ d.hover }}">
           <span style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-            <span style="width:52px;height:52px;border-radius:14px;background:#f6f5f1;display:grid;place-items:center;overflow:hidden;flex-shrink:0"><img src="{{ d.icon }}" alt="" loading="lazy" style="width:42px;height:42px;object-fit:contain"/></span>
-            <span style="font:700 13px 'IBM Plex Sans',sans-serif;opacity:.5">{{ d.n }}</span>
+            <span style="width:52px;height:52px;border-radius:14px;background:#f6f5f1;display:grid;place-items:center;overflow:hidden;flex-shrink:0"><img src="{{ d.icon }}" alt="" loading="lazy" decoding="async" style="width:42px;height:42px;object-fit:contain"/></span>
+            <span style="font:700 13px 'Plus Jakarta Sans',sans-serif;opacity:.5">{{ d.n }}</span>
           </span>
-          <span style="margin-top:26px;font:700 22px/1.2 'IBM Plex Sans',sans-serif">{{ d.name }}</span>
+          <span style="margin-top:18px;font:700 19px/1.2 'Plus Jakarta Sans',sans-serif">{{ d.name }}</span>
           <span style="margin-top:10px;font-size:15px;line-height:1.55;opacity:.74">{{ d.line }}</span>
           <span style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px">
             <sc-for list="{{ d.tags }}" as="tg" hint-placeholder-count="4"><span style="{{ d.tagStyle }}">{{ tg.label }}</span></sc-for>
@@ -122,27 +131,27 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- ONE PLATFORM (sticky) -->
-<section aria-labelledby="one-h" style="max-width:76rem;margin:0 auto;padding:96px 24px">
+<section aria-labelledby="one-h" style="max-width:76rem;margin:0 auto;padding:44px 24px">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,26rem),1fr));gap:56px;align-items:start">
     <div style="position:sticky;top:110px">
       <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>One relationship</p>
-      <h2 id="one-h" style="margin:18px 0 0;font:700 clamp(1.8rem,1.2rem + 2.3vw,3.2rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">One platform. One customer record. <span style="color:#f23a1d">One owner view.</span></h2>
+      <h2 id="one-h" style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">One platform. One customer record. <span style="color:#f23a1d">One owner view.</span></h2>
       <p style="margin:22px 0 0;max-width:28rem;font-size:16px;line-height:1.65;color:#3b4541">Sales, operations and finance share one data model, so nothing is typed twice and the owner sees cash, pipeline, people and exceptions in a single screen — or a WhatsApp brief every morning.</p>
       <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;max-width:30rem">
         <sc-for list="{{ ones }}" as="o" hint-placeholder-count="7"><li style="padding:8px 12px;border-radius:10px;background:#fff;border:1px solid rgba(15,23,20,.1);font-size:13px;font-weight:600"><span style="color:#f23a1d">One</span> {{ o.t }}</li></sc-for>
       </ul>
       <a href="BusinessOS.dc.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;border-bottom:2px solid #f23a1d;padding-bottom:4px">See the Business OS →</a>
     </div>
-    <div data-reveal="scale" aria-label="Owner Command Center preview" style="border-radius:28px;background:#0f1714;color:#f6f5f1;padding:22px;box-shadow:0 60px 100px -50px rgba(15,23,20,.7);border:1px solid rgba(246,245,241,.08)">
+    <div data-reveal="scale" aria-label="Owner Command Center preview" style="border-radius:20px;background:#0f1714;color:#f6f5f1;padding:22px;box-shadow:0 60px 100px -50px rgba(15,23,20,.7);border:1px solid rgba(246,245,241,.08)">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 4px 18px;border-bottom:1px solid rgba(246,245,241,.08)">
-        <span style="font:700 15px 'IBM Plex Sans',sans-serif">Owner Command Center</span>
+        <span style="font:700 15px 'Plus Jakarta Sans',sans-serif">Owner Command Center</span>
         <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(246,245,241,.6)"><span style="width:7px;height:7px;border-radius:9px;background:#3ecf6e"></span>Live</span>
       </div>
       <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:10px">
         <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
           <div style="padding:14px;border-radius:16px;background:rgba(246,245,241,.05);border:1px solid rgba(246,245,241,.08)">
             <p style="margin:0;font-size:12px;color:rgba(246,245,241,.55)">{{ k.l }}</p>
-            <p style="margin:8px 0 0;font:700 22px 'IBM Plex Sans',sans-serif">{{ k.v }}</p>
+            <p style="margin:8px 0 0;font:700 22px 'Plus Jakarta Sans',sans-serif">{{ k.v }}</p>
             <p style="margin:6px 0 0;font-size:12px;color:{{ k.c }}">{{ k.d }}</p>
           </div>
         </sc-for>
@@ -156,7 +165,7 @@ a:hover{color:#f23a1d}
       <div style="margin-top:12px;display:grid;gap:8px">
         <sc-for list="{{ exceptions }}" as="x" hint-placeholder-count="3">
           <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.07)">
-            <span style="width:30px;height:30px;border-radius:9px;background:{{ x.bg }};display:grid;place-items:center;font:700 11px 'IBM Plex Sans',sans-serif;flex-shrink:0">{{ x.i }}</span>
+            <span style="width:30px;height:30px;border-radius:9px;background:{{ x.bg }};display:grid;place-items:center;font:700 11px 'Plus Jakarta Sans',sans-serif;flex-shrink:0">{{ x.i }}</span>
             <span style="flex:1;font-size:13px">{{ x.t }}</span>
             <span style="font-size:12px;font-weight:600;color:#ff7a45">{{ x.a }}</span>
           </div>
@@ -167,18 +176,18 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- AI AGENTS (dark) -->
-<section aria-labelledby="eco-h" style="background:#0f1714;color:#f6f5f1;padding:104px 24px;position:relative;overflow:hidden;isolation:isolate">
+<section aria-labelledby="eco-h" style="background:#0f1714;color:#f6f5f1;padding:60px 24px;position:relative;overflow:hidden;isolation:isolate">
   <x-import component-from-global-scope="cinema-bg" variant="network" style="position:absolute;inset:0;z-index:-1;opacity:.85" hint-size="100%,100%"></x-import>
   <div style="max-width:76rem;margin:0 auto;position:relative">
     <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-      <div style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ff7a45"><span style="width:18px;height:2px;background:#ff7a45"></span>DigitalBurj AI</p><h2 id="eco-h" style="margin:18px 0 0;font:700 clamp(1.8rem,1.2rem + 2.3vw,3.2rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#f6f5f1">AI employees that work inside your operations.</h2></div>
+      <div style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ff7a45"><span style="width:18px;height:2px;background:#ff7a45"></span>DigitalBurj AI</p><h2 id="eco-h" style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#f6f5f1">AI employees that work inside your operations.</h2></div>
       <p style="margin:0;max-width:24rem;font-size:14px;line-height:1.6;color:rgba(246,245,241,.66)"><span style="color:#ff7a45;font-weight:700">The AI rule:</span> authenticate → authorise → use approved tools → validate → approve high-risk actions → audit.</p>
     </div>
-    <div style="margin-top:52px;display:flex;flex-wrap:wrap;gap:14px">
+    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:14px">
       <sc-for list="{{ agents }}" as="e" hint-placeholder-count="8">
-        <a href="BusinessAI.dc.html" data-spot="" data-reveal="scale" data-reveal-delay="{{ e.delay }}" style="flex:1 1 calc((100% - 42px) / 4);min-width:min(100%,15rem);box-sizing:border-box;position:relative;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:22px;background-color:rgba(20,27,24,.88);border:1px solid rgba(246,245,241,.1);color:#f6f5f1;transition:border-color .3s,transform .4s cubic-bezier(.22,.8,.24,1);background-image:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.18),transparent 50%)" style-hover="border-color:rgba(242,58,29,.5);transform:translateY(-4px);color:#fff">
-          <span style="display:flex;justify-content:space-between;align-items:center"><span style="width:42px;height:42px;border-radius:12px;background:rgba(242,58,29,.16);color:#ff7a45;display:grid;place-items:center;font:700 12px 'IBM Plex Sans',sans-serif">{{ e.n }}</span><span style="font-size:11px;font-weight:600;color:rgba(246,245,241,.5)">{{ e.who }}</span></span>
-          <span style="margin-top:6px;font:700 17px 'IBM Plex Sans',sans-serif">{{ e.name }}</span>
+        <a href="BusinessAI.dc.html" data-spot="" data-reveal="scale" data-reveal-delay="{{ e.delay }}" style="flex:1 1 calc((100% - 42px) / 4);min-width:min(100%,15rem);box-sizing:border-box;position:relative;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background-color:rgba(20,27,24,.88);border:1px solid rgba(246,245,241,.1);color:#f6f5f1;transition:border-color .3s,transform .4s cubic-bezier(.22,.8,.24,1);background-image:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.18),transparent 50%)" style-hover="border-color:rgba(242,58,29,.5);transform:translateY(-4px);color:#fff">
+          <span style="display:flex;justify-content:space-between;align-items:center"><span style="width:42px;height:42px;border-radius:12px;background:rgba(242,58,29,.16);color:#ff7a45;display:grid;place-items:center;font:700 12px 'Plus Jakarta Sans',sans-serif">{{ e.n }}</span><span style="font-size:11px;font-weight:600;color:rgba(246,245,241,.5)">{{ e.who }}</span></span>
+          <span style="margin-top:6px;font:700 17px 'Plus Jakarta Sans',sans-serif">{{ e.name }}</span>
           <span style="font-size:14px;line-height:1.55;color:rgba(246,245,241,.64)">{{ e.line }}</span>
         </a>
       </sc-for>
@@ -187,14 +196,14 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- DELIVERY -->
-<section aria-labelledby="del-h" style="max-width:76rem;margin:0 auto;padding:104px 24px 40px">
-  <div data-reveal="up" style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>How we deliver</p><h2 id="del-h" style="margin:18px 0 0;font:700 clamp(1.8rem,1.2rem + 2.3vw,3.2rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Process first. Automation next. <span style="color:#f23a1d">AI last.</span></h2></div>
-  <ol style="list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(max(10rem,calc(100% / 6)),1fr));gap:0;border-top:1px solid rgba(15,23,20,.14)">
+<section aria-labelledby="del-h" style="max-width:76rem;margin:0 auto;padding:60px 24px 40px">
+  <div data-reveal="up" style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>How we deliver</p><h2 id="del-h" style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Process first. Automation next. <span style="color:#f23a1d">AI last.</span></h2></div>
+  <ol style="list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(max(10rem,calc(100% / 6)),1fr));gap:0;border-top:1px solid rgba(15,23,20,.14)">
     <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
       <li data-reveal="up" data-reveal-delay="{{ s.delay }}" style="position:relative;padding:26px 18px 0 0;transition:transform .4s cubic-bezier(.22,.8,.24,1)" style-hover="transform:translateY(-4px)">
         <span style="position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:3px;background:#f23a1d"></span>
-        <span style="font:700 13px 'IBM Plex Sans',sans-serif;color:#f23a1d">{{ s.n }}</span>
-        <h3 style="margin:12px 0 0;font:700 17px 'IBM Plex Sans',sans-serif">{{ s.title }}</h3>
+        <span style="font:700 13px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ s.n }}</span>
+        <h3 style="margin:12px 0 0;font:700 17px 'Plus Jakarta Sans',sans-serif">{{ s.title }}</h3>
         <p style="margin:8px 0 0;font-size:14px;line-height:1.55;color:#4a544f">{{ s.body }}</p>
       </li>
     </sc-for>
@@ -202,23 +211,23 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- INDUSTRIES CAROUSEL -->
-<section aria-labelledby="ind-h" style="max-width:76rem;margin:0 auto;padding:96px 24px 40px">
+<section aria-labelledby="ind-h" style="max-width:76rem;margin:0 auto;padding:44px 24px 16px">
   <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-    <div><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Industry Solutions</p><h2 id="ind-h" style="margin:18px 0 0;font:700 clamp(1.8rem,1.2rem + 2.3vw,3.2rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Fifteen sectors. One core.</h2></div>
+    <div><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Industry Solutions</p><h2 id="ind-h" style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Fifteen sectors. One core.</h2></div>
     <div style="display:flex;gap:8px">
       <button onclick="{{ indPrev }}" aria-label="Previous industries" style="width:48px;height:48px;border-radius:14px;border:1px solid rgba(15,23,20,.14);background:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s" style-hover="background:#0f1714;color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
       <button onclick="{{ indNext }}" aria-label="Next industries" style="width:48px;height:48px;border-radius:14px;border:1px solid rgba(15,23,20,.14);background:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s" style-hover="background:#0f1714;color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
-  <ul ref="{{ indRef }}" style="list-style:none;margin:44px 0 0;padding:0 0 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none">
+  <ul ref="{{ indRef }}" style="list-style:none;margin:28px 0 0;padding:0 0 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none">
     <sc-for list="{{ industries }}" as="i" hint-placeholder-count="6">
-      <li style="flex:0 0 min(19rem,80%);scroll-snap-align:start">
-        <a href="Industries.dc.html" style="position:relative;display:block;height:24rem;border-radius:24px;overflow:hidden;color:#fff;background:#0f1714" style-hover="color:#fff"><img src="{{ i.img }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"/>
+      <li style="flex:0 0 min(15rem,72%);scroll-snap-align:start">
+        <a href="Industries.dc.html" style="position:relative;display:block;height:19rem;border-radius:16px;overflow:hidden;color:#fff;background:#0f1714" style-hover="color:#fff"><img src="{{ i.img }}" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"/>
           
           <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,20,.05) 25%,rgba(15,23,20,.9))"></span>
           <span style="position:absolute;left:22px;right:22px;bottom:22px">
-            <span style="font:700 12px 'IBM Plex Sans',sans-serif;color:#ff7a45">{{ i.n }}</span>
-            <span style="display:block;margin-top:8px;font:700 20px/1.2 'IBM Plex Sans',sans-serif">{{ i.title }}</span>
+            <span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#ff7a45">{{ i.n }}</span>
+            <span style="display:block;margin-top:8px;font:700 20px/1.2 'Plus Jakarta Sans',sans-serif">{{ i.title }}</span>
             <span style="display:block;margin-top:8px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.8)">{{ i.body }}</span>
           </span>
         </a>
@@ -230,15 +239,15 @@ a:hover{color:#f23a1d}
 <!-- PRICING TEASER -->
 <section aria-labelledby="price-h" style="max-width:76rem;margin:0 auto;padding:80px 24px">
   <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-    <div style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Pricing</p><h2 id="price-h" style="margin:18px 0 0;font:700 clamp(1.8rem,1.2rem + 2.3vw,3.2rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Enterprise capability. <span style="color:#f23a1d">SME pricing.</span></h2></div>
+    <div style="max-width:46rem"><p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Pricing</p><h2 id="price-h" style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#0f1714">Enterprise capability. <span style="color:#f23a1d">SME pricing.</span></h2></div>
     <a href="Pricing.dc.html" style="height:46px;padding:0 20px;border-radius:12px;border:1px solid rgba(15,23,20,.14);background:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:border-color .25s" style-hover="border-color:#0f1714">All plans →</a>
   </div>
-  <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(max(14rem,calc((100% - 42px) / 4)),1fr));gap:14px">
+  <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(max(14rem,calc((100% - 42px) / 4)),1fr));gap:14px">
     <sc-for list="{{ bundles }}" as="p" hint-placeholder-count="4">
       <a href="Pricing.dc.html" data-reveal="up" data-reveal-delay="{{ p.delay }}" style="{{ p.style }}" style-hover="transform:translateY(-6px)">
         <sc-if value="{{ p.featured }}"><span style="position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px;background:#f23a1d;color:#fff">Popular</span></sc-if>
-        <span style="font:700 16px 'IBM Plex Sans',sans-serif">{{ p.name }}</span>
-        <span style="margin-top:20px;display:flex;align-items:baseline;gap:6px"><span style="font:700 34px 'IBM Plex Sans',sans-serif">{{ p.price }}</span><span style="font-size:13px;opacity:.6">/mo</span></span>
+        <span style="font:700 16px 'Plus Jakarta Sans',sans-serif">{{ p.name }}</span>
+        <span style="margin-top:20px;display:flex;align-items:baseline;gap:6px"><span style="font:700 34px 'Plus Jakarta Sans',sans-serif">{{ p.price }}</span><span style="font-size:13px;opacity:.6">/mo</span></span>
         <span style="margin-top:14px;font-size:14px;line-height:1.55;opacity:.76">{{ p.scope }}</span>
       </a>
     </sc-for>
@@ -251,17 +260,17 @@ a:hover{color:#f23a1d}
   <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
     <div>
       <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>Insights</p>
-      <h2 id="ins-h" style="margin:18px 0 0;font:700 clamp(1.9rem,1.3rem + 2.4vw,3.4rem)/1.05 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Plain-language guides.</h2>
+      <h2 id="ins-h" style="margin:12px 0 0;font:700 clamp(1.6rem,1.2rem + 1.5vw,2.4rem)/1.05 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Plain-language guides.</h2>
     </div>
     <a href="Insights.dc.html" style="height:46px;padding:0 20px;border-radius:12px;border:1px solid rgba(15,23,20,.14);background:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:border-color .25s" style-hover="border-color:#0f1714">All 15 articles →</a>
   </div>
-  <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(max(16rem,calc((100% - 36px) / 3)),1fr));gap:18px">
+  <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(max(16rem,calc((100% - 36px) / 3)),1fr));gap:18px">
     <sc-for list="{{ articles }}" as="a" hint-placeholder-count="3">
-      <a href="{{ a.href }}" data-reveal="up" data-reveal-delay="{{ a.delay }}" style="display:flex;flex-direction:column;border-radius:22px;background:#fff;border:1px solid rgba(15,23,20,.08);overflow:hidden;transition:transform .45s cubic-bezier(.22,.8,.24,1),box-shadow .45s" style-hover="transform:translateY(-5px);box-shadow:0 34px 60px -38px rgba(15,23,20,.5);color:#0f1714">
+      <a href="{{ a.href }}" data-reveal="up" data-reveal-delay="{{ a.delay }}" style="display:flex;flex-direction:column;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);overflow:hidden;transition:transform .45s cubic-bezier(.22,.8,.24,1),box-shadow .45s" style-hover="transform:translateY(-5px);box-shadow:0 34px 60px -38px rgba(15,23,20,.5);color:#0f1714">
         
-        <img src="{{ a.cover }}" alt="" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover"/><div style="padding:22px">
+        <img src="{{ a.cover }}" alt="" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/10;object-fit:cover"/><div style="padding:22px">
           <p style="margin:0;display:flex;gap:10px;font-size:12px;font-weight:600;color:#6b746f"><span style="color:#f23a1d">{{ a.category }}</span><span>·</span><span>{{ a.readMin }} min read</span></p>
-          <h3 style="margin:10px 0 0;font:700 19px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ a.title }}</h3>
+          <h3 style="margin:10px 0 0;font:700 19px/1.3 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ a.title }}</h3>
           <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#4a544f">{{ a.description }}</p>
         </div>
       </a>
@@ -270,11 +279,11 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- FAQ -->
-<section aria-labelledby="faq-h" style="max-width:76rem;margin:0 auto;padding:40px 24px 104px">
+<section aria-labelledby="faq-h" style="max-width:76rem;margin:0 auto;padding:28px 24px 60px">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px">
     <div data-reveal="up">
       <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>FAQ</p>
-      <h2 id="faq-h" style="margin:18px 0 0;font:700 clamp(1.9rem,1.3rem + 2.4vw,3.4rem)/1.05 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Quick answers.</h2>
+      <h2 id="faq-h" style="margin:12px 0 0;font:700 clamp(1.6rem,1.2rem + 1.5vw,2.4rem)/1.05 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Quick answers.</h2>
       <p style="margin:18px 0 0;font-size:15px;color:#4a544f">Still unsure? <a href="Contact.dc.html" style="color:#f23a1d;font-weight:600;text-decoration:underline">Send us a message</a>.</p>
     </div>
     <div style="border-top:1px solid rgba(15,23,20,.12)">
@@ -290,10 +299,10 @@ a:hover{color:#f23a1d}
 
 <!-- CTA -->
 <section aria-labelledby="cta-h" style="padding:0 12px 12px">
-  <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:32px;overflow:hidden;background:#f23a1d;color:#fff;padding:clamp(56px,8vw,104px) 24px;text-align:center">
+  <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:22px;overflow:hidden;background:#f23a1d;color:#fff;padding:clamp(56px,8vw,104px) 24px;text-align:center">
     <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at center,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,#000,transparent 70%)"></div>
     <div style="position:relative">
-      <h2 id="cta-h" style="margin:0 auto;max-width:48rem;font:700 clamp(2rem,1.3rem + 3vw,4.2rem)/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#fff">Tell us what isn't working.</h2>
+      <h2 id="cta-h" style="margin:0 auto;max-width:48rem;font:700 clamp(2rem,1.3rem + 3vw,4.2rem)/1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#fff">Tell us what isn't working.</h2>
       <p style="margin:22px auto 0;max-width:30rem;font-size:17px;line-height:1.6;color:rgba(255,255,255,.9)">Pick the closest option and we'll route you to the right team. No sales script.</p>
       <div style="margin-top:34px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
         <a href="GetStarted.dc.html" style="height:54px;padding:0 26px;border-radius:14px;background:#0f1714;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:transform .25s" style-hover="transform:translateY(-2px);color:#fff">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -393,7 +402,7 @@ class Component extends DCLogic {
       motionIcon: still ? "▶" : "❚❚",
       divisions: this.divisions.map((d, i) => ({
         ...d, n: pad(i), delay: String((i % 3) * 90), tags: d.tags.map((label) => ({ label })),
-        style: `width:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:26px;border-radius:26px;min-height:20rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),box-shadow .45s,border-color .3s;${d.dark ? "background-color:#0f1714;color:#f6f5f1;border:1px solid #0f1714" : "background-color:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"};background-image:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${d.dark ? ".22" : ".08"}),transparent 45%)`,
+        style: `width:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:20px;border-radius:16px;min-height:14.5rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),box-shadow .45s,border-color .3s;${d.dark ? "background-color:#0f1714;color:#f6f5f1;border:1px solid #0f1714" : "background-color:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"};background-image:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${d.dark ? ".22" : ".08"}),transparent 45%)`,
         hover: `transform:translateY(-6px);box-shadow:0 40px 70px -40px rgba(15,23,20,.5);border-color:rgba(242,58,29,.4);color:${d.dark ? "#fff" : "#0f1714"}`,
         tagStyle: `font-size:12px;font-weight:600;padding:5px 10px;border-radius:8px;${d.dark ? "background:rgba(246,245,241,.08)" : "background:#f6f5f1;color:#3b4541"}`,
       })),
@@ -406,7 +415,7 @@ class Component extends DCLogic {
       industries: this.industries.map(([title, body, id], i) => ({ title, body, n: pad(i), img: `industry/${String(i+1).padStart(2,"0")}-${["logistics","travel","trading","real-estate","construction","facility","services","recruitment","retail","automotive","hospitality","education","manufacturing","healthcare","ecommerce"][i]}.webp` })),
       indRef: this.indRef, indPrev: () => this.scrollInd(-1), indNext: () => this.scrollInd(1),
       bundles: this.bundles.map((p, i) => ({ ...p, featured: !!p.featured, delay: String(i * 80),
-        style: `position:relative;display:flex;flex-direction:column;padding:26px 22px;border-radius:22px;min-height:14rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${p.featured ? "background:#0f1714;color:#f6f5f1" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}` })),
+        style: `position:relative;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:14rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${p.featured ? "background:#0f1714;color:#f6f5f1" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}` })),
       articles: this.state.articles.map((a, i) => ({ ...a, href: `Article.dc.html?a=${a.slug}`, cover: a.image, delay: String(i * 110) })),
       faqs: this.faqs.map((f, i) => {
         const open = this.state.faq === i;

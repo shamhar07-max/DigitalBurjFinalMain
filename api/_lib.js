@@ -8,8 +8,8 @@ const clean = (s, max) => String(s ?? "").replace(/[\u0000-\u0008\u000B\u000C\u0
 const EMAIL = /^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/;
 
 // Best-effort per-instance rate limit (n requests / windowMs per IP).
-function limited(req, n = 5, windowMs = 10 * 60 * 1000) {
-  const ip = String(req.headers["x-forwarded-for"] || req.socket?.remoteAddress || "?").split(",")[0].trim();
+function limited(req, n = 5, windowMs = 10 * 60 * 1000, bucket = "") {
+  const ip = String(req.headers["x-forwarded-for"] || req.socket?.remoteAddress || "?").split(",")[0].trim() + bucket;
   const now = Date.now();
   const arr = (hits.get(ip) || []).filter((t) => now - t < windowMs);
   arr.push(now);

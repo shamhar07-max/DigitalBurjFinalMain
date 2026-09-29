@@ -41,7 +41,7 @@
     </div>
     <div class="db-foot-bar">
       <p>© 2026 DigitalBurj. All rights reserved.</p>
-      <div class="db-foot-links"><a href="sitemap.xml">Sitemap</a><a href="Contact.dc.html">Contact</a><button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
+      <div class="db-foot-links"><a href="sitemap.xml">Sitemap</a><a href="/contact">Contact</a><button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
     </div>
   </div>
 </footer>
@@ -54,9 +54,9 @@
 class Component extends DCLogic {
   state = { email: "", hp: "", status: "idle", msg: "" };
   cols = [
-    { h: "Platform", links: [["Business OS", "BusinessOS.dc.html"], ["DigitalBurj AI", "BusinessAI.dc.html"], ["Growth", "Growth.dc.html"], ["Studio", "Studio.dc.html"], ["Industry Solutions", "Industries.dc.html"]] },
-    { h: "People", links: [["Academy", "Academy.dc.html"], ["Verified Talent", "Talent.dc.html"], ["Jobs", "Jobs.dc.html"], ["Insights", "Insights.dc.html"]] },
-    { h: "Company", links: [["About", "Company.dc.html"], ["Pricing", "Pricing.dc.html"], ["Portfolio", "Portfolio.dc.html"], ["Contact", "Contact.dc.html"], ["Get Started", "GetStarted.dc.html"]] },
+    { h: "Platform", links: [["Business OS", "/business-os"], ["DigitalBurj AI", "/business-ai"], ["Growth", "/growth"], ["Studio", "/studio"], ["Industry Solutions", "/industries"]] },
+    { h: "People", links: [["Academy", "/academy"], ["Verified Talent", "/talent"], ["Jobs", "/jobs"], ["Insights", "/insights"]] },
+    { h: "Company", links: [["About", "/company"], ["Pricing", "/pricing"], ["Portfolio", "/portfolio"], ["Contact", "/contact"], ["Get Started", "/get-started"]] },
   ].map((c) => ({ h: c.h, links: c.links.map(([label, href]) => ({ label, href })) }));
   async subscribe(e) {
     e.preventDefault();

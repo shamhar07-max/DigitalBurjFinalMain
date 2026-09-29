@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
 <script src="./support.js"></script>
@@ -48,7 +49,7 @@
       <div style="margin-top:28px;padding:20px;border-radius:18px;background:#0f1714;color:#f6f5f1">
         <p style="margin:0;font:700 15px/1.35 'Plus Jakarta Sans',sans-serif">Have this problem?</p>
         <p style="margin:8px 0 0;font-size:13px;line-height:1.5;color:rgba(246,245,241,.7)">Book a free 30-minute process review.</p>
-        <a href="Contact.dc.html" style="margin-top:14px;display:inline-flex;height:40px;padding:0 14px;border-radius:10px;background:#f23a1d;color:#fff;font-weight:600;font-size:13px;align-items:center" style-hover="color:#fff;background:#ff5533">Talk to us →</a>
+        <a href="/contact" style="margin-top:14px;display:inline-flex;height:40px;padding:0 14px;border-radius:10px;background:#f23a1d;color:#fff;font-weight:600;font-size:13px;align-items:center" style-hover="color:#fff;background:#ff5533">Talk to us →</a>
       </div>
     </aside>
     <div itemprop="articleBody" style="grid-column:span 2;min-width:0;max-width:44rem">
@@ -98,7 +99,7 @@ class Component extends DCLogic {
   }
   current() {
     const list = this.state.list || [];
-    const slug = new URLSearchParams(window.location.search).get("a");
+    const slug = new URLSearchParams(window.location.search).get("a") || decodeURIComponent(window.location.pathname.replace(/\/+$/, "").split("/").pop() || "");
     return list.find((x) => x.slug === slug) || list[0];
   }
   applySeo() {
@@ -130,7 +131,7 @@ class Component extends DCLogic {
         sections: a.sections.map((s) => ({ h: s.h, id: id(s.h), paras: s.p.map((t) => ({ t })) })),
       },
       toc: a.sections.map((s) => ({ h: s.h, href: `#${id(s.h)}` })),
-      reel: "insight01,insight02,insight03", related: [...same, ...others].slice(0, 3).map((r) => ({ ...r, href: `Article.dc.html?a=${r.slug}` })),
+      reel: "insight01,insight02,insight03", related: [...same, ...others].slice(0, 3).map((r) => ({ ...r, href: `/insights/${r.slug}` })),
       copyLabel: this.state.copied ? "Copied ✓" : "Copy link",
       copyLink: () => { try { navigator.clipboard.writeText(window.location.href); } catch (e) {} this.setState({ copied: true }); },
     };

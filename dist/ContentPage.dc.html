@@ -179,7 +179,7 @@
             <p style="margin:0;font:700 15px 'Plus Jakarta Sans',sans-serif">{{ pl.name }}</p>
             <p style="margin:22px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font:700 clamp(1.6rem,1.3rem + .8vw,2.1rem) 'Plus Jakarta Sans',sans-serif">{{ pl.price }}</span><span style="font-size:13px;opacity:.65">{{ pl.per }}</span></p>
             <p style="margin:14px 0 0;font-size:14px;line-height:1.55;opacity:.78;flex:1">{{ pl.scope }}</p>
-            <a href="Contact.dc.html" style="{{ pl.btn }}">{{ pl.cta }}</a>
+            <a href="/contact" style="{{ pl.btn }}">{{ pl.cta }}</a>
           </div></div>
         </sc-for>
       </div>
@@ -303,7 +303,7 @@ class Component extends DCLogic {
           wrapStyle: dark ? "background:#0f1714;padding:40px 0;margin:28px 0" : "padding:44px 0",
           accent: dark ? "#ff7a45" : "#f23a1d", ink: dark ? "#f6f5f1" : "#0f1714", sub: dark ? "rgba(246,245,241,.62)" : "#4a544f",
           cards: s.items.map((c, i) => ({
-            ...c, n: n(i), href: c.href || "Contact.dc.html", delay: String((i % 3) * 80),
+            ...c, n: n(i), href: c.href || "/contact", delay: String((i % 3) * 80),
             style: `height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:18px;border-radius:16px;min-height:9.5rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;color:${dark ? "#f6f5f1" : "#0f1714"};background-color:${dark ? "rgba(246,245,241,.04)" : "#fff"};border:1px solid ${dark ? "rgba(246,245,241,.1)" : "rgba(15,23,20,.08)"};background-image:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${dark ? ".18" : ".08"}),transparent 50%)`,
             hover: `transform:translateY(-5px);border-color:${dark ? "rgba(242,58,29,.5)" : "rgba(242,58,29,.4)"};box-shadow:0 34px 60px -40px rgba(15,23,20,.55);color:${dark ? "#fff" : "#0f1714"}`,
           })),

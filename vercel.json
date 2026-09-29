@@ -1,83 +1,100 @@
 {
   "redirects": [
     {
-      "source": "/business-os",
-      "destination": "/BusinessOS.dc.html",
+      "source": "/Homepage.dc.html",
+      "destination": "/",
       "permanent": true
     },
     {
-      "source": "/growth",
-      "destination": "/Growth.dc.html",
+      "source": "/BusinessOS.dc.html",
+      "destination": "/business-os",
       "permanent": true
     },
     {
-      "source": "/pricing",
-      "destination": "/Pricing.dc.html",
+      "source": "/BusinessAI.dc.html",
+      "destination": "/business-ai",
       "permanent": true
     },
     {
-      "source": "/business-ai",
-      "destination": "/BusinessAI.dc.html",
+      "source": "/Growth.dc.html",
+      "destination": "/growth",
       "permanent": true
     },
     {
-      "source": "/studio",
-      "destination": "/Studio.dc.html",
+      "source": "/Studio.dc.html",
+      "destination": "/studio",
       "permanent": true
     },
     {
-      "source": "/academy",
-      "destination": "/Academy.dc.html",
+      "source": "/Industries.dc.html",
+      "destination": "/industries",
       "permanent": true
     },
     {
-      "source": "/talent",
-      "destination": "/Talent.dc.html",
+      "source": "/Academy.dc.html",
+      "destination": "/academy",
       "permanent": true
     },
     {
-      "source": "/jobs",
-      "destination": "/Jobs.dc.html",
+      "source": "/Talent.dc.html",
+      "destination": "/talent",
       "permanent": true
     },
     {
-      "source": "/insights",
-      "destination": "/Insights.dc.html",
+      "source": "/Jobs.dc.html",
+      "destination": "/jobs",
       "permanent": true
     },
     {
-      "source": "/company",
-      "destination": "/Company.dc.html",
+      "source": "/Pricing.dc.html",
+      "destination": "/pricing",
       "permanent": true
     },
     {
-      "source": "/contact",
-      "destination": "/Contact.dc.html",
+      "source": "/Company.dc.html",
+      "destination": "/company",
       "permanent": true
     },
     {
-      "source": "/solutions",
-      "destination": "/Solutions.dc.html",
+      "source": "/Solutions.dc.html",
+      "destination": "/solutions",
       "permanent": true
     },
     {
-      "source": "/industries",
-      "destination": "/Industries.dc.html",
+      "source": "/Portfolio.dc.html",
+      "destination": "/portfolio",
       "permanent": true
     },
     {
-      "source": "/portfolio",
-      "destination": "/Portfolio.dc.html",
+      "source": "/GetStarted.dc.html",
+      "destination": "/get-started",
       "permanent": true
     },
     {
-      "source": "/get-started",
-      "destination": "/GetStarted.dc.html",
+      "source": "/Contact.dc.html",
+      "destination": "/contact",
       "permanent": true
     },
     {
-      "source": "/insights/:slug",
-      "destination": "/Article.dc.html?a=:slug",
+      "source": "/Insights.dc.html",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/Article.dc.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "a",
+          "value": "(?<slug>.+)"
+        }
+      ],
+      "destination": "/insights/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
       "permanent": true
     }
   ],
@@ -108,6 +125,76 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/Homepage.dc.html"
+    },
+    {
+      "source": "/business-os",
+      "destination": "/BusinessOS.dc.html"
+    },
+    {
+      "source": "/business-ai",
+      "destination": "/BusinessAI.dc.html"
+    },
+    {
+      "source": "/growth",
+      "destination": "/Growth.dc.html"
+    },
+    {
+      "source": "/studio",
+      "destination": "/Studio.dc.html"
+    },
+    {
+      "source": "/industries",
+      "destination": "/Industries.dc.html"
+    },
+    {
+      "source": "/academy",
+      "destination": "/Academy.dc.html"
+    },
+    {
+      "source": "/talent",
+      "destination": "/Talent.dc.html"
+    },
+    {
+      "source": "/jobs",
+      "destination": "/Jobs.dc.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/Pricing.dc.html"
+    },
+    {
+      "source": "/company",
+      "destination": "/Company.dc.html"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/Solutions.dc.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/Portfolio.dc.html"
+    },
+    {
+      "source": "/get-started",
+      "destination": "/GetStarted.dc.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/Contact.dc.html"
+    },
+    {
+      "source": "/insights",
+      "destination": "/Insights.dc.html"
+    },
+    {
+      "source": "/insights/:slug",
+      "destination": "/Article.dc.html"
     }
   ]
 }

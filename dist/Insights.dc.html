@@ -85,7 +85,7 @@ class Component extends DCLogic {
     const showFeature = cat === "All" && !qq && filtered.length > 0;
     const feature = showFeature ? filtered[0] : null;
     const rest = showFeature ? filtered.slice(1) : filtered;
-    const map = (a) => ({ ...a, href: `Article.dc.html?a=${a.slug}`, cover: a.image });
+    const map = (a) => ({ ...a, href: `/insights/${a.slug}`, cover: a.image });
     return {
       cats: ["All", ...cats].map((label) => ({
         label, on: label === cat, pick: () => this.setState({ cat: label }),

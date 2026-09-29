@@ -103,6 +103,21 @@ async function addOrder(deps, email, order) {
   if (ent.orders.some((o) => o.id === order.id)) return;
   ent.orders.unshift(order);
   await putJSON(deps.kv, K.ent(email), ent);
+  // Concurrent webhooks can overwrite each other (no compare-and-set in KV): re-read and re-add if ours went missing.
+  for (let i = 0; i < 2; i++) {
+    const back = await getJSON(deps.kv, K.ent(email));
+    if (back && back.orders.some((o) => o.id === order.id)) return;
+    const merged = back || { orders: [] };
+    merged.orders.unshift(order);
+    await putJSON(deps.kv, K.ent(email), merged);
+  }
+}
+/* Marketing contact is created only once the address is proven (verified email or password reset), never at sign-up. */
+async function syncMarketing(deps, user) {
+  if (!user.marketing || user.marketingSynced || !deps.env.RESEND_API_KEY) return;
+  const payload = { email: user.email, first_name: user.name.split(" ")[0], unsubscribed: false };
+  if (deps.env.RESEND_SEGMENT_ID) payload.segments = [{ id: deps.env.RESEND_SEGMENT_ID }];
+  try { const r = await deps.resend("/contacts", payload); if (r && (r.ok || /already|exist/i.test(JSON.stringify(r.json || {})))) { user.marketingSynced = true; await putJSON(deps.kv, K.user(user.email), user); } } catch {}
 }
 async function mailer(deps, body) {
   if (!deps.env.RESEND_API_KEY || !deps.resend) return { ok: false };
@@ -138,11 +153,6 @@ async function signup(b, deps) {
   const user = { name, email, pw: await hashPassword(b.password), role: "learner", verified: false, sv: 1, country: clean(b.country, 80), goal: clean(b.goal, 120), language: clean(b.language, 20), a11y: clean(b.a11y, 80), marketing: b.marketing === true, createdAt: new Date().toISOString() };
   await putJSON(deps.kv, K.user(email), user);
   await sendVerification(deps, user);
-  if (user.marketing && deps.env.RESEND_API_KEY) {
-    const payload = { email, first_name: name.split(" ")[0], unsubscribed: false };
-    if (deps.env.RESEND_SEGMENT_ID) payload.segments = [{ id: deps.env.RESEND_SEGMENT_ID }];
-    Promise.resolve(deps.resend("/contacts", payload)).catch(() => {});
-  }
   return ok({ ok: true, user: publicUser(user) }, await startSession(deps, user));
 }
 async function signin(b, deps) {
@@ -173,6 +183,7 @@ async function verifyEmail(b, deps) {
   const user = await getJSON(deps.kv, K.user(p.e));
   if (!user) return fail(400, "This verification link is invalid or has expired.");
   if (!user.verified) { user.verified = true; await putJSON(deps.kv, K.user(user.email), user); }
+  await syncMarketing(deps, user);
   return ok({ ok: true, email: user.email });
 }
 async function resendVerification(b, deps) {
@@ -209,6 +220,7 @@ async function reset(b, deps) {
   user.pw = await hashPassword(b.password); user.sv += 1; user.verified = true; // the inbox proved ownership
   await putJSON(deps.kv, K.user(user.email), user);
   await deps.kv.delete(K.fail(user.email));
+  await syncMarketing(deps, user);
   return ok({ ok: true, user: publicUser(user) }, await startSession(deps, user));
 }
 
@@ -218,6 +230,8 @@ async function redeem(b, deps) {
   const user = await sessionUser(deps); if (!user) return fail(401, "Sign in to redeem.");
   if (!user.verified) return fail(403, "Verify your email before redeeming.");
   if (b.consent !== true || b.confirmZero !== true) return fail(400, "Please accept the terms and confirm the zero-payable enrolment.");
+  const pe = deps.env || {};
+  if (pe.ACADEMY_PROMO_OFF === "1" || (pe.ACADEMY_PROMO_EXPIRES && Date.now() > Date.parse(pe.ACADEMY_PROMO_EXPIRES))) return fail(400, "This promotion has ended.");
   const owned = await entitlement(deps, user.email);
   const ids = (Array.isArray(b.items) ? b.items : []).slice(0, 30).map((x) => clean(x, 40));
   const q = DBA.quote(ids, clean(b.coupon, 40), owned.courses);
@@ -253,7 +267,7 @@ async function checkout(b, deps) {
   const user = await sessionUser(deps);
   const email = user ? user.email : normEmail(b.email);
   if (email && !EMAIL.test(email)) return fail(400, "Please enter a valid email.");
-  const owned = user && user.verified ? (await entitlement(deps, email)).courses : [];
+  const owned = user ? (await entitlement(deps, email)).courses : [];
   const ids = (Array.isArray(b.items) ? b.items : []).slice(0, 30).map((x) => clean(x, 40));
   const q = DBA.quote(ids, "", owned);
   if (!q.lines.length) return fail(400, q.blocked.length ? q.blocked[0].reason : "Your order is empty.", { blocked: q.blocked });
@@ -313,12 +327,12 @@ async function webhook(raw, sigHeader, deps, now) {
   const o = ev.data && ev.data.object;
   if (ev.type === "checkout.session.completed" || ev.type === "checkout.session.async_payment_succeeded") {
     if (o.payment_status === "paid") await grantFromSession(o, deps);
-  } else if (ev.type === "charge.refunded" && o && o.refunded === true && o.payment_intent) {
+  } else if (o && o.payment_intent && ((ev.type === "charge.refunded" && o.refunded === true) || ev.type === "charge.dispute.created")) {
     const link = await getJSON(deps.kv, K.pi(o.payment_intent));
     if (link) {
       const ent = await getJSON(deps.kv, K.ent(link.email));
       const order = ent && ent.orders.find((x) => x.id === link.id);
-      if (order && order.status !== "refunded") { order.status = "refunded"; order.refundedAt = new Date().toISOString(); await putJSON(deps.kv, K.ent(link.email), ent); }
+      if (order && order.status !== "refunded") { order.status = "refunded"; order.refundedAt = new Date().toISOString(); order.revokedBy = ev.type; await putJSON(deps.kv, K.ent(link.email), ent); }
     }
   }
   return ok({ received: true });

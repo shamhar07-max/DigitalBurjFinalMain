@@ -3,6 +3,8 @@
 // once from the public GitHub repo, stored in KV, then served from KV + the edge cache), routes clean URLs,
 // and implements /api/contact and /api/subscribe (Resend).
 
+import academy from "../api/_academy.js";
+
 const REPO = "shamhar07-max/DigitalBurjFinalMain";
 
 const PAGES = {
@@ -14,6 +16,11 @@ const PAGES = {
 // Old .dc.html URLs (and /index.html) permanently redirect to the clean ones.
 const LEGACY = Object.fromEntries(Object.entries(PAGES).map(([clean, file]) => [file, clean]));
 LEGACY["/index.html"] = "/";
+// The learner app lives on its own subdomain; the old nested route and page files redirect there.
+const APP_HOST = "academy.digitalburj.com";
+const APP_ORIGIN = `https://${APP_HOST}`;
+const APP_PAGES = { "/": "/AcademyApp.dc.html", "/signin": "/AcademyApp.dc.html", "/signup": "/AcademyApp.dc.html", "/verify": "/AcademyApp.dc.html", "/forgot": "/AcademyApp.dc.html", "/reset": "/AcademyApp.dc.html", "/welcome": "/AcademyApp.dc.html", "/redeem": "/AcademyApp.dc.html" };
+const APP_LEGACY = { "/academy/workspace": "/", "/AcademyWorkspace.dc.html": "/", "/AcademyApp.dc.html": "/" };
 
 const TYPES = {
   html: "text/html; charset=utf-8", css: "text/css; charset=utf-8", js: "application/javascript; charset=utf-8", json: "application/json",
@@ -72,8 +79,8 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const clean = (s, max) => String(s ?? "").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "").trim().slice(0, max);
 const EMAIL = /^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/;
 const hits = new Map();
-function limited(request, n, windowMs = 10 * 60 * 1000) {
-  const ip = request.headers.get("cf-connecting-ip") || "?";
+function limited(request, n, windowMs = 10 * 60 * 1000, bucket = "") {
+  const ip = (request.headers.get("cf-connecting-ip") || "?") + bucket;
   const now = Date.now();
   const arr = (hits.get(ip) || []).filter((t) => now - t < windowMs);
   arr.push(now); hits.set(ip, arr);
@@ -89,7 +96,7 @@ async function resend(env, path, body) {
 }
 function sameSite(request) {
   const o = request.headers.get("origin"); if (!o) return true;
-  try { const h = new URL(o).hostname; return h === new URL(request.url).hostname || h === "digitalburj.com" || h === "www.digitalburj.com" || h === "localhost"; } catch { return false; }
+  try { const h = new URL(o).hostname; return h === new URL(request.url).hostname || h === "digitalburj.com" || h === "www.digitalburj.com" || h === "academy.digitalburj.com" || h === "localhost"; } catch { return false; }
 }
 
 async function contact(request, env, ctx) {
@@ -134,6 +141,29 @@ async function lead(request, env, ctx) {
   return json({ ok: true });
 }
 
+// Academy: quote / enroll / support / register. Logic lives in api/_academy.js (shared with the Vercel function).
+async function academyApi(request, env) {
+  const b = await request.json().catch(() => ({}));
+  const rc = academy.rateClass(b && b.action);
+  if (limited(request, rc.n, 10 * 60 * 1000, rc.bucket)) return json({ error: "Too many requests. Please try again shortly." }, 429);
+  const out = await academy.run(b, { env, resend: (p, body) => resend(env, p, body), kv: academyKV(env), req: { cookie: request.headers.get("cookie") || "" } });
+  const res = json(out.json, out.status);
+  (out.cookies || []).forEach((c) => res.headers.append("set-cookie", c));
+  return res;
+}
+// Accounts + entitlements live in the same KV namespace as the site mirror, under the "acad:" key prefix.
+const academyKV = (env) => env.SITE && ({
+  get: (k) => env.SITE.get(k),
+  put: (k, v, ttl) => env.SITE.put(k, v, ttl ? { expirationTtl: Math.max(60, ttl) } : undefined),
+  delete: (k) => env.SITE.delete(k),
+});
+// Stripe posts here; the raw body is needed to verify the signature.
+async function academyWebhook(request, env) {
+  const raw = await request.text();
+  const out = await academy.webhook(raw, request.headers.get("stripe-signature"), { env, resend: (p, body) => resend(env, p, body), kv: academyKV(env) });
+  return json(out.json, out.status);
+}
+
 async function subscribe(request, env) {
   if (limited(request, 6)) return json({ error: "Too many requests. Please try again shortly." }, 429);
   if (!env.RESEND_API_KEY) return json({ error: "Email service not configured" }, 503);
@@ -151,7 +181,7 @@ async function subscribe(request, env) {
 
 /* ---------------------------------------------------------------- warm-up (cron) */
 // Files of the pinned commit (dist/). The cron mirrors up to 20 missing files per run into KV and records its status.
-const FILES = ["Academy.dc.html","Article.dc.html","BusinessAI.dc.html","BusinessOS.dc.html","Company.dc.html","Contact.dc.html","ContentPage.dc.html","GetStarted.dc.html","Growth.dc.html","Homepage.dc.html","Industries.dc.html","Insights.dc.html","Jobs.dc.html","Portfolio.dc.html","Pricing.dc.html","SiteFooter.dc.html","SiteHeader.dc.html","Solutions.dc.html","Studio.dc.html","Talent.dc.html","articles.js","brand/academy-lockup.webp","brand/academy.webp","brand/business-ai-lockup.webp","brand/business-os-lockup.webp","brand/business-os.webp","brand/businessai-lockup.webp","brand/businessai.webp","brand/division-academy.webp","brand/division-business-ai.webp","brand/division-business-os.webp","brand/division-growth.webp","brand/division-industries.webp","brand/division-studio.webp","brand/division-talent.webp","brand/eco-admin.webp","brand/eco-api.webp","brand/eco-docs.webp","brand/eco-identity.webp","brand/eco-jobs.webp","brand/eco-status.webp","brand/eco-support.webp","brand/eco-talent.webp","brand/eco-workspace.webp","brand/favicon.png","brand/growth-lockup.webp","brand/growth.webp","brand/industries-lockup.webp","brand/industries.webp","brand/mark-academy.webp","brand/mark-business-ai.webp","brand/mark-business-os.webp","brand/mark-growth.webp","brand/mark-industries.webp","brand/mark-studio.webp","brand/mark-talent.webp","brand/opengraph.png","brand/studio-lockup.webp","brand/studio.webp","brand/talent-lockup.webp","brand/talent.webp","brand/wordmark-480.webp","brand/wordmark-clear.png","brand/wordmark.webp","cinema-bg.js","engage.js","fonts.css","fonts/instrument-sans-latin-wght-normal.woff2","fonts/plus-jakarta-sans-latin-wght-normal.woff2","hero-reel.js","hero-system.css","industry/01-logistics.webp","industry/02-travel.webp","industry/03-trading.webp","industry/04-real-estate.webp","industry/05-construction.webp","industry/06-facility.webp","industry/07-services.webp","industry/08-recruitment.webp","industry/09-retail.webp","industry/10-automotive.webp","industry/11-hospitality.webp","industry/12-education.webp","industry/13-manufacturing.webp","industry/14-healthcare.webp","industry/15-ecommerce.webp","industry/hero-panel.webp","insight/01-business-ai.webp","insight/02-automation-decision.webp","insight/03-workflow-automation.webp","insight/04-agent-vs-chatbot.webp","insight/05-crm-vs-erp.webp","insight/06-production-ready.webp","insight/07-scope-an-mvp.webp","insight/08-mvp-vs-prototype.webp","insight/09-rbac.webp","insight/10-evidence-learning.webp","insight/11-verified-capability.webp","insight/12-skills-hiring.webp","insight/13-logistics-documents.webp","insight/14-real-estate-response.webp","insight/15-responsible-ai.webp","insight/hero-brief.webp","insight/hero-editorial.webp","media/01-d.webp","media/01-m.webp","media/02-d.webp","media/02-m.webp","media/03-d.webp","media/03-m.webp","media/04-d.webp","media/04-m.webp","media/05-d.webp","media/05-m.webp","media/06-d.webp","media/06-m.webp","media/07-d.webp","media/07-m.webp","media/08-d.webp","media/08-m.webp","media/09-d.webp","media/09-m.webp","media/10-d.webp","media/10-m.webp","media/11-d.webp","media/11-m.webp","media/12-d.webp","media/12-m.webp","media/13-d.webp","media/13-m.webp","media/14-d.webp","media/14-m.webp","media/15-d.webp","media/15-m.webp","media/16-d.webp","media/16-m.webp","media/17-d.webp","media/17-m.webp","media/18-d.webp","media/18-m.webp","media/19-d.webp","media/19-m.webp","media/20-d.webp","media/20-m.webp","media/21-d.webp","media/21-m.webp","media/22-d.webp","media/22-m.webp","media/23-d.webp","media/23-m.webp","media/24-d.webp","media/24-m.webp","media/25-d.webp","media/25-m.webp","media/26-d.webp","media/26-m.webp","media/27-d.webp","media/27-m.webp","media/28-d.webp","media/28-m.webp","media/29-d.webp","media/29-m.webp","media/30-d.webp","media/30-m.webp","media/31-d.webp","media/31-m.webp","media/32-d.webp","media/32-m.webp","media/33-d.webp","media/33-m.webp","media/34-m.webp","media/industry01-d.webp","media/industry01-m.webp","media/industry02-d.webp","media/industry02-m.webp","media/industry03-d.webp","media/industry03-m.webp","media/insight01-d.webp","media/insight01-m.webp","media/insight02-d.webp","media/insight02-m.webp","media/insight03-d.webp","media/insight03-m.webp","motion.js","pages.js","robots.txt","sitemap.xml","support.js","vendor/react-dom.production.min.js","vendor/react.production.min.js"];
+const FILES = ["academy-shared.js","academy-store.js","academy-app.js","academy-app.html","academy-store.html","academy.css","academy-app.css","AcademyApp.dc.html","Academy.dc.html","Article.dc.html","BusinessAI.dc.html","BusinessOS.dc.html","Company.dc.html","Contact.dc.html","ContentPage.dc.html","GetStarted.dc.html","Growth.dc.html","Homepage.dc.html","Industries.dc.html","Insights.dc.html","Jobs.dc.html","Portfolio.dc.html","Pricing.dc.html","SiteFooter.dc.html","SiteHeader.dc.html","Solutions.dc.html","Studio.dc.html","Talent.dc.html","articles.js","brand/academy-lockup.webp","brand/academy.webp","brand/business-ai-lockup.webp","brand/business-os-lockup.webp","brand/business-os.webp","brand/businessai-lockup.webp","brand/businessai.webp","brand/division-academy.webp","brand/division-business-ai.webp","brand/division-business-os.webp","brand/division-growth.webp","brand/division-industries.webp","brand/division-studio.webp","brand/division-talent.webp","brand/eco-admin.webp","brand/eco-api.webp","brand/eco-docs.webp","brand/eco-identity.webp","brand/eco-jobs.webp","brand/eco-status.webp","brand/eco-support.webp","brand/eco-talent.webp","brand/eco-workspace.webp","brand/favicon.png","brand/growth-lockup.webp","brand/growth.webp","brand/industries-lockup.webp","brand/industries.webp","brand/mark-academy.webp","brand/mark-business-ai.webp","brand/mark-business-os.webp","brand/mark-growth.webp","brand/mark-industries.webp","brand/mark-studio.webp","brand/mark-talent.webp","brand/opengraph.png","brand/studio-lockup.webp","brand/studio.webp","brand/talent-lockup.webp","brand/talent.webp","brand/wordmark-480.webp","brand/wordmark-clear.png","brand/wordmark.webp","cinema-bg.js","engage.js","fonts.css","fonts/instrument-sans-latin-wght-normal.woff2","fonts/plus-jakarta-sans-latin-wght-normal.woff2","hero-reel.js","hero-system.css","industry/01-logistics.webp","industry/02-travel.webp","industry/03-trading.webp","industry/04-real-estate.webp","industry/05-construction.webp","industry/06-facility.webp","industry/07-services.webp","industry/08-recruitment.webp","industry/09-retail.webp","industry/10-automotive.webp","industry/11-hospitality.webp","industry/12-education.webp","industry/13-manufacturing.webp","industry/14-healthcare.webp","industry/15-ecommerce.webp","industry/hero-panel.webp","insight/01-business-ai.webp","insight/02-automation-decision.webp","insight/03-workflow-automation.webp","insight/04-agent-vs-chatbot.webp","insight/05-crm-vs-erp.webp","insight/06-production-ready.webp","insight/07-scope-an-mvp.webp","insight/08-mvp-vs-prototype.webp","insight/09-rbac.webp","insight/10-evidence-learning.webp","insight/11-verified-capability.webp","insight/12-skills-hiring.webp","insight/13-logistics-documents.webp","insight/14-real-estate-response.webp","insight/15-responsible-ai.webp","insight/hero-brief.webp","insight/hero-editorial.webp","media/01-d.webp","media/01-m.webp","media/02-d.webp","media/02-m.webp","media/03-d.webp","media/03-m.webp","media/04-d.webp","media/04-m.webp","media/05-d.webp","media/05-m.webp","media/06-d.webp","media/06-m.webp","media/07-d.webp","media/07-m.webp","media/08-d.webp","media/08-m.webp","media/09-d.webp","media/09-m.webp","media/10-d.webp","media/10-m.webp","media/11-d.webp","media/11-m.webp","media/12-d.webp","media/12-m.webp","media/13-d.webp","media/13-m.webp","media/14-d.webp","media/14-m.webp","media/15-d.webp","media/15-m.webp","media/16-d.webp","media/16-m.webp","media/17-d.webp","media/17-m.webp","media/18-d.webp","media/18-m.webp","media/19-d.webp","media/19-m.webp","media/20-d.webp","media/20-m.webp","media/21-d.webp","media/21-m.webp","media/22-d.webp","media/22-m.webp","media/23-d.webp","media/23-m.webp","media/24-d.webp","media/24-m.webp","media/25-d.webp","media/25-m.webp","media/26-d.webp","media/26-m.webp","media/27-d.webp","media/27-m.webp","media/28-d.webp","media/28-m.webp","media/29-d.webp","media/29-m.webp","media/30-d.webp","media/30-m.webp","media/31-d.webp","media/31-m.webp","media/32-d.webp","media/32-m.webp","media/33-d.webp","media/33-m.webp","media/34-m.webp","media/industry01-d.webp","media/industry01-m.webp","media/industry02-d.webp","media/industry02-m.webp","media/industry03-d.webp","media/industry03-m.webp","media/insight01-d.webp","media/insight01-m.webp","media/insight02-d.webp","media/insight02-m.webp","media/insight03-d.webp","media/insight03-m.webp","motion.js","pages.js","robots.txt","sitemap.xml","support.js","vendor/react-dom.production.min.js","vendor/react.production.min.js"];
 
 async function warm(env) {
   const status = { at: new Date().toISOString(), commit: env.COMMIT.slice(0, 8) };
@@ -184,16 +214,24 @@ export default {
       if (path === "/api/contact") return contact(request, env, ctx);
       if (path === "/api/subscribe") return subscribe(request, env);
       if (path === "/api/lead") return lead(request, env, ctx);
+      if (path === "/api/academy") return academyApi(request, env);
+      if (path === "/api/academy-webhook") return academyWebhook(request, env);
       return json({ error: "Not found" }, 404);
     }
     if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405 });
 
     if (path.length > 1 && path.endsWith("/")) return Response.redirect(`${url.origin}${path.replace(/\/+$/, "")}${url.search}`, 301);
-    if (LEGACY[path]) return Response.redirect(`${url.origin}${LEGACY[path]}${url.search}`, 301);
+    const appHost = env.APP_HOST || APP_HOST, appOrigin = env.APP_ORIGIN || APP_ORIGIN;
+    const isApp = url.hostname === appHost;
+    if (!isApp && APP_LEGACY[path]) return Response.redirect(`${appOrigin}${APP_LEGACY[path]}`, 301);
+    if (isApp && path === "/AcademyApp.dc.html") return Response.redirect(`${appOrigin}/`, 301);
+    if (!isApp && LEGACY[path]) return Response.redirect(`${url.origin}${LEGACY[path]}${url.search}`, 301);
     if (path === "/Article.dc.html" && url.searchParams.get("a")) return Response.redirect(`${url.origin}/insights/${encodeURIComponent(url.searchParams.get("a"))}`, 301);
 
-    let file = PAGES[path];
-    if (!file && /^\/insights\/[^/]+$/.test(path)) file = "/Article.dc.html";
+    // On the app host only the app pages and shared assets are served (never the marketing pages).
+    let file = isApp ? APP_PAGES[path] : PAGES[path];
+    if (isApp && !file && !/\.[a-z0-9]+$/i.test(path)) return new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8", ...SECURITY } });
+    if (!isApp && !file && /^\/insights\/[^/]+$/.test(path)) file = "/Article.dc.html";
     file = file || decodeURIComponent(path);
     if (file.includes("..")) return new Response("Bad request", { status: 400 });
 

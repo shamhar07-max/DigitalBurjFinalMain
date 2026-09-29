@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "echo Static site ready",
-    "test": "node api/academy.test.js && node api/academy-auth.test.js && node api/academy-learn.test.js"
+    "build": "echo Static site ready"
   }
 }

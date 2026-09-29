@@ -28,7 +28,7 @@ const say=(...a)=>console.log(...a);
  // 4. signup + verification gate
  await p.fill('#au-name','Ann Lee'); await p.fill('#au-pw','short'); await p.click('#au-submit'); say('4 short pw err:',await p.textContent('#au-pw-err'));
  await p.fill('#au-pw','Quartz-Lantern-91'); await p.click('#au-submit'); say('  submit without consent:',await p.textContent('#au-error'));
- await p.check('#au-consent'); await p.click('#au-submit'); await p.waitForSelector('h1:has-text("Verify your email")'); say('  gated until verified: ok');
+ await p.check('#au-consent'); await p.click('#au-submit'); await p.waitForSelector('.sidebar'); say('  signup -> dashboard, verify banner:',await p.isVisible('#bnResend'),'| owned pills:',await p.$$eval('.pill.ok',e=>e.length));
  await p.goto(await link('ann@example.com','Verify')); await p.waitForSelector('h1:has-text("Email verified")');
  await p.click('text=Continue learning'); await p.waitForSelector('.sidebar',{timeout:15000});
  say('5 workspace greeting:',(await p.textContent('.content h1')).trim(),'| sidebar user:',(await p.textContent('.sb-user-info b')));
@@ -40,7 +40,7 @@ const say=(...a)=>console.log(...a);
  await p.screenshot({path:'../app-ws.png'});
  // 6. refund revokes
  await fetch(LAND+'/__pay',{method:'POST',body:JSON.stringify({id:'cs_test_1',email:'ann@example.com',items:'b-starter',amount:3,type:'charge.refunded',object:{refunded:true,payment_intent:'pi_cs_test_1'}})});
- await p.goto(APP+'/'); await p.waitForSelector('.au-card h1'); say('6 after refund:',(await p.textContent('.au-card h1')).trim());
+ await p.goto(APP+'/'); await p.waitForSelector('.sidebar'); say('6 after refund: dashboard, owned pills =',(await p.$$eval('.pill.ok',e=>e.length)));
  // 7. coupon redemption (server-side)
  await p.goto(LAND+'/academy',{waitUntil:'networkidle'}); await p.waitForSelector('.bundle-card');
  await p.click('[data-buy-bundle=b-web]'); await p.click('#checkoutBtn'); await p.waitForSelector('#payBtn:not([disabled])');
@@ -59,8 +59,8 @@ const say=(...a)=>console.log(...a);
  await p.goto(await link('ann@example.com','Reset')); await p.fill('#au-pw','Brand-New-Pass-7'); await p.click('#au-submit'); await p.waitForSelector('.sidebar',{timeout:15000}); say('  reset -> signed in workspace: ok');
  // 9. no-access user
  const p2=await (await b.newContext()).newPage(); p2.on('pageerror',e=>errs.push('P2 '+e.message));
- await p2.goto(APP+'/signup',{waitUntil:'networkidle'}); await p2.fill('#au-name','Cy Dee'); await p2.fill('#au-email','cy@example.com'); await p2.fill('#au-pw','Violet-Harbor-42'); await p2.check('#au-consent'); await p2.click('#au-submit'); await p2.waitForSelector('h1:has-text("Verify")');
- await p2.goto(await link('cy@example.com','Verify')); await p2.waitForSelector('h1:has-text("Email verified")'); await p2.goto(APP+'/'); await p2.waitForSelector('.au-card h1'); say('9 verified but unpaid:',(await p2.textContent('.au-card h1')).trim());
+ await p2.goto(APP+'/signup',{waitUntil:'networkidle'}); await p2.fill('#au-name','Cy Dee'); await p2.fill('#au-email','cy@example.com'); await p2.fill('#au-pw','Violet-Harbor-42'); await p2.check('#au-consent'); await p2.click('#au-submit'); await p2.waitForSelector('.sidebar');
+ await p2.goto(await link('cy@example.com','Verify')); await p2.waitForSelector('h1:has-text("Email verified")'); await p2.goto(APP+'/'); await p2.waitForSelector('.sidebar'); say('9 verified but unpaid: dashboard, owned pills =',(await p2.$$eval('.pill.ok',e=>e.length)));
  // 10. app host isolation + unauthenticated redirect
  const p3=await (await b.newContext()).newPage(); await p3.goto(APP+'/',{waitUntil:'networkidle'}); await p3.waitForURL('**/signin'); say('10 signed-out home ->',p3.url());
  say('ERRORS',errs); if(errs.length) process.exitCode=2; await b.close();

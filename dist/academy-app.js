@@ -180,9 +180,7 @@ function screenRedeem(me){
 /* ---------- routing ---------- */
 function home(me){
   if (!me || !me.user) return go('/signin');
-  if (!me.entitlements) return screenVerifyPrompt(me);
-  if (!me.entitlements.courses.length) return screenNoAccess(me);
-  mountWorkspace(me);
+  mountWorkspace(me); // signed in → dashboard; unowned courses show as Locked, unverified accounts get a banner
 }
 function route(){
   var path = location.pathname.replace(/\/+$/, '') || '/';
@@ -212,6 +210,14 @@ function mountWorkspace(me){
                .replace('<div class="sb-avatar">LI</div>', '<div class="sb-avatar">' + qesc(initials) + '</div>').replace('<span>Demo learner</span>', '<span>Learner</span>')
                .replace('layla@example.com', qesc(u.email)).replace(/(id="setCountry" type="text" value=")[^"]*/, '$1' + qesc(u.country || ''));
     ROOT.innerHTML = html;
+    if (!me.entitlements){
+      var bn = document.createElement('div'); bn.setAttribute('role', 'status');
+      bn.style.cssText = 'position:sticky;top:0;z-index:60;background:#0f1714;color:#f6f5f1;padding:10px 16px;font-size:14px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap';
+      bn.innerHTML = 'Verify your email (' + qesc(me.user.email) + ') to unlock anything you have purchased. <button id="bnResend" style="background:#f23a1d;color:#fff;border:0;border-radius:10px;padding:6px 12px;font-weight:600;cursor:pointer">Resend email</button>';
+      ROOT.insertBefore(bn, ROOT.firstChild);
+      bn.querySelector('#bnResend').addEventListener('click', function(){ var b = this; b.disabled = true; DBA.api('resend', {}).then(function(r){ b.textContent = r.ok ? 'Sent — check your inbox' : ((r.data && r.data.error) || 'Try again shortly'); }); });
+      pollAccount(function(d){ return !!d.entitlements; });
+    }
     run(me);
   });
 }

@@ -9,7 +9,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="icon" href="brand/favicon.png">
-<link rel="stylesheet" href="hero-system.css">
+<link rel="stylesheet" href="hero-system.css?v=6">
 </head>
 <body>
 <x-dc>
@@ -133,7 +133,7 @@ class Component extends DCLogic {
     window.addEventListener("keydown", this.onKey);
     window.addEventListener("resize", this.onResize);
     this.onResize();
-    import("./articles.js").then((m) => { this.articles = m.ARTICLES; this.forceUpdate(); }).catch(() => {});
+    import("./articles.js?v=5").then((m) => { this.articles = m.ARTICLES; this.forceUpdate(); }).catch(() => {});
   }
   componentWillUnmount() { window.removeEventListener("keydown", this.onKey); window.removeEventListener("resize", this.onResize); }
   openSearch = () => { this.setState({ searchOpen: true }, () => setTimeout(() => this.searchRef.current && this.searchRef.current.focus(), 30)); };

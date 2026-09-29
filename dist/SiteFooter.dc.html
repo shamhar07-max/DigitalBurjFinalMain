@@ -9,7 +9,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="icon" href="brand/favicon.png">
-<link rel="stylesheet" href="hero-system.css">
+<link rel="stylesheet" href="hero-system.css?v=6">
 </head>
 <body>
 <x-dc>
@@ -19,40 +19,69 @@
       <div class="db-foot-brand">
         <p class="db-foot-tag">Learn. Build. <span>Transform.</span></p>
         <p class="db-foot-copy">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
-        <div class="db-foot-actions">
-          <a class="db-foot-cta" href="GetStarted.dc.html">Start with a problem <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="db-foot-ghost" href="mailto:hello@digitalburj.com">hello@digitalburj.com</a>
-        </div>
+        <form class="db-foot-form" onsubmit="{{ subscribe }}" novalidate>
+          <label for="nl-email" class="db-foot-sr">Email address</label>
+          <input id="nl-email" type="email" required placeholder="you@company.com" value="{{ email }}" oninput="{{ setEmail }}" autocomplete="email"/>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="db-foot-hp" value="{{ hp }}" oninput="{{ setHp }}"/>
+          <button type="submit" disabled="{{ busy }}">{{ subLabel }}</button>
+        </form>
+        <p class="db-foot-note" style="{{ noteStyle }}" role="status">{{ note }}</p>
+        <p class="db-foot-contact"><a href="mailto:support@digitalburj.com">support@digitalburj.com</a><span aria-hidden="true">·</span><a href="https://wa.me/971552998583" target="_blank" rel="noopener">WhatsApp +971 55 299 8583</a></p>
       </div>
-      <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
-        <nav class="db-foot-col" aria-label="{{ c.h }}">
-          <p class="db-foot-h">{{ c.h }}</p>
-          <ul>
-            <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}">{{ l.label }}</a></li></sc-for>
-          </ul>
-        </nav>
-      </sc-for>
+      <div class="db-foot-cols">
+        <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+          <nav class="db-foot-col" aria-label="{{ c.h }}">
+            <p class="db-foot-h">{{ c.h }}</p>
+            <ul>
+              <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}">{{ l.label }}</a></li></sc-for>
+            </ul>
+          </nav>
+        </sc-for>
+      </div>
     </div>
     <div class="db-foot-bar">
       <p>© 2026 DigitalBurj. All rights reserved.</p>
-      <button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+      <div class="db-foot-links"><a href="sitemap.xml">Sitemap</a><a href="Contact.dc.html">Contact</a><button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
     </div>
   </div>
 </footer>
-<a href="https://wa.me/" target="_blank" rel="noopener" aria-label="Chat with DigitalBurj on WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:55;width:56px;height:56px;border-radius:18px;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .3s cubic-bezier(.22,.8,.24,1)" style-hover="transform:translateY(-3px) scale(1.04)">
+<a href="https://wa.me/971552998583" target="_blank" rel="noopener" aria-label="Chat with DigitalBurj on WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:55;width:56px;height:56px;border-radius:18px;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .3s cubic-bezier(.22,.8,.24,1)" style-hover="transform:translateY(-3px) scale(1.04)">
   <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor"><path d="M16 3.2C8.9 3.2 3.2 8.9 3.2 16c0 2.3.6 4.5 1.7 6.4L3.1 28.8l6.6-1.7A12.8 12.8 0 1 0 16 3.2Zm5.7 15.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.3c.2.2 2.2 3.4 5.4 4.8 2.7 1.1 3.3.9 3.8.8.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
 </a>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:640}}">
 class Component extends DCLogic {
+  state = { email: "", hp: "", status: "idle", msg: "" };
   cols = [
-    { h: "Ecosystem", links: [["Business OS", "BusinessOS.dc.html"], ["DigitalBurj AI", "BusinessAI.dc.html"], ["Growth", "Growth.dc.html"], ["Studio", "Studio.dc.html"], ["Industry Solutions", "Industries.dc.html"], ["Academy", "Academy.dc.html"], ["Verified Talent", "Talent.dc.html"]] },
-    { h: "Explore", links: [["Solutions", "Solutions.dc.html"], ["Pricing", "Pricing.dc.html"], ["Portfolio", "Portfolio.dc.html"], ["Insights", "Insights.dc.html"]] },
-    { h: "Company", links: [["About", "Company.dc.html"], ["Jobs", "Jobs.dc.html"], ["Contact", "Contact.dc.html"], ["Get Started", "GetStarted.dc.html"]] },
+    { h: "Platform", links: [["Business OS", "BusinessOS.dc.html"], ["DigitalBurj AI", "BusinessAI.dc.html"], ["Growth", "Growth.dc.html"], ["Studio", "Studio.dc.html"], ["Industry Solutions", "Industries.dc.html"]] },
+    { h: "People", links: [["Academy", "Academy.dc.html"], ["Verified Talent", "Talent.dc.html"], ["Jobs", "Jobs.dc.html"], ["Insights", "Insights.dc.html"]] },
+    { h: "Company", links: [["About", "Company.dc.html"], ["Pricing", "Pricing.dc.html"], ["Portfolio", "Portfolio.dc.html"], ["Contact", "Contact.dc.html"], ["Get Started", "GetStarted.dc.html"]] },
   ].map((c) => ({ h: c.h, links: c.links.map(([label, href]) => ({ label, href })) }));
+  async subscribe(e) {
+    e.preventDefault();
+    const email = this.state.email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { this.setState({ status: "error", msg: "Please enter a valid email address." }); return; }
+    this.setState({ status: "busy", msg: "" });
+    try {
+      const r = await fetch("/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, website: this.state.hp }) });
+      if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || "failed"); }
+      this.setState({ status: "done", msg: "Thanks — you're subscribed.", email: "" });
+    } catch (err) {
+      this.setState({ status: "error", msg: "Couldn't subscribe just now. Please try again, or email support@digitalburj.com." });
+    }
+  }
   renderVals() {
-    return { cols: this.cols, toTop: () => window.scrollTo({ top: 0, behavior: "smooth" }) };
+    const st = this.state.status;
+    return {
+      cols: this.cols, email: this.state.email, hp: this.state.hp,
+      setEmail: (e) => this.setState({ email: e.target.value }), setHp: (e) => this.setState({ hp: e.target.value }),
+      busy: st === "busy", subLabel: st === "busy" ? "Subscribing…" : st === "done" ? "Subscribed ✓" : "Subscribe",
+      note: this.state.msg || "Monthly field notes on automation and building software. No spam.",
+      noteStyle: st === "error" ? "color:#ff8a70" : st === "done" ? "color:#7ee2a0" : "",
+      subscribe: (e) => this.subscribe(e),
+      toTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+    };
   }
 }
 

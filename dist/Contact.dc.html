@@ -11,7 +11,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="icon" href="brand/favicon.png">
-<link rel="stylesheet" href="hero-system.css">
+<link rel="stylesheet" href="hero-system.css?v=6">
 </head>
 <body>
 <x-dc>
@@ -21,8 +21,8 @@
 <meta name="keywords" content="contact DigitalBurj, business automation consultation, software development enquiry, free process review"/>
 <meta property="og:title" content="Contact DigitalBurj"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact DigitalBurj","about":{"@type":"Organization","name":"DigitalBurj"}}</script>
-<script src="motion.js"></script>
-<script src="hero-reel.js"></script>
+<script src="motion.js?v=5"></script>
+<script src="hero-reel.js?v=5"></script>
 <style>body{margin:0;background:#f6f5f1}a{color:#0f1714;text-decoration:none}a:hover{color:#f23a1d}::selection{background:#f23a1d;color:#fff}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes popIn{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}</style>
@@ -102,7 +102,7 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;endpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form delivery&quot;},&quot;inbox&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hello@digitalburj.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form delivery&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;endpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form delivery&quot;},&quot;inbox&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;support@digitalburj.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form delivery&quot;}}">
 class Component extends DCLogic {
   state = { topic: "Business OS", name: "", email: "", company: "", phone: "", message: "", timeline: "Exploring options", consent: false, tried: false, sending: false, sent: false, serverErr: "", via: "" };
   topicList = ["Business OS", "DigitalBurj AI", "Growth & SEO", "Studio / Custom software", "Industry Solutions", "Academy", "Verified Talent", "Pricing & plans", "Something else"];
@@ -117,26 +117,30 @@ class Component extends DCLogic {
     if (!v.name || !v.email || !v.message || !v.consent) return;
     const s = this.state;
     const payload = { topic: s.topic, name: s.name, email: s.email, company: s.company, phone: s.phone, timeline: s.timeline, message: s.message, source: "digitalburj.com/contact" };
-    const endpoint = this.props.endpoint;
-    const inbox = this.props.inbox ?? "hello@digitalburj.com";
+    const endpoint = this.props.endpoint || "/api/contact";
+    const inbox = this.props.inbox ?? "support@digitalburj.com";
     this.setState({ sending: true });
-    if (endpoint) {
-      try {
-        const r = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
-        if (!r.ok) throw new Error(String(r.status));
-        this.setState({ sending: false, sent: true, via: "endpoint" });
-      } catch (err) {
-        this.setState({ sending: false, serverErr: "We couldn't send that just now. Please try again, or email " + inbox + " directly." });
-      }
-    } else {
+    const viaMail = () => {
       const body = encodeURIComponent(`Topic: ${s.topic}\nName: ${s.name}\nCompany: ${s.company}\nPhone: ${s.phone}\nTimeline: ${s.timeline}\n\n${s.message}`);
       window.location.href = `mailto:${inbox}?subject=${encodeURIComponent("Enquiry: " + s.topic)}&body=${body}`;
       setTimeout(() => this.setState({ sending: false, sent: true, via: "mailto" }), 600);
+    };
+    try {
+      const r = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+      if (r.status === 400 || r.status === 429) {
+        const j = await r.json().catch(() => ({}));
+        this.setState({ sending: false, serverErr: j.error || "Please check your details and try again." });
+        return;
+      }
+      if (!r.ok) throw new Error(String(r.status));
+      this.setState({ sending: false, sent: true, via: "endpoint" });
+    } catch (err) {
+      viaMail(); // service unavailable — fall back to the visitor's email app so the enquiry is never lost
     }
   }
   renderVals() {
     const s = this.state, v = this.valid(), t = s.tried;
-    const inbox = this.props.inbox ?? "hello@digitalburj.com";
+    const inbox = this.props.inbox ?? "support@digitalburj.com";
     const inputStyle = (bad) => `margin-top:8px;width:100%;box-sizing:border-box;height:50px;border-radius:12px;border:1px solid ${bad ? "#c9260e" : "rgba(15,23,20,.14)"};background:#f6f5f1;padding:0 14px;font:500 15px 'Instrument Sans';color:#0f1714;outline:none;transition:border-color .2s,box-shadow .2s,background .2s`;
     const f = (id, label, type, ac, ph, req, err) => {
       const bad = t && req && !v[id];
@@ -146,7 +150,7 @@ class Component extends DCLogic {
     return {
       channels: [
         { label: "Email us", sub: inbox, href: `mailto:${inbox}`, i: "@", bg: "#0f1714" },
-        { label: "WhatsApp", sub: "Fastest for quick questions", href: "https://wa.me/", i: "WA", bg: "#25d366" },
+        { label: "WhatsApp", sub: "Fastest for quick questions", href: "https://wa.me/971552998583", i: "WA", bg: "#25d366" },
         { label: "Book a process review", sub: "Free · 30 minutes", href: "GetStarted.dc.html", i: "30", bg: "#f23a1d" },
       ],
       topics: this.topicList.map((label) => {

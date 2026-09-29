@@ -1,0 +1,13 @@
+name = "digitalburj-site"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+COMMIT = "eab6e53c846888b2bd091c7582f2acdaff487283"
+CONTACT_TO = "support@digitalburj.com"
+MAIL_FROM = "DigitalBurj <support@digitalburj.com>"
+RESEND_SEGMENT_ID = "88a89ee2-94b2-4fea-a785-44132c73ff05"
+
+[[kv_namespaces]]
+binding = "SITE"
+id = "00000000000000000000000000000000"

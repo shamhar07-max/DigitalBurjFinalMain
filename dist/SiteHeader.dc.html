@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
+
 <script src="./support.js"></script>
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
@@ -128,6 +128,7 @@ class Component extends DCLogic {
     this.onKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); this.openSearch(); }
       if (e.key === "Escape") this.setState({ searchOpen: false, sheetOpen: false, megaOpen: false });
+      if (e.key === "Enter" && this.state.searchOpen && this.firstHref) { e.preventDefault(); location.href = this.firstHref; }
     };
     this.onResize = () => this.setState({ narrow: window.innerWidth < 980 });
     window.addEventListener("keydown", this.onKey);
@@ -143,6 +144,7 @@ class Component extends DCLogic {
     const all = [...this.index, ...((this.articles || []).map((a) => ({ label: a.title, href: `/insights/${a.slug}`, kind: "Article" })))];
     const q = query.trim().toLowerCase();
     const results = (q ? all.filter((r) => r.label.toLowerCase().includes(q)) : all).slice(0, 10);
+    this.firstHref = q && results[0] ? results[0].href : "";
     return {
       megaOpen, sheetOpen, searchOpen, query, results, noResults: results.length === 0,
       divisions: this.divisions,
@@ -155,7 +157,7 @@ class Component extends DCLogic {
       searchRef: this.searchRef,
       openMega: () => !narrow && this.setState({ megaOpen: true }),
       closeMega: () => this.setState({ megaOpen: false }),
-      toggleMega: () => this.setState((s) => ({ megaOpen: !s.megaOpen })),
+      toggleMega: () => narrow ? this.setState((s) => ({ megaOpen: !s.megaOpen })) : this.setState({ megaOpen: true }),
       toggleSheet: () => this.setState((s) => ({ sheetOpen: !s.sheetOpen })),
       openSearch: this.openSearch,
       closeSearch: () => this.setState({ searchOpen: false }),

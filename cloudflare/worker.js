@@ -236,7 +236,11 @@ export default {
     if (file.includes("..")) return new Response("Bad request", { status: 400 });
 
     const res = await serveStatic(request, file, env, ctx);
-    if (res) return res;
+    if (res) {
+      if (!isApp) return res;
+      const h = new Headers(res.headers); h.set("x-robots-tag", "noindex, nofollow"); // signed-in app is never indexed
+      return new Response(res.body, { status: res.status, headers: h });
+    }
     return new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8", ...SECURITY } });
   },
   async scheduled(event, env, ctx) { ctx.waitUntil(warm(env)); },

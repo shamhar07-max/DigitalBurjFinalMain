@@ -12,7 +12,7 @@ const fetchFake = async (url, o) => { stripeCalls.push({ url, o }); if (o.method
   return { ok: true, status: 200, json: async () => ({ id: "cs_test_1", payment_status: "paid", customer_details: { email: "buyer@example.com" }, metadata: { items: "b-web" } }) }; };
 const dep = (cookie) => ({ env, resend, kv, fetch: fetchFake, req: { cookie: cookie || "" } });
 const cookieOf = (r) => (r.cookies && r.cookies[0] ? r.cookies[0].split(";")[0] : "");
-const tokenFrom = (subject) => { const m = mails.filter((x) => x.subject.includes(subject)).pop(); return decodeURIComponent(/token=([^"&]+)/.exec(m.html)[1]); };
+const tokenFrom = (subject) => { const m = mails.filter((x) => x.subject && x.subject.includes(subject)).pop(); return decodeURIComponent(/token=([^"&]+)/.exec(m.html)[1]); };
 
 (async () => {
   // ---- setup-required behaviour without storage/secret
@@ -114,6 +114,36 @@ const tokenFrom = (subject) => { const m = mails.filter((x) => x.subject.include
   const bsC = cookieOf(bs);
   await run({ action: "checkout", items: ["b-web"], consent: true }, dep(bsC));
   assert.strictEqual(new URLSearchParams(stripeCalls.pop().o.body).get("line_items[0][price_data][unit_amount]"), "900", "no credit for DB-00 in b-web");
+
+  // ---- disputes revoke access just like refunds
+  const paid3 = event("checkout.session.completed", { ...session, id: "cs_live_3", payment_intent: "pi_3", metadata: { items: "DB-01", ref: "ORD-3" } });
+  await webhook(paid3, await sig(paid3), dep(), now);
+  assert((await A.entitlement(dep(), "buyer@example.com")).items.includes("DB-01"));
+  const dispute = event("charge.dispute.created", { payment_intent: "pi_3" });
+  await webhook(dispute, await sig(dispute), dep(), now);
+  assert(!(await A.entitlement(dep(), "buyer@example.com")).items.includes("DB-01"), "dispute revokes access");
+
+  // ---- concurrent grants for one buyer both land
+  const pa = event("checkout.session.completed", { ...session, id: "cs_c1", payment_intent: "pi_c1", customer_details: { email: "race@example.com" }, metadata: { items: "DB-02", ref: "R1" } });
+  const pb = event("checkout.session.completed", { ...session, id: "cs_c2", payment_intent: "pi_c2", customer_details: { email: "race@example.com" }, metadata: { items: "DB-03", ref: "R2" } });
+  await Promise.all([webhook(pa, await sig(pa), dep(), now), webhook(pb, await sig(pb), dep(), now)]);
+  assert.strictEqual((await A.entitlement(dep(), "race@example.com")).orders.length, 2, "no lost order");
+
+  // ---- marketing contact is created only after the email is verified
+  const before = mails.filter((m) => m.p === "/contacts").length;
+  const mk = await run({ action: "signup", name: "Mia Marketing", email: "mia@example.com", password: "Quartz-Lantern-92", consent: true, marketing: true }, dep());
+  assert.strictEqual(mails.filter((m) => m.p === "/contacts").length, before, "no contact before verification");
+  await run({ action: "verify", token: tokenFrom("Verify") }, dep());
+  assert.strictEqual(mails.filter((m) => m.p === "/contacts").length, before + 1, "contact added after verification");
+  await run({ action: "verify", token: tokenFrom("Verify") }, dep());
+  assert.strictEqual(mails.filter((m) => m.p === "/contacts").length, before + 1, "contact added once");
+
+  // ---- promotion kill switch
+  const off = { ...dep(cookieOf(mk)), env: { ...env, ACADEMY_PROMO_OFF: "1" } };
+  r = await run({ action: "redeem", items: ["DB-00"], coupon: "DigitalBurj100", consent: true, confirmZero: true }, off);
+  assert.strictEqual(r.status, 400); assert(/ended/.test(r.json.error));
+  r = await run({ action: "redeem", items: ["DB-00"], coupon: "DigitalBurj100", consent: true, confirmZero: true }, dep(cookieOf(mk)));
+  assert.strictEqual(r.status, 200, "promotion still works when switch is off");
 
   assert.strictEqual((await run({ action: "signout" }, dep(c1))).cookies[0].includes("Max-Age=0"), true);
   console.log("academy auth tests passed");

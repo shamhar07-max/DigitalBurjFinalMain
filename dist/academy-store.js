@@ -60,6 +60,7 @@ function run(){
      ============================================================ */
   var mBg = $('#modalBg'), mT = $('#modalTitle'), mK = $('#modalKicker'), mB = $('#modalBody');
   function openModal(kicker, title, html, wide){
+    lastFocus = document.activeElement;
     mK.textContent = kicker; mT.textContent = title; mB.innerHTML = html;
     $('#modalBox').classList.toggle('modal-wide', !!wide);
     mBg.classList.add('open'); mBg.setAttribute('aria-hidden','false');
@@ -67,9 +68,22 @@ function run(){
     setTimeout(function(){ $('#modalClose').focus(); }, 60);
   }
   function closeModal(){
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch(e){} }
     mBg.classList.remove('open'); mBg.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
   }
+
+  /* Modal focus management: trap Tab inside the dialog and hand focus back when it closes. */
+  var lastFocus = null;
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Tab' || !mBg.classList.contains('open')) return;
+    var f = $$('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])', $('#modalBox')).filter(function(x){ return !x.disabled && x.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1], box = $('#modalBox');
+    if (!box.contains(document.activeElement)){ e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
   $('#modalClose').addEventListener('click', closeModal);
   mBg.addEventListener('click', function(e){ if (e.target === mBg) closeModal(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeModal(); closeMobile(); } });
@@ -609,7 +623,7 @@ function run(){
       if (badName || badMail) return;
       if (!$('#wl-consent').checked){ er.textContent = 'Please tick the consent box.'; er.classList.add('on'); return; }
       $('#wlGo').disabled = true;
-      DBA.api('register', { kind: 'waitlist', name: name, email: email, consent: true, marketing: true, interest: label }).then(function(r){
+      DBA.api('register', { kind: 'waitlist', name: name, email: email, consent: true, marketing: false, interest: label }).then(function(r){
         $('#wlGo').disabled = false;
         if (r.ok){ STATE.email = STATE.email || email; STATE.waitlist.push(itemId); saveState(); closeModal(); toast('You are on the waitlist for ' + label + '.', true); }
         else { er.textContent = (r.status === 503 || r.status === 0 || r.status === 404) ? 'The registration desk is not reachable right now. Please try again shortly.' : ((r.data && r.data.error) || 'Something went wrong.'); er.classList.add('on'); }

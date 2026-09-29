@@ -135,16 +135,26 @@ function screenVerifyPrompt(me){
   screen(brandHead('Verify your email', 'We sent a link to <b>' + email + '</b>. Verify it to unlock what you have purchased — this protects your account from anyone else claiming your purchase.') +
     '<div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-resend">Resend the email</button><a class="btn-ghost au-btn" href="">I have verified — refresh</a>' +
     '<p class="au-foot"><a href="#" id="au-out">Sign out</a></p>');
+  pollAccount(function(d){ return !!d.entitlements; });
   q$('#au-resend').addEventListener('click', function(){
     var b = q$('#au-resend'); busy(b, true, 'Resend the email');
     DBA.api('resend', {}).then(function(r){ busy(b, false, 'Resend the email'); formError(r.ok ? '' : ((r.data && r.data.error) || 'Could not send.')); if (r.ok){ b.textContent = 'Sent — check your inbox'; b.disabled = true; } });
   });
   q$('#au-out').addEventListener('click', function(e){ e.preventDefault(); DBA.api('signout', {}).then(function(){ go('/signin'); }); });
 }
+/* Re-check the account every 5s (max 2 min) and reload once access or verification appears (KV is eventually consistent). */
+function pollAccount(done){
+  var n = 0, t = setInterval(function(){
+    if (++n > 24) return clearInterval(t);
+    if (document.hidden) return;
+    DBA.api('me', {}).then(function(r){ if (r.ok && r.data && r.data.signedIn && done(r.data)){ clearInterval(t); location.reload(); } });
+  }, 5000);
+}
 function screenNoAccess(me){
   screen(brandHead('Hi ' + qesc(me.user.name.split(' ')[0]) + ', you have no active access yet', 'Your account is ready. Choose a bundle or course and it will appear here as soon as the payment is confirmed. If you just paid, it can take a few seconds.') +
     '<a class="btn-primary au-btn" href="' + DBA.siteUrl('/academy') + '#bundles">Browse bundles</a><a class="btn-ghost au-btn" href="">Refresh</a>' +
     '<p class="au-foot">Signed in as ' + qesc(me.user.email) + ' · <a href="#" id="au-out">Sign out</a></p>');
+  pollAccount(function(d){ return d.entitlements && d.entitlements.courses.length > 0; });
   q$('#au-out').addEventListener('click', function(e){ e.preventDefault(); DBA.api('signout', {}).then(function(){ go('/signin'); }); });
 }
 function screenRedeem(me){
@@ -177,6 +187,7 @@ function home(me){
 function route(){
   var path = location.pathname.replace(/\/+$/, '') || '/';
   DBA.api('me', {}).then(function(r){
+    if (r.status === 429) return screen(brandHead('Please slow down', 'Too many requests from your connection. Wait a minute, then try again.') + '<a class="btn-primary au-btn" href="">Try again</a>');
     if (r.status === 503 || r.status === 404 || r.status === 0) return screenSetup();
     var me = r.ok && r.data && r.data.signedIn ? r.data : null;
     if (path === '/signin') return screenSignin(me);
@@ -190,7 +201,11 @@ function route(){
   });
 }
 function mountWorkspace(me){
-  fetch('/academy-app.html').then(function(r){ return r.text(); }).then(function(html){
+  fetch('/academy-app.html').then(function(r){ if (!r.ok) throw new Error('fragment ' + r.status); return r.text(); }).catch(function(){
+    screen(brandHead('We could not load your workspace', 'Check your connection and try again.') + '<a class="btn-primary au-btn" href="">Try again</a>');
+    return null;
+  }).then(function(html){
+    if (!html) return;
     var u = me.user, first = u.name.split(' ')[0], hr = new Date().getHours();
     var initials = u.name.split(/\s+/).map(function(w){ return w[0]; }).slice(0, 2).join('').toUpperCase();
     html = html.replace(/Layla Ibrahim/g, qesc(u.name)).replace('Good afternoon, Layla.', (hr < 12 ? 'Good morning, ' : hr < 18 ? 'Good afternoon, ' : 'Good evening, ') + qesc(first) + '.')
@@ -903,16 +918,29 @@ function run(me){
      ============================================================ */
   var mBg = $('#modalBg'), mT = $('#modalTitle'), mK = $('#modalKicker'), mB = $('#modalBody');
   function openModal(kicker, title, html){
+    lastFocus = document.activeElement;
     mK.textContent = kicker; mT.textContent = title; mB.innerHTML = html;
     mBg.classList.add('open'); mBg.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
     $('#modalClose').focus();
   }
   function closeModal(){
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch(e){} lastFocus = null; }
     mBg.classList.remove('open'); mBg.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
   }
   $('#modalClose').addEventListener('click', closeModal);
+  var lastFocus = null;
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Tab' || !mBg.classList.contains('open')) return;
+    var box = $('#modalBox') || mBg;
+    var f = Array.prototype.slice.call(box.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(function(x){ return !x.disabled && x.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!box.contains(document.activeElement)){ e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
   mBg.addEventListener('click', function(e){ if (e.target === mBg) closeModal(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeModal(); closeSidebarMobile(); } });
 
@@ -1870,6 +1898,7 @@ function run(me){
     if (l.length){ switchView('labs'); toast('Matched lab: ' + l[0].title); return; }
     toast('No match found.');
   });
+  $('#userMenu').addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); this.click(); } });
   $('#userMenu').addEventListener('click', function(){
     openModal('Account', USER.name,
       '<p>' + esc(USER.email) + (USER.verified ? ' · email verified' : '') + (USER.country ? ' · ' + esc(USER.country) : '') + ' · ' + (ENT ? ENT.courses.length : 0) + ' course(s) with active access</p>' +

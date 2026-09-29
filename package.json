@@ -1,1 +1,9 @@
-{"name":"digitalburj-image-free","private":true,"version":"1.0.0","scripts":{"build":"echo Static site ready"}}
+{
+  "name": "digitalburj-image-free",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo Static site ready",
+    "test": "node api/academy.test.js"
+  }
+}

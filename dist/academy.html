@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#14304E" />
+<title>DigitalBurj Academy — Learn it. Apply it. Prove it.</title>
+<meta name="description" content="DigitalBurj Academy — capability building through real missions, human feedback and assessed evidence. Bundles from $3 to $50." />
+<link rel="canonical" href="https://digitalburj.com/academy" />
+<meta property="og:title" content="DigitalBurj Academy — Learn it. Apply it. Prove it." />
+<meta property="og:description" content="Real missions, human feedback and assessed evidence. Bundles from $3 to $50." />
+<meta property="og:image" content="https://digitalburj.com/brand/opengraph.png" />
+<meta property="og:url" content="https://digitalburj.com/academy" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"DigitalBurj Academy","url":"https://digitalburj.com/academy","parentOrganization":{"@type":"Organization","name":"DigitalBurj","url":"https://digitalburj.com"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23fff'/%3E%3Cpath d='M5 7h7c5 0 8 3 8 9s-3 9-8 9H5V7zm4 4v10h3c3 0 5-2 5-5s-2-5-5-5h-3z' fill='%2314304E'/%3E%3Cpath d='M20 7h5c4 0 6 2 6 5 0 2-1 3-3 4 2 1 4 3 4 5 0 3-3 4-6 4h-6V7zm4 3v4h2c2 0 2-1 2-2s0-2-2-2h-2zm0 7v4h2c2 0 3-1 3-2s-1-2-3-2h-2z' fill='%23E30613'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14304E; --navy-2:#1B3D62; --navy-3:#0D2239; --navy-4:#091728;
+  --red:#E30613; --red-2:#B90510; --red-3:#F03A46;
+  --ink:#0F1D2E; --slate:#3A4E63; --slate-2:#5A6E82; --slate-3:#8A9CAD;
+  --line:#DDE5EC; --line-2:#EAF0F5; --bg:#F7F9FB; --bg-2:#EDF2F7;
+  --ok:#0E8A4F; --ok-bg:#E4F5EC; --warn:#B26A00; --warn-bg:#FFF3E0;
+  --stop:#C41E28; --stop-bg:#FDECEE; --cool:#1F5FA6; --cool-bg:#E6F0FB;
+  --purple:#6E3FA3; --purple-bg:#F0E8FA; --gold:#B8860B; --gold-bg:#FFF8E1;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --r:14px; --r-sm:10px;
+  --shadow-sm:0 1px 2px rgba(15,29,46,.06),0 1px 3px rgba(15,29,46,.04);
+  --shadow-md:0 4px 12px rgba(15,29,46,.06),0 2px 4px rgba(15,29,46,.04);
+  --shadow-lg:0 12px 28px rgba(15,29,46,.08),0 4px 12px rgba(15,29,46,.05);
+  --shadow-xl:0 24px 60px rgba(10,27,46,.25);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:3px solid rgba(227,6,19,.35);outline-offset:2px}
+.container{width:min(100% - 40px,1240px);margin-inline:auto}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:300;background:var(--red);color:#fff;padding:12px 18px;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+.skip-link:focus{left:0}
+
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.025em;line-height:1.14;color:var(--navy)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--red)}
+.eyebrow.center{justify-content:center}
+.eyebrow.center::after{content:"";width:22px;height:2px;background:var(--red)}
+.h-display{font-size:clamp(34px,5.6vw,62px);line-height:1.04;letter-spacing:-.038em;font-weight:800;color:var(--navy)}
+.h-section{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.03em;margin-top:12px;font-weight:800}
+.lede{color:var(--slate-2);font-size:clamp(15.5px,1.4vw,17px);line-height:1.68;max-width:64ch;margin:14px 0 0}
+.hl{color:var(--red);position:relative;white-space:nowrap}
+.hl::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--red);opacity:.18;border-radius:2px}
+
+.sec{padding:clamp(56px,7vw,96px) 0}
+.sec-tight{padding:clamp(40px,5vw,68px) 0}
+.sec-head{max-width:780px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .lede{margin-inline:auto}
+.divider{height:1px;background:var(--line);border:0;margin:0}
+.grid{display:grid;gap:16px}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.g-4{grid-template-columns:repeat(4,1fr)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;letter-spacing:-.005em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:all .16s var(--ease);white-space:nowrap;font-family:inherit}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 1px 2px rgba(227,6,19,.2)}
+.btn-primary:hover{background:var(--red-2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(227,6,19,.25)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--navy);background:#fff}
+.btn-ghost:hover{border-color:var(--navy);transform:translateY(-1px)}
+.btn-sm{padding:8px 14px;font-size:13px}
+.btn-block{width:100%}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.arrow{transition:transform .18s var(--ease)}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;cursor:pointer}
+.brand-mark{height:30px;width:auto}
+.brand-text{display:flex;flex-direction:column;line-height:1.05;font-size:13.5px;color:var(--navy)}
+.brand-text strong{font-weight:800}
+.brand-text span{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-3);font-weight:700;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{color:var(--slate-2);text-decoration:none;font-size:13.5px;font-weight:600;padding:9px 12px;border-radius:8px;transition:all .16s var(--ease);cursor:pointer}
+.nav-links a:hover{color:var(--navy);background:var(--bg-2)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.role-switcher{display:flex;align-items:center;gap:6px;background:var(--bg-2);border-radius:10px;padding:4px;font-size:12px}
+.role-switcher .rs-label{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-3);padding:0 6px;font-size:10px}
+.role-btn{padding:6px 11px;border-radius:7px;font-size:12px;font-weight:700;background:transparent;border:0;cursor:pointer;color:var(--slate-2);transition:all .14s var(--ease);font-family:inherit}
+.role-btn:hover{color:var(--navy)}
+.role-btn.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
+.cart-btn{position:relative;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:#fff;border:1px solid var(--line);cursor:pointer;color:var(--navy);transition:all .14s var(--ease)}
+.cart-btn:hover{border-color:var(--navy)}
+.cart-btn svg{width:18px;height:18px}
+.cart-btn .badge{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #fff}
+.burger{display:none;width:42px;height:42px;align-items:center;justify-content:center;background:transparent;border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.burger span{display:block;width:16px;height:1.5px;background:var(--navy);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--navy);transition:transform .22s var(--ease)}
+.burger span::before{top:-5px}
+.burger span::after{top:5px}
+.mobile-nav{position:fixed;inset:72px 0 0 0;z-index:79;background:#fff;padding:20px;overflow-y:auto;transform:translateY(-8px);opacity:0;visibility:hidden;transition:all .22s var(--ease)}
+.mobile-nav.open{opacity:1;visibility:visible;transform:none}
+.mobile-nav a,.mobile-nav button{display:block;width:100%;text-align:left;text-decoration:none;color:var(--navy);font-size:16px;font-weight:600;padding:14px 4px;border:0;border-bottom:1px solid var(--line-2);background:transparent;cursor:pointer;font-family:inherit}
+body.menu-open{overflow:hidden}
+
+/* ROLE BANNER */
+.role-banner{background:var(--navy);color:#fff;padding:10px 0;font-size:12.5px;position:relative;z-index:80}
+.role-banner .rb-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.role-banner .rb-tag{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.role-banner .rb-pill{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:rgba(227,6,19,.3);border:1px solid rgba(227,6,19,.5)}
+.role-banner .rb-text{color:rgba(255,255,255,.7)}
+
+/* HERO */
+.hero{position:relative;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,72px);overflow:hidden;background:#fff;border-bottom:1px solid var(--line-2)}
+.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(880px 500px at 14% -10%,rgba(20,48,78,.07),transparent 62%),radial-gradient(760px 500px at 92% 4%,rgba(227,6,19,.06),transparent 62%)}
+.hero-inner{position:relative;max-width:940px}
+.hero .h-display{margin-top:20px;max-width:19ch}
+.hero-lede{margin-top:22px;font-size:clamp(15.5px,1.55vw,18px);color:var(--slate-2);max-width:62ch;line-height:1.7}
+.hero-line{margin-top:20px;padding-left:16px;border-left:3px solid var(--red);font-size:clamp(14.5px,1.4vw,16.5px);color:var(--navy);font-weight:600}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 0;margin-top:clamp(36px,4.5vw,56px);padding-top:22px;border-top:1px solid var(--line)}
+.hero-meta span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);font-weight:700;padding-right:20px;margin-right:20px;border-right:1px solid var(--line)}
+.hero-meta span:last-child{border-right:0;margin-right:0;padding-right:0}
+
+/* FILTER BAR */
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:26px}
+.filter-tabs{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.filter-tab{padding:9px 16px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:700;color:var(--slate-2);cursor:pointer;transition:all .16s var(--ease);font-family:inherit;white-space:nowrap}
+.filter-tab:hover{border-color:var(--navy);color:var(--navy)}
+.filter-tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.search-box{position:relative;flex:0 1 300px;min-width:200px}
+.search-box input{width:100%;height:44px;padding:0 14px 0 40px;background:#fff;border:1px solid var(--line);border-radius:11px;font-size:13.5px;font-family:inherit;color:var(--ink)}
+.search-box input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(20,48,78,.08)}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--slate-3);pointer-events:none}
+
+/* PRICE CHIPS */
+.price-chip{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--gold-bg);color:var(--gold);border:1px solid #F0E0B0}
+
+/* BUNDLE CARDS */
+.bundle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.bundle-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:all .22s var(--ease)}
+.bundle-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--slate-3)}
+.bundle-card.featured{border-color:var(--red);box-shadow:0 0 0 2px rgba(227,6,19,.1),var(--shadow-md)}
+.bundle-card.featured::before{content:"Most popular";position:absolute;top:14px;right:14px;z-index:2;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:var(--red);color:#fff}
+.bundle-visual{height:110px;background:linear-gradient(135deg,rgba(20,48,78,.1),transparent 55%),radial-gradient(280px 200px at 80% 110%,rgba(227,6,19,.09),transparent 70%),var(--bg-2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.bundle-visual .bv-icon{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800}
+.bundle-card.ai .bundle-visual .bv-icon{background:linear-gradient(135deg,var(--red),var(--red-2))}
+.bundle-card.professional .bundle-visual .bv-icon{background:var(--cool)}
+.bundle-card.career .bundle-visual .bv-icon{background:var(--purple)}
+.bundle-body{padding:20px 22px;flex:1;display:flex;flex-direction:column}
+.bundle-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-3)}
+.bundle-body h3{font-size:18px;font-weight:800;letter-spacing:-.022em;color:var(--navy);margin-top:10px}
+.bundle-body .bundle-desc{color:var(--slate-2);font-size:13px;line-height:1.6;margin:10px 0 0}
+.bundle-includes{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-2);flex:1}
+.bundle-includes .bi-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:9px}
+.bundle-includes ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.bundle-includes li{position:relative;padding-left:18px;font-size:12.5px;color:var(--slate-2);line-height:1.5}
+.bundle-includes li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:800;font-size:11px}
+.bundle-foot{padding:18px 22px;border-top:1px solid var(--line-2);background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bundle-price{display:flex;flex-direction:column;line-height:1}
+.bundle-price .bp-now{font-size:26px;font-weight:800;letter-spacing:-.03em;color:var(--navy)}
+.bundle-price .bp-old{font-size:12px;color:var(--slate-3);font-weight:600;margin-top:3px}
+.bundle-price .bp-old s{opacity:.7}
+.bundle-price .bp-save{font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ok);margin-top:5px}
+.bundle-actions{display:flex;gap:6px;flex-wrap:wrap}
+
+/* COURSE CARDS */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.course-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:all .2s var(--ease)}
+.course-card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.course-card.locked{background:#FAFBFC}
+.course-card.locked::after{content:"🔒";position:absolute;top:16px;right:16px;font-size:14px;opacity:.5}
+.course-card.owned{border-color:var(--ok);background:linear-gradient(180deg,var(--ok-bg),#fff 40%)}
+.course-card.owned::after{content:"✓";position:absolute;top:14px;right:16px;width:22px;height:22px;border-radius:50%;background:var(--ok);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.course-code{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.course-card h4{font-size:14.5px;font-weight:800;color:var(--navy);letter-spacing:-.015em;margin-top:8px}
+.course-card .cc-meta{font-size:11.5px;color:var(--slate-3);margin-top:6px;font-weight:500}
+.course-card .cc-desc{font-size:12.5px;color:var(--slate-2);line-height:1.55;margin-top:10px;flex:1}
+.course-card .cc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2)}
+.course-card .cc-price{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.course-card .cc-price s{font-size:11px;font-weight:600;color:var(--slate-3);margin-left:6px}
+
+/* PURCHASED STRIP */
+.my-learning{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;border-radius:16px;padding:26px 30px;position:relative;overflow:hidden;margin-bottom:30px}
+.my-learning::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 90% 10%,rgba(227,6,19,.28),transparent 60%);pointer-events:none}
+.my-learning .ml-inner{position:relative;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.my-learning .ml-text h3{color:#fff;font-size:20px;font-weight:800;letter-spacing:-.025em;margin:0}
+.my-learning .ml-text p{color:rgba(255,255,255,.72);font-size:13.5px;margin:8px 0 0}
+.my-learning .ml-stats{display:flex;gap:16px;flex-wrap:wrap}
+.my-learning .ml-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 16px;min-width:100px}
+.my-learning .ml-stat b{display:block;font-size:20px;font-weight:800;color:#fff;line-height:1}
+.my-learning .ml-stat span{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:5px}
+
+/* EMPTY */
+.empty{padding:40px 24px;text-align:center;color:var(--slate-3);font-size:13.5px;background:#fff;border:1px dashed var(--line);border-radius:14px}
+.empty h3{color:var(--navy);font-size:16px;margin-bottom:8px}
+
+/* ROLE VIEWS */
+.role-view{display:none}
+.role-view.active{display:block;animation:fadeUp .3s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* INSTRUCTOR PANEL */
+.instructor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:24px}
+.review-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow-sm);transition:all .18s var(--ease)}
+.review-card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.review-card .rc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.review-card h4{font-size:14px;font-weight:800;color:var(--navy);margin:0}
+.review-card .rc-sub{font-size:11.5px;color:var(--slate-3);margin-top:4px}
+.review-card p{font-size:12.5px;color:var(--slate-2);line-height:1.6;margin:0}
+.review-card .rc-actions{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+
+/* ADMIN PANEL */
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.admin-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow-sm)}
+.admin-stat .as-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:8px}
+.admin-stat .as-value{font-size:24px;font-weight:800;letter-spacing:-.03em;color:var(--navy);line-height:1}
+.admin-stat .as-delta{font-size:11.5px;font-weight:700;margin-top:8px;color:var(--ok)}
+
+/* FEATURES */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.feature{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;transition:all .18s var(--ease)}
+.feature:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.feature .f-icon{width:44px;height:44px;border-radius:11px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:20px;font-weight:800}
+.feature h3{font-size:15.5px;margin-top:14px;letter-spacing:-.015em}
+.feature p{color:var(--slate-2);font-size:13.5px;line-height:1.65;margin:10px 0 0}
+
+/* FAQ */
+.faq{max-width:820px;margin-inline:auto;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:last-child{border-bottom:0}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 22px;font-size:15px;font-weight:600;color:var(--navy);transition:all .16s var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--red);background:var(--bg)}
+.faq summary .plus{position:relative;flex:0 0 auto;width:14px;height:14px}
+.faq summary .plus::before,.faq summary .plus::after{content:"";position:absolute;background:var(--slate-2);transition:all .22s var(--ease)}
+.faq summary .plus::before{left:0;top:6.5px;width:14px;height:1.5px}
+.faq summary .plus::after{left:6.5px;top:0;width:1.5px;height:14px}
+.faq details[open] summary .plus::after{transform:rotate(90deg) scaleY(0)}
+.faq details[open] summary{color:var(--red)}
+.faq .faq-body{padding:0 60px 20px 22px;color:var(--slate-2);font-size:13.5px;line-height:1.7}
+
+/* CTA */
+.final-cta{position:relative;overflow:hidden;background:var(--navy);padding:clamp(56px,7vw,96px) 0;text-align:center;color:#fff}
+.final-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 380px at 50% 110%,rgba(227,6,19,.28),transparent 65%),radial-gradient(600px 320px at 15% -10%,rgba(255,255,255,.06),transparent 60%)}
+.final-cta .container{position:relative}
+.final-cta .pre{color:rgba(255,255,255,.72);font-size:15px;margin:0 0 16px}
+.final-cta .h-display{color:#fff}
+.final-cta .btn-row{justify-content:center}
+.final-cta .btn-ghost{border-color:rgba(255,255,255,.28);color:#fff;background:transparent}
+.final-cta .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--line);background:#fff;padding:clamp(40px,5vw,64px) 0 24px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(24px,3.6vw,48px)}
+.foot-brand p{color:var(--slate-2);font-size:13.5px;line-height:1.65;margin:14px 0 0;max-width:34ch}
+.foot-col h4{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate-3);font-weight:800;margin-bottom:14px}
+.foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.foot-col a{color:var(--slate-2);text-decoration:none;font-size:13.5px;transition:color .16s var(--ease);font-weight:500;cursor:pointer}
+.foot-col a:hover{color:var(--red)}
+.foot-bottom{margin-top:clamp(32px,4vw,52px);padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--slate-3)}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:150;background:rgba(10,27,46,.72);backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .22s var(--ease),visibility .22s}
+.modal-bg.open{opacity:1;visibility:visible}
+.modal{width:100%;max-width:700px;background:#fff;border-radius:16px;padding:clamp(24px,3vw,32px);transform:translateY(10px);transition:transform .28s var(--ease);box-shadow:var(--shadow-xl)}
+.modal-bg.open .modal{transform:none}
+.modal.modal-wide{max-width:820px}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
+.modal-head h3{font-size:22px;letter-spacing:-.025em;color:var(--navy)}
+.modal-close{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--slate-2);cursor:pointer;flex-shrink:0;font-size:16px;font-family:inherit;font-weight:600}
+.modal-close:hover{color:var(--red);border-color:var(--red);background:#FDECEE}
+.modal p{color:var(--slate-2);font-size:14px;line-height:1.7;margin:0}
+.modal-note{margin-top:16px;padding:13px 15px;border:1px dashed var(--line);border-radius:10px;font-size:12.5px;color:var(--slate-3);line-height:1.6;background:var(--bg)}
+
+/* CART MODAL */
+.cart-items{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.cart-item{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;background:var(--bg);border:1px solid var(--line-2);border-radius:11px}
+.cart-item .ci-left{flex:1;min-width:0}
+.cart-item .ci-title{font-size:13.5px;font-weight:700;color:var(--navy)}
+.cart-item .ci-sub{font-size:11.5px;color:var(--slate-3);margin-top:3px}
+.cart-item .ci-price{font-size:15px;font-weight:800;color:var(--navy)}
+.cart-item .ci-remove{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:#fff;color:var(--slate-3);cursor:pointer;font-size:12px;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.cart-item .ci-remove:hover{color:var(--red);border-color:var(--red)}
+.cart-total{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:2px solid var(--line);margin-top:8px}
+.cart-total .ct-label{font-size:13px;font-weight:700;color:var(--slate-2);text-transform:uppercase;letter-spacing:.06em}
+.cart-total .ct-amount{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.03em}
+
+/* FORM */
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:11px 13px;background:#fff;border:1px solid var(--line);border-radius:9px;color:var(--ink);font-family:inherit;font-size:13.5px;line-height:1.5;transition:all .16s var(--ease)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(20,48,78,.10)}
+.field.has-error input,.field.has-error select{border-color:var(--stop);box-shadow:0 0 0 3px rgba(196,30,40,.08)}
+.field .err{display:none;font-size:12px;color:var(--stop);margin-top:5px;font-weight:500}
+.field.has-error .err{display:block}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field-row-3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+
+.payment-methods{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.pm-option{flex:1;min-width:100px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;text-align:center;font-size:12.5px;font-weight:700;color:var(--slate-2);transition:all .14s var(--ease);font-family:inherit}
+.pm-option:hover{border-color:var(--navy);color:var(--navy)}
+.pm-option.active{border-color:var(--red);background:#FDECEE;color:var(--red)}
+
+/* SUCCESS */
+.success-box{text-align:center;padding:8px 0}
+.success-box .sb-icon{width:64px;height:64px;margin:0 auto 20px;border-radius:50%;background:var(--ok-bg);border:2px solid var(--ok);color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.success-box h3{font-size:22px;color:var(--navy)}
+.success-box p{color:var(--slate-2);font-size:14px;margin:12px auto 0;max-width:46ch}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:200;background:var(--navy);color:#fff;padding:14px 20px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:0 12px 30px rgba(10,27,46,.25);transform:translateY(20px);opacity:0;transition:all .22s var(--ease);max-width:380px;display:flex;align-items:center;gap:10px}
+.toast.on{transform:none;opacity:1}
+.toast .toast-dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0}
+.toast.ok .toast-dot{background:var(--ok)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.06s}
+.reveal.d2{transition-delay:.12s}
+.reveal.d3{transition-delay:.18s}
+
+/* RESPONSIVE */
+@media (max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .role-switcher{display:none}
+  .g-4{grid-template-columns:repeat(2,1fr)}
+  .feature-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .admin-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  .g-2,.g-3,.g-4{grid-template-columns:1fr}
+  .feature-grid{grid-template-columns:1fr}
+  .field-row,.field-row-3{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-meta span{border-right:0;padding-right:0;margin-right:0;width:50%}
+  .filter-bar{flex-direction:column;align-items:stretch}
+  .search-box{flex:1 1 auto}
+  .bundle-foot{flex-direction:column;align-items:stretch}
+  .bundle-actions{width:100%}
+  .bundle-actions .btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ---- additions ---- */
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;border:1px solid;white-space:nowrap}
+.pill::before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
+.pill.ok{color:var(--ok);background:var(--ok-bg);border-color:#B9E5CC}
+.pill.warn{color:var(--warn);background:var(--warn-bg);border-color:#F4D9A8}
+.pill.stop{color:var(--stop);background:var(--stop-bg);border-color:#F8C9CC}
+.pill.cool{color:var(--cool);background:var(--cool-bg);border-color:#B8D6F2}
+.pill.neutral{color:var(--slate-2);background:var(--bg-2);border-color:var(--line)}
+.pill.purple{color:var(--purple);background:var(--purple-bg);border-color:#D9C6F0}
+.nav-links a{white-space:nowrap;padding:9px 10px}
+.nav-links .nav-ext{color:var(--navy);font-weight:700}
+.role-btn{padding:6px 9px}
+.rb-home{color:#fff;opacity:.9;text-decoration:none;font-weight:700;margin-right:6px}
+.rb-home:hover{opacity:1;text-decoration:underline}
+@media (max-width:1400px){.nav-links a.opt{display:none}}
+@media (max-width:1200px){.nav-links{display:none}.burger{display:flex}}
+.nav-actions .home-link{font-size:12.5px;font-weight:700;color:var(--slate-2);text-decoration:none;padding:8px 10px;border-radius:8px;white-space:nowrap}
+.nav-actions .home-link:hover{color:var(--navy);background:var(--bg-2)}
+.disclaimer{margin-top:26px;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:#fff;font-size:13px;color:var(--slate-2);line-height:1.65}
+.disclaimer b{color:var(--navy)}
+.card-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow-sm)}
+.card-box h3{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.015em}
+.card-box p{font-size:13.5px;color:var(--slate-2);line-height:1.65;margin:10px 0 0}
+.path-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:40px}
+.path-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px}
+.path-card h3{font-size:17px;font-weight:800;letter-spacing:-.02em}
+.path-card .for{font-size:12.5px;color:var(--slate-3)}
+.path-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.path-steps li{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0 9px 26px;font-size:13px;color:var(--navy);font-weight:600;border-bottom:1px dashed var(--line-2)}
+.path-steps li:last-child{border-bottom:0}
+.path-steps li::before{content:"";position:absolute;left:4px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;border:2px solid var(--navy);background:#fff}
+.path-steps li.live::before{background:var(--ok);border-color:var(--ok)}
+.path-steps li.pilot::before{background:var(--warn);border-color:var(--warn)}
+.path-steps li small{display:block;font-size:11px;color:var(--slate-3);font-weight:500}
+.path-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--line-2);font-size:12.5px;color:var(--slate-2)}
+.stage-rail{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px}
+.stage{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 14px 16px;position:relative;box-shadow:var(--shadow-sm)}
+.stage .n{font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--red)}
+.stage h4{font-size:13px;letter-spacing:.06em;margin-top:6px}
+.stage p{font-size:12px;color:var(--slate-2);line-height:1.55;margin:8px 0 0}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-size:12px;font-weight:700;padding:7px 12px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--navy)}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip .i{opacity:.55;margin-right:6px;font-weight:800}
+.cap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}
+.cap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.cap b{display:block;font-size:22px;letter-spacing:-.03em;color:var(--navy)}
+.cap span{display:block;font-size:12.5px;font-weight:800;color:var(--navy);margin-top:4px}
+.cap p{font-size:12px;color:var(--slate-2);line-height:1.55;margin:8px 0 0}
+.cap.sep{border-style:dashed;background:var(--bg)}
+.list-rows{display:flex;flex-direction:column}
+.list-rows .r{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-2);font-size:13px}
+.list-rows .r:last-child{border-bottom:0}
+.list-rows .r b{color:var(--navy);display:block}
+.list-rows .r small{color:var(--slate-3);font-size:11.5px;display:block;margin-top:2px;line-height:1.5}
+.support-form{max-width:640px;margin:36px auto 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:var(--shadow-sm)}
+.support-form .cases{margin-top:16px;font-size:12.5px;color:var(--slate-2)}
+.field textarea{resize:vertical;min-height:100px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--slate-2);line-height:1.55;margin:10px 0}
+.check input{margin-top:3px;flex:0 0 auto;accent-color:var(--red);width:16px;height:16px}
+.co-line{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:13px}
+.co-line s{color:var(--slate-3);font-size:11.5px;margin-right:6px}
+.co-error{display:none;margin-top:12px;padding:11px 14px;border-radius:9px;background:var(--stop-bg);color:var(--stop);font-size:13px;font-weight:600}
+.co-error.on{display:block}
+.coupon-row{display:flex;gap:8px}
+.coupon-row input{flex:1}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:1080px){.stage-rail{grid-template-columns:repeat(3,1fr)}.cap-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:720px){.stage-rail{grid-template-columns:1fr 1fr}.cap-grid{grid-template-columns:1fr}.path-grid{grid-template-columns:1fr}.nav-actions .home-link{display:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="brand" id="brandHome" href="/academy" aria-label="DigitalBurj Academy home">
+      <svg class="brand-mark" viewBox="0 0 132 84" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#14304E" fill-rule="evenodd" d="M4 6h30c23 0 38 14 38 36s-15 36-38 36H4V6zm19 18v36h9c12 0 19-7 19-18s-7-18-19-18h-9z"/>
+        <path fill="#E30613" fill-rule="evenodd" d="M78 6h22c16 0 26 7 26 18 0 8-4 13-11 16 9 3 15 10 15 20 0 12-10 20-26 20H78V6zm13 13v21h10c6 0 9-4 9-10 0-5-3-10-9-10h-10zm0 30v20h11c7 0 11-4 11-10 0-5-4-10-11-10h-11z"/>
+        <path fill="#FFFFFF" d="M92 28 L96.5 15 L101 28 L101 55 L92 55 Z"/>
+        <rect x="94.4" y="30" width="1.1" height="23" fill="#E30613"/>
+        <rect x="97.5" y="30" width="1.1" height="23" fill="#E30613"/>
+      </svg>
+      <div class="brand-text"><strong>DigitalBurj</strong><span>Academy</span></div>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#bundles" data-scroll="bundles">Bundles</a>
+      <a href="#courses" data-scroll="courses">Courses</a>
+      <a href="#how" data-scroll="how">How it works</a>
+      <a class="opt" href="#assessment" data-scroll="assessment">Credentials</a>
+      <a class="opt" href="#pricing" data-scroll="pricing">Pricing</a>
+      <a href="#support" data-scroll="support">Support</a>
+      <a class="nav-ext" href="/academy/workspace">Workspace</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="role-switcher" id="roleSwitcher">
+        <span class="rs-label">Demo view</span>
+        <button class="role-btn active" data-role="visitor">Visitor</button>
+        <button class="role-btn" data-role="learner">Learner</button>
+        <button class="role-btn" data-role="instructor">Instructor</button>
+        <button class="role-btn" data-role="admin">Admin</button>
+      </div>
+      <button class="cart-btn" id="cartBtn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="badge" id="cartBadge" style="display:none">0</span>
+      </button>
+      <button class="btn btn-primary btn-sm" id="signInBtn">Sign in</button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="container">
+    <a href="#bundles" data-scroll="bundles">Bundles</a>
+    <a href="#courses" data-scroll="courses">Courses</a>
+    <a href="#paths" data-scroll="paths">Learning paths</a>
+    <a href="#how" data-scroll="how">How it works</a>
+    <a href="#assessment" data-scroll="assessment">Credentials</a>
+    <a href="#pricing" data-scroll="pricing">Pricing</a>
+    <a href="#support" data-scroll="support">Support</a>
+    <a href="#faq" data-scroll="faq">FAQ</a>
+    <a href="/academy/workspace">Learner workspace</a>
+    <a href="/">← DigitalBurj home</a>
+    <div style="margin-top:16px">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--slate-3);padding:6px 4px">Demo view (fictional data)</div>
+      <button data-role="visitor">Visitor</button>
+      <button data-role="learner">Learner</button>
+      <button data-role="instructor">Instructor</button>
+      <button data-role="admin">Admin</button>
+    </div>
+  </div>
+</div>
+
+<div class="role-banner" id="roleBanner">
+  <div class="container rb-inner">
+    <div class="rb-tag">
+      <a class="rb-home" href="/">← DigitalBurj</a>
+      <span class="rb-pill" id="rolePill">Visitor</span>
+      <span id="roleMessage">Browsing the public catalogue. Paid content unlocks only from an active entitlement.</span>
+    </div>
+    <div class="rb-text" id="roleStats">0 courses owned · 0 bundles</div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- VISITOR / LEARNER / INSTRUCTOR / ADMIN — all share the catalogue -->
+<section class="hero" id="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <p class="eyebrow">DigitalBurj Academy</p>
+    <h1 class="h-display">Learn it. <span class="hl">Apply it.</span> Prove it.</h1>
+    <p class="hero-lede">Capability built through real missions, human feedback, and assessed evidence. Bundles from <strong style="color:var(--navy)">$3 to $50</strong> — one-time purchase, lifetime access.</p>
+    <p class="hero-line">Content consumption is never the primary proof of skill.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#bundles" data-scroll="bundles">Browse bundles <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="#courses" data-scroll="courses">See all courses</a>
+      <a class="btn btn-ghost" href="/academy/workspace">Explore the learner workspace</a>
+    </div>
+    <div class="hero-meta">
+      <span>45 programmes</span>
+      <span>5 assessment layers</span>
+      <span>Independent verification</span>
+      <span>Lifetime access</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- BUNDLES -->
+<section class="sec" id="bundles">
+  <div class="container">
+
+    <!-- My Learning strip (visible to learner/instructor/admin when they own things) -->
+    <div class="my-learning role-view" data-role-view="owned">
+      <div class="ml-inner">
+        <div class="ml-text">
+          <h3>Your library</h3>
+          <p>Everything you own or have requested, in one place. Preview access is marked and lives on this device only.</p>
+        </div>
+        <div class="ml-stats">
+          <div class="ml-stat"><b id="mlCourses">0</b><span>Courses</span></div>
+          <div class="ml-stat"><b id="mlBundles">0</b><span>Bundles</span></div>
+          <div class="ml-stat"><b id="mlSpent">$0</b><span>Paid</span></div>
+          <div class="ml-stat"><b id="mlEvidence">0</b><span>Requests</span></div>
+        </div>
+        <div>
+          <button class="btn btn-ghost" id="openMyLibrary">Open library →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Course bundles</p>
+      <h2 class="h-section">Buy a bundle. Save up to 70%.</h2>
+      <p class="lede">Every bundle is a one-time purchase with lifetime access. Prices from $3 to $50. Role-based access applies — instructors and admins see review queues.</p>
+    </div>
+
+    <div class="filter-bar reveal d1" style="margin-top:36px">
+      <div class="filter-tabs" id="bundleTabs">
+        <button class="filter-tab active" data-filter="all">All bundles</button>
+        <button class="filter-tab" data-filter="starter">Starter</button>
+        <button class="filter-tab" data-filter="technology">Technology</button>
+        <button class="filter-tab" data-filter="professional">Professional</button>
+        <button class="filter-tab" data-filter="career">Career</button>
+        <button class="filter-tab" data-filter="complete">Complete</button>
+      </div>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="search" id="bundleSearch" placeholder="Search bundles and courses…">
+      </div>
+    </div>
+
+    <div class="bundle-grid" id="bundleGrid"></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- INDIVIDUAL COURSES -->
+<section class="sec" id="courses">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Individual courses</p>
+      <h2 class="h-section">Buy only what you need.</h2>
+      <p class="lede">Every course is a standalone product with its own price. Bundles are cheaper per course — but you can start small.</p>
+    </div>
+    <div class="course-grid" id="courseGrid" style="margin-top:44px"></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- INSTRUCTOR VIEW -->
+<section class="sec role-view" data-role-view="instructor">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Instructor workspace</p>
+      <h2 class="h-section">Review queue &amp; cohort</h2>
+      <p class="lede">Instructors see submissions from the courses and bundles they are assigned to, apply the published rubric, and give criterion-specific feedback.</p>
+      <p class="disclaimer"><b>Demo data.</b> Learners, submissions and figures on this view are fictional. Demo roles hold no production privileges and never unlock paid content.</p>
+    </div>
+
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="as-label">Open reviews</div><div class="as-value">7</div><div class="as-delta">2 awaiting resubmission</div></div>
+      <div class="admin-stat"><div class="as-label">Cohort size</div><div class="as-value">38</div><div class="as-delta">+9 this month</div></div>
+      <div class="admin-stat"><div class="as-label">Avg turnaround</div><div class="as-value">1.8d</div><div class="as-delta">Target 2.0d</div></div>
+      <div class="admin-stat"><div class="as-label">Rubric agreement</div><div class="as-value">89%</div><div class="as-delta">Calibrated</div></div>
+    </div>
+
+    <div class="instructor-grid" id="instructorReviews"></div>
+  </div>
+</section>
+
+<!-- ADMIN VIEW -->
+<section class="sec role-view" data-role-view="admin">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Admin console</p>
+      <h2 class="h-section">Catalogue, learners, revenue</h2>
+      <p class="lede">Full platform view — programme status, entitlement grants, revenue, verification queue and role management.</p>
+      <p class="disclaimer"><b>Demo data.</b> Every figure on this view is fictional. Real entitlements are granted by the team from confirmed payments; the Demo Admin cannot grant, revoke or unlock anything.</p>
+    </div>
+
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="as-label">Active learners</div><div class="as-value">142</div><div class="as-delta">↑ 38 this month</div></div>
+      <div class="admin-stat"><div class="as-label">Revenue (30d)</div><div class="as-value">$4,820</div><div class="as-delta">↑ 22% MoM</div></div>
+      <div class="admin-stat"><div class="as-label">Live programmes</div><div class="as-value">10</div><div class="as-delta">2 in pilot</div></div>
+      <div class="admin-stat"><div class="as-label">Verification queue</div><div class="as-value">3</div><div class="as-delta">Conflict-checked</div></div>
+    </div>
+
+    <div class="grid g-2" style="margin-top:24px">
+      <div class="card card-pad" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px">
+        <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin:0 0 14px">Bundle performance</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead>
+            <tr style="text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-3);font-weight:800">
+              <th style="padding:8px 0;border-bottom:1px solid var(--line-2)">Bundle</th>
+              <th style="padding:8px 0;border-bottom:1px solid var(--line-2);text-align:right">Price</th>
+              <th style="padding:8px 0;border-bottom:1px solid var(--line-2);text-align:right">Sales</th>
+              <th style="padding:8px 0;border-bottom:1px solid var(--line-2);text-align:right">Revenue</th>
+            </tr>
+          </thead>
+          <tbody id="adminBundleTable"></tbody>
+        </table>
+      </div>
+      <div class="card card-pad" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px">
+        <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin:0 0 14px">Role permissions</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line-2)"><span><b style="color:var(--navy)">Visitor</b></span><span style="color:var(--slate-2);font-size:12px">Browse only</span></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line-2)"><span><b style="color:var(--navy)">Learner</b></span><span style="color:var(--slate-2);font-size:12px">Owned courses only</span></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line-2)"><span><b style="color:var(--navy)">Instructor</b></span><span style="color:var(--slate-2);font-size:12px">Assigned cohort reviews</span></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0"><span><b style="color:var(--navy)">Admin</b></span><span style="color:var(--slate-2);font-size:12px">Full platform access</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+
+<hr class="divider" />
+
+<!-- LEARNING PATHS -->
+<section class="sec" id="paths">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Learning paths</p>
+      <h2 class="h-section">Routes, prerequisites and what unlocks next.</h2>
+      <p class="lede">Each path connects programmes in order. Take the diagnostic and we recommend a first step from your experience, goal, weekly time and target market.</p>
+      <div class="btn-row" style="justify-content:center"><button class="btn btn-primary" id="openDiagnostic">Take the diagnostic <span class="arrow">→</span></button></div>
+    </div>
+    <div class="path-grid" id="pathGrid"></div>
+    <div class="disclaimer"><b>Foundation bypass rule.</b> A valid foundation bypass may skip introductory content, but it can never skip assessment, evidence, verification, safety or regulatory content. International Workplace Readiness and the Advanced Professional pathways are separate products and are not included in these bundles.</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- HOW LEARNING WORKS -->
+<section class="sec" id="how">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">How learning works</p>
+      <h2 class="h-section">Every mission runs the same 12 stages.</h2>
+      <p class="lede">Diagnostic, missions, stages, assessment, evidence and progression. Every mission states its scenario, task type, constraints, deliverables, evidence, definition of done, effort, tools, failure cases, rubric, checkpoints and next action.</p>
+    </div>
+    <div class="stage-rail" id="stageRail"></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ASSESSMENT & CREDENTIALS -->
+<section class="sec" id="assessment">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Assessment &amp; credentials</p>
+      <h2 class="h-section">Learning, assessment and verification are separate claims.</h2>
+      <p class="lede">Completing learning does not by itself establish independent verification, production delivery, employment, licensing, accreditation or workplace experience.</p>
+    </div>
+
+    <div class="card-box" style="margin-top:36px">
+      <h3>Submission lifecycle</h3>
+      <div class="chip-row" id="lifecycleChips"></div>
+      <p>Learners submit and revise; reviewers evaluate assigned work; verifiers decide independently within scope; admins govern configuration. Reviewers cannot verify their own approvals, and verifiers cannot verify work they reviewed, approved, coached or have a declared relationship with.</p>
+    </div>
+
+    <div class="cap-grid" id="capGrid"></div>
+
+    <div class="grid g-2" style="margin-top:16px">
+      <div class="card-box">
+        <h3>Four records that stay visibly separate</h3>
+        <div class="list-rows" style="margin-top:10px">
+          <div class="r"><div><b>Completion Record</b><small>You finished the learning activity.</small></div></div>
+          <div class="r"><div><b>Assessed Submission</b><small>A reviewer scored your work against the published rubric.</small></div></div>
+          <div class="r"><div><b>Independently Verified Capability</b><small>A different qualified person verified the evidence, with a conflict check.</small></div></div>
+          <div class="r"><div><b>Actual Workplace Experience</b><small>Real delivery in a real workplace — never created by a course.</small></div></div>
+        </div>
+      </div>
+      <div class="card-box">
+        <h3>DB-22 Assessment Centre <span class="pill warn" style="margin-left:6px">Setup required</span></h3>
+        <p>Not attendance-based. Readiness and prerequisites → assessment contract → constrained build or demo window → injected incidents → live defence → evidence pack, evaluator notes, approval → independent verification → audit log, appeals → Capability Record.</p>
+        <p>Scheduling, constrained environments, incident injection, evaluator workflows, secure evidence storage and appeals are configured per cohort before the challenge opens.</p>
+      </div>
+    </div>
+
+    <div class="grid g-3" style="margin-top:16px">
+      <div class="card-box"><h3>Attempt history &amp; failure passport</h3><p>Submissions, revisions, feedback, corrections, timestamps and rubric results are kept. The Failure Passport records useful failures, causes, corrections and lessons — never as a negative employment claim.</p></div>
+      <div class="card-box"><h3>Appeals</h3><p>A defined appeal route for reviews, verification, evidence and records, with review ownership, status, decision and audit trail.</p></div>
+      <div class="card-box"><h3>Consent &amp; talent profile</h3><p>Evidence is private by default. The optional Talent Profile is shared only with your explicit consent and only for the stated purpose.</p></div>
+    </div>
+    <div class="disclaimer"><b>Not a promise of employment or accreditation.</b> Participation does not automatically provide employment, a visa, a licence, accreditation, regulatory approval, professional-authority recognition, job matching, workplace experience or a guaranteed outcome.</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- TOOLS & LABS -->
+<section class="sec" id="labs">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Tool library &amp; simulation labs</p>
+      <h2 class="h-section">Practise with real tools and fictional data.</h2>
+      <p class="lede">A tool is marked Configured only after its permitted use, URL, entitlement, privacy handling and test path are confirmed. Labs use fictional data and are never access to live customer, employer, government, banking, healthcare or production systems.</p>
+    </div>
+    <div class="grid g-2" style="margin-top:36px">
+      <div class="card-box"><h3>Dedicated tool library</h3><div class="list-rows" id="toolRows" style="margin-top:10px"></div></div>
+      <div class="card-box"><h3>Simulation labs</h3><div class="list-rows" id="labRows" style="margin-top:10px"></div>
+        <p style="margin-top:14px">Every lab requires a maturity level, scenario, task queue, fictional records, templates, exceptions, escalation, rubric, evidence pack, reset action, jurisdiction warning, owner and review date.</p></div>
+    </div>
+    <div class="btn-row" style="justify-content:center"><a class="btn btn-ghost" href="/academy/workspace#toolbench">Open the demo Tool Bench →</a></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PRICING & ACCESS -->
+<section class="sec" id="pricing">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Pricing &amp; access</p>
+      <h2 class="h-section">Paid access is separate from signing in.</h2>
+      <p class="lede">Signing in, registering, previewing or using a demo role never unlocks paid content. Access follows an active entitlement created from a confirmed payment. Only Live products are purchasable.</p>
+    </div>
+    <div class="grid g-2" style="margin-top:36px">
+      <div class="card-box"><h3>Access states</h3><div class="list-rows" style="margin-top:10px">
+        <div class="r"><div><b>Preview</b><small>Public or free content only.</small></div><span class="pill neutral">Free</span></div>
+        <div class="r"><div><b>Payment required</b><small>No active paid entitlement exists.</small></div><span class="pill warn">Locked</span></div>
+        <div class="r"><div><b>Checkout ready</b><small>Product and payable amount are prepared for confirmation.</small></div><span class="pill cool">Ready</span></div>
+        <div class="r"><div><b>Payment pending / failed</b><small>Outcome unresolved or unsuccessful — access is never granted.</small></div><span class="pill warn">Pending</span></div>
+        <div class="r"><div><b>Active · Expired · Refunded · Suspended</b><small>Entitlement is active, ended, refunded or administratively paused.</small></div><span class="pill ok">Entitlement</span></div>
+        <div class="r"><div><b>Setup required</b><small>A production service is not yet configured.</small></div><span class="pill stop">Setup</span></div>
+      </div></div>
+      <div class="card-box"><h3>What you get, what you pay</h3><div class="list-rows" style="margin-top:10px">
+        <div class="r"><div><b>One-time purchase, lifetime access</b><small>No subscription. Courses from $3, bundles from $3 to $50.</small></div></div>
+        <div class="r"><div><b>Upgrade credit</b><small>Owning a course then buying a bundle that includes it: you pay the difference.</small></div></div>
+        <div class="r"><div><b>Promotion code</b><small>Enter it at checkout. It applies only to Live products, needs your explicit confirmation and can be used once per product.</small></div></div>
+        <div class="r"><div><b>Refunds</b><small>Within 14 days, provided no assessment has been submitted.</small></div></div>
+        <div class="r"><div><b>Taxes &amp; fees</b><small>Currency, taxes and fees are shown before you confirm.</small></div></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary btn-sm" data-scroll="bundles">Browse bundles</button><button class="btn btn-ghost btn-sm" id="pricingCart">Open cart</button></div></div>
+    </div>
+    <div class="disclaimer"><b>Payment status.</b> Online card payment is not switched on yet. Checkout submits an enrolment request to the Academy team, who confirm payment steps and grant access by email. The site never shows a payment as successful until it is.</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SUPPORT -->
+<section class="sec" id="support">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Support</p>
+      <h2 class="h-section">Get help — including accessibility and appeals.</h2>
+      <p class="lede">Categories: Account, Payment, Course, Assessment, Technical, Refund, Accessibility and Appeal. Ticket states: Submitted → In Progress → Waiting for Learner → Resolved → Closed.</p>
+    </div>
+    <form class="support-form" id="supportForm" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="sp-name">Name</label><input id="sp-name" type="text" autocomplete="name" /><span class="err">Please enter your name.</span></div>
+        <div class="field"><label for="sp-email">Email</label><input id="sp-email" type="email" autocomplete="email" /><span class="err">Please enter a valid email.</span></div>
+      </div>
+      <div class="field"><label for="sp-topic">Category</label><select id="sp-topic"></select></div>
+      <div class="field"><label for="sp-msg">How can we help?</label><textarea id="sp-msg" placeholder="Describe the issue. Never include passwords or API keys."></textarea><span class="err">Please add a short description (10+ characters).</span></div>
+      <input type="text" id="sp-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
+      <button class="btn btn-primary" type="submit" id="sp-submit">Submit case</button>
+      <div class="cases" id="supportCases" aria-live="polite"></div>
+    </form>
+    <div class="grid g-3" style="margin-top:36px">
+      <div class="card-box"><h3>Accessibility</h3><p>Keyboard Enter and Space controls, visible focus, labelled fields, meaningful structure, status announcements and accessible errors across supported screen sizes.</p></div>
+      <div class="card-box"><h3>Privacy</h3><p>Consent, private-by-default evidence, controlled sharing, retention rules and no silent data deletion.</p></div>
+      <div class="card-box"><h3>Security</h3><p>No passwords or API keys in the browser, role separation, least privilege and audit trails. Access is enforced by the server, not by hiding the interface.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FEATURES -->
+<section class="sec" id="features">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Why DigitalBurj Academy</p>
+      <h2 class="h-section">Built for proof, not seats.</h2>
+      <p class="lede">Most platforms measure attendance. We measure what you can demonstrably do — with evidence you own.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature reveal">
+        <div class="f-icon">12</div>
+        <h3>12-stage mission lifecycle</h3>
+        <p>BRIEF → LEARN → INVESTIGATE → TRY → BUILD → BREAK → FIX → TEST → EXPLAIN → DEFEND → SHIP → EVIDENCE. Every mission follows the same spine.</p>
+      </div>
+      <div class="feature reveal d1">
+        <div class="f-icon">5</div>
+        <h3>Five layers of proof</h3>
+        <p>Knowledge check, practical mission, project assessment, human review, independent verification. Each layer is a separate record.</p>
+      </div>
+      <div class="feature reveal d2">
+        <div class="f-icon">✓</div>
+        <h3>Evidence you own</h3>
+        <p>Original artifacts, versions, review notes, outcome mapping, provenance and consent-controlled visibility. Private until you opt in.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="f-icon">$</div>
+        <h3>One-time purchase, lifetime access</h3>
+        <p>No subscription. Bundles from $3 to $50. Individual courses from $3. Own what you buy.</p>
+      </div>
+      <div class="feature reveal d1">
+        <div class="f-icon">◐</div>
+        <h3>Human review, not AI grading</h3>
+        <p>Every assessment is reviewed by a qualified human against a published rubric. AI may coach; it never issues a credential.</p>
+      </div>
+      <div class="feature reveal d2">
+        <div class="f-icon">⚙</div>
+        <h3>Role-based access</h3>
+        <p>Learners see what they own. Instructors see their cohort. Admins see the platform. Access is server-enforced, not hidden in the UI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ROLES -->
+<section class="sec" id="roles">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Role-based access</p>
+      <h2 class="h-section">Four roles. One platform.</h2>
+      <p class="lede">Use the Demo view switch in the header to preview each role. Previewing a role never changes what you own — purchases and entitlements determine what a learner can open.</p>
+    </div>
+    <div class="grid g-4" style="margin-top:44px">
+      <div class="reveal" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer" data-role-card="visitor">
+        <span class="pill neutral">Visitor</span>
+        <h3 style="font-size:16px;margin-top:12px;letter-spacing:-.015em">Browse the catalogue</h3>
+        <p style="font-size:13px;color:var(--slate-2);line-height:1.6;margin-top:8px">See every bundle and course. Content stays locked until you purchase or sign in.</p>
+      </div>
+      <div class="reveal d1" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer" data-role-card="learner">
+        <span class="pill cool">Learner</span>
+        <h3 style="font-size:16px;margin-top:12px;letter-spacing:-.015em">Your owned content</h3>
+        <p style="font-size:13px;color:var(--slate-2);line-height:1.6;margin-top:8px">Unlocked courses, missions, evidence vault, credentials and support. Locked items show a lock.</p>
+      </div>
+      <div class="reveal d2" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer" data-role-card="instructor">
+        <span class="pill warn">Instructor</span>
+        <h3 style="font-size:16px;margin-top:12px;letter-spacing:-.015em">Review &amp; cohort</h3>
+        <p style="font-size:13px;color:var(--slate-2);line-height:1.6;margin-top:8px">Assigned submissions, rubrics, cohort progress, announcements and live sessions.</p>
+      </div>
+      <div class="reveal d3" style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer" data-role-card="admin">
+        <span class="pill purple">Admin</span>
+        <h3 style="font-size:16px;margin-top:12px;letter-spacing:-.015em">Full platform</h3>
+        <p style="font-size:13px;color:var(--slate-2);line-height:1.6;margin-top:8px">Catalogue, learners, entitlements, revenue, verification queue, roles and settings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">FAQ</p>
+      <h2 class="h-section">Questions we get asked.</h2>
+    </div>
+    <div class="faq reveal d1" style="margin-top:44px">
+      <details><summary>How much do bundles cost? <span class="plus"></span></summary><div class="faq-body"><p>Bundles range from <strong>$3</strong> (Starter Pack) to <strong>$50</strong> (Complete Academy). Individual courses are also available from $3. Every purchase is one-time with lifetime access.</p></div></details>
+      <details><summary>What does "purchase-based usage" mean? <span class="plus"></span></summary><div class="faq-body"><p>You only see the content you have purchased. Buy a bundle and every course inside it unlocks for your account. Buy a single course and only that course unlocks. There is no subscription and no recurring charge.</p></div></details>
+      <details><summary>Can I upgrade from a course to a bundle? <span class="plus"></span></summary><div class="faq-body"><p>Yes. When you own a course and later buy a bundle that includes it, you are charged the bundle price minus the value of the course you already own. The upgrade is calculated at checkout.</p></div></details>
+      <details><summary>Who reviews my work? <span class="plus"></span></summary><div class="faq-body"><p>A qualified human assessor assigned to your mission. Independent verification is a separate step by a different qualified person with a declared conflict check. AI may assist with coaching but never issues a credential.</p></div></details>
+      <details><summary>Can my employer see my learning? <span class="plus"></span></summary><div class="faq-body"><p>Not by default. Employer views are tenant-scoped and only show aggregate progress and the evidence you have explicitly consented to share. Private attempts and failures stay private.</p></div></details>
+      <details><summary>What if I fail a mission? <span class="plus"></span></summary><div class="faq-body"><p>Failed attempts lead to targeted remediation and a new variant. Unlimited retries of the same answer do not establish transfer. A pass normally requires all critical safety criteria, at least "independent-in-scenario" on required outcomes, a valid artifact and an explain/defend response.</p></div></details>
+      <details><summary>Is there a refund policy? <span class="plus"></span></summary><div class="faq-body"><p>Yes. Bundles and courses are refundable within 14 days provided no assessment has been submitted. Once a mission submission has been assessed, the entitlement is consumed. Refund terms are published at checkout.</p></div></details>
+      <details><summary>How do roles work? <span class="plus"></span></summary><div class="faq-body"><p>Visitors browse. Learners see what they own. Instructors see their assigned cohort and review queue. Admins see the full platform. Role access is enforced server-side, not hidden in the UI.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final-cta">
+  <div class="container reveal">
+    <p class="pre">A skill you cannot demonstrate is a skill you cannot claim.</p>
+    <h2 class="h-display" style="max-width:16ch;margin-inline:auto">Learn it. Apply it. Prove it.</h2>
+    <p style="color:rgba(255,255,255,.72);font-size:15px;margin:22px auto 0;max-width:52ch;line-height:1.65">Start with the $3 Starter Pack. Upgrade to a bundle whenever you're ready — you only pay the difference.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#bundles" data-scroll="bundles">Browse bundles <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="#courses" data-scroll="courses">Browse courses</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/academy">
+          <svg class="brand-mark" viewBox="0 0 132 84" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="#14304E" fill-rule="evenodd" d="M4 6h30c23 0 38 14 38 36s-15 36-38 36H4V6zm19 18v36h9c12 0 19-7 19-18s-7-18-19-18h-9z"/>
+            <path fill="#E30613" fill-rule="evenodd" d="M78 6h22c16 0 26 7 26 18 0 8-4 13-11 16 9 3 15 10 15 20 0 12-10 20-26 20H78V6zm13 13v21h10c6 0 9-4 9-10 0-5-3-10-9-10h-10zm0 30v20h11c7 0 11-4 11-10 0-5-4-10-11-10h-11z"/>
+            <path fill="#FFFFFF" d="M92 28 L96.5 15 L101 28 L101 55 L92 55 Z"/>
+            <rect x="94.4" y="30" width="1.1" height="23" fill="#E30613"/>
+            <rect x="97.5" y="30" width="1.1" height="23" fill="#E30613"/>
+          </svg>
+          <div class="brand-text"><strong>DigitalBurj</strong><span>Academy</span></div>
+        </a>
+        <p>Capability built through real missions, human feedback, and assessed evidence. Bundles from $3 to $50.</p>
+      </div>
+      <div class="foot-col"><h4>Academy</h4><ul><li><a href="#bundles" data-scroll="bundles">Bundles</a></li><li><a href="#courses" data-scroll="courses">Courses</a></li><li><a href="#paths" data-scroll="paths">Learning paths</a></li><li><a href="#how" data-scroll="how">How it works</a></li><li><a href="#assessment" data-scroll="assessment">Credentials</a></li><li><a href="#pricing" data-scroll="pricing">Pricing &amp; access</a></li><li><a href="/academy/workspace">Learner workspace</a></li></ul></div>
+      <div class="foot-col"><h4>DigitalBurj</h4><ul><li><a href="/">Home</a></li><li><a href="/business-os">Business OS</a></li><li><a href="/talent">Verified Talent</a></li><li><a href="/jobs">Jobs</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot-col"><h4>Account</h4><ul><li><a id="openLibraryFooter" href="#bundles">My library</a></li><li><a id="footSignIn" href="#">Sign in</a></li><li><a href="#support" data-scroll="support">Support</a></li><li><a href="#faq" data-scroll="faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> DigitalBurj Academy. A division of DigitalBurj.</span>
+      <div style="display:flex;gap:20px"><a href="#" data-notice="Privacy" style="color:var(--slate-3);text-decoration:none;font-weight:500">Privacy</a><a href="#" data-notice="Terms" style="color:var(--slate-3);text-decoration:none;font-weight:500">Terms</a><a href="#" data-notice="Security" style="color:var(--slate-3);text-decoration:none;font-weight:500">Security</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal" id="modalBox">
+    <div class="modal-head">
+      <div>
+        <p style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 8px" id="modalKicker"></p>
+        <h3 id="modalTitle"></h3>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
+
+<noscript><div style="padding:16px;text-align:center;background:#fff3e0;color:#7a4a00;font-size:14px">The Academy catalogue and checkout need JavaScript. You can still reach us at <a href="mailto:support@digitalburj.com">support@digitalburj.com</a>.</div></noscript>
+<script src="/academy-shared.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+  /* ============================================================
+     COURSES (master record)
+     ============================================================ */
+  var COURSES = DBA.COURSES, BUNDLES = DBA.BUNDLES;
+
+  /* ============================================================
+     STATE
+     ============================================================ */
+  var STORE_KEY = 'db-academy-store-v1';
+  var STATE = loadState();
+  function loadState(){
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) return migrate(JSON.parse(raw));
+    } catch(e){}
+    return migrate({
+      role:'visitor',
+      signedIn:false,
+      name:'Guest',
+      entitlements:[], // array of bundle ids and course ids
+      cart:[],
+      purchases:[],
+      bundleFilter:'all',
+      search:''
+    });
+  }
+  function migrate(st){
+    st.email = st.email || ''; st.orders = st.orders || []; st.redeemed = st.redeemed || []; st.previewOnly = st.previewOnly || [];
+    st.waitlist = st.waitlist || []; st.supportRefs = st.supportRefs || []; st.diagnostic = st.diagnostic || null;
+    st.entitlements = st.entitlements || []; st.cart = st.cart || []; st.purchases = st.purchases || [];
+    return st;
+  }
+  function saveState(){ try { localStorage.setItem(STORE_KEY, JSON.stringify(STATE)); } catch(e){} }
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  function ownsCourse(courseId){
+    if (STATE.entitlements.indexOf(courseId) > -1) return true;
+    // check if owned via a bundle
+    for (var i = 0; i < STATE.entitlements.length; i++){
+      var b = BUNDLES.filter(function(x){ return x.id === STATE.entitlements[i]; })[0];
+      if (b && b.includes.indexOf(courseId) > -1) return true;
+    }
+    return false;
+  }
+  function ownsBundle(bundleId){
+    return STATE.entitlements.indexOf(bundleId) > -1;
+  }
+  function courseValue(courseId){
+    var c = COURSES.filter(function(x){ return x.id === courseId; })[0];
+    return c ? c.price : 0;
+  }
+  function bundleValue(bundle){ return bundle.price; }
+  function computeUpgrade(bundle){
+    // if learner already owns some courses in bundle, discount their value
+    var ownedValue = 0;
+    bundle.includes.forEach(function(cid){
+      if (paidCourseIds().indexOf(cid) > -1) ownedValue += courseValue(cid);
+    });
+    var adjusted = Math.max(0, bundle.price - ownedValue);
+    return { original: bundle.price, adjusted: adjusted, discount: ownedValue };
+  }
+  function money(n){ return '$' + (Math.round(n * 100) / 100).toFixed(n % 1 === 0 ? 0 : 2); }
+
+  /* ============================================================
+     TOAST
+     ============================================================ */
+  var toastTimer = null;
+  function toast(msg, ok){
+    var t = $('#toast'); $('#toastMsg').textContent = msg;
+    t.classList.toggle('ok', !!ok);
+    t.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('on'); }, 3200);
+  }
+
+  /* ============================================================
+     MODAL
+     ============================================================ */
+  var mBg = $('#modalBg'), mT = $('#modalTitle'), mK = $('#modalKicker'), mB = $('#modalBody');
+  function openModal(kicker, title, html, wide){
+    mK.textContent = kicker; mT.textContent = title; mB.innerHTML = html;
+    $('#modalBox').classList.toggle('modal-wide', !!wide);
+    mBg.classList.add('open'); mBg.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ $('#modalClose').focus(); }, 60);
+  }
+  function closeModal(){
+    mBg.classList.remove('open'); mBg.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  $('#modalClose').addEventListener('click', closeModal);
+  mBg.addEventListener('click', function(e){ if (e.target === mBg) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeModal(); closeMobile(); } });
+
+  /* ============================================================
+     HEADER / MOBILE
+     ============================================================ */
+  var burger = $('#burger'), mobileNav = $('#mobileNav');
+  function closeMobile(){ burger.setAttribute('aria-expanded','false'); mobileNav.classList.remove('open'); document.body.classList.remove('menu-open'); }
+  burger.addEventListener('click', function(){
+    var open = burger.getAttribute('aria-expanded') === 'true';
+    if (open) closeMobile();
+    else { burger.setAttribute('aria-expanded','true'); mobileNav.classList.add('open'); document.body.classList.add('menu-open'); }
+  });
+
+  $$('[data-scroll]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById(a.dataset.scroll);
+      if (target){ closeMobile(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+
+  /* ============================================================
+     ROLE SWITCHING
+     ============================================================ */
+  var ROLE_INFO = {
+    visitor: { pill:'Visitor', message:'Browsing the public catalogue. Paid content unlocks only from an active entitlement.' },
+    learner: { pill:'Learner', message:'Demo Learner preview. Only content you own is unlocked.' },
+    instructor: { pill:'Instructor', message:'Demo Instructor preview. Fictional review queue and cohort below.' },
+    admin: { pill:'Admin', message:'Demo Admin preview. Fictional data — nothing is granted or unlocked.' }
+  };
+  function setRole(role, silent){
+    STATE.role = role;
+    saveState();
+    $$('.role-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.role === role); });
+    $('#rolePill').textContent = ROLE_INFO[role].pill;
+    $('#roleMessage').textContent = ROLE_INFO[role].message;
+    // role views
+    $$('[data-role-view]').forEach(function(v){
+      var active = false;
+      if (v.dataset.roleView === role) active = true;
+      if (v.dataset.roleView === 'owned' && (role === 'learner' || role === 'instructor' || role === 'admin') && STATE.entitlements.length > 0) active = true;
+      v.classList.toggle('active', active);
+    });
+    renderAll();
+    if (!silent) toast('Viewing as ' + ROLE_INFO[role].pill + '.');
+  }
+  $$('.role-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setRole(b.dataset.role); });
+  });
+  $$('#mobileNav [data-role]').forEach(function(b){
+    b.addEventListener('click', function(){ setRole(b.dataset.role); closeMobile(); });
+  });
+  $$('[data-role-card]').forEach(function(c){
+    c.addEventListener('click', function(){ setRole(c.dataset.roleCard); document.getElementById('bundles').scrollIntoView({behavior:'smooth'}); });
+  });
+
+  /* ============================================================
+     RENDER — BUNDLES
+     ============================================================ */
+  var bundleGrid = $('#bundleGrid');
+  function bundleMatchesFilter(b, f){
+    if (f === 'all') return true;
+    if (f === 'starter') return b.category === 'starter';
+    return b.category === f;
+  }
+  function renderBundles(){
+    bundleGrid.innerHTML = '';
+    var f = STATE.bundleFilter;
+    var q = STATE.search.toLowerCase();
+    var list = BUNDLES.filter(function(b){
+      if (!bundleMatchesFilter(b, f)) return false;
+      if (!q) return true;
+      return (b.name + ' ' + b.tagline + ' ' + b.desc + ' ' + b.includes.join(' ')).toLowerCase().indexOf(q) > -1;
+    });
+    if (!list.length){
+      bundleGrid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No bundles match</h3><p>Try a different filter or search term.</p></div>';
+      return;
+    }
+    list.forEach(function(b, i){
+      var owned = ownsBundle(b.id);
+      var card = el('article', 'bundle-card reveal ' + b.theme + (b.featured ? ' featured' : ''));
+      if (i < 3) card.classList.add('in');
+      else { card.classList.add('d' + (i % 3)); }
+      card.innerHTML =
+        '<div class="bundle-visual"><div class="bv-icon">' + esc(b.name.slice(0,1)) + '</div></div>' +
+        '<div class="bundle-body">' +
+          '<div class="bundle-meta"><span>' + esc(b.tagline) + '</span>' + (owned ? '<span class="pill ' + (STATE.previewOnly.indexOf(b.id) > -1 ? 'warn' : 'ok') + '">' + (STATE.previewOnly.indexOf(b.id) > -1 ? 'Preview' : 'Owned') + '</span>' : (DBA.bundleStatus(b) === 'live' ? '<span class="pill neutral">' + b.includes.length + ' courses</span>' : '<span class="pill warn">Opens soon</span>')) + '</div>' +
+          '<h3>' + esc(b.name) + '</h3>' +
+          '<p class="bundle-desc">' + esc(b.desc) + '</p>' +
+          '<div class="bundle-includes">' +
+            '<div class="bi-label">Includes</div>' +
+            '<ul>' + b.includes.slice(0,5).map(function(cid){
+              var c = COURSES.filter(function(x){ return x.id === cid; })[0];
+              return '<li>' + esc(c ? c.title : cid) + '</li>';
+            }).join('') +
+            (b.includes.length > 5 ? '<li>+ ' + (b.includes.length - 5) + ' more courses</li>' : '') +
+            '</ul>' +
+          '</div>' +
+        '</div>' +
+        '<div class="bundle-foot">' +
+          '<div class="bundle-price">' +
+            '<span class="bp-now">' + money(b.price) + '</span>' +
+            (b.savings ? '<span class="bp-old">' + esc(b.savings) + '</span>' : '<span class="bp-old">one-time purchase</span>') +
+            '<span class="bp-save">' + (owned ? 'Unlocked' : 'Lifetime access') + '</span>' +
+          '</div>' +
+          '<div class="bundle-actions">' +
+            '<button class="btn btn-ghost btn-sm" data-view-bundle="' + esc(b.id) + '">Details</button>' +
+            (owned
+              ? '<button class="btn btn-navy btn-sm" data-open-bundle="' + esc(b.id) + '">Open →</button>'
+              : (DBA.bundleStatus(b) === 'live'
+                  ? '<button class="btn btn-primary btn-sm" data-buy-bundle="' + esc(b.id) + '">Buy now</button>'
+                  : '<button class="btn btn-ghost btn-sm" data-waitlist="' + esc(b.id) + '">Join waitlist</button>')) +
+          '</div>' +
+        '</div>';
+      bundleGrid.appendChild(card);
+    });
+    // wire
+    $$('[data-view-bundle]').forEach(function(b){ b.addEventListener('click', function(){ openBundleModal(b.dataset.viewBundle); }); });
+    $$('[data-buy-bundle]').forEach(function(b){ b.addEventListener('click', function(){ addToCart(b.dataset.buyBundle); }); });
+    $$('#bundleGrid [data-waitlist]').forEach(function(b){ b.addEventListener('click', function(){ openWaitlist(b.dataset.waitlist); }); });
+    $$('[data-open-bundle]').forEach(function(b){ b.addEventListener('click', function(){ openBundleContent(b.dataset.openBundle); }); });
+    observeReveals(bundleGrid);
+  }
+
+  function openBundleModal(bundleId){
+    var b = BUNDLES.filter(function(x){ return x.id === bundleId; })[0];
+    if (!b) return;
+    var up = computeUpgrade(b);
+    var owned = ownsBundle(b.id);
+    var coursesHtml = b.includes.map(function(cid){
+      var c = COURSES.filter(function(x){ return x.id === cid; })[0];
+      if (!c) return '';
+      var owned2 = ownsCourse(cid);
+      return '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-2)">' +
+        '<div><div style="font-size:13px;font-weight:700;color:var(--navy)">' + esc(c.title) + '</div>' +
+        '<div style="font-size:11px;color:var(--slate-3);margin-top:2px">' + esc(c.id) + ' · ' + esc(c.level) + ' · ' + c.hours + ' hrs</div></div>' +
+        '<div style="display:flex;gap:8px;align-items:center">' + (owned2 ? '<span class="pill ok">Owned</span>' : '<span style="font-size:13px;font-weight:800;color:var(--navy)">' + money(c.price) + '</span>') + '</div>' +
+      '</div>';
+    }).join('');
+    var totalIndividual = b.includes.reduce(function(s, cid){ return s + courseValue(cid); }, 0);
+    var html =
+      '<p>' + esc(b.desc) + '</p>' +
+      '<div style="display:flex;gap:14px;margin-top:18px;flex-wrap:wrap">' +
+        '<div style="flex:1;min-width:140px;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:14px">' +
+          '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:6px">Bundle price</div>' +
+          '<div style="font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.03em">' + money(up.adjusted) + '</div>' +
+          (up.discount > 0 ? '<div style="font-size:11px;font-weight:700;color:var(--ok);margin-top:4px">' + money(up.discount) + ' credit applied</div>' : '') +
+        '</div>' +
+        '<div style="flex:1;min-width:140px;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:14px">' +
+          '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:6px">Individual total</div>' +
+          '<div style="font-size:26px;font-weight:800;color:var(--slate-3);letter-spacing:-.03em;text-decoration:line-through">' + money(totalIndividual) + '</div>' +
+          '<div style="font-size:11px;font-weight:700;color:var(--ok);margin-top:4px">Save ' + money(totalIndividual - up.adjusted) + '</div>' +
+        '</div>' +
+        '<div style="flex:1;min-width:140px;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:14px">' +
+          '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:6px">Access</div>' +
+          '<div style="font-size:15px;font-weight:800;color:var(--navy)">Lifetime</div>' +
+          '<div style="font-size:11px;color:var(--slate-3);margin-top:4px">One-time purchase</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="margin-top:20px">' +
+        '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:8px">' + b.includes.length + ' courses included</div>' +
+        coursesHtml +
+      '</div>' +
+      '<p class="modal-note">' + (DBA.bundleStatus(b) === 'live' ? 'A confirmed purchase grants a scoped Academy entitlement.' : 'Some courses in this bundle are not Live yet, so it cannot be purchased. Only Live products are purchasable.') + ' It does not imply employment, accreditation, or workplace experience.</p>' +
+      '<div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">' +
+        (owned
+          ? '<button class="btn btn-navy" id="mbOpen">Open in library →</button>'
+          : (DBA.bundleStatus(b) === 'live'
+              ? '<button class="btn btn-primary" id="mbBuy">Buy for ' + money(up.adjusted) + '</button>' +
+                '<button class="btn btn-ghost" id="mbAdd">Add to cart</button>'
+              : '<button class="btn btn-primary" id="mbWait">Join the waitlist</button>')) +
+        '<button class="btn btn-ghost" id="mbClose">Close</button>' +
+      '</div>';
+    openModal('Bundle', b.name, html, true);
+    var mbBuy = $('#mbBuy'); if (mbBuy) mbBuy.addEventListener('click', function(){ closeModal(); startCheckout(b.id); });
+    var mbAdd = $('#mbAdd'); if (mbAdd) mbAdd.addEventListener('click', function(){ closeModal(); addToCart(b.id); });
+    var mbWait = $('#mbWait'); if (mbWait) mbWait.addEventListener('click', function(){ openWaitlist(b.id); });
+    var mbOpen = $('#mbOpen'); if (mbOpen) mbOpen.addEventListener('click', function(){ closeModal(); openBundleContent(b.id); });
+    $('#mbClose').addEventListener('click', closeModal);
+  }
+
+  function openBundleContent(bundleId){
+    var b = BUNDLES.filter(function(x){ return x.id === bundleId; })[0];
+    if (!b) return;
+    if (!ownsBundle(b.id)){
+      toast('You do not own this bundle yet.');
+      return;
+    }
+    var coursesHtml = b.includes.map(function(cid){
+      var c = COURSES.filter(function(x){ return x.id === cid; })[0];
+      if (!c) return '';
+      return '<div style="padding:14px;background:#fff;border:1px solid var(--line);border-radius:11px;margin-bottom:8px">' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">' +
+          '<div><div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)">' + esc(c.id) + '</div>' +
+          '<div style="font-size:14px;font-weight:800;color:var(--navy);margin-top:4px">' + esc(c.title) + '</div>' +
+          '<div style="font-size:12px;color:var(--slate-2);margin-top:6px;line-height:1.55">' + esc(c.desc) + '</div></div>' +
+          '<button class="btn btn-primary btn-sm" data-start-course="' + esc(c.id) + '">Start</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    openModal('Your bundle', b.name,
+      '<p>' + (STATE.previewOnly.indexOf(b.id) > -1 ? 'Preview access on this device — real access is granted by the team after verification.' : 'You own this bundle. Every course is unlocked.') + '</p>' +
+      '<div style="margin-top:18px">' + coursesHtml + '</div>' +
+      '<p class="modal-note">Each course opens its 12-stage mission workspace with hints and an evidence tray. The workspace shown here is a demo with fictional data.</p>' +
+      '<div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-ghost" id="bcClose">Close</button></div>');
+    $('#bcClose').addEventListener('click', closeModal);
+    $$('[data-start-course]').forEach(function(b2){
+      b2.addEventListener('click', function(){ location.href = '/academy/workspace#curriculum'; });
+    });
+  }
+
+  /* ============================================================
+     RENDER — COURSES
+     ============================================================ */
+  function renderCourses(){
+    var grid = $('#courseGrid'); grid.innerHTML = '';
+    var q = STATE.search.toLowerCase();
+    var list = COURSES.filter(function(c){
+      if (!q) return true;
+      return (c.title + ' ' + c.desc + ' ' + c.id).toLowerCase().indexOf(q) > -1;
+    });
+    if (!list.length){
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No courses match</h3><p>Try a different search term.</p></div>';
+      return;
+    }
+    list.forEach(function(c){
+      var owned = ownsCourse(c.id);
+      var card = el('article', 'course-card' + (owned ? ' owned' : ' locked'));
+      card.innerHTML =
+        '<div class="course-code">' + esc(c.id) + ' · ' + esc(c.pillar) + '</div>' +
+        '<h4>' + esc(c.title) + '</h4>' +
+        '<div class="cc-meta">' + esc(c.level) + ' · ' + c.hours + ' hrs · ' + esc(c.status === 'live' ? 'Live' : c.status === 'pilot' ? 'Pilot' : 'Planned') + '</div>' +
+        '<div class="cc-desc">' + esc(c.desc) + '</div>' +
+        '<div class="cc-foot">' +
+          '<div class="cc-price">' + money(c.price) + '</div>' +
+          (owned
+            ? '<button class="btn btn-navy btn-sm" data-open-course="' + esc(c.id) + '">Open</button>'
+            : (c.status === 'live'
+                ? '<button class="btn btn-primary btn-sm" data-buy-course="' + esc(c.id) + '">Buy</button>'
+                : '<button class="btn btn-ghost btn-sm" data-waitlist="' + esc(c.id) + '">Join waitlist</button>')) +
+        '</div>';
+      grid.appendChild(card);
+    });
+    $$('[data-buy-course]').forEach(function(b){ b.addEventListener('click', function(){ addToCart(b.dataset.buyCourse); }); });
+    $$('#courseGrid [data-waitlist]').forEach(function(b){ b.addEventListener('click', function(){ openWaitlist(b.dataset.waitlist); }); });
+    $$('[data-open-course]').forEach(function(b){ b.addEventListener('click', function(){ location.href = '/academy/workspace#curriculum'; }); });
+  }
+
+  /* ============================================================
+     CART / CHECKOUT
+     ============================================================ */
+  function addToCart(itemId){
+    if (STATE.cart.indexOf(itemId) > -1){ toast('Already in your cart.'); return; }
+    if (ownsBundle(itemId) || ownsCourse(itemId)){ toast('You already own this.'); return; }
+    if (!DBA.isLive(itemId)){ openWaitlist(itemId); return; }
+    STATE.cart.push(itemId);
+    saveState();
+    updateCartBadge();
+    openCart();
+  }
+  function removeFromCart(itemId){
+    var i = STATE.cart.indexOf(itemId);
+    if (i > -1){ STATE.cart.splice(i, 1); saveState(); updateCartBadge(); openCart(); }
+  }
+  function updateCartBadge(){
+    var b = $('#cartBadge');
+    if (STATE.cart.length === 0){ b.style.display = 'none'; }
+    else { b.style.display = 'flex'; b.textContent = STATE.cart.length; }
+  }
+  function itemInfo(id){
+    var b = BUNDLES.filter(function(x){ return x.id === id; })[0];
+    if (b) return { type:'bundle', title:b.name, sub:b.includes.length + ' courses', price:computeUpgrade(b).adjusted, originalPrice:b.price };
+    var c = COURSES.filter(function(x){ return x.id === id; })[0];
+    if (c) return { type:'course', title:c.title, sub:c.id + ' · ' + c.level, price:c.price, originalPrice:c.price };
+    return null;
+  }
+  function cartTotal(){
+    return STATE.cart.reduce(function(sum, id){
+      var info = itemInfo(id);
+      return sum + (info ? info.price : 0);
+    }, 0);
+  }
+  function openCart(){
+    if (STATE.cart.length === 0){
+      openModal('Cart', 'Your cart is empty',
+        '<p>Browse bundles and courses to add items.</p>' +
+        '<div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-primary" id="cartBrowse">Browse bundles</button><button class="btn btn-ghost" id="cartCloseEmpty">Close</button></div>');
+      $('#cartBrowse').addEventListener('click', function(){ closeModal(); document.getElementById('bundles').scrollIntoView({behavior:'smooth'}); });
+      $('#cartCloseEmpty').addEventListener('click', closeModal);
+      return;
+    }
+    var itemsHtml = STATE.cart.map(function(id){
+      var info = itemInfo(id);
+      if (!info) return '';
+      var discount = info.originalPrice - info.price;
+      return '<div class="cart-item">' +
+        '<div class="ci-left"><div class="ci-title">' + esc(info.title) + '</div>' +
+        '<div class="ci-sub">' + esc(info.sub) + (discount > 0 ? ' · <span style="color:var(--ok);font-weight:700">' + money(discount) + ' credit</span>' : '') + '</div></div>' +
+        '<div class="ci-price">' + money(info.price) + '</div>' +
+        '<button class="ci-remove" data-remove="' + esc(id) + '">✕</button>' +
+      '</div>';
+    }).join('');
+    var total = cartTotal();
+    var count = STATE.cart.length;
+    var html =
+      '<div class="cart-items">' + itemsHtml + '</div>' +
+      '<div class="cart-total"><span class="ct-label">Total (' + count + ' item' + (count === 1 ? '' : 's') + ')</span><span class="ct-amount">' + money(total) + '</span></div>' +
+      '<div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">' +
+        '<button class="btn btn-primary" id="checkoutBtn">Checkout →</button>' +
+        '<button class="btn btn-ghost" id="cartContinue">Continue browsing</button>' +
+      '</div>' +
+      '<p class="modal-note">One-time purchase, lifetime access. Access is granted only after payment is confirmed.</p>';
+    openModal('Cart', 'Your cart', html, true);
+    $$('[data-remove]').forEach(function(b){
+      b.addEventListener('click', function(){ removeFromCart(b.dataset.remove); });
+    });
+    $('#checkoutBtn').addEventListener('click', function(){ closeModal(); startCheckout(); });
+    $('#cartContinue').addEventListener('click', function(){ closeModal(); document.getElementById('bundles').scrollIntoView({behavior:'smooth'}); });
+  }
+  $('#cartBtn').addEventListener('click', openCart);
+
+  function paidCourseIds(){
+    var out = [];
+    STATE.entitlements.forEach(function(id){
+      if (STATE.previewOnly.indexOf(id) > -1) return;
+      if (COURSES.filter(function(c){ return c.id === id; }).length) out.push(id);
+    });
+    return out;
+  }
+  function fieldErr(sel, bad){
+    var w = $(sel).closest('.field'); if (!w) return;
+    w.classList.toggle('has-error', !!bad);
+  }
+  function grantPreview(lines){
+    lines.forEach(function(l){
+      if (STATE.entitlements.indexOf(l.id) === -1) STATE.entitlements.push(l.id);
+      if (STATE.previewOnly.indexOf(l.id) === -1) STATE.previewOnly.push(l.id);
+      if (STATE.redeemed.indexOf(l.id) === -1) STATE.redeemed.push(l.id);
+    });
+  }
+  function startCheckout(singleItemId){
+    var all = singleItemId ? [singleItemId] : STATE.cart.slice();
+    if (!all.length){ toast('Your cart is empty.'); return; }
+    var items = all.filter(function(id){ return DBA.isLive(id); });
+    var notLive = all.filter(function(id){ return !DBA.isLive(id); });
+    if (!items.length){ openWaitlist(notLive[0]); return; }
+    var q = null, code = '', busy = false;
+    var html =
+      '<div id="coSummary" style="background:var(--bg);border:1px solid var(--line-2);border-radius:11px;padding:6px 16px 14px;margin-bottom:16px" aria-live="polite"></div>' +
+      '<div class="field"><label for="co-coupon">Promotion code (optional)</label><div class="coupon-row"><input id="co-coupon" type="text" autocomplete="off" placeholder="Enter code" /><button class="btn btn-ghost btn-sm" id="coApply" type="button">Apply</button></div><span class="hint" id="coCouponMsg" style="display:block;font-size:12px;margin-top:6px;color:var(--slate-3)"></span></div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label for="co-name">Full name</label><input id="co-name" type="text" autocomplete="name" value="' + esc(STATE.name !== 'Guest' ? STATE.name : '') + '" /><span class="err">Please enter your name.</span></div>' +
+        '<div class="field"><label for="co-email">Email</label><input id="co-email" type="email" autocomplete="email" value="' + esc(STATE.email || '') + '" /><span class="err">Please enter a valid email.</span></div>' +
+      '</div>' +
+      '<div class="field"><label for="co-country">Country / region (optional)</label><input id="co-country" type="text" autocomplete="country-name" /></div>' +
+      '<label class="check"><input type="checkbox" id="co-consent" /><span>I accept the access, privacy and refund terms (14 days, if no assessment has been submitted). I understand participation is not a promise of employment or accreditation.</span></label>' +
+      '<label class="check" id="co-zero-wrap" style="display:none"><input type="checkbox" id="co-zero" /><span><b>Confirm zero-payable enrolment.</b> I understand no payment is taken and the team verifies the promotion before granting real access.</span></label>' +
+      '<label class="check"><input type="checkbox" id="co-mkt" /><span>Send me Academy news (optional).</span></label>' +
+      '<div class="co-error" id="coError" role="alert"></div>' +
+      '<p class="modal-note" id="coNote"></p>' +
+      '<div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap"><button class="btn btn-primary" id="payBtn" type="button" disabled>Loading…</button><button class="btn btn-ghost" id="coCancel" type="button">Cancel</button></div>';
+    openModal('Checkout', 'Confirm your enrolment', html, true);
+
+    function draw(){
+      var lines = q.lines.map(function(l){
+        var shown = l.payable;
+        return '<div class="co-line"><span><b style="color:var(--navy)">' + esc(l.title) + '</b><br><span style="font-size:11px;color:var(--slate-3)">' + esc(l.type === 'bundle' ? 'Bundle' : l.id) +
+          (l.credit > 0 ? ' · <span style="color:var(--ok);font-weight:700">' + money(l.credit) + ' upgrade credit</span>' : '') + '</span></span><span style="font-weight:800;color:var(--navy);white-space:nowrap">' +
+          ((l.credit > 0 || l.discount > 0) ? '<s>' + money(l.list) + '</s>' : '') + money(shown) + '</span></div>';
+      }).join('');
+      var extra = notLive.length ? '<p style="font-size:12px;color:var(--warn);margin:10px 0 0">' + notLive.length + ' item' + (notLive.length === 1 ? ' is' : 's are') + ' not Live yet and ' + (notLive.length === 1 ? 'was' : 'were') + ' left out — join the waitlist from the catalogue.</p>' : '';
+      $('#coSummary').innerHTML = lines +
+        (q.discount > 0 ? '<div class="co-line"><span style="color:var(--ok);font-weight:700">Promotion ' + esc(q.coupon.code) + '</span><span style="color:var(--ok);font-weight:800">−' + money(q.discount) + '</span></div>' : '') +
+        '<div style="display:flex;justify-content:space-between;padding-top:12px;font-size:15px;font-weight:800;color:var(--navy)"><span>Total payable (' + esc(q.currency) + ')</span><span>' + money(q.total) + '</span></div>' + extra;
+      var msg = $('#coCouponMsg');
+      msg.textContent = q.coupon.message || '';
+      msg.style.color = q.coupon.state === 'applied' ? 'var(--ok)' : (q.coupon.state === 'none' ? 'var(--slate-3)' : 'var(--stop)');
+      var free = q.total === 0 && q.lines.length > 0;
+      $('#co-zero-wrap').style.display = free ? 'flex' : 'none';
+      var pay = $('#payBtn');
+      pay.disabled = busy || !q.lines.length;
+      pay.textContent = free ? 'Confirm free enrolment' : 'Submit enrolment request — ' + money(q.total);
+      $('#coNote').textContent = free
+        ? 'No payment is taken. Your request is sent to the Academy team, who verify the promotion and grant real access. A preview is unlocked on this device only.'
+        : 'Online card payment is not live yet. Submitting sends an enrolment request; we email payment steps and grant access only after payment is confirmed. Nothing is unlocked by submitting.';
+    }
+    function refresh(){
+      var payload = { items: items, owned: paidCourseIds(), coupon: code };
+      DBA.api('quote', payload).then(function(r){
+        q = (r.ok && r.data && r.data.quote) ? r.data.quote : DBA.quote(items, code, payload.owned);
+        var used = q.coupon.state === 'applied' ? q.lines.filter(function(l){ return STATE.redeemed.indexOf(l.id) > -1; }) : [];
+        if (used.length){ q = DBA.quote(items, '', payload.owned); q.coupon = { code: '', state: 'used', message: 'Promotion already used on this device for: ' + used.map(function(l){ return l.title; }).join(', ') + '.' }; }
+        draw();
+      });
+    }
+    $('#coApply').addEventListener('click', function(){ code = $('#co-coupon').value.trim(); refresh(); });
+    $('#co-coupon').addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); code = $('#co-coupon').value.trim(); refresh(); } });
+    $('#coCancel').addEventListener('click', closeModal);
+    $('#payBtn').addEventListener('click', function(){
+      if (busy || !q) return;
+      var name = $('#co-name').value.trim(), email = $('#co-email').value.trim();
+      var free = q.total === 0 && q.lines.length > 0;
+      var bad = false;
+      fieldErr('#co-name', name.length < 2); bad = bad || name.length < 2;
+      var badMail = !/^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/.test(email);
+      fieldErr('#co-email', badMail); bad = bad || badMail;
+      var err = $('#coError'); err.classList.remove('on');
+      if (bad) return;
+      if (!$('#co-consent').checked){ err.textContent = 'Please accept the access, privacy and refund terms to continue.'; err.classList.add('on'); return; }
+      if (free && !$('#co-zero').checked){ err.textContent = 'Please confirm the zero-payable enrolment.'; err.classList.add('on'); return; }
+      busy = true; draw();
+      $('#payBtn').textContent = 'Submitting…';
+      var lineIds = q.lines.map(function(l){ return l.id; });
+      DBA.api('enroll', { name: name, email: email, country: $('#co-country').value.trim(), consent: true, marketing: $('#co-mkt').checked, items: lineIds, owned: paidCourseIds(), coupon: q.coupon.state === 'applied' ? code : '', confirmZero: free && $('#co-zero').checked, source: location.pathname })
+        .then(function(r){
+          busy = false;
+          if (r.ok && r.data && r.data.ok) { finishOrder(r.data.reference, r.data.status, r.data.quote || q, true, name, email); return; }
+          var unreachable = r.status === 0 || r.status === 404 || r.status === 503;
+          if (unreachable && free){ finishOrder('LOCAL-' + Date.now().toString(36).toUpperCase().slice(-6), 'Local preview only — not submitted to the team', q, false, name, email); return; }
+          draw();
+          err.textContent = unreachable ? 'The enrolment desk is not reachable right now. Please try again shortly or contact support.' : ((r.data && r.data.error) || 'Something went wrong. Please try again.');
+          err.classList.add('on');
+        });
+    });
+    refresh();
+  }
+  function finishOrder(reference, status, q, submitted, name, email){
+    var free = q.total === 0 && q.lines.length > 0;
+    STATE.name = (STATE.name === 'Guest') ? name : STATE.name;
+    STATE.email = STATE.email || email;
+    STATE.orders.unshift({ ref: reference, date: new Date().toISOString().slice(0, 10), items: q.lines.map(function(l){ return l.title; }), total: q.total, status: status, submitted: submitted, preview: free });
+    var ids = q.lines.map(function(l){ return l.id; });
+    STATE.cart = STATE.cart.filter(function(id){ return ids.indexOf(id) === -1; });
+    if (free){ grantPreview(q.lines); if (STATE.role === 'visitor') STATE.role = 'learner'; }
+    saveState(); updateCartBadge(); setRole(STATE.role, true);
+    var html =
+      '<div class="success-box"><div class="sb-icon">' + (free ? '✓' : '✉') + '</div>' +
+      '<h3>' + (free ? 'Enrolment confirmed for preview' : 'Request received') + '</h3>' +
+      '<p>' + (free
+        ? (submitted ? 'Your request is with the Academy team, who verify the promotion and grant real access by email.' : 'The enrolment desk was unreachable, so this is recorded on this device only. Contact support to complete enrolment.')
+        : 'Online payment is not live yet. We will email payment steps; access is granted only after payment is confirmed.') + '</p>' +
+      '<div style="margin-top:16px;background:var(--bg);border:1px solid var(--line-2);border-radius:11px;padding:14px 16px;text-align:left">' +
+        '<div class="co-line"><span>Reference</span><b>' + esc(reference) + '</b></div>' +
+        '<div class="co-line"><span>Status</span><b>' + esc(status) + '</b></div>' +
+        q.lines.map(function(l){ return '<div class="co-line"><span>' + esc(l.title) + '</span><span class="pill ' + (free ? 'warn' : 'neutral') + '">' + (free ? 'Preview' : 'Not unlocked') + '</span></div>'; }).join('') +
+        '<div class="co-line" style="border-bottom:0"><span>Total payable</span><b>' + money(q.total) + '</b></div></div>' +
+      '<p class="modal-note" style="text-align:left">' + (free ? 'Preview access exists on this device only. It is not a payment and not a verified entitlement.' : 'Nothing has been charged or unlocked. This request is not a payment confirmation.') + '</p>' +
+      '<div style="display:flex;gap:8px;margin-top:20px;justify-content:center;flex-wrap:wrap">' +
+        (free ? '<a class="btn btn-primary" href="/academy/workspace">Open learner workspace</a>' : '') +
+        '<button class="btn ' + (free ? 'btn-ghost' : 'btn-primary') + '" id="afterBuyOpen">Open library</button><button class="btn btn-ghost" id="afterBuyBrowse">Keep browsing</button></div></div>';
+    openModal('Enrolment', free ? 'Preview unlocked' : 'Request submitted', html, true);
+    $('#afterBuyOpen').addEventListener('click', function(){ closeModal(); openMyLibrary(); });
+    $('#afterBuyBrowse').addEventListener('click', closeModal);
+  }
+
+  /* ============================================================
+     MY LIBRARY
+     ============================================================ */
+  function openMyLibrary(){
+    if (STATE.entitlements.length === 0 && STATE.orders.length === 0){
+      openModal('Library', 'Your library is empty',
+        '<p>You do not own any courses or bundles yet. Start with the $3 Starter Pack.</p>' +
+        '<div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-primary" id="libBrowse">Browse bundles</button></div>');
+      $('#libBrowse').addEventListener('click', function(){ closeModal(); document.getElementById('bundles').scrollIntoView({behavior:'smooth'}); });
+      return;
+    }
+    var ownedBundles = STATE.entitlements.filter(function(id){ return BUNDLES.filter(function(b){ return b.id === id; }).length > 0; });
+    var ownedCourses = STATE.entitlements.filter(function(id){ return COURSES.filter(function(c){ return c.id === id; }).length > 0; });
+    var ordersHtml = STATE.orders.length ? '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin:18px 0 10px">Orders &amp; requests</div>' + STATE.orders.slice(0, 6).map(function(o){
+      return '<div style="padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:11px;margin-bottom:8px;font-size:12.5px"><div style="display:flex;justify-content:space-between;gap:10px"><b style="color:var(--navy)">' + esc(o.ref) + '</b><span style="color:var(--slate-3)">' + esc(o.date) + '</span></div><div style="color:var(--slate-2);margin-top:4px">' + esc(o.items.join(', ')) + ' · ' + money(o.total) + '</div><div style="margin-top:6px"><span class="pill ' + (o.preview ? 'warn' : 'neutral') + '">' + esc(o.status) + '</span></div></div>'; }).join('') : '';
+    var bundleHtml = ownedBundles.map(function(bid){
+      var b = BUNDLES.filter(function(x){ return x.id === bid; })[0];
+      return '<div style="padding:14px;background:#fff;border:1px solid var(--line);border-radius:11px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px">' +
+        '<div><div style="font-size:13.5px;font-weight:800;color:var(--navy)">' + esc(b.name) + '</div>' +
+        '<div style="font-size:11.5px;color:var(--slate-3);margin-top:3px">' + b.includes.length + ' courses · ' + money(b.price) + ' · lifetime</div></div>' +
+        '<button class="btn btn-navy btn-sm" data-lib-open-bundle="' + esc(b.id) + '">Open</button>' +
+      '</div>';
+    }).join('');
+    var courseHtml = ownedCourses.map(function(cid){
+      var c = COURSES.filter(function(x){ return x.id === cid; })[0];
+      return '<div style="padding:14px;background:#fff;border:1px solid var(--line);border-radius:11px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px">' +
+        '<div><div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)">' + esc(c.id) + '</div>' +
+        '<div style="font-size:13.5px;font-weight:800;color:var(--navy);margin-top:4px">' + esc(c.title) + '</div>' +
+        '<div style="font-size:11.5px;color:var(--slate-3);margin-top:3px">' + esc(c.level) + ' · ' + c.hours + ' hrs</div></div>' +
+        '<button class="btn btn-navy btn-sm" data-lib-open-course="' + esc(c.id) + '">Start</button>' +
+      '</div>';
+    }).join('');
+    var totalSpent = STATE.purchases.reduce(function(s, p){ return s + p.price; }, 0);
+    var html =
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">' +
+        '<div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--line-2);border-radius:11px;padding:14px">' +
+          '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:6px">Bundles</div>' +
+          '<div style="font-size:22px;font-weight:800;color:var(--navy)">' + ownedBundles.length + '</div>' +
+        '</div>' +
+        '<div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--line-2);border-radius:11px;padding:14px">' +
+          '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:6px">Courses</div>' +
+          '<div style="font-size:22px;font-weight:800;color:var(--navy)">' + ownedCourses.length + '</div>' +
+        '</div>' +
+        '<div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--line-2);border-radius:11px;padding:14px">' +
+          '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:6px">Paid</div>' +
+          '<div style="font-size:22px;font-weight:800;color:var(--navy)">' + money(totalSpent) + '</div>' +
+        '</div>' +
+      '</div>' +
+      (bundleHtml ? '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:10px">Your bundles</div>' + bundleHtml : '') +
+      (courseHtml ? '<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin:18px 0 10px">Your courses</div>' + courseHtml : '') +
+      ordersHtml +
+      '<p class="modal-note">Items marked Preview are unlocked on this device only and are not a payment or a verified entitlement. Refunds within 14 days are available if no assessment has been submitted.</p>' +
+      '<div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-ghost" id="libClose">Close</button></div>';
+    openModal('Your library', 'Owned content', html, true);
+    $('#libClose').addEventListener('click', closeModal);
+    $$('[data-lib-open-bundle]').forEach(function(b){ b.addEventListener('click', function(){ closeModal(); openBundleContent(b.dataset.libOpenBundle); }); });
+    $$('[data-lib-open-course]').forEach(function(b){ b.addEventListener('click', function(){ location.href = '/academy/workspace#curriculum'; }); });
+  }
+  $('#openMyLibrary').addEventListener('click', openMyLibrary);
+  $('#openLibraryFooter').addEventListener('click', openMyLibrary);
+
+  /* ============================================================
+     INSTRUCTOR / ADMIN RENDER
+     ============================================================ */
+  function renderInstructorReviews(){
+    var host = $('#instructorReviews');
+    if (!host) return;
+    var reviews = [
+      { learner:'Layla Ibrahim', course:'DB-03', mission:'Repair a client booking flow', status:'Revision Requested', statusCls:'warn', submitted:'22 Sep 2026', snippet:'Two accessibility issues: pending state flashes on keyboard nav; focus management after error.' },
+      { learner:'Omar Al Farsi', course:'DB-04', mission:'Design an API contract', status:'In Review', statusCls:'cool', submitted:'23 Sep 2026', snippet:'Resource model is correct. Authorization matrix incomplete for one role.' },
+      { learner:'Priya Sharma', course:'DB-02', mission:'Accessibility audit', status:'Submitted', statusCls:'cool', submitted:'24 Sep 2026', snippet:'Awaiting first review. Findings list looks thorough.' },
+      { learner:'Daniel Okafor', course:'DB-05', mission:'AI-native feature build', status:'In Review', statusCls:'cool', submitted:'24 Sep 2026', snippet:'AI-use log is detailed. Diff spot-check pending.' },
+      { learner:'Mona Khalifa', course:'PC-AD01', mission:'Executive day simulation', status:'Approved', statusCls:'ok', submitted:'18 Sep 2026', snippet:'Corrected access and decision log are both strong.' }
+    ];
+    host.innerHTML = '';
+    reviews.forEach(function(r){
+      var card = el('div', 'review-card');
+      var pillClass = r.statusCls === 'warn' ? 'warn' : r.statusCls === 'ok' ? 'ok' : 'cool';
+      card.innerHTML =
+        '<div class="rc-head">' +
+          '<div><h4>' + esc(r.learner) + ' · ' + esc(r.course) + '</h4>' +
+          '<div class="rc-sub">' + esc(r.mission) + ' · Submitted ' + esc(r.submitted) + '</div></div>' +
+          '<span class="pill ' + pillClass + '">' + esc(r.status) + '</span>' +
+        '</div>' +
+        '<p>' + esc(r.snippet) + '</p>' +
+        '<div class="rc-actions">' +
+          '<button class="btn btn-primary btn-sm" data-review-open="' + esc(r.learner + ' — ' + r.mission) + '">Open rubric</button>' +
+          '<button class="btn btn-ghost btn-sm" data-demo-revision="1">Request revision</button>' +
+        '</div>';
+      host.appendChild(card);
+    });
+    $$('[data-demo-revision]').forEach(function(b){ b.addEventListener('click', function(){ toast('Demo action — nothing was sent to a learner.'); }); });
+    $$('[data-review-open]').forEach(function(b){
+      b.addEventListener('click', function(){
+        openModal('Assessor review', b.dataset.reviewOpen,
+          '<p>Demo only: the live reviewer workbench opens the rubric with criterion-specific scoring, artifact viewer, revision history and feedback composer.</p>' +
+          '<p class="modal-note">Reviewer conflict checks are enforced server-side. A verifier cannot verify work they coached or assessed.</p>');
+      });
+    });
+  }
+  function renderAdminBundleTable(){
+    var t = $('#adminBundleTable');
+    if (!t) return;
+    t.innerHTML = '';
+    var sales = { 'b-starter':42, 'b-web':18, 'b-ai':26, 'b-fullstack':11, 'b-office':9, 'b-logistics':6, 'b-complete':3 };
+    BUNDLES.forEach(function(b){
+      var s = sales[b.id] || 0;
+      var rev = s * b.price;
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td style="padding:10px 0;border-bottom:1px solid var(--line-2);font-weight:700;color:var(--navy)">' + esc(b.name) + '</td>' +
+        '<td style="padding:10px 0;border-bottom:1px solid var(--line-2);text-align:right;color:var(--slate)">' + money(b.price) + '</td>' +
+        '<td style="padding:10px 0;border-bottom:1px solid var(--line-2);text-align:right;color:var(--slate)">' + s + '</td>' +
+        '<td style="padding:10px 0;border-bottom:1px solid var(--line-2);text-align:right;font-weight:800;color:var(--navy)">' + money(rev) + '</td>';
+      t.appendChild(tr);
+    });
+  }
+
+  /* ============================================================
+     REVEAL
+     ============================================================ */
+  function observeReveals(root){
+    var nodes = $$('.reveal', root || document).filter(function(n){ return !n.classList.contains('in'); });
+    if (!('IntersectionObserver' in window)) { nodes.forEach(function(n){ n.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+    nodes.forEach(function(n){ io.observe(n); });
+  }
+  observeReveals();
+
+  /* ============================================================
+     ROLE STATS / BANNER
+     ============================================================ */
+  function renderRoleStats(){
+    var ownedCourses = 0, ownedBundles = 0;
+    STATE.entitlements.forEach(function(id){
+      if (COURSES.filter(function(c){ return c.id === id; }).length) ownedCourses++;
+      if (BUNDLES.filter(function(b){ return b.id === id; }).length) ownedBundles++;
+      var b = BUNDLES.filter(function(x){ return x.id === id; })[0];
+      if (b) ownedCourses += b.includes.length;
+    });
+    var totalSpent = STATE.purchases.reduce(function(s, p){ return s + p.price; }, 0);
+    $('#roleStats').textContent = ownedCourses + ' course' + (ownedCourses === 1 ? '' : 's') + ' owned · ' + ownedBundles + ' bundle' + (ownedBundles === 1 ? '' : 's') + ' · ' + money(totalSpent) + ' paid';
+    // library strip
+    $('#mlCourses').textContent = ownedCourses;
+    $('#mlBundles').textContent = ownedBundles;
+    $('#mlSpent').textContent = money(totalSpent);
+    $('#mlEvidence').textContent = STATE.orders.length;
+  }
+
+  /* ============================================================
+     FILTERS & SEARCH
+     ============================================================ */
+  $$('#bundleTabs .filter-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      $$('#bundleTabs .filter-tab').forEach(function(x){ x.classList.remove('active'); });
+      tab.classList.add('active');
+      STATE.bundleFilter = tab.dataset.filter;
+      saveState();
+      renderBundles();
+    });
+  });
+  var searchInput = $('#bundleSearch');
+  var searchTimer = null;
+  searchInput.addEventListener('input', function(e){
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function(){
+      STATE.search = e.target.value;
+      saveState();
+      renderBundles();
+      renderCourses();
+    }, 180);
+  });
+
+  /* ============================================================
+     SIGN IN
+     ============================================================ */
+  function openSignIn(){
+    if (STATE.signedIn){
+      STATE.signedIn = false; STATE.name = 'Guest'; saveState();
+      $('#signInBtn').textContent = 'Sign in';
+      toast('Signed out of the local session.');
+      renderRoleStats();
+      return;
+    }
+    openModal('Account', 'Sign in or register',
+      '<p class="modal-note" style="margin-top:0"><b>Identity service: setup required.</b> Real sign-in (secure sessions, MFA, recovery) is switched on with the Academy identity provider. Until then, a local session only remembers your name on this device. It holds no password, and it never unlocks paid content.</p>' +
+      '<div class="field-row" style="margin-top:16px"><div class="field"><label for="si-name">Name</label><input id="si-name" type="text" autocomplete="name" value="' + esc(STATE.name !== 'Guest' ? STATE.name : '') + '" /><span class="err">Please enter your name.</span></div>' +
+      '<div class="field"><label for="si-email">Email</label><input id="si-email" type="email" autocomplete="email" value="' + esc(STATE.email || '') + '" /><span class="err">Please enter a valid email.</span></div></div>' +
+      '<div class="field-row"><div class="field"><label for="si-country">Country / region</label><input id="si-country" type="text" autocomplete="country-name" /></div>' +
+      '<div class="field"><label for="si-goal">Primary goal</label><select id="si-goal"><option>Digital foundations</option><option>Build websites and software</option><option>Build with AI</option><option>Office or logistics career</option><option>Deliver client products</option></select></div></div>' +
+      '<label class="check"><input type="checkbox" id="si-consent" /><span>I accept the privacy notice (needed only to register for launch updates).</span></label>' +
+      '<label class="check"><input type="checkbox" id="si-mkt" /><span>Send me Academy news (optional).</span></label>' +
+      '<div class="co-error" id="siError" role="alert"></div>' +
+      '<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-primary" id="siLocal">Continue on this device</button><button class="btn btn-ghost" id="siReg">Register for launch updates</button><button class="btn btn-ghost" id="siCancel">Cancel</button></div>' +
+      '<p class="modal-note">Forgot password: available with the identity service. New accounts default to the Learner role and remain separate from demo roles.</p>');
+    function readForm(needMail){
+      var n = $('#si-name').value.trim(), e = $('#si-email').value.trim();
+      var bn = n.length < 2, be = needMail && !/^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/.test(e);
+      fieldErr('#si-name', bn); fieldErr('#si-email', be);
+      return (bn || be) ? null : { name: n, email: e };
+    }
+    $('#siCancel').addEventListener('click', closeModal);
+    $('#siLocal').addEventListener('click', function(){
+      var f = readForm(false); if (!f) return;
+      STATE.signedIn = true; STATE.name = f.name; STATE.email = f.email || STATE.email;
+      if (STATE.role === 'visitor') STATE.role = 'learner';
+      saveState(); setRole(STATE.role, true); closeModal();
+      $('#signInBtn').textContent = 'Sign out';
+      toast('Local session started for ' + f.name + '. No content was unlocked.');
+    });
+    $('#siReg').addEventListener('click', function(){
+      var f = readForm(true); if (!f) return;
+      var er = $('#siError'); er.classList.remove('on');
+      if (!$('#si-consent').checked){ er.textContent = 'Please accept the privacy notice to register.'; er.classList.add('on'); return; }
+      $('#siReg').disabled = true;
+      DBA.api('register', { kind: 'account', name: f.name, email: f.email, country: $('#si-country').value.trim(), goal: $('#si-goal').value, consent: true, marketing: $('#si-mkt').checked, language: (navigator.language || 'en') }).then(function(r){
+        $('#siReg').disabled = false;
+        if (r.ok){ STATE.email = f.email; STATE.name = STATE.name === 'Guest' ? f.name : STATE.name; saveState(); closeModal(); toast('Thanks ' + f.name.split(' ')[0] + ' — we will email you when sign-in opens.', true); }
+        else { er.textContent = (r.status === 503 || r.status === 0 || r.status === 404) ? 'The registration desk is not reachable right now. Please try again shortly.' : ((r.data && r.data.error) || 'Something went wrong.'); er.classList.add('on'); }
+      });
+    });
+  }
+  $('#signInBtn').addEventListener('click', openSignIn);
+  var fsi = $('#footSignIn'); if (fsi) fsi.addEventListener('click', function(e){ e.preventDefault(); openSignIn(); });
+
+  /* ============================================================
+     PATHS / STAGES / ASSESSMENT / TOOLS / LABS (static, data-driven)
+     ============================================================ */
+  var PATHS = [
+    { name: 'Web builder', who: 'New to tech — discovery, design and a first web workflow.', steps: ['DB-00', 'DB-01', 'DB-02', 'DB-03'], bundle: 'b-web', next: 'Unlocks AI-Native Builder' },
+    { name: 'AI-native product builder', who: 'Ship responsibly with AI in the loop, backend included.', steps: ['DB-00', 'DB-01', 'DB-02', 'DB-03', 'DB-04', 'DB-05'], bundle: 'b-ai', next: 'Unlocks Full-Stack Product' },
+    { name: 'Full-stack product delivery', who: 'Discovery to operations and client handoff, then the DB-22 challenge.', steps: ['DB-01', 'DB-02', 'DB-03', 'DB-04', 'DB-05', 'DB-06', 'DB-07', 'DB-08'], bundle: 'b-fullstack', next: 'DB-22 is assessed and verified separately' },
+    { name: 'Office career', who: 'Administration and customer-service roles.', steps: ['DB-00', 'PC-AD01', 'PC-CS01'], bundle: 'b-office', next: 'Opens as pilot courses go Live' },
+    { name: 'Logistics career', who: 'Freight, warehouse and supply-chain operations.', steps: ['DB-00', 'PC-LG01', 'PC-PR01'], bundle: 'b-logistics', next: 'Opens as pilot courses go Live' }
+  ];
+  var TOOLS_PUB = [
+    ['Canva', 'Design and content'], ['OpenCode', 'Software development'], ['Git / GitHub', 'Software development'], ['Figma', 'Design and content'],
+    ['VS Code', 'Software development'], ['ChatGPT or AI assistant', 'AI and automation'], ['Excel / Google Sheets', 'Data and operations'],
+    ['PostgreSQL', 'Data and analytics'], ['Power BI', 'Data and analytics'], ['CRM / ERP / HRM systems', 'Business operations'],
+    ['Email / calendar / document tools', 'Communication'], ['Upload / file storage / evidence tools', 'Evidence']
+  ];
+  var LABS_PUB = ['Virtual Office', 'Accounting', 'Freight Forwarding', 'Real Estate', 'HR', 'Banking Operations', 'Insurance', 'Document Processing', 'Procurement', 'Customer Service'];
+  function statusPillFor(st){
+    return st === 'live' ? '<span class="pill ok">Live</span>' : st === 'pilot' ? '<span class="pill warn">Pilot</span>' : '<span class="pill neutral">Planned</span>';
+  }
+  function renderStatic(){
+    $('#pathGrid').innerHTML = PATHS.map(function(p, i){
+      var b = DBA.bundle(p.bundle), st = DBA.bundleStatus(b);
+      return '<article class="path-card"><div><h3>' + esc(p.name) + '</h3><div class="for">' + esc(p.who) + '</div></div>' +
+        '<ol class="path-steps">' + p.steps.map(function(id){ var c = DBA.course(id); return '<li class="' + esc(c.status) + '"><span>' + esc(c.title) + '<small>' + esc(c.id) + ' · ' + c.hours + ' hrs</small></span>' + statusPillFor(c.status) + '</li>'; }).join('') + '</ol>' +
+        '<div class="path-foot"><span>' + esc(p.next) + '</span><button class="btn ' + (st === 'live' ? 'btn-primary' : 'btn-ghost') + ' btn-sm" data-view-bundle="' + esc(b.id) + '">' + esc(b.name) + ' · ' + money(b.price) + '</button></div></article>';
+    }).join('');
+    $$('#pathGrid [data-view-bundle]').forEach(function(b){ b.addEventListener('click', function(){ openBundleModal(b.dataset.viewBundle); }); });
+    $('#stageRail').innerHTML = DBA.STAGES.map(function(s, i){
+      return '<div class="stage"><div class="n">' + ('0' + (i + 1)).slice(-2) + '</div><h4>' + esc(s[0]) + '</h4><p>' + esc(s[1]) + '</p></div>';
+    }).join('');
+    $('#lifecycleChips').innerHTML = DBA.LIFECYCLE.map(function(s, i){ return '<span class="chip' + (i === DBA.LIFECYCLE.length - 1 ? ' on' : '') + '"><span class="i">' + (i + 1) + '</span>' + esc(s) + '</span>'; }).join('');
+    $('#capGrid').innerHTML = DBA.CAPABILITY.map(function(c, i){ return '<div class="cap' + (i > 2 ? ' sep' : '') + '"><b>' + esc(c[0]) + '</b><span>' + esc(c[1]) + '</span><p>' + esc(c[2]) + '</p></div>'; }).join('');
+    $('#toolRows').innerHTML = TOOLS_PUB.map(function(t){ return '<div class="r"><div><b>' + esc(t[0]) + '</b><small>' + esc(t[1]) + '</small></div><span class="pill warn">Setup required</span></div>'; }).join('');
+    $('#labRows').innerHTML = LABS_PUB.map(function(l){ return '<div class="r"><div><b>' + esc(l) + ' lab</b></div><span class="pill neutral">Planning</span></div>'; }).join('');
+    $('#sp-topic').innerHTML = DBA.SUPPORT_TOPICS.map(function(t){ return '<option>' + esc(t) + '</option>'; }).join('');
+    renderSupportCases();
+    observeReveals();
+  }
+
+  /* DIAGNOSTIC */
+  function openDiagnostic(){
+    var d = STATE.diagnostic || {};
+    function opt(list, cur){ return list.map(function(o){ return '<option' + (o === cur ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join(''); }
+    openModal('Diagnostic', 'Find your first step',
+      '<p>Five questions. Your answers pick a route using prerequisites and valid foundation bypasses. Nothing here is graded and nothing is sent anywhere.</p>' +
+      '<div class="field" style="margin-top:16px"><label for="dg-exp">Experience</label><select id="dg-exp">' + opt(['New to digital work', 'Some digital experience', 'Working in tech', 'Working in an operations role'], d.exp) + '</select></div>' +
+      '<div class="field"><label for="dg-goal">Goal</label><select id="dg-goal">' + opt(['Digital foundations', 'Build websites and software', 'Build with AI', 'Deliver client products end to end', 'Office administration career', 'Logistics career'], d.goal) + '</select></div>' +
+      '<div class="field-row"><div class="field"><label for="dg-hours">Weekly availability</label><select id="dg-hours">' + opt(['2–4 hours', '5–9 hours', '10+ hours'], d.hours) + '</select></div>' +
+      '<div class="field"><label for="dg-market">Country or target market</label><input id="dg-market" type="text" value="' + esc(d.market || '') + '" /></div></div>' +
+      '<div class="field"><label for="dg-prior">Prior evidence of this skill</label><select id="dg-prior">' + opt(['None yet', 'A portfolio or project', 'Work experience'], d.prior) + '</select></div>' +
+      '<div style="display:flex;gap:8px;margin-top:8px"><button class="btn btn-primary" id="dgGo">Recommend a route</button><button class="btn btn-ghost" id="dgClose">Close</button></div>');
+    $('#dgClose').addEventListener('click', closeModal);
+    $('#dgGo').addEventListener('click', function(){
+      var a = { exp: $('#dg-exp').value, goal: $('#dg-goal').value, hours: $('#dg-hours').value, market: $('#dg-market').value.trim(), prior: $('#dg-prior').value };
+      STATE.diagnostic = a; saveState(); showRecommendation(a);
+    });
+  }
+  function showRecommendation(a){
+    var target = 'b-starter', why = 'You are starting out, so Digital Foundations comes first.';
+    var newbie = a.exp === 'New to digital work';
+    if (a.goal === 'Office administration career') { target = 'b-office'; why = 'Your goal is an office role. The Office Career route opens as its pilot courses go Live — start with Digital Foundations now.'; }
+    else if (a.goal === 'Logistics career') { target = 'b-logistics'; why = 'Your goal is logistics. That route opens as its pilot courses go Live — start with Digital Foundations now.'; }
+    else if (!newbie && a.goal === 'Build websites and software') { target = 'b-web'; why = 'You have some experience and want to build for the web.'; }
+    else if (!newbie && a.goal === 'Build with AI') { target = 'b-ai'; why = 'You want to build with AI, and the AI-Native Builder covers discovery through AI-native engineering.'; }
+    else if (!newbie && a.goal === 'Deliver client products end to end') { target = 'b-fullstack'; why = 'You want end-to-end delivery, including operations and client handoff.'; }
+    var b = DBA.bundle(target), st = DBA.bundleStatus(b);
+    var starter = st !== 'live';
+    var weeks = Math.ceil(b.includes.reduce(function(s, id){ return s + DBA.course(id).hours; }, 0) / ({ '2–4 hours': 3, '5–9 hours': 7, '10+ hours': 12 }[a.hours] || 5));
+    var bypass = (a.exp === 'Working in tech' || a.prior !== 'None yet') && target !== 'b-starter'
+      ? '<p class="modal-note">Because you report prior experience, you may be able to bypass introductory foundation content. A bypass can never skip assessment, evidence, verification, safety or regulatory content.</p>' : '';
+    var html = '<p>' + esc(why) + '</p>' +
+      '<div class="card-box" style="margin-top:16px"><h3>' + esc(b.name) + ' <span style="color:var(--slate-3);font-weight:600">· ' + money(b.price) + '</span></h3><p>' + esc(b.desc) + '</p><p style="font-size:12.5px;color:var(--slate-3)">About ' + weeks + ' weeks at your pace. ' + b.includes.length + ' courses.' + (a.market ? ' Target market noted: ' + esc(a.market) + '.' : '') + '</p></div>' + bypass +
+      '<div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">' +
+        (starter ? '<button class="btn btn-primary" id="rcStart">Start with Starter Pack · $3</button><button class="btn btn-ghost" id="rcWait">Join the ' + esc(b.name) + ' waitlist</button>'
+                 : '<button class="btn btn-primary" id="rcBuy">Add to cart</button><button class="btn btn-ghost" id="rcView">View details</button>') +
+        '<button class="btn btn-ghost" id="rcRetake">Retake</button></div>';
+    openModal('Recommendation', 'Your suggested route', html, true);
+    var s1 = $('#rcStart'); if (s1) s1.addEventListener('click', function(){ closeModal(); addToCart('b-starter'); });
+    var s2 = $('#rcWait'); if (s2) s2.addEventListener('click', function(){ openWaitlist(target); });
+    var s3 = $('#rcBuy'); if (s3) s3.addEventListener('click', function(){ closeModal(); addToCart(target); });
+    var s4 = $('#rcView'); if (s4) s4.addEventListener('click', function(){ openBundleModal(target); });
+    $('#rcRetake').addEventListener('click', openDiagnostic);
+  }
+
+  /* WAITLIST */
+  function openWaitlist(itemId){
+    var b = DBA.bundle(itemId), c = DBA.course(itemId);
+    var label = b ? b.name : (c ? c.title : 'this programme');
+    openModal('Waitlist', label,
+      '<p><b>' + esc(label) + '</b> is not Live yet, so it cannot be purchased. Join the waitlist and we will email you when it opens.</p>' +
+      '<div class="field-row" style="margin-top:14px"><div class="field"><label for="wl-name">Name</label><input id="wl-name" type="text" autocomplete="name" value="' + esc(STATE.name !== 'Guest' ? STATE.name : '') + '" /><span class="err">Please enter your name.</span></div>' +
+      '<div class="field"><label for="wl-email">Email</label><input id="wl-email" type="email" autocomplete="email" value="' + esc(STATE.email || '') + '" /><span class="err">Please enter a valid email.</span></div></div>' +
+      '<label class="check"><input type="checkbox" id="wl-consent" /><span>I agree to be emailed about this programme and accept the privacy notice.</span></label>' +
+      '<div class="co-error" id="wlError" role="alert"></div>' +
+      '<div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-primary" id="wlGo">Join waitlist</button><button class="btn btn-ghost" id="wlCancel">Cancel</button></div>');
+    $('#wlCancel').addEventListener('click', closeModal);
+    $('#wlGo').addEventListener('click', function(){
+      var name = $('#wl-name').value.trim(), email = $('#wl-email').value.trim(), er = $('#wlError');
+      var badName = name.length < 2, badMail = !/^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/.test(email);
+      fieldErr('#wl-name', badName); fieldErr('#wl-email', badMail); er.classList.remove('on');
+      if (badName || badMail) return;
+      if (!$('#wl-consent').checked){ er.textContent = 'Please tick the consent box.'; er.classList.add('on'); return; }
+      $('#wlGo').disabled = true;
+      DBA.api('register', { kind: 'waitlist', name: name, email: email, consent: true, marketing: true, interest: label }).then(function(r){
+        $('#wlGo').disabled = false;
+        if (r.ok){ STATE.email = STATE.email || email; STATE.waitlist.push(itemId); saveState(); closeModal(); toast('You are on the waitlist for ' + label + '.', true); }
+        else { er.textContent = (r.status === 503 || r.status === 0 || r.status === 404) ? 'The registration desk is not reachable right now. Please try again shortly.' : ((r.data && r.data.error) || 'Something went wrong.'); er.classList.add('on'); }
+      });
+    });
+  }
+  $('#openDiagnostic').addEventListener('click', openDiagnostic);
+  $('#pricingCart').addEventListener('click', openCart);
+
+  /* SUPPORT */
+  function renderSupportCases(){
+    var host = $('#supportCases');
+    if (!STATE.supportRefs.length){ host.textContent = ''; return; }
+    host.innerHTML = '<b style="color:var(--navy)">Your cases on this device</b><div class="list-rows" style="margin-top:6px">' + STATE.supportRefs.slice(0, 5).map(function(c){
+      return '<div class="r"><div><b>' + esc(c.ref) + ' · ' + esc(c.topic) + '</b><small>' + esc(c.date) + '</small></div><span class="pill cool">Submitted</span></div>'; }).join('') + '</div>';
+  }
+  $('#supportForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('#sp-name').value.trim(), email = $('#sp-email').value.trim(), msg = $('#sp-msg').value.trim();
+    var bn = name.length < 2, be = !/^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/.test(email), bm = msg.length < 10;
+    fieldErr('#sp-name', bn); fieldErr('#sp-email', be); fieldErr('#sp-msg', bm);
+    if (bn || be || bm) return;
+    var btn = $('#sp-submit'); btn.disabled = true; btn.textContent = 'Submitting…';
+    DBA.api('support', { name: name, email: email, topic: $('#sp-topic').value, message: msg, source: location.pathname, website: $('#sp-website').value }).then(function(r){
+      btn.disabled = false; btn.textContent = 'Submit case';
+      if (r.ok && r.data && r.data.ok){
+        STATE.supportRefs.unshift({ ref: r.data.reference, topic: $('#sp-topic').value, date: new Date().toISOString().slice(0, 10) });
+        STATE.email = STATE.email || email; saveState(); $('#sp-msg').value = ''; renderSupportCases();
+        toast('Case ' + r.data.reference + ' submitted. Check your inbox for confirmation.', true);
+      } else {
+        toast((r.status === 503 || r.status === 0 || r.status === 404) ? 'Support desk is not reachable right now. Email support@digitalburj.com.' : ((r.data && r.data.error) || 'Could not submit.'));
+      }
+    });
+  });
+
+  /* NOTICES */
+  var NOTICES = {
+    Privacy: 'Evidence and learning records are private by default. Sharing is explicit, limited to the stated purpose and can be withdrawn. Retention rules apply and nothing is silently deleted. This site stores your cart, name and local preview state in your browser only; enrolment, waitlist and support forms send the details you type to the Academy team by email.',
+    Terms: 'Access follows an active entitlement created from a confirmed payment. Only Live products are purchasable. Bundles record inclusions, access dates, currency, taxes, fees and upgrade credit. Refunds: within 14 days provided no assessment has been submitted. Participation does not by itself provide employment, a visa, a licence, accreditation, regulatory approval, professional-authority recognition, job matching, workplace experience or a guaranteed outcome.',
+    Security: 'No passwords or API keys are handled by this page. Roles are separate: learners, reviewers, verifiers and admins cannot approve or verify their own work, and access is enforced by the server rather than by hiding interface elements. Demo roles use fictional data and hold no production privileges.'
+  };
+  function openNotice(k){ openModal('Academy notice', k, '<p>' + esc(NOTICES[k]) + '</p><p class="modal-note">Contact support@digitalburj.com with any question about this notice.</p>'); }
+  $$('[data-notice]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); openNotice(a.dataset.notice); }); });
+
+  /* ============================================================
+     INIT
+     ============================================================ */
+  function renderAll(){
+    renderBundles();
+    renderCourses();
+    renderRoleStats();
+    renderInstructorReviews();
+    renderAdminBundleTable();
+    updateCartBadge();
+    $('#signInBtn').textContent = STATE.signedIn ? 'Sign out' : 'Sign in';
+  }
+  setRole(STATE.role, true);
+  renderAll();
+  renderStatic();
+  $('#year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

@@ -2,8 +2,9 @@
 
 Runs the **real Cloudflare Worker bundle** (routing, host split, cookies, KV logic) behind a local server, with an
 in-memory KV pre-loaded from `dist/`, a fake Stripe (signed webhook simulator) and a fake Resend (mail capture), then
-drives Chromium through: landing → checkout → Stripe → webhook → welcome → sign-up → e-mail verification → app →
-locked/owned courses → refund revocation → coupon redemption → sign-out/in → password reset → no-access user.
+drives Chromium through: landing → Get started → gateway → sign-up (show password, strength meter) → e-mail verification → purchase webhook →
+course player (server-graded checkpoints) → lab → certificate → admin review → public verification → invoice → animated receipt → demo sandbox →
+header/footer links back to the main site. Screenshots land in $SHOTS (default /tmp/shots).
 
 ```sh
 npm i --no-save playwright-core esbuild

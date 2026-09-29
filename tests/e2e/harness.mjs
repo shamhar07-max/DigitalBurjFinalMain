@@ -6,7 +6,7 @@ const TYPES={html:'text/html; charset=utf-8',js:'application/javascript',css:'te
 const store=new Map(), meta=new Map();
 (function walk(d,rel=''){ for(const f of fs.readdirSync(d)){ const p=path.join(d,f), r=rel+'/'+f; if(fs.statSync(p).isDirectory()) walk(p,r); else { store.set(`${COMMIT}:${r}`, fs.readFileSync(p)); meta.set(`${COMMIT}:${r}`,{type:TYPES[f.split('.').pop()]||'application/octet-stream'}); } } })(ROOT+'/dist');
 const KV={ async getWithMetadata(k){ const v=store.get(k); return {value: v==null?null:(Buffer.isBuffer(v)?v.buffer.slice(v.byteOffset,v.byteOffset+v.byteLength):v), metadata: meta.get(k)||null}; },
-  async get(k){ const v=store.get(k); return v==null?null:(Buffer.isBuffer(v)?v.toString():v); }, async put(k,v,o){ store.set(k,v); if(o&&o.metadata)meta.set(k,o.metadata); }, async delete(k){ store.delete(k); }, async list(){ return {keys:[],list_complete:true}; } };
+  async get(k){ const v=store.get(k); return v==null?null:(Buffer.isBuffer(v)?v.toString():v); }, async put(k,v,o){ store.set(k,v); if(o&&o.metadata)meta.set(k,o.metadata); }, async delete(k){ store.delete(k); }, async list(o){ const keys=[...store.keys()].filter(k=>k.startsWith((o&&o.prefix)||'')).map(name=>({name})); return {keys,list_complete:true}; } };
 globalThis.caches={default:{match:async()=>null,put:async()=>{}}};
 export const mails=[], stripeReqs=[];
 const realFetch=globalThis.fetch;
@@ -16,7 +16,7 @@ globalThis.fetch=async(u,o={})=>{ u=String(u);
     return new Response(JSON.stringify({id:u.split('/').pop(),payment_status:'paid',customer_details:{email:sessions[u.split('/').pop()]?.email||'buyer@example.com'},metadata:{items:sessions[u.split('/').pop()]?.items||'b-web'}}),{status:200}); }
   return realFetch(u,o); };
 const sessions={};
-const env={SITE:KV,COMMIT,SESSION_SECRET:process.env.NO_SECRET?'':'test-secret-0123456789abcdef',RESEND_API_KEY:'k',STRIPE_SECRET_KEY:process.env.NO_STRIPE?'':'sk_test',STRIPE_WEBHOOK_SECRET:'whsec_test',INSECURE_COOKIES:'1',COOKIE_DOMAIN:'',
+const env={SITE:KV,COMMIT,SESSION_SECRET:process.env.NO_SECRET?'':'test-secret-0123456789abcdef',RESEND_API_KEY:'k',STRIPE_SECRET_KEY:process.env.NO_STRIPE?'':'sk_test',STRIPE_WEBHOOK_SECRET:'whsec_test',INSECURE_COOKIES:'1',ADMIN_EMAILS:'boss@example.com',COOKIE_DOMAIN:'',
   APP_HOST:'academy.localhost',APP_ORIGIN:'http://academy.localhost:8123',SITE_ORIGIN:'http://localhost:8123',CONTACT_TO:'support@digitalburj.com'};
 const worker=(await import(process.env.WORKER||'/tmp/w-bundle.mjs')).default;
 http.createServer(async(req,res)=>{

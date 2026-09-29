@@ -10,7 +10,7 @@
       <h1 id="page-hero-title" class="db-hero-title">Learn it. Apply it. <span class="db-hero-accent">Prove it.</span></h1>
       <p class="db-hero-lead">Capability built through real missions, human feedback and assessed evidence — one-time purchase, lifetime access. Content consumption is never the primary proof of skill.</p>
       <div class="db-hero-actions">
-        <a class="hero-cta primary" id="heroStart" data-app="/signup" href="https://academy.digitalburj.com/signup">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="hero-cta primary" id="heroStart" data-app="/start" href="https://academy.digitalburj.com/start">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="hero-cta secondary" data-app="/signin" href="https://academy.digitalburj.com/signin">Sign in</a>
       </div>
     </div>
@@ -34,7 +34,7 @@
   </div>
   <div class="ac-subnav-actions">
     <button class="cart-btn" id="cartBtn" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="badge" id="cartBadge" style="display:none">0</span></button>
-    <a class="btn btn-primary btn-sm" id="signInBtn" data-app="/signup" href="https://academy.digitalburj.com/signup">Get started</a>
+    <a class="btn btn-primary btn-sm" id="signInBtn" data-app="/start" href="https://academy.digitalburj.com/start">Get started</a>
   </div>
 </nav></div>
 <!-- BUNDLES -->
@@ -153,9 +153,9 @@
         </div>
       </div>
       <div class="card-box">
-        <h3>DB-22 Assessment Centre <span class="pill warn" style="margin-left:6px">Setup required</span></h3>
+        <h3>DB-22 final challenge <span class="pill ok" style="margin-left:6px">Included in DB-08</span></h3>
         <p>Not attendance-based. Readiness and prerequisites → assessment contract → constrained build or demo window → injected incidents → live defence → evidence pack, evaluator notes, approval → independent verification → audit log, appeals → Capability Record.</p>
-        <p>Scheduling, constrained environments, incident injection, evaluator workflows, secure evidence storage and appeals are configured per cohort before the challenge opens.</p>
+        <p>You work through the assessment contract, a timed build on a fictional SME workflow, an injected change request and a defence dossier. A human reviewer assesses it against the published rubric, and independent verification is recorded separately.</p>
       </div>
     </div>
 
@@ -176,11 +176,11 @@
     <div class="sec-head center reveal">
       <p class="eyebrow center">Tool library &amp; simulation labs</p>
       <h2 class="h-section">Practise with real tools and fictional data.</h2>
-      <p class="lede">A tool is marked Configured only after its permitted use, URL, entitlement, privacy handling and test path are confirmed. Labs use fictional data and are never access to live customer, employer, government, banking, healthcare or production systems.</p>
+      <p class="lede">Every course ends in a lab with fictional data, a task list and a deliverable you submit as evidence. Labs are never access to live customer, employer, government, banking, healthcare or production systems.</p>
     </div>
     <div class="grid g-2" style="margin-top:36px">
       <div class="card-box"><h3>Dedicated tool library</h3><div class="list-rows" id="toolRows" style="margin-top:10px"></div></div>
-      <div class="card-box"><h3>Simulation labs</h3><div class="list-rows" id="labRows" style="margin-top:10px"></div>
+      <div class="card-box"><h3>Practice labs (one per course)</h3><div class="list-rows" id="labRows" style="margin-top:10px"></div>
         <p style="margin-top:14px">Every lab requires a maturity level, scenario, task queue, fictional records, templates, exceptions, escalation, rubric, evidence pack, reset action, jurisdiction warning, owner and review date.</p></div>
     </div>
     
@@ -195,7 +195,7 @@
     <div class="sec-head center reveal">
       <p class="eyebrow center">Pricing &amp; access</p>
       <h2 class="h-section">Paid access is separate from signing in.</h2>
-      <p class="lede">Signing in, registering, previewing or using a demo role never unlocks paid content. Access follows an active entitlement created from a confirmed payment. Only Live products are purchasable.</p>
+      <p class="lede">Signing in or registering never unlocks paid content. Access follows an active entitlement created from a confirmed payment. The clearly labelled demo account is a separate sandbox with sample data — its certificates are watermarked DEMO.</p>
     </div>
     <div class="grid g-2" style="margin-top:36px">
       <div class="card-box"><h3>Access states</h3><div class="list-rows" style="margin-top:10px">
@@ -204,7 +204,6 @@
         <div class="r"><div><b>Checkout ready</b><small>Product and payable amount are prepared for confirmation.</small></div><span class="pill cool">Ready</span></div>
         <div class="r"><div><b>Payment pending / failed</b><small>Outcome unresolved or unsuccessful — access is never granted.</small></div><span class="pill warn">Pending</span></div>
         <div class="r"><div><b>Active · Expired · Refunded · Suspended</b><small>Entitlement is active, ended, refunded or administratively paused.</small></div><span class="pill ok">Entitlement</span></div>
-        <div class="r"><div><b>Setup required</b><small>A production service is not yet configured.</small></div><span class="pill stop">Setup</span></div>
       </div></div>
       <div class="card-box"><h3>What you get, what you pay</h3><div class="list-rows" style="margin-top:10px">
         <div class="r"><div><b>One-time purchase, lifetime access</b><small>No subscription. Courses from $3, bundles from $3 to $50.</small></div></div>
@@ -310,7 +309,7 @@
       <details><summary>Can my employer see my learning? <span class="plus"></span></summary><div class="faq-body"><p>Not by default. Employer views are tenant-scoped and only show aggregate progress and the evidence you have explicitly consented to share. Private attempts and failures stay private.</p></div></details>
       <details><summary>What if I fail a mission? <span class="plus"></span></summary><div class="faq-body"><p>Failed attempts lead to targeted remediation and a new variant. Unlimited retries of the same answer do not establish transfer. A pass normally requires all critical safety criteria, at least "independent-in-scenario" on required outcomes, a valid artifact and an explain/defend response.</p></div></details>
       <details><summary>Is there a refund policy? <span class="plus"></span></summary><div class="faq-body"><p>Yes. Bundles and courses are refundable within 14 days provided no assessment has been submitted. Once a mission submission has been assessed, the entitlement is consumed. Refund terms are published at checkout.</p></div></details>
-      <details><summary>How do roles work? <span class="plus"></span></summary><div class="faq-body"><p>Visitors browse. Learners see what they own. Instructors see their assigned cohort and review queue. Admins see the full platform. Role access is enforced server-side, not hidden in the UI.</p></div></details>
+      <details><summary>How do roles work? <span class="plus"></span></summary><div class="faq-body"><p>Visitors browse. Learners see the courses they own and their own records. Administrators review lab evidence, manage learners and access, and oversee credentials. Every request is checked on our servers.</p></div></details>
     </div>
   </div>
 </section>

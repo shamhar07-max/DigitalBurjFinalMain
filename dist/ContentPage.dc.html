@@ -222,24 +222,28 @@
     </section>
   </sc-if>
 
-  <!-- DIRECTORY -->
+  <!-- DIRECTORY (same card system as MODULES) -->
   <sc-if value="{{ s.isDirectory }}">
     <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div data-reveal="up" style="max-width:46rem">
-        <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-        <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.12 'Plus Jakarta Sans',sans-serif;letter-spacing:-.015em">{{ s.h }}</h2>
-        <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#4a544f">{{ s.lead }}</p>
+      <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="max-width:44rem">
+          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#4a544f">{{ s.lead }}</p>
+        </div>
+        <p style="margin:0;font:700 14px 'Plus Jakarta Sans',sans-serif;color:#6b746f">{{ s.total }} items</p>
       </div>
-      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr));gap:12px">
+      <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
         <sc-for list="{{ s.groups }}" as="g" hint-placeholder-count="6">
-          <div data-reveal="up" style="{{ g.box }}">
-            <p style="margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font:700 15px 'Plus Jakarta Sans',sans-serif"><span>{{ g.t }}</span><span style="{{ g.countStyle }}">{{ g.n }}</span></p>
-            <ul style="list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px">
-              <sc-for list="{{ g.chips }}" as="c" hint-placeholder-count="6"><li style="{{ g.chipStyle }}">{{ c.t }}</li></sc-for>
+          <li data-reveal="up" data-reveal-delay="{{ g.delay }}" style="{{ s.item }}"><div data-spot="" style="height:100%;box-sizing:border-box;position:relative;display:flex;flex-direction:column;padding:20px 20px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;background-image:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.07),transparent 50%)" style-hover="transform:translateY(-5px);border-color:rgba(242,58,29,.4);box-shadow:0 34px 60px -40px rgba(15,23,20,.5)">
+            <span style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ g.num }}</span><span style="font-size:11px;font-weight:600;color:#6b746f;text-align:right;line-height:1.3">{{ g.n }} items</span></span>
+            <h3 style="margin:14px 0 0;font:700 17px/1.25 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em">{{ g.t }}</h3>
+            <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 14px">
+              <sc-for list="{{ g.chips }}" as="c" hint-placeholder-count="6"><li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#3b4541"><span style="flex-shrink:0;margin-top:7px;width:6px;height:6px;border-radius:2px;background:#f23a1d"></span>{{ c.t }}</li></sc-for>
             </ul>
-          </div>
+          </div></li>
         </sc-for>
-      </div>
+      </ul>
       <sc-if value="{{ s.note }}"><p style="margin:16px 0 0;font-size:12px;color:#6b746f">{{ s.note }}</p></sc-if>
     </section>
   </sc-if>
@@ -320,12 +324,10 @@ class Component extends DCLogic {
           btn: `margin-top:22px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;transition:background .25s,color .25s;${f ? "background:#f23a1d;color:#fff" : "background:#f6f5f1;color:#0f1714;border:1px solid rgba(15,23,20,.1)"}` };
       });
       if (s.type === "pairs") base.rows = s.items.map(([a, b]) => ({ a, b }));
-      if (s.type === "directory") base.groups = s.groups.map((g) => ({
-        t: g.t, n: g.items.length, chips: g.items.map((t) => ({ t })),
-        box: `padding:16px 16px 18px;border-radius:16px;box-sizing:border-box;${g.more ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
-        countStyle: `font:700 12px 'Plus Jakarta Sans',sans-serif;color:${g.more ? "#ff7a45" : "#f23a1d"}`,
-        chipStyle: `font-size:12.5px;font-weight:600;line-height:1.2;padding:6px 9px;border-radius:8px;${g.more ? "background:rgba(246,245,241,.09);color:#f6f5f1;border:1px solid rgba(246,245,241,.14)" : "background:#f6f5f1;color:#2c3531;border:1px solid rgba(15,23,20,.06)"}`,
-      }));
+      if (s.type === "directory") Object.assign(base, {
+        total: s.groups.reduce((n, g) => n + g.items.length, 0), item: item(s.groups.length),
+        groups: s.groups.map((g, i) => ({ t: g.t, n: g.items.length, num: n(i), delay: String((i % 3) * 80), chips: g.items.map((t) => ({ t })) })),
+      });
       if (s.type === "chips") base.chips = s.items.map((t) => ({ t }));
       if (s.type === "cta") Object.assign(base, { hasSecondary: !!s.secondary, secondary: s.secondary || { label: "", href: "#" } });
       return base;

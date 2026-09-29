@@ -34,7 +34,7 @@ a.db-hero-badge:hover{background:rgba(242,58,29,.26);color:#fff!important}
 
 
 /* Homepage headline: bold, highlighted, glossy */
-.db-hero-title--glossy{font-weight:800;letter-spacing:-.035em;line-height:1.02;font-size:clamp(2.4rem,1rem + 3.7vw,min(4.4rem,9svh));text-shadow:none;max-width:none;
+.db-hero-title--glossy{font-weight:800;letter-spacing:-.035em;line-height:1.02;font-size:clamp(2.6rem,.8rem + 5.4vw,min(6.2rem,12.5svh));text-shadow:none;max-width:none;
  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.95) 50%,transparent 58%) -150% 0/260% 100% no-repeat,linear-gradient(180deg,#ffffff 0%,#ffffff 44%,#f3e4d9 50%,#d9b9a4 100%);
  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
  filter:drop-shadow(0 3px 14px rgba(255,120,70,.28)) drop-shadow(0 2px 2px rgba(0,0,0,.35));animation:db-hero-in .8s cubic-bezier(.22,.8,.24,1) both,db-shine 5.5s ease-in-out 1.2s infinite}

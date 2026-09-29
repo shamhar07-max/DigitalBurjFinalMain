@@ -166,7 +166,7 @@ export const PAGES = {
   },
   academy: {
     crumb: "Academy", lockup: "brand/academy-lockup.webp",
-    hero: { eyebrow: "DigitalBurj Academy", h1: "Learn it. Apply it.", accent: "Prove it.", lead: "Capability built through real missions, human feedback and assessed evidence — one-time purchase, lifetime access, courses from $3.", primary: { label: "Open Academy", href: "https://academy.digitalburj.com" }, secondary: { label: "See pricing", href: "#pricing" }, img: "img/25-d.jpg" },
+    hero: { eyebrow: "DigitalBurj Academy", h1: "Learn it. Apply it.", accent: "Prove it.", lead: "Capability built through real missions, human feedback and assessed evidence — one-time purchase, lifetime access, courses from $3.", primary: { label: "Apply now", href: "/contact" }, secondary: { label: "See pricing", href: "#pricing" }, img: "img/25-d.jpg" },
     sections: [
       { type: "loop", eyebrow: "How learning works", h: "Every mission runs the same 12 stages.", items: ["Brief", "Learn", "Investigate", "Try", "Build", "Break", "Fix", "Test", "Explain", "Defend", "Ship", "Evidence"] },
       { type: "cards", eyebrow: "Why Academy", h: "Built for proof, not seats.", items: [
@@ -192,9 +192,9 @@ export const PAGES = {
         M("Accounting Support", "Career \u00b7 55 h \u00b7 $10", ["Invoicing, payables, reconciliation, month-end support and controls."], "")] },
       { type: "steps", eyebrow: "Credentials", h: "Learning, assessment and verification stay separate.", items: [{ t: "Completion record", b: "You finished the learning activity." }, { t: "Assessed submission", b: "A reviewer scored your work against the published rubric." }, { t: "Verified capability", b: "A different qualified person verified the evidence after a conflict check." }, { t: "Workplace experience", b: "Real delivery in a real workplace — never created by a course." }] },
       { type: "pricing", id: "pricing", eyebrow: "Pricing", h: "Simple, one-time pricing.", lead: "Pay once, keep access for life. No subscription, no hidden fees. 14-day refund if no assessment has been submitted.", plans: [
-        { name: "Starter", price: "$3", per: "one-time", scope: "Digital Foundations — one full course with practice lab and completion record.", cta: "Get Starter", href: "https://academy.digitalburj.com" },
-        { name: "AI-Native Builder", price: "$19", per: "one-time", scope: "Five technology courses, from discovery to AI-native engineering, with the assessed evidence route.", featured: true, cta: "Get Builder", href: "https://academy.digitalburj.com" },
-        { name: "Complete Academy", price: "$50", per: "one-time", scope: "All 14 courses across both tracks, including the DB-22 final challenge.", cta: "Get Complete", href: "https://academy.digitalburj.com" } ] },
+        { name: "Starter", price: "$3", per: "one-time", scope: "Digital Foundations — one full course with practice lab and completion record.", cta: "Apply now", href: "/contact" },
+        { name: "AI-Native Builder", price: "$19", per: "one-time", scope: "Five technology courses, from discovery to AI-native engineering, with the assessed evidence route.", featured: true, cta: "Apply now", href: "/contact" },
+        { name: "Complete Academy", price: "$50", per: "one-time", scope: "All 14 courses across both tracks, including the DB-22 final challenge.", cta: "Apply now", href: "/contact" } ] },
       { type: "pairs", eyebrow: "Also available", h: "Other bundles and single courses.", items: [["Web Essentials", "$9"], ["Full-Stack Product", "$29"], ["Office Career", "$25"], ["Logistics Career", "$29"], ["Single courses", "From $3"]] },
       { type: "faq", items: [
         { q: "What is included in a purchase?", a: "Every lesson, checkpoint and practice lab in the course or bundle, plus the assessed evidence route. You only see what you have bought." },
@@ -202,8 +202,8 @@ export const PAGES = {
         { q: "Who reviews my work?", a: "A qualified human reviewer marks your lab evidence against a published rubric. AI may coach, but it never issues a credential." },
         { q: "Is a certificate a job guarantee?", a: "No. Learning, assessment and independent verification are separate records. Participation does not by itself provide employment, a visa, a licence or accreditation." },
         { q: "Can my employer see my progress?", a: "Not by default. Evidence is private until you choose to share it, and only for the purpose you approve." },
-        { q: "Where do I sign in and study?", a: "Everything happens in the Academy app. Use any Open Academy button on this page to continue." } ] },
-      cta("Learn it. Apply it. Prove it.", "Start with the $3 Starter Pack and upgrade whenever you are ready — you only pay the difference.", { label: "Open Academy", href: "https://academy.digitalburj.com" }, null),
+        { q: "How do I join?", a: "Applications are open now. Use any Apply now button on this page and our team will contact you with the next steps." } ] },
+      cta("Learn it. Apply it. Prove it.", "Start with the $3 Starter Pack and upgrade whenever you are ready — you only pay the difference.", { label: "Apply now", href: "/contact" }, null),
     ],
   },
   talent: {

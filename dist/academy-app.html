@@ -1,0 +1,601 @@
+<div class="ac ws">
+
+<div class="sidebar-scrim" id="scrim"></div>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a class="sb-brand" href="/academy" aria-label="DigitalBurj Academy"><img src="brand/mark-academy.webp" alt="" style="width:36px;height:36px;padding:5px;box-sizing:border-box;border-radius:11px;background:#f6f5f1;object-fit:contain;flex:none"/><div class="sb-brand-text"><strong style="font-family:var(--head)">DigitalBurj</strong><span>Academy · Learner</span></div></a>
+
+    <div class="sb-scroll">
+      <div class="sb-section">
+        <div class="sb-section-title">Today</div>
+        <button class="sb-item active" data-view="today"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span class="sb-label">Dashboard</span></button>
+        <button class="sb-item" data-view="curriculum"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="sb-label">Curriculum</span></button>
+        <button class="sb-item" data-view="path"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="sb-label">My Path</span></button>
+        <button class="sb-item" data-view="missions"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span class="sb-label">Missions</span><span class="sb-count" id="cMissions">6</span></button>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-section-title">Practice</div>
+        <button class="sb-item" data-view="toolbench"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg><span class="sb-label">Tool Bench</span></button>
+        <button class="sb-item" data-view="labs"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3v6l-5 9a2 2 0 002 2h12a2 2 0 002-2l-5-9V3"/><path d="M8 3h8"/></svg><span class="sb-label">Labs</span><span class="sb-count" id="cLabs">11</span></button>
+        <button class="sb-item" data-view="projects"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg><span class="sb-label">Projects</span></button>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-section-title">Live</div>
+        <button class="sb-item" data-view="liveroom"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span class="sb-label">Live Room</span><span class="sb-count" id="cLive">1</span></button>
+        <button class="sb-item" data-view="calendar"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span class="sb-label">Calendar</span></button>
+        <button class="sb-item" data-view="messages"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v12H5.2L4 18V4z"/><path d="M8 9h8M8 13h5"/></svg><span class="sb-label">Messages</span><span class="sb-count" id="cMessages">2</span></button>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-section-title">Evidence</div>
+        <button class="sb-item" data-view="feedback"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg><span class="sb-label">Feedback</span><span class="sb-count" id="cFeedback">2</span></button>
+        <button class="sb-item" data-view="evidence"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg><span class="sb-label">Evidence Vault</span><span class="sb-count" id="cEvidence">5</span></button>
+        <button class="sb-item" data-view="credentials"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5L7 23l5-3 5 3-1.5-9.5"/></svg><span class="sb-label">Credentials</span><span class="sb-count" id="cCredentials">1</span></button>
+        <button class="sb-item" data-view="skills"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg><span class="sb-label">Skills Record</span></button>
+        <button class="sb-item" data-view="assessments"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span class="sb-label">Assessments</span><span class="sb-count" id="cAssessments">2</span></button>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-section-title">Account</div>
+        <button class="sb-item" data-view="payments"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sb-label">Payments</span></button>
+        <button class="sb-item" data-view="support"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span class="sb-label">Support</span><span class="sb-count" id="cSupport">1</span></button>
+        <button class="sb-item" data-view="settings"><svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span class="sb-label">Settings</span></button>
+      </div>
+    </div>
+
+    <div class="sb-footer">
+      <div class="sb-user" id="userMenu">
+        <div class="sb-avatar">LI</div>
+        <div class="sb-user-info"><b>Layla Ibrahim</b><span>Demo learner</span></div>
+      </div>
+      <div class="sb-links"><a href="https://digitalburj.com/academy" data-site="/academy">← Academy at digitalburj.com</a><a href="https://digitalburj.com/" data-site="/">DigitalBurj home</a></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="demo-bar" role="note">
+      <div><b>Academy app</b><span>Your account, access and orders are real. Missions, messages and live rooms shown here are sample content while live delivery, human review and verification are being set up.</span></div>
+      <nav aria-label="Academy navigation"><a href="https://digitalburj.com/academy" data-site="/academy">← Academy</a><a href="https://digitalburj.com/academy#bundles" data-site="/academy#bundles">Bundles</a><a href="https://digitalburj.com/academy#support" data-site="/academy#support">Support</a><a href="https://digitalburj.com/" data-site="/">digitalburj.com</a></nav>
+    </div>
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="18" height="18"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="tb-title">Learner Workspace <small id="tbViewLabel">Today</small></div>
+      <div class="tb-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="search" id="globalSearch" placeholder="Search curriculum, missions, tools, labs…" aria-label="Search">
+      </div>
+      <div class="tb-actions">
+        <button class="icon-btn" id="notifBtn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span class="dot"></span></button>
+        <button class="btn-primary" id="newMissionBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>New Mission</button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- TODAY -->
+      <section class="view active" data-view="today">
+        <div class="page-head">
+          <div>
+            <h1>Good afternoon, Layla.</h1>
+            <p>You're 58% through AI-Native Product Builder. One next action, one deadline, one reason for the recommendation.</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn-ghost" data-jump="calendar">View calendar</button>
+            <button class="btn-primary" data-jump="missions">Continue learning →</button>
+          </div>
+        </div>
+
+        <div class="continue-card">
+          <div class="cc-inner">
+            <div>
+              <span class="cc-tag">Continue learning</span>
+              <h2>Repair a client booking flow</h2>
+              <p class="cc-desc">A fictional SME's booking form silently accepts duplicate appointments and gives no confirmation on slow networks. Prevent duplicates, add accessible states, and verify authorization.</p>
+              <div class="cc-meta">
+                <span class="cc-chip accent">DB-03 · Module 3</span>
+                <span class="cc-chip">Revision requested</span>
+                <span class="cc-chip">Due 28 Sep 2026</span>
+                <span class="cc-chip">Rubric v2.1</span>
+              </div>
+            </div>
+            <div class="cc-next">
+              <div class="ccn-label">Next stage</div>
+              <div class="ccn-stage">07 · FIX</div>
+              <div class="ccn-desc">Correct the duplicate-submission defect and explain the change. Show before/after evidence.</div>
+              <div class="ccn-actions">
+                <button class="btn-resume" data-jump="missions">Continue mission →</button>
+                <button class="btn-view" data-jump="path">View pathway</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric red"><div class="m-label">Active pathway</div><div class="m-value">1</div><span class="m-delta flat">AI-Native Product Builder</span></div>
+          <div class="metric warn"><div class="m-label">Missions open</div><div class="m-value" id="mOpen">6</div><span class="m-delta down">1 revision requested</span></div>
+          <div class="metric ok"><div class="m-label">Evidence records</div><div class="m-value" id="mEvidence">5</div><span class="m-delta up">1 verification pending</span></div>
+          <div class="metric cool"><div class="m-label">Credentials</div><div class="m-value" id="mCredentials">1</div><span class="m-delta flat">Digital Foundations</span></div>
+        </div>
+
+        <div class="grid g-2-1" style="margin-bottom:14px">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div><h2>Missions due &amp; in review</h2><p>Across all active programmes</p></div>
+              <button class="btn-ghost" data-jump="missions">View all</button>
+            </div>
+            <div class="row-list" id="todayMissions"></div>
+          </div>
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Upcoming</h2><p>Next 7 days</p></div><button class="btn-ghost" data-jump="calendar">Calendar</button></div>
+            <div class="row-list" id="todayUpcoming"></div>
+          </div>
+        </div>
+
+        <div class="grid g-2-1">
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Recent evidence</h2><p>Private records you own</p></div><button class="btn-ghost" data-jump="evidence">Open vault</button></div>
+            <div class="row-list" id="todayEvidence"></div>
+          </div>
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Progress</h2><p>Pathway completion</p></div></div>
+            <div style="margin-bottom:14px">
+              <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px"><span>AI-Native Product Builder</span><span>58%</span></div>
+              <div class="progress"><i style="width:58%"></i></div>
+            </div>
+            <div style="margin-bottom:14px">
+              <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px"><span>Digital Foundations</span><span>100%</span></div>
+              <div class="progress ok"><i style="width:100%"></i></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px"><span>DB-22 Final Challenge</span><span>Locked</span></div>
+              <div class="progress"><i style="width:0%"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CURRICULUM -->
+      <section class="view" data-view="curriculum">
+        <div class="page-head">
+          <div>
+            <h1>Curriculum</h1>
+            <p>Full DigitalBurj Academy catalogue — Technology, Professional Career, Advanced Practice and Academy for Business. Live, pilot and planned records with honest status.</p>
+          </div>
+        </div>
+
+        <div class="curriculum-shell">
+          <nav class="curriculum-nav" id="curriculumNav">
+            <div class="cn-title">Pillars</div>
+          </nav>
+          <div class="curriculum-main" id="curriculumMain"></div>
+        </div>
+      </section>
+
+      <!-- MY PATH -->
+      <section class="view" data-view="path">
+        <div class="page-head">
+          <div>
+            <h1>My Path</h1>
+            <p>AI-Native Product Builder · 10–14 weeks · ~80–120 guided hours · Certificate on completion</p>
+          </div>
+          <div class="ph-actions"><button class="btn-ghost" id="pathDownload">Download pathway PDF</button></div>
+        </div>
+
+        <div class="card card-pad" style="margin-bottom:14px">
+          <div class="card-head"><div><h2>Graduation artifact</h2><p>What you will have at the end</p></div><span class="pill cool">Capstone</span></div>
+          <p style="color:var(--slate-2);font-size:13.5px;line-height:1.7;margin:0">
+            A functioning, accessible, permission-aware workflow on safe data; repository history, deployed staging link, test report, handoff, incident note, design reasoning, AI-use log, and an assessed defense. Production deployment is a separate supervised exercise with authorization and operations support.
+          </p>
+        </div>
+
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Modules</h2><p>Sequence · status · next action</p></div></div>
+          <div id="pathModules"></div>
+        </div>
+      </section>
+
+      <!-- MISSIONS -->
+      <section class="view" data-view="missions">
+        <div class="page-head">
+          <div>
+            <h1>Missions</h1>
+            <p>Every mission is a capability attempt with a scenario, artifact, test, feedback, revision and evidence record.</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn-ghost" id="missionsFilterBtn">Filter</button>
+          </div>
+        </div>
+
+        <div class="grid g-1-2" style="margin-bottom:14px">
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>All missions</h2><p id="missionCountLabel">6 total</p></div></div>
+            <div class="row-list" id="missionsList"></div>
+          </div>
+
+          <div>
+            <div class="mission-header">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+                <div>
+                  <h2 id="mwsTitle">Repair a client booking flow</h2>
+                  <div class="mh-sub" id="mwsSub">DB-03 · Web Workflow Engineering · Rubric v2.1</div>
+                  <div class="mh-meta" id="mwsMeta"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stage-rail" id="missionStageRail"></div>
+
+            <div class="mission-shell">
+              <div>
+                <div class="mission-panel" id="missionPanel"></div>
+                <div class="mission-panel" id="missionLiveRoomTeaser"></div>
+              </div>
+              <div>
+                <div class="mission-panel">
+                  <div class="mp-tag">Hint ladder</div>
+                  <p style="font-size:12.5px;color:var(--slate-2);margin:8px 0 0;line-height:1.55">Hints are recorded separately from correctness. Using a hint does not fail you — hiding which hint you used does.</p>
+                  <div class="hint-ladder" id="hintLadder"></div>
+                </div>
+                <div class="mission-panel">
+                  <div class="mp-tag">Evidence tray</div>
+                  <p style="font-size:12.5px;color:var(--slate-2);margin:8px 0 0;line-height:1.55">Attach the artifacts your assessor will review. Nothing is submitted until you press Submit.</p>
+                  <div class="evidence-tray" id="evidenceTray"></div>
+                  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+                    <button class="btn-ghost" id="addEvidenceBtn">+ Add artifact</button>
+                    <button class="btn-primary" id="submitMissionBtn">Submit for review</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOL BENCH -->
+      <section class="view" data-view="toolbench">
+        <div class="page-head">
+          <div>
+            <h1>Tool Bench</h1>
+            <p>Authorised practice tools for the current mission. Tools open in a new site; disclosure shows what information crosses the boundary.</p>
+          </div>
+        </div>
+        <div class="card card-pad" style="margin-bottom:14px">
+          <div class="card-head">
+            <div><h2>Active mission tools</h2><p id="toolMissionLabel">Repair a client booking flow · DB-03</p></div>
+            <span class="pill warn">AI-assisted with disclosure</span>
+          </div>
+          <p style="font-size:13px;color:var(--slate-2);margin:0 0 14px;line-height:1.65">These tools are approved for the current mission. Using an unapproved tool does not fail you, but you must disclose it in your explanation.</p>
+          <div class="tool-grid" id="activeToolsGrid"></div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>All authorised tools</h2><p>Approved across all missions in your pathway</p></div></div>
+          <div class="tool-grid" id="allToolsGrid"></div>
+        </div>
+      </section>
+
+      <!-- LABS -->
+      <section class="view" data-view="labs">
+        <div class="page-head">
+          <div>
+            <h1>Labs</h1>
+            <p>Interactive simulations with a defined initial state, plausible documents, controlled event injections, safe reset, and explicit scoring.</p>
+          </div>
+          <div class="ph-actions"><button class="btn-ghost" id="labHelpBtn">How labs work</button></div>
+        </div>
+        <div class="lab-grid" id="labGrid"></div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="view" data-view="projects">
+        <div class="page-head">
+          <div>
+            <h1>Projects</h1>
+            <p>Integrated capability work that spans multiple missions and skills.</p>
+          </div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Active projects</h2><p>Submitted work, feedback and outcomes</p></div></div>
+          <div id="projectsList"></div>
+        </div>
+      </section>
+
+      <!-- LIVE ROOM -->
+      <section class="view" data-view="liveroom">
+        <div class="page-head">
+          <div>
+            <h1>Live Room</h1>
+            <p>Scheduled mentor and cohort sessions with attendance, accessible captions and notes. Attendance is logistics only — skill evidence remains the performed task.</p>
+          </div>
+        </div>
+
+        <div class="live-grid" style="margin-bottom:14px">
+          <div class="live-main">
+            <div class="live-video">
+              <div class="lv-info">
+                <span class="lv-badge">Live now</span>
+                <h3>Authorization patterns in practice</h3>
+                <p>Reem Al Farsi · Instructor · 42 minutes elapsed</p>
+              </div>
+            </div>
+            <div class="live-controls">
+              <div class="lc-left">
+                <button class="lc-btn" id="liveMic" title="Toggle mic">🎙</button>
+                <button class="lc-btn" id="liveCam" title="Toggle camera">📷</button>
+                <button class="lc-btn" id="liveHand" title="Raise hand">✋</button>
+                <button class="lc-btn" id="liveCaption" title="Toggle captions">CC</button>
+              </div>
+              <div class="lc-time" id="liveTime">42:18</div>
+              <div class="lc-left">
+                <button class="lc-btn" id="liveNotes" title="Take notes">📝</button>
+                <button class="lc-btn danger" id="liveLeave">Leave</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="live-side">
+            <div class="live-side-card">
+              <h4>Session details</h4>
+              <div class="row-list">
+                <div class="row-item" style="padding:8px 0"><div class="row-left"><div class="row-body"><div class="row-title">Instructor</div><div class="row-sub">Reem Al Farsi</div></div></div></div>
+                <div class="row-item" style="padding:8px 0"><div class="row-left"><div class="row-body"><div class="row-title">Cohort</div><div class="row-sub">AI-Native Product Builder · Sept 2026</div></div></div></div>
+                <div class="row-item" style="padding:8px 0"><div class="row-left"><div class="row-body"><div class="row-title">Recording</div><div class="row-sub">Available after session with notice</div></div></div></div>
+              </div>
+            </div>
+            <div class="live-side-card">
+              <h4>In-session chat</h4>
+              <div id="liveChat" style="display:flex;flex-direction:column;gap:8px;max-height:180px;overflow-y:auto;margin-bottom:10px"></div>
+              <div style="display:flex;gap:6px">
+                <input type="text" id="liveChatInput" placeholder="Ask a question…" style="flex:1;padding:8px 11px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;font-family:inherit">
+                <button class="btn-primary" id="liveChatSend" style="padding:8px 12px">↑</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Upcoming sessions</h2><p>Scheduled mentor and cohort sessions</p></div></div>
+          <div class="schedule-list" id="liveScheduleList"></div>
+        </div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="view" data-view="calendar">
+        <div class="page-head">
+          <div>
+            <h1>Calendar</h1>
+            <p>Lessons, mission deadlines, live sessions, reviews and office hours.</p>
+          </div>
+          <div class="ph-actions"><button class="btn-ghost" id="calToday">Today</button></div>
+        </div>
+        <div class="card card-pad">
+          <div class="cal-month">
+            <h3 id="calMonth">September 2026</h3>
+            <div class="cal-nav"><button id="calPrev">‹</button><button id="calNext">›</button></div>
+          </div>
+          <div class="cal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div class="cal" id="calGrid"></div>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line-2)">
+            <div style="font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:8px">Legend</div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)"><span style="width:11px;height:11px;border-radius:3px;background:var(--red)"></span>Live session</span>
+              <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)"><span style="width:11px;height:11px;border-radius:3px;background:var(--warn-bg);border:1px solid #F4D9A8"></span>Mission due</span>
+              <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)"><span style="width:11px;height:11px;border-radius:3px;background:var(--cool-bg);border:1px solid #B8D6F2"></span>Office hours</span>
+              <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)"><span style="width:11px;height:11px;border-radius:3px;background:var(--ok-bg);border:1px solid #B9E5CC"></span>Review</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESSAGES -->
+      <section class="view" data-view="messages">
+        <div class="page-head">
+          <div><h1>Messages</h1><p>Instructor and reviewer communication. Kept separate from your evidence and assessments.</p></div>
+          <div class="ph-actions"><button class="btn-primary" id="msgCompose">Compose</button></div>
+        </div>
+        <div class="card card-pad"><div id="messagesList"></div></div>
+      </section>
+
+      <!-- FEEDBACK -->
+      <section class="view" data-view="feedback">
+        <div class="page-head">
+          <div><h1>Feedback</h1><p>Criterion-specific feedback from your assessors and instructors. Revisions keep a full history.</p></div>
+        </div>
+        <div class="feedback-list" id="feedbackList"></div>
+      </section>
+
+      <!-- EVIDENCE -->
+      <section class="view" data-view="evidence">
+        <div class="page-head">
+          <div><h1>Evidence Vault</h1><p>Original artifacts, versions, review notes, outcome mapping, support level and provenance. Private until you opt to share.</p></div>
+          <div class="ph-actions"><button class="btn-ghost" id="evidenceExport">Export record</button></div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head">
+            <div><h2>All evidence records</h2><p id="evCountLabel">5 records</p></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <button class="btn-ghost" data-evidence-filter="all">All</button>
+              <button class="btn-ghost" data-evidence-filter="Verified">Verified</button>
+              <button class="btn-ghost" data-evidence-filter="In Review">In Review</button>
+            </div>
+          </div>
+          <div id="evidenceList"></div>
+        </div>
+      </section>
+
+      <!-- CREDENTIALS -->
+      <section class="view" data-view="credentials">
+        <div class="page-head">
+          <div><h1>Credentials</h1><p>Scoped, revocable records with unique IDs and consent-controlled visibility.</p></div>
+        </div>
+        <div class="card card-pad" style="margin-bottom:14px">
+          <div class="card-head"><div><h2>Verified credentials</h2><p>Independent verification completed</p></div><span class="pill ok" id="cVerifiedCount">1 verified</span></div>
+          <div id="credentialsVerified"></div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Pending verification</h2><p>Awaiting a different qualified verifier with a conflict check</p></div></div>
+          <div id="credentialsPending"></div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="view" data-view="skills">
+        <div class="page-head">
+          <div><h1>Skills Record</h1><p>What you can demonstrably do — with the level, permitted tools and evidence behind each claim.</p></div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Skills matrix</h2><p>Novice / Guided · Developing · Independent-in-scenario · Strong / Transferable</p></div></div>
+          <div id="skillsList"></div>
+        </div>
+      </section>
+
+      <!-- ASSESSMENTS -->
+      <section class="view" data-view="assessments">
+        <div class="page-head">
+          <div><h1>Assessments</h1><p>Five layers of proof: knowledge check, practical mission, project assessment, human review, independent verification.</p></div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="m-label">Upcoming</div><div class="m-value">1</div><span class="m-delta flat">DB-22 Final Challenge</span></div>
+          <div class="metric warn"><div class="m-label">Under review</div><div class="m-value">1</div><span class="m-delta down">Assessor assigned</span></div>
+          <div class="metric ok"><div class="m-label">Passed</div><div class="m-value">2</div><span class="m-delta up">Both verified</span></div>
+          <div class="metric cool"><div class="m-label">Verification</div><div class="m-value">1</div><span class="m-delta flat">Pending decision</span></div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Assessment record</h2><p>Score, method, permitted AI, assistance used, date, version and review method</p></div></div>
+          <div style="overflow-x:auto">
+            <table class="tbl">
+              <thead><tr><th>Assessment</th><th>Layer</th><th>Method</th><th>AI policy</th><th>Status</th><th class="td-right">Result</th></tr></thead>
+              <tbody id="assessmentsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAYMENTS -->
+      <section class="view" data-view="payments">
+        <div class="page-head">
+          <div><h1>Payments</h1><p>Orders, invoices, refunds. Entitlement is granted from an authoritative payment event — never a return URL.</p></div>
+        </div>
+        <div class="metrics">
+          <div class="metric ok"><div class="m-label">Paid lifetime</div><div class="m-value" id="payTotal">$0</div><span class="m-delta up" id="payOrders">0 orders</span></div>
+          <div class="metric"><div class="m-label">Active access</div><div class="m-value" id="payActive">0</div><span class="m-delta flat">products</span></div>
+          <div class="metric"><div class="m-label">Promotions used</div><div class="m-value" id="payCoupons">0</div><span class="m-delta flat">zero-payable</span></div>
+          <div class="metric"><div class="m-label">Refunds</div><div class="m-value" id="payRefunds">0</div><span class="m-delta flat">Within 14 days</span></div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Orders</h2><p>Confirmed payments and promotions on your account</p></div></div>
+          <div style="overflow-x:auto">
+            <table class="tbl">
+              <thead><tr><th>Order</th><th>Product</th><th>Date</th><th>Amount</th><th>Status</th><th class="td-right">Source</th></tr></thead>
+              <tbody id="ordersTable"></tbody>
+            </table>
+          </div>
+        </div>
+        </section>
+
+      <!-- SUPPORT -->
+      <section class="view" data-view="support">
+        <div class="page-head">
+          <div><h1>Support</h1><p>Account, payment, course, assessment, technical, refund, accessibility and appeal cases. States: Submitted → In Progress → Waiting for Learner → Resolved → Closed.</p></div>
+        </div>
+        <div class="grid g-2-1" style="margin-bottom:14px">
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Open a support case</h2><p>Sent to the Academy team by email. Never include passwords or API keys.</p></div></div>
+            <div class="field"><label for="supportTopic">Category</label><select id="supportTopic"></select></div>
+            <div class="field"><label for="supportName">Your name</label><input id="supportName" type="text" autocomplete="name"></div>
+            <div class="field"><label for="supportEmail">Your email</label><input id="supportEmail" type="email" autocomplete="email"></div>
+            <div class="field"><label for="supportBody">Describe the issue</label><textarea id="supportBody" placeholder="What happened, and where? Include the mission or page if relevant."></textarea></div>
+            <button class="btn-primary" id="supportSubmit">Submit case</button>
+          </div>
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Response targets</h2><p>Targets, not guarantees</p></div></div>
+            <div class="row-list">
+              <div class="row-item"><div class="row-left"><div class="row-icon ok">1d</div><div class="row-body"><div class="row-title">Technical</div><div class="row-sub">1 business day</div></div></div></div>
+              <div class="row-item"><div class="row-left"><div class="row-icon warn">2d</div><div class="row-body"><div class="row-title">Assessment</div><div class="row-sub">2 business days</div></div></div></div>
+              <div class="row-item"><div class="row-left"><div class="row-icon cool">1d</div><div class="row-body"><div class="row-title">Accessibility</div><div class="row-sub">1 business day</div></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-pad">
+          <div class="card-head"><div><h2>Your cases</h2><p>Status and resolution</p></div></div>
+          <div id="supportList"></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="view" data-view="settings">
+        <div class="page-head"><div><h1>Settings</h1><p>Profile, privacy and accessibility preferences. </p></div></div>
+        <div class="grid g-2">
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Profile</h2><p>Your name and how we reach you</p></div></div>
+            <div class="field"><label for="setName">Full name</label><input id="setName" type="text" value="Layla Ibrahim"></div>
+            <div class="field"><label for="setEmail">Email</label><input id="setEmail" type="email" value="layla@example.com"></div>
+            <div class="field"><label for="setCountry">Country</label><input id="setCountry" type="text" value="UAE"></div>
+            <div class="field"><label for="setLang">Language</label><select id="setLang"><option>English</option><option>Arabic</option></select></div>
+            <button class="btn-primary" id="saveProfile">Save profile</button>
+            <div class="note-box">Your name and email come from your account. Changing your email needs support — it is tied to your purchases.</div>
+          </div>
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Privacy &amp; sharing</h2><p>You control what is visible</p></div></div>
+            <div class="row-list">
+              <div class="row-item">
+                <div class="row-left"><div class="row-icon navy">V</div><div class="row-body"><div class="row-title">Public credential sharing</div><div class="row-sub">Employer-visible verification page</div></div></div>
+                <label style="display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--slate-2)"><input type="checkbox" id="setPublic" checked> Enabled</label>
+              </div>
+              <div class="row-item">
+                <div class="row-left"><div class="row-icon cool">A</div><div class="row-body"><div class="row-title">Allow aggregate employer reporting</div><div class="row-sub">Only if your employer owns your seat</div></div></div>
+                <label style="display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--slate-2)"><input type="checkbox" id="setAggregate"> Disabled</label>
+              </div>
+              <div class="row-item">
+                <div class="row-left"><div class="row-icon warn">AI</div><div class="row-body"><div class="row-title">AI coaching language</div><div class="row-sub">Socratic vs direct</div></div></div>
+                <select id="setAIStyle" style="padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;font-family:inherit"><option>Socratic</option><option>Direct</option></select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-pad" style="margin-top:14px">
+          <div class="card-head"><div><h2>Role access map</h2><p>What each role can and cannot do. New accounts are always Learners; other roles are assigned by administrators.</p></div></div>
+          <div style="overflow-x:auto"><table class="access-map">
+            <thead><tr><th>Role</th><th>Permitted scope</th><th>Separation control</th></tr></thead>
+            <tbody>
+              <tr><td>Learner</td><td>Own profile, entitled learning, drafts, submissions, evidence, support cases, consent.</td><td>Cannot review, verify, administer or view another learner's private evidence.</td></tr>
+              <tr><td>Reviewer</td><td>Assigned submissions, rubric review, feedback, request changes, approval queue, workload.</td><td>No self-review; cannot independently verify their own approvals.</td></tr>
+              <tr><td>Verifier</td><td>Independent verification queue, evidence review, conflict declaration, decision, audit.</td><td>Cannot verify work they reviewed, approved, worked with, or have a declared relationship with.</td></tr>
+              <tr><td>Admin</td><td>Configuration, products, entitlements, assignments, publishing, audit and system health.</td><td>Privileged approval and MFA in production; separated from review decisions.</td></tr>
+            </tbody></table></div>
+        </div>
+        <div class="card card-pad" style="margin-top:14px">
+          <div class="card-head"><div><h2>Activity log &amp; reset</h2><p>Workspace actions recorded on this device</p></div><button class="btn-ghost" id="resetDemo">Reset workspace data…</button></div>
+          <div id="auditList"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal" id="modalBox">
+    <div class="modal-head">
+      <div>
+        <p style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 8px" id="modalKicker"></p>
+        <h3 id="modalTitle"></h3>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
+
+</div>

@@ -119,6 +119,30 @@
     return { currency: CURRENCY, lines: lines, blocked: blocked, subtotal: subtotal, discount: discount, total: total, coupon: { code: raw ? COUPON.code : "", state: state, message: message } };
   }
 
+  /* Where the learner app lives: academy.digitalburj.com in production; academy.localhost:<port> in local dev. */
+  function appUrl(path) {
+    var origin = "https://academy.digitalburj.com";
+    if (typeof location !== "undefined") {
+      var h = location.hostname;
+      if (/(^|\.)digitalburj\.com$/.test(h)) origin = "https://academy.digitalburj.com";
+      else if (h === "localhost" || /\.localhost$/.test(h)) origin = location.protocol + "//academy.localhost" + (location.port ? ":" + location.port : "");
+      else origin = location.origin;
+    }
+    return origin + (path || "/");
+  }
+
+  /* The marketing site (landing page + checkout). */
+  function siteUrl(path) {
+    var origin = "https://digitalburj.com";
+    if (typeof location !== "undefined") {
+      var h = location.hostname;
+      if (/(^|\.)digitalburj\.com$/.test(h)) origin = "https://digitalburj.com";
+      else if (h === "localhost" || /\.localhost$/.test(h)) origin = location.protocol + "//localhost" + (location.port ? ":" + location.port : "");
+      else origin = location.origin;
+    }
+    return origin + (path || "/");
+  }
+
   /* Browser-only: POST to the same-origin academy endpoint. Never throws. */
   function api(action, payload) {
     if (typeof fetch !== "function") return Promise.resolve({ ok: false, status: 0, data: { error: "No network." } });
@@ -129,5 +153,5 @@
   }
 
   return { CURRENCY: CURRENCY, COURSES: COURSES, BUNDLES: BUNDLES, STAGES: STAGES, LIFECYCLE: LIFECYCLE, CAPABILITY: CAPABILITY, SUPPORT_TOPICS: SUPPORT_TOPICS, COUPON: COUPON,
-    course: course, bundle: bundle, bundleStatus: bundleStatus, bundleCourseIds: bundleCourseIds, isLive: isLive, money: money, quote: quote, api: api };
+    appUrl: appUrl, siteUrl: siteUrl, course: course, bundle: bundle, bundleStatus: bundleStatus, bundleCourseIds: bundleCourseIds, isLive: isLive, money: money, quote: quote, api: api };
 });

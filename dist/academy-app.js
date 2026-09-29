@@ -1,8 +1,209 @@
-/* DigitalBurj Academy — generated from the build pipeline; edit the source templates, not this bundle by hand. */
+/* DigitalBurj Academy app — academy.digitalburj.com
+ * Router + account screens (sign in / sign up / verify / forgot / reset / welcome / redeem / no-access) and the learner
+ * workspace. Accounts, sessions and entitlements are enforced by /api/academy (Cloudflare Worker + KV); the browser
+ * only renders what the server says. Markup for the workspace lives in academy-app.html (fetched after sign-in). */
 (function(){
 'use strict';
-var BODY = "<div class=\"ac ws\">\n\n<div class=\"sidebar-scrim\" id=\"scrim\"></div>\n\n<div class=\"app\">\n\n  <!-- SIDEBAR -->\n  <aside class=\"sidebar\" id=\"sidebar\">\n    <a class=\"sb-brand\" href=\"/academy\" aria-label=\"DigitalBurj Academy\"><img src=\"brand/mark-academy.webp\" alt=\"\" style=\"width:36px;height:36px;padding:5px;box-sizing:border-box;border-radius:11px;background:#f6f5f1;object-fit:contain;flex:none\"/><div class=\"sb-brand-text\"><strong style=\"font-family:var(--head)\">DigitalBurj</strong><span>Academy \u00b7 Learner</span></div></a>\n\n    <div class=\"sb-scroll\">\n      <div class=\"sb-section\">\n        <div class=\"sb-section-title\">Today</div>\n        <button class=\"sb-item active\" data-view=\"today\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M3 12h4l3 8 4-16 3 8h4\"/></svg><span class=\"sb-label\">Dashboard</span></button>\n        <button class=\"sb-item\" data-view=\"curriculum\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M4 19.5A2.5 2.5 0 016.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z\"/></svg><span class=\"sb-label\">Curriculum</span></button>\n        <button class=\"sb-item\" data-view=\"path\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z\"/></svg><span class=\"sb-label\">My Path</span></button>\n        <button class=\"sb-item\" data-view=\"missions\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M9 11l3 3L22 4\"/><path d=\"M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11\"/></svg><span class=\"sb-label\">Missions</span><span class=\"sb-count\" id=\"cMissions\">6</span></button>\n      </div>\n\n      <div class=\"sb-section\">\n        <div class=\"sb-section-title\">Practice</div>\n        <button class=\"sb-item\" data-view=\"toolbench\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z\"/></svg><span class=\"sb-label\">Tool Bench</span></button>\n        <button class=\"sb-item\" data-view=\"labs\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M9 3v6l-5 9a2 2 0 002 2h12a2 2 0 002-2l-5-9V3\"/><path d=\"M8 3h8\"/></svg><span class=\"sb-label\">Labs</span><span class=\"sb-count\" id=\"cLabs\">11</span></button>\n        <button class=\"sb-item\" data-view=\"projects\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z\"/></svg><span class=\"sb-label\">Projects</span></button>\n      </div>\n\n      <div class=\"sb-section\">\n        <div class=\"sb-section-title\">Live</div>\n        <button class=\"sb-item\" data-view=\"liveroom\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M23 7l-7 5 7 5V7z\"/><rect x=\"1\" y=\"5\" width=\"15\" height=\"14\" rx=\"2\"/></svg><span class=\"sb-label\">Live Room</span><span class=\"sb-count\" id=\"cLive\">1</span></button>\n        <button class=\"sb-item\" data-view=\"calendar\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M16 3v4M8 3v4M3 10h18\"/></svg><span class=\"sb-label\">Calendar</span></button>\n        <button class=\"sb-item\" data-view=\"messages\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M4 4h16v12H5.2L4 18V4z\"/><path d=\"M8 9h8M8 13h5\"/></svg><span class=\"sb-label\">Messages</span><span class=\"sb-count\" id=\"cMessages\">2</span></button>\n      </div>\n\n      <div class=\"sb-section\">\n        <div class=\"sb-section-title\">Evidence</div>\n        <button class=\"sb-item\" data-view=\"feedback\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z\"/></svg><span class=\"sb-label\">Feedback</span><span class=\"sb-count\" id=\"cFeedback\">2</span></button>\n        <button class=\"sb-item\" data-view=\"evidence\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M21 8l-9-5-9 5 9 5 9-5z\"/><path d=\"M3 8v8l9 5 9-5V8M12 13v8\"/></svg><span class=\"sb-label\">Evidence Vault</span><span class=\"sb-count\" id=\"cEvidence\">5</span></button>\n        <button class=\"sb-item\" data-view=\"credentials\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"8\" r=\"6\"/><path d=\"M8.5 13.5L7 23l5-3 5 3-1.5-9.5\"/></svg><span class=\"sb-label\">Credentials</span><span class=\"sb-count\" id=\"cCredentials\">1</span></button>\n        <button class=\"sb-item\" data-view=\"skills\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M3 3v18h18\"/><path d=\"M7 14l4-4 4 4 6-6\"/></svg><span class=\"sb-label\">Skills Record</span></button>\n        <button class=\"sb-item\" data-view=\"assessments\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/><path d=\"M9 12l2 2 4-4\"/></svg><span class=\"sb-label\">Assessments</span><span class=\"sb-count\" id=\"cAssessments\">2</span></button>\n      </div>\n\n      <div class=\"sb-section\">\n        <div class=\"sb-section-title\">Account</div>\n        <button class=\"sb-item\" data-view=\"payments\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M2 10h20\"/></svg><span class=\"sb-label\">Payments</span></button>\n        <button class=\"sb-item\" data-view=\"support\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3\"/><path d=\"M12 17h.01\"/></svg><span class=\"sb-label\">Support</span><span class=\"sb-count\" id=\"cSupport\">1</span></button>\n        <button class=\"sb-item\" data-view=\"settings\"><svg class=\"sb-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z\"/></svg><span class=\"sb-label\">Settings</span></button>\n      </div>\n    </div>\n\n    <div class=\"sb-footer\">\n      <div class=\"sb-user\" id=\"userMenu\">\n        <div class=\"sb-avatar\">LI</div>\n        <div class=\"sb-user-info\"><b>Layla Ibrahim</b><span>Demo learner</span></div>\n      </div>\n      <div class=\"sb-links\"><a href=\"/academy\">\u2190 Academy storefront</a><a href=\"/\">DigitalBurj home</a></div>\n    </div>\n  </aside>\n\n  <!-- MAIN -->\n  <div class=\"main\">\n    <div class=\"demo-bar\" role=\"note\">\n      <div><b>Demo workspace</b><span>Fictional learner, missions, tools, labs, live rooms and credentials. Prototype only \u2014 it holds no real records and unlocks nothing.</span></div>\n      <nav aria-label=\"Academy navigation\"><a href=\"/academy\">\u2190 Academy</a><a href=\"/academy#bundles\">Bundles</a><a href=\"/academy#support\">Support</a><a href=\"/\">DigitalBurj home</a></nav>\n    </div>\n    <header class=\"topbar\">\n      <button class=\"menu-toggle\" id=\"menuToggle\" aria-label=\"Menu\">\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" width=\"18\" height=\"18\"><path d=\"M3 6h18M3 12h18M3 18h18\"/></svg>\n      </button>\n      <div class=\"tb-title\">Learner Workspace <small id=\"tbViewLabel\">Today</small></div>\n      <div class=\"tb-search\">\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4.35-4.35\"/></svg>\n        <input type=\"search\" id=\"globalSearch\" placeholder=\"Search curriculum, missions, tools, labs\u2026\" aria-label=\"Search\">\n      </div>\n      <div class=\"tb-actions\">\n        <button class=\"icon-btn\" id=\"notifBtn\" aria-label=\"Notifications\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0\"/></svg><span class=\"dot\"></span></button>\n        <button class=\"btn-primary\" id=\"newMissionBtn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>New Mission</button>\n      </div>\n    </header>\n\n    <div class=\"content\">\n\n      <!-- TODAY -->\n      <section class=\"view active\" data-view=\"today\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Good afternoon, Layla.</h1>\n            <p>You're 58% through AI-Native Product Builder. One next action, one deadline, one reason for the recommendation.</p>\n          </div>\n          <div class=\"ph-actions\">\n            <button class=\"btn-ghost\" data-jump=\"calendar\">View calendar</button>\n            <button class=\"btn-primary\" data-jump=\"missions\">Continue learning \u2192</button>\n          </div>\n        </div>\n\n        <div class=\"continue-card\">\n          <div class=\"cc-inner\">\n            <div>\n              <span class=\"cc-tag\">Continue learning</span>\n              <h2>Repair a client booking flow</h2>\n              <p class=\"cc-desc\">A fictional SME's booking form silently accepts duplicate appointments and gives no confirmation on slow networks. Prevent duplicates, add accessible states, and verify authorization.</p>\n              <div class=\"cc-meta\">\n                <span class=\"cc-chip accent\">DB-03 \u00b7 Module 3</span>\n                <span class=\"cc-chip\">Revision requested</span>\n                <span class=\"cc-chip\">Due 28 Sep 2026</span>\n                <span class=\"cc-chip\">Rubric v2.1</span>\n              </div>\n            </div>\n            <div class=\"cc-next\">\n              <div class=\"ccn-label\">Next stage</div>\n              <div class=\"ccn-stage\">07 \u00b7 FIX</div>\n              <div class=\"ccn-desc\">Correct the duplicate-submission defect and explain the change. Show before/after evidence.</div>\n              <div class=\"ccn-actions\">\n                <button class=\"btn-resume\" data-jump=\"missions\">Continue mission \u2192</button>\n                <button class=\"btn-view\" data-jump=\"path\">View pathway</button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"metrics\">\n          <div class=\"metric red\"><div class=\"m-label\">Active pathway</div><div class=\"m-value\">1</div><span class=\"m-delta flat\">AI-Native Product Builder</span></div>\n          <div class=\"metric warn\"><div class=\"m-label\">Missions open</div><div class=\"m-value\" id=\"mOpen\">6</div><span class=\"m-delta down\">1 revision requested</span></div>\n          <div class=\"metric ok\"><div class=\"m-label\">Evidence records</div><div class=\"m-value\" id=\"mEvidence\">5</div><span class=\"m-delta up\">1 verification pending</span></div>\n          <div class=\"metric cool\"><div class=\"m-label\">Credentials</div><div class=\"m-value\" id=\"mCredentials\">1</div><span class=\"m-delta flat\">Digital Foundations</span></div>\n        </div>\n\n        <div class=\"grid g-2-1\" style=\"margin-bottom:14px\">\n          <div class=\"card card-pad\">\n            <div class=\"card-head\">\n              <div><h2>Missions due &amp; in review</h2><p>Across all active programmes</p></div>\n              <button class=\"btn-ghost\" data-jump=\"missions\">View all</button>\n            </div>\n            <div class=\"row-list\" id=\"todayMissions\"></div>\n          </div>\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Upcoming</h2><p>Next 7 days</p></div><button class=\"btn-ghost\" data-jump=\"calendar\">Calendar</button></div>\n            <div class=\"row-list\" id=\"todayUpcoming\"></div>\n          </div>\n        </div>\n\n        <div class=\"grid g-2-1\">\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Recent evidence</h2><p>Private records you own</p></div><button class=\"btn-ghost\" data-jump=\"evidence\">Open vault</button></div>\n            <div class=\"row-list\" id=\"todayEvidence\"></div>\n          </div>\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Progress</h2><p>Pathway completion</p></div></div>\n            <div style=\"margin-bottom:14px\">\n              <div style=\"display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px\"><span>AI-Native Product Builder</span><span>58%</span></div>\n              <div class=\"progress\"><i style=\"width:58%\"></i></div>\n            </div>\n            <div style=\"margin-bottom:14px\">\n              <div style=\"display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px\"><span>Digital Foundations</span><span>100%</span></div>\n              <div class=\"progress ok\"><i style=\"width:100%\"></i></div>\n            </div>\n            <div>\n              <div style=\"display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px\"><span>DB-22 Final Challenge</span><span>Locked</span></div>\n              <div class=\"progress\"><i style=\"width:0%\"></i></div>\n            </div>\n          </div>\n        </div>\n      </section>\n\n      <!-- CURRICULUM -->\n      <section class=\"view\" data-view=\"curriculum\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Curriculum</h1>\n            <p>Full DigitalBurj Academy catalogue \u2014 Technology, Professional Career, Advanced Practice and Academy for Business. Live, pilot and planned records with honest status.</p>\n          </div>\n        </div>\n\n        <div class=\"curriculum-shell\">\n          <nav class=\"curriculum-nav\" id=\"curriculumNav\">\n            <div class=\"cn-title\">Pillars</div>\n          </nav>\n          <div class=\"curriculum-main\" id=\"curriculumMain\"></div>\n        </div>\n      </section>\n\n      <!-- MY PATH -->\n      <section class=\"view\" data-view=\"path\">\n        <div class=\"page-head\">\n          <div>\n            <h1>My Path</h1>\n            <p>AI-Native Product Builder \u00b7 10\u201314 weeks \u00b7 ~80\u2013120 guided hours \u00b7 Certificate on completion</p>\n          </div>\n          <div class=\"ph-actions\"><button class=\"btn-ghost\" id=\"pathDownload\">Download pathway PDF</button></div>\n        </div>\n\n        <div class=\"card card-pad\" style=\"margin-bottom:14px\">\n          <div class=\"card-head\"><div><h2>Graduation artifact</h2><p>What you will have at the end</p></div><span class=\"pill cool\">Capstone</span></div>\n          <p style=\"color:var(--slate-2);font-size:13.5px;line-height:1.7;margin:0\">\n            A functioning, accessible, permission-aware workflow on safe data; repository history, deployed staging link, test report, handoff, incident note, design reasoning, AI-use log, and an assessed defense. Production deployment is a separate supervised exercise with authorization and operations support.\n          </p>\n        </div>\n\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Modules</h2><p>Sequence \u00b7 status \u00b7 next action</p></div></div>\n          <div id=\"pathModules\"></div>\n        </div>\n      </section>\n\n      <!-- MISSIONS -->\n      <section class=\"view\" data-view=\"missions\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Missions</h1>\n            <p>Every mission is a capability attempt with a scenario, artifact, test, feedback, revision and evidence record.</p>\n          </div>\n          <div class=\"ph-actions\">\n            <button class=\"btn-ghost\" id=\"missionsFilterBtn\">Filter</button>\n          </div>\n        </div>\n\n        <div class=\"grid g-1-2\" style=\"margin-bottom:14px\">\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>All missions</h2><p id=\"missionCountLabel\">6 total</p></div></div>\n            <div class=\"row-list\" id=\"missionsList\"></div>\n          </div>\n\n          <div>\n            <div class=\"mission-header\">\n              <div style=\"display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap\">\n                <div>\n                  <h2 id=\"mwsTitle\">Repair a client booking flow</h2>\n                  <div class=\"mh-sub\" id=\"mwsSub\">DB-03 \u00b7 Web Workflow Engineering \u00b7 Rubric v2.1</div>\n                  <div class=\"mh-meta\" id=\"mwsMeta\"></div>\n                </div>\n              </div>\n            </div>\n\n            <div class=\"stage-rail\" id=\"missionStageRail\"></div>\n\n            <div class=\"mission-shell\">\n              <div>\n                <div class=\"mission-panel\" id=\"missionPanel\"></div>\n                <div class=\"mission-panel\" id=\"missionLiveRoomTeaser\"></div>\n              </div>\n              <div>\n                <div class=\"mission-panel\">\n                  <div class=\"mp-tag\">Hint ladder</div>\n                  <p style=\"font-size:12.5px;color:var(--slate-2);margin:8px 0 0;line-height:1.55\">Hints are recorded separately from correctness. Using a hint does not fail you \u2014 hiding which hint you used does.</p>\n                  <div class=\"hint-ladder\" id=\"hintLadder\"></div>\n                </div>\n                <div class=\"mission-panel\">\n                  <div class=\"mp-tag\">Evidence tray</div>\n                  <p style=\"font-size:12.5px;color:var(--slate-2);margin:8px 0 0;line-height:1.55\">Attach the artifacts your assessor will review. Nothing is submitted until you press Submit.</p>\n                  <div class=\"evidence-tray\" id=\"evidenceTray\"></div>\n                  <div style=\"display:flex;gap:8px;margin-top:12px;flex-wrap:wrap\">\n                    <button class=\"btn-ghost\" id=\"addEvidenceBtn\">+ Add artifact</button>\n                    <button class=\"btn-primary\" id=\"submitMissionBtn\">Submit for review</button>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n\n      <!-- TOOL BENCH -->\n      <section class=\"view\" data-view=\"toolbench\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Tool Bench</h1>\n            <p>Authorised practice tools for the current mission. Tools open in a new site; disclosure shows what information crosses the boundary.</p>\n          </div>\n        </div>\n        <div class=\"card card-pad\" style=\"margin-bottom:14px\">\n          <div class=\"card-head\">\n            <div><h2>Active mission tools</h2><p id=\"toolMissionLabel\">Repair a client booking flow \u00b7 DB-03</p></div>\n            <span class=\"pill warn\">AI-assisted with disclosure</span>\n          </div>\n          <p style=\"font-size:13px;color:var(--slate-2);margin:0 0 14px;line-height:1.65\">These tools are approved for the current mission. Using an unapproved tool does not fail you, but you must disclose it in your explanation.</p>\n          <div class=\"tool-grid\" id=\"activeToolsGrid\"></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>All authorised tools</h2><p>Approved across all missions in your pathway</p></div></div>\n          <div class=\"tool-grid\" id=\"allToolsGrid\"></div>\n        </div>\n      </section>\n\n      <!-- LABS -->\n      <section class=\"view\" data-view=\"labs\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Labs</h1>\n            <p>Interactive simulations with a defined initial state, plausible documents, controlled event injections, safe reset, and explicit scoring.</p>\n          </div>\n          <div class=\"ph-actions\"><button class=\"btn-ghost\" id=\"labHelpBtn\">How labs work</button></div>\n        </div>\n        <div class=\"lab-grid\" id=\"labGrid\"></div>\n      </section>\n\n      <!-- PROJECTS -->\n      <section class=\"view\" data-view=\"projects\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Projects</h1>\n            <p>Integrated capability work that spans multiple missions and skills.</p>\n          </div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Active projects</h2><p>Submitted work, feedback and outcomes</p></div></div>\n          <div id=\"projectsList\"></div>\n        </div>\n      </section>\n\n      <!-- LIVE ROOM -->\n      <section class=\"view\" data-view=\"liveroom\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Live Room</h1>\n            <p>Scheduled mentor and cohort sessions with attendance, accessible captions and notes. Attendance is logistics only \u2014 skill evidence remains the performed task.</p>\n          </div>\n        </div>\n\n        <div class=\"live-grid\" style=\"margin-bottom:14px\">\n          <div class=\"live-main\">\n            <div class=\"live-video\">\n              <div class=\"lv-info\">\n                <span class=\"lv-badge\">Live now</span>\n                <h3>Authorization patterns in practice</h3>\n                <p>Reem Al Farsi \u00b7 Instructor \u00b7 42 minutes elapsed</p>\n              </div>\n            </div>\n            <div class=\"live-controls\">\n              <div class=\"lc-left\">\n                <button class=\"lc-btn\" id=\"liveMic\" title=\"Toggle mic\">\ud83c\udf99</button>\n                <button class=\"lc-btn\" id=\"liveCam\" title=\"Toggle camera\">\ud83d\udcf7</button>\n                <button class=\"lc-btn\" id=\"liveHand\" title=\"Raise hand\">\u270b</button>\n                <button class=\"lc-btn\" id=\"liveCaption\" title=\"Toggle captions\">CC</button>\n              </div>\n              <div class=\"lc-time\" id=\"liveTime\">42:18</div>\n              <div class=\"lc-left\">\n                <button class=\"lc-btn\" id=\"liveNotes\" title=\"Take notes\">\ud83d\udcdd</button>\n                <button class=\"lc-btn danger\" id=\"liveLeave\">Leave</button>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"live-side\">\n            <div class=\"live-side-card\">\n              <h4>Session details</h4>\n              <div class=\"row-list\">\n                <div class=\"row-item\" style=\"padding:8px 0\"><div class=\"row-left\"><div class=\"row-body\"><div class=\"row-title\">Instructor</div><div class=\"row-sub\">Reem Al Farsi</div></div></div></div>\n                <div class=\"row-item\" style=\"padding:8px 0\"><div class=\"row-left\"><div class=\"row-body\"><div class=\"row-title\">Cohort</div><div class=\"row-sub\">AI-Native Product Builder \u00b7 Sept 2026</div></div></div></div>\n                <div class=\"row-item\" style=\"padding:8px 0\"><div class=\"row-left\"><div class=\"row-body\"><div class=\"row-title\">Recording</div><div class=\"row-sub\">Available after session with notice</div></div></div></div>\n              </div>\n            </div>\n            <div class=\"live-side-card\">\n              <h4>In-session chat</h4>\n              <div id=\"liveChat\" style=\"display:flex;flex-direction:column;gap:8px;max-height:180px;overflow-y:auto;margin-bottom:10px\"></div>\n              <div style=\"display:flex;gap:6px\">\n                <input type=\"text\" id=\"liveChatInput\" placeholder=\"Ask a question\u2026\" style=\"flex:1;padding:8px 11px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;font-family:inherit\">\n                <button class=\"btn-primary\" id=\"liveChatSend\" style=\"padding:8px 12px\">\u2191</button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Upcoming sessions</h2><p>Scheduled mentor and cohort sessions</p></div></div>\n          <div class=\"schedule-list\" id=\"liveScheduleList\"></div>\n        </div>\n      </section>\n\n      <!-- CALENDAR -->\n      <section class=\"view\" data-view=\"calendar\">\n        <div class=\"page-head\">\n          <div>\n            <h1>Calendar</h1>\n            <p>Lessons, mission deadlines, live sessions, reviews and office hours.</p>\n          </div>\n          <div class=\"ph-actions\"><button class=\"btn-ghost\" id=\"calToday\">Today</button></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"cal-month\">\n            <h3 id=\"calMonth\">September 2026</h3>\n            <div class=\"cal-nav\"><button id=\"calPrev\">\u2039</button><button id=\"calNext\">\u203a</button></div>\n          </div>\n          <div class=\"cal-head\"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>\n          <div class=\"cal\" id=\"calGrid\"></div>\n          <div style=\"margin-top:18px;padding-top:16px;border-top:1px solid var(--line-2)\">\n            <div style=\"font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-3);margin-bottom:8px\">Legend</div>\n            <div style=\"display:flex;gap:14px;flex-wrap:wrap\">\n              <span style=\"display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)\"><span style=\"width:11px;height:11px;border-radius:3px;background:var(--red)\"></span>Live session</span>\n              <span style=\"display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)\"><span style=\"width:11px;height:11px;border-radius:3px;background:var(--warn-bg);border:1px solid #F4D9A8\"></span>Mission due</span>\n              <span style=\"display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)\"><span style=\"width:11px;height:11px;border-radius:3px;background:var(--cool-bg);border:1px solid #B8D6F2\"></span>Office hours</span>\n              <span style=\"display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)\"><span style=\"width:11px;height:11px;border-radius:3px;background:var(--ok-bg);border:1px solid #B9E5CC\"></span>Review</span>\n            </div>\n          </div>\n        </div>\n      </section>\n\n      <!-- MESSAGES -->\n      <section class=\"view\" data-view=\"messages\">\n        <div class=\"page-head\">\n          <div><h1>Messages</h1><p>Instructor and reviewer communication. Kept separate from your evidence and assessments.</p></div>\n          <div class=\"ph-actions\"><button class=\"btn-primary\" id=\"msgCompose\">Compose</button></div>\n        </div>\n        <div class=\"card card-pad\"><div id=\"messagesList\"></div></div>\n      </section>\n\n      <!-- FEEDBACK -->\n      <section class=\"view\" data-view=\"feedback\">\n        <div class=\"page-head\">\n          <div><h1>Feedback</h1><p>Criterion-specific feedback from your assessors and instructors. Revisions keep a full history.</p></div>\n        </div>\n        <div class=\"feedback-list\" id=\"feedbackList\"></div>\n      </section>\n\n      <!-- EVIDENCE -->\n      <section class=\"view\" data-view=\"evidence\">\n        <div class=\"page-head\">\n          <div><h1>Evidence Vault</h1><p>Original artifacts, versions, review notes, outcome mapping, support level and provenance. Private until you opt to share.</p></div>\n          <div class=\"ph-actions\"><button class=\"btn-ghost\" id=\"evidenceExport\">Export record</button></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\">\n            <div><h2>All evidence records</h2><p id=\"evCountLabel\">5 records</p></div>\n            <div style=\"display:flex;gap:6px;flex-wrap:wrap\">\n              <button class=\"btn-ghost\" data-evidence-filter=\"all\">All</button>\n              <button class=\"btn-ghost\" data-evidence-filter=\"Verified\">Verified</button>\n              <button class=\"btn-ghost\" data-evidence-filter=\"In Review\">In Review</button>\n            </div>\n          </div>\n          <div id=\"evidenceList\"></div>\n        </div>\n      </section>\n\n      <!-- CREDENTIALS -->\n      <section class=\"view\" data-view=\"credentials\">\n        <div class=\"page-head\">\n          <div><h1>Credentials</h1><p>Scoped, revocable records with unique IDs and consent-controlled visibility.</p></div>\n        </div>\n        <div class=\"card card-pad\" style=\"margin-bottom:14px\">\n          <div class=\"card-head\"><div><h2>Verified credentials</h2><p>Independent verification completed</p></div><span class=\"pill ok\" id=\"cVerifiedCount\">1 verified</span></div>\n          <div id=\"credentialsVerified\"></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Pending verification</h2><p>Awaiting a different qualified verifier with a conflict check</p></div></div>\n          <div id=\"credentialsPending\"></div>\n        </div>\n      </section>\n\n      <!-- SKILLS -->\n      <section class=\"view\" data-view=\"skills\">\n        <div class=\"page-head\">\n          <div><h1>Skills Record</h1><p>What you can demonstrably do \u2014 with the level, permitted tools and evidence behind each claim.</p></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Skills matrix</h2><p>Novice / Guided \u00b7 Developing \u00b7 Independent-in-scenario \u00b7 Strong / Transferable</p></div></div>\n          <div id=\"skillsList\"></div>\n        </div>\n      </section>\n\n      <!-- ASSESSMENTS -->\n      <section class=\"view\" data-view=\"assessments\">\n        <div class=\"page-head\">\n          <div><h1>Assessments</h1><p>Five layers of proof: knowledge check, practical mission, project assessment, human review, independent verification.</p></div>\n        </div>\n        <div class=\"metrics\">\n          <div class=\"metric\"><div class=\"m-label\">Upcoming</div><div class=\"m-value\">1</div><span class=\"m-delta flat\">DB-22 Final Challenge</span></div>\n          <div class=\"metric warn\"><div class=\"m-label\">Under review</div><div class=\"m-value\">1</div><span class=\"m-delta down\">Assessor assigned</span></div>\n          <div class=\"metric ok\"><div class=\"m-label\">Passed</div><div class=\"m-value\">2</div><span class=\"m-delta up\">Both verified</span></div>\n          <div class=\"metric cool\"><div class=\"m-label\">Verification</div><div class=\"m-value\">1</div><span class=\"m-delta flat\">Pending decision</span></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Assessment record</h2><p>Score, method, permitted AI, assistance used, date, version and review method</p></div></div>\n          <div style=\"overflow-x:auto\">\n            <table class=\"tbl\">\n              <thead><tr><th>Assessment</th><th>Layer</th><th>Method</th><th>AI policy</th><th>Status</th><th class=\"td-right\">Result</th></tr></thead>\n              <tbody id=\"assessmentsTable\"></tbody>\n            </table>\n          </div>\n        </div>\n      </section>\n\n      <!-- PAYMENTS -->\n      <section class=\"view\" data-view=\"payments\">\n        <div class=\"page-head\">\n          <div><h1>Payments</h1><p>Orders, invoices, refunds. Entitlement is granted from an authoritative payment event \u2014 never a return URL.</p></div>\n        </div>\n        <div class=\"metrics\">\n          <div class=\"metric ok\"><div class=\"m-label\">Paid lifetime (demo)</div><div class=\"m-value\">$22</div><span class=\"m-delta up\">2 orders</span></div>\n          <div class=\"metric\"><div class=\"m-label\">Active entitlements (demo)</div><div class=\"m-value\">2</div><span class=\"m-delta flat\">AI-Native Builder + DB-00</span></div>\n          <div class=\"metric warn\"><div class=\"m-label\">Outstanding (demo)</div><div class=\"m-value\">$12</div><span class=\"m-delta down\">DB-22 Final</span></div>\n          <div class=\"metric\"><div class=\"m-label\">Refunds</div><div class=\"m-value\">0</div><span class=\"m-delta flat\">Within policy</span></div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Orders &amp; invoices</h2><p>Demo learner \u2014 fictional history with entitlement reference</p></div><span class=\"pill neutral\">Demo data</span></div>\n          <div style=\"overflow-x:auto\">\n            <table class=\"tbl\">\n              <thead><tr><th>Order</th><th>Product</th><th>Date</th><th>Amount</th><th>Status</th><th class=\"td-right\">Invoice</th></tr></thead>\n              <tbody id=\"ordersTable\"></tbody>\n            </table>\n          </div>\n        </div>\n        <div class=\"card card-pad\" style=\"margin-top:14px\">\n          <div class=\"card-head\"><div><h2>Your requests on this device</h2><p>Enrolment requests you made in the storefront. Nothing is unlocked until payment or a promotion is confirmed by the team.</p></div></div>\n          <div id=\"localOrders\"></div>\n        </div>\n      </section>\n\n      <!-- SUPPORT -->\n      <section class=\"view\" data-view=\"support\">\n        <div class=\"page-head\">\n          <div><h1>Support</h1><p>Account, payment, course, assessment, technical, refund, accessibility and appeal cases. States: Submitted \u2192 In Progress \u2192 Waiting for Learner \u2192 Resolved \u2192 Closed.</p></div>\n        </div>\n        <div class=\"grid g-2-1\" style=\"margin-bottom:14px\">\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Open a support case</h2><p>Sent to the Academy team by email. Never include passwords or API keys.</p></div></div>\n            <div class=\"field\"><label for=\"supportTopic\">Category</label><select id=\"supportTopic\"></select></div>\n            <div class=\"field\"><label for=\"supportName\">Your name</label><input id=\"supportName\" type=\"text\" autocomplete=\"name\"></div>\n            <div class=\"field\"><label for=\"supportEmail\">Your email</label><input id=\"supportEmail\" type=\"email\" autocomplete=\"email\"></div>\n            <div class=\"field\"><label for=\"supportBody\">Describe the issue</label><textarea id=\"supportBody\" placeholder=\"What happened, and where? Include the mission or page if relevant.\"></textarea></div>\n            <button class=\"btn-primary\" id=\"supportSubmit\">Submit case</button>\n          </div>\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Response targets</h2><p>Targets, not guarantees</p></div></div>\n            <div class=\"row-list\">\n              <div class=\"row-item\"><div class=\"row-left\"><div class=\"row-icon ok\">1d</div><div class=\"row-body\"><div class=\"row-title\">Technical</div><div class=\"row-sub\">1 business day</div></div></div></div>\n              <div class=\"row-item\"><div class=\"row-left\"><div class=\"row-icon warn\">2d</div><div class=\"row-body\"><div class=\"row-title\">Assessment</div><div class=\"row-sub\">2 business days</div></div></div></div>\n              <div class=\"row-item\"><div class=\"row-left\"><div class=\"row-icon cool\">1d</div><div class=\"row-body\"><div class=\"row-title\">Accessibility</div><div class=\"row-sub\">1 business day</div></div></div></div>\n            </div>\n          </div>\n        </div>\n        <div class=\"card card-pad\">\n          <div class=\"card-head\"><div><h2>Your cases</h2><p>Status and resolution</p></div></div>\n          <div id=\"supportList\"></div>\n        </div>\n      </section>\n\n      <!-- SETTINGS -->\n      <section class=\"view\" data-view=\"settings\">\n        <div class=\"page-head\"><div><h1>Settings</h1><p>Profile, privacy and accessibility preferences. The profile below is the fictional demo learner.</p></div></div>\n        <div class=\"grid g-2\">\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Profile</h2><p>Your name and how we reach you</p></div></div>\n            <div class=\"field\"><label for=\"setName\">Full name</label><input id=\"setName\" type=\"text\" value=\"Layla Ibrahim\"></div>\n            <div class=\"field\"><label for=\"setEmail\">Email</label><input id=\"setEmail\" type=\"email\" value=\"layla@example.com\"></div>\n            <div class=\"field\"><label for=\"setCountry\">Country</label><input id=\"setCountry\" type=\"text\" value=\"UAE\"></div>\n            <div class=\"field\"><label for=\"setLang\">Language</label><select id=\"setLang\"><option>English</option><option>Arabic</option></select></div>\n            <button class=\"btn-primary\" id=\"saveProfile\">Save profile</button>\n            <div class=\"note-box\">Demo profile stored in this browser only. Real profiles need the Academy identity service, which is setup required.</div>\n          </div>\n          <div class=\"card card-pad\">\n            <div class=\"card-head\"><div><h2>Privacy &amp; sharing</h2><p>You control what is visible</p></div></div>\n            <div class=\"row-list\">\n              <div class=\"row-item\">\n                <div class=\"row-left\"><div class=\"row-icon navy\">V</div><div class=\"row-body\"><div class=\"row-title\">Public credential sharing</div><div class=\"row-sub\">Employer-visible verification page</div></div></div>\n                <label style=\"display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--slate-2)\"><input type=\"checkbox\" id=\"setPublic\" checked> Enabled</label>\n              </div>\n              <div class=\"row-item\">\n                <div class=\"row-left\"><div class=\"row-icon cool\">A</div><div class=\"row-body\"><div class=\"row-title\">Allow aggregate employer reporting</div><div class=\"row-sub\">Only if your employer owns your seat</div></div></div>\n                <label style=\"display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--slate-2)\"><input type=\"checkbox\" id=\"setAggregate\"> Disabled</label>\n              </div>\n              <div class=\"row-item\">\n                <div class=\"row-left\"><div class=\"row-icon warn\">AI</div><div class=\"row-body\"><div class=\"row-title\">AI coaching language</div><div class=\"row-sub\">Socratic vs direct</div></div></div>\n                <select id=\"setAIStyle\" style=\"padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;font-family:inherit\"><option>Socratic</option><option>Direct</option></select>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"card card-pad\" style=\"margin-top:14px\">\n          <div class=\"card-head\"><div><h2>Demo role access map</h2><p>What each role can and cannot do. Demo roles use fictional data and hold no production privileges.</p></div></div>\n          <div style=\"overflow-x:auto\"><table class=\"access-map\">\n            <thead><tr><th>Role</th><th>Permitted scope</th><th>Separation control</th></tr></thead>\n            <tbody>\n              <tr><td>Learner</td><td>Own profile, entitled learning, drafts, submissions, evidence, support cases, consent.</td><td>Cannot review, verify, administer or view another learner's private evidence.</td></tr>\n              <tr><td>Reviewer</td><td>Assigned submissions, rubric review, feedback, request changes, approval queue, workload.</td><td>No self-review; cannot independently verify their own approvals.</td></tr>\n              <tr><td>Verifier</td><td>Independent verification queue, evidence review, conflict declaration, decision, audit.</td><td>Cannot verify work they reviewed, approved, worked with, or have a declared relationship with.</td></tr>\n              <tr><td>Admin</td><td>Configuration, products, entitlements, assignments, publishing, audit and system health.</td><td>Privileged approval and MFA in production; separated from review decisions.</td></tr>\n            </tbody></table></div>\n        </div>\n        <div class=\"card card-pad\" style=\"margin-top:14px\">\n          <div class=\"card-head\"><div><h2>Audit log &amp; reset</h2><p>Actions recorded on this device for the demo learner</p></div><button class=\"btn-ghost\" id=\"resetDemo\">Reset demo data\u2026</button></div>\n          <div id=\"auditList\"></div>\n        </div>\n      </section>\n\n    </div>\n  </div>\n</div>\n\n<!-- MODAL -->\n<div class=\"modal-bg\" id=\"modalBg\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"modalTitle\" aria-hidden=\"true\">\n  <div class=\"modal\" id=\"modalBox\">\n    <div class=\"modal-head\">\n      <div>\n        <p style=\"font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 8px\" id=\"modalKicker\"></p>\n        <h3 id=\"modalTitle\"></h3>\n      </div>\n      <button class=\"modal-close\" id=\"modalClose\" aria-label=\"Close\">\u2715</button>\n    </div>\n    <div id=\"modalBody\"></div>\n  </div>\n</div>\n\n<!-- TOAST -->\n<div class=\"toast\" id=\"toast\"><span class=\"toast-dot\"></span><span id=\"toastMsg\"></span></div>\n\n</div>";
-function run(){
+var ROOT = null;
+function q$(s, r){ return (r || document).querySelector(s); }
+function qesc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+function params(){ return new URLSearchParams(location.search); }
+function safeNext(n){ return (n && /^\/[A-Za-z0-9\-_\/?=&%.,#]*$/.test(n) && n.indexOf('//') !== 0) ? n : '/'; }
+function go(path){ location.href = path; }
+var EMAIL_RE = /^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]{2,}$/;
+
+/* ---------- shell for account screens ---------- */
+function screen(html, wide){
+  ROOT.innerHTML = '<div class="ac au"><div class="au-card' + (wide ? ' au-wide' : '') + '">' + html + '</div></div>';
+  var f = q$('.au-card input:not([readonly]):not([type=checkbox])'); if (f) f.focus();
+}
+function fieldHtml(id, label, type, extra){
+  return '<div class="field"><label for="' + id + '">' + label + '</label><input id="' + id + '" type="' + type + '" ' + (extra || '') + ' /><span class="au-err" id="' + id + '-err"></span></div>';
+}
+function setErr(id, msg){ var e = q$('#' + id + '-err'); if (e) e.textContent = msg || ''; var i = q$('#' + id); if (i) i.classList.toggle('has-error', !!msg); }
+function formError(msg){ var e = q$('#au-error'); if (!e) return; e.textContent = msg || ''; e.style.display = msg ? 'block' : 'none'; }
+function busy(btn, on, label){ btn.disabled = on; if (label) btn.textContent = on ? 'Please wait…' : label; }
+function brandHead(title, lead){
+  return '<div class="au-brand"><img src="brand/mark-academy.webp" alt="" width="44" height="44"/><span>DigitalBurj Academy</span></div><h1>' + title + '</h1>' + (lead ? '<p class="au-lead">' + lead + '</p>' : '');
+}
+function backLink(){ return '<p class="au-foot"><a href="' + DBA.siteUrl('/academy') + '">← Back to Academy at digitalburj.com</a></p>'; }
+
+/* ---------- screens ---------- */
+function screenSetup(){
+  screen(brandHead('The Academy app is not switched on yet', 'Accounts and sign-in open as soon as the Academy identity service is configured. Nothing you have done on the website is lost.') + '<a class="btn-primary au-btn" href="' + DBA.siteUrl('/academy') + '">Back to the Academy</a>');
+}
+function screenSignin(me){
+  var next = safeNext(params().get('next'));
+  if (me && me.user) return go(next);
+  screen(brandHead('Sign in', 'Continue learning where you left off.') +
+    '<form id="au-form" novalidate>' + fieldHtml('au-email', 'Email', 'email', 'autocomplete="email" value="' + qesc(params().get('email') || '') + '"') + fieldHtml('au-pw', 'Password', 'password', 'autocomplete="current-password"') +
+    '<div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-submit" type="submit">Sign in</button></form>' +
+    '<p class="au-foot"><a href="/forgot">Forgot password?</a> · <a href="/signup' + (next !== '/' ? '?next=' + encodeURIComponent(next) : '') + '">Create an account</a></p>' + backLink());
+  q$('#au-form').addEventListener('submit', function(e){
+    e.preventDefault(); formError(''); var email = q$('#au-email').value.trim(), pw = q$('#au-pw').value;
+    setErr('au-email', EMAIL_RE.test(email) ? '' : 'Enter a valid email.'); setErr('au-pw', pw ? '' : 'Enter your password.');
+    if (!EMAIL_RE.test(email) || !pw) return;
+    var b = q$('#au-submit'); busy(b, true, 'Sign in');
+    DBA.api('signin', { email: email, password: pw }).then(function(r){
+      busy(b, false, 'Sign in');
+      if (r.ok) return go(next);
+      formError((r.data && r.data.error) || 'Could not sign in. Please try again.');
+    });
+  });
+}
+function screenSignup(me, opts){
+  opts = opts || {};
+  var next = safeNext(params().get('next'));
+  if (me && me.user) return go(next);
+  screen(brandHead(opts.title || 'Create your account', opts.lead || 'Use the same email you paid with, and your purchase appears as soon as you verify it.') +
+    '<form id="au-form" novalidate>' + fieldHtml('au-name', 'Full name', 'text', 'autocomplete="name"') +
+    fieldHtml('au-email', 'Email', 'email', 'autocomplete="email" value="' + qesc(opts.email || params().get('email') || '') + '"') +
+    fieldHtml('au-pw', 'Password', 'password', 'autocomplete="new-password"') + '<p class="au-hint">At least 10 characters, mixing two of: lower case, upper case, numbers, symbols.</p>' +
+    '<div class="au-row"><div class="field"><label for="au-country">Country / region</label><input id="au-country" type="text" autocomplete="country-name" /></div>' +
+    '<div class="field"><label for="au-goal">Primary goal</label><select id="au-goal"><option>Digital foundations</option><option>Build websites and software</option><option>Build with AI</option><option>Office or logistics career</option><option>Deliver client products</option></select></div></div>' +
+    '<div class="au-row"><div class="field"><label for="au-lang">Language</label><select id="au-lang"><option value="en">English</option><option value="ar">العربية</option></select></div>' +
+    '<div class="field"><label for="au-a11y">Accessibility preference</label><select id="au-a11y"><option value="">None</option><option>Screen reader</option><option>Reduced motion</option><option>High contrast</option><option>Larger text</option></select></div></div>' +
+    '<label class="au-check"><input type="checkbox" id="au-consent" /><span>I accept the <a href="' + DBA.siteUrl('/academy') + '#pricing" target="_blank" rel="noopener">terms</a> and privacy notice. Evidence and learning records are private by default.</span></label>' +
+    '<label class="au-check"><input type="checkbox" id="au-mkt" /><span>Send me Academy news (optional).</span></label>' +
+    '<div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-submit" type="submit">Create account</button></form>' +
+    '<p class="au-foot">Already have an account? <a href="/signin' + (next !== '/' ? '?next=' + encodeURIComponent(next) : '') + '">Sign in</a></p>' + backLink());
+  q$('#au-form').addEventListener('submit', function(e){
+    e.preventDefault(); formError('');
+    var name = q$('#au-name').value.trim(), email = q$('#au-email').value.trim(), pw = q$('#au-pw').value;
+    setErr('au-name', name.length < 2 ? 'Enter your name.' : ''); setErr('au-email', EMAIL_RE.test(email) ? '' : 'Enter a valid email.'); setErr('au-pw', pw.length >= 10 ? '' : 'Use at least 10 characters.');
+    if (name.length < 2 || !EMAIL_RE.test(email) || pw.length < 10) return;
+    if (!q$('#au-consent').checked) return formError('Please accept the terms and privacy notice to continue.');
+    var b = q$('#au-submit'); busy(b, true, 'Create account');
+    DBA.api('signup', { name: name, email: email, password: pw, country: q$('#au-country').value.trim(), goal: q$('#au-goal').value, language: q$('#au-lang').value, a11y: q$('#au-a11y').value, consent: true, marketing: q$('#au-mkt').checked }).then(function(r){
+      busy(b, false, 'Create account');
+      if (r.ok) return go(next);
+      formError((r.data && r.data.error) || 'Could not create the account. Please try again.');
+    });
+  });
+}
+function screenForgot(){
+  screen(brandHead('Reset your password', 'We will email you a link that works once and expires in an hour.') +
+    '<form id="au-form" novalidate>' + fieldHtml('au-email', 'Email', 'email', 'autocomplete="email"') + '<div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-submit" type="submit">Send reset link</button></form>' +
+    '<p class="au-foot"><a href="/signin">Back to sign in</a></p>');
+  q$('#au-form').addEventListener('submit', function(e){
+    e.preventDefault(); var email = q$('#au-email').value.trim(); setErr('au-email', EMAIL_RE.test(email) ? '' : 'Enter a valid email.'); if (!EMAIL_RE.test(email)) return;
+    var b = q$('#au-submit'); busy(b, true, 'Send reset link');
+    DBA.api('forgot', { email: email }).then(function(r){
+      screen(brandHead('Check your inbox', r.ok ? 'If an account exists for that email, a reset link is on its way.' : ((r.data && r.data.error) || 'Could not send the email right now.')) + '<a class="btn-ghost au-btn" href="/signin">Back to sign in</a>');
+    });
+  });
+}
+function screenReset(){
+  var token = params().get('token') || '';
+  screen(brandHead('Choose a new password') + '<form id="au-form" novalidate>' + fieldHtml('au-pw', 'New password', 'password', 'autocomplete="new-password"') + '<p class="au-hint">At least 10 characters, mixing two of: lower case, upper case, numbers, symbols.</p><div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-submit" type="submit">Set password</button></form>');
+  q$('#au-form').addEventListener('submit', function(e){
+    e.preventDefault(); var pw = q$('#au-pw').value; setErr('au-pw', pw.length >= 10 ? '' : 'Use at least 10 characters.'); if (pw.length < 10) return;
+    var b = q$('#au-submit'); busy(b, true, 'Set password');
+    DBA.api('reset', { token: token, password: pw }).then(function(r){
+      busy(b, false, 'Set password');
+      if (r.ok) return go('/');
+      formError((r.data && r.data.error) || 'Could not reset the password.');
+    });
+  });
+}
+function screenVerify(me){
+  var token = params().get('token');
+  if (!token) return home(me);
+  screen(brandHead('Verifying your email…'));
+  DBA.api('verify', { token: token }).then(function(r){
+    if (r.ok) screen(brandHead('Email verified', 'Thanks — everything you have purchased is now unlocked on your account.') + '<a class="btn-primary au-btn" href="' + (me && me.user ? '/' : '/signin?email=' + encodeURIComponent(r.data.email || '')) + '">' + (me && me.user ? 'Continue learning' : 'Sign in') + '</a>');
+    else screen(brandHead('That link did not work', (r.data && r.data.error) || 'The verification link is invalid or has expired.') + (me && me.user ? '<a class="btn-primary au-btn" href="/">Request a new link</a>' : '<a class="btn-primary au-btn" href="/signin">Sign in to request a new link</a>'));
+  });
+}
+function screenWelcome(me){
+  var cs = params().get('cs');
+  if (!cs) return home(me);
+  screen(brandHead('Confirming your payment…'));
+  DBA.api('welcome', { cs: cs }).then(function(r){
+    if (!r.ok || !r.data.ok) return screen(brandHead('We could not find that checkout', 'If you were charged, your receipt was emailed to you. Contact support and we will sort it out.') + '<a class="btn-ghost au-btn" href="' + DBA.siteUrl('/academy') + '#support">Contact support</a>');
+    var d = r.data, titles = (d.titles || []).map(qesc).join(', ');
+    if (!d.paid) return screen(brandHead('Payment not confirmed yet', 'Stripe has not confirmed this payment. Nothing has been unlocked. If you completed payment, wait a moment and refresh.') + '<a class="btn-primary au-btn" href="">Refresh</a>');
+    var mine = me && me.user && me.user.email === (d.email || '').toLowerCase();
+    screen(brandHead('Payment received', 'Thank you — <b>' + titles + '</b> is paid for. ' + (mine ? 'Your account uses this email, so it will appear in a moment.' : 'Create your Academy account with <b>' + qesc(d.email) + '</b> to continue.')) +
+      (mine ? '<a class="btn-primary au-btn" href="/">Continue learning</a>'
+            : '<a class="btn-primary au-btn" href="/signup?email=' + encodeURIComponent(d.email) + '">Create your account</a><a class="btn-ghost au-btn" href="/signin?email=' + encodeURIComponent(d.email) + '">I already have an account</a>') +
+      '<p class="au-hint" style="margin-top:14px">Access is granted after your payment is confirmed to our server. It can take a few seconds to appear.</p>');
+  });
+}
+function screenVerifyPrompt(me){
+  var email = qesc(me.user.email);
+  screen(brandHead('Verify your email', 'We sent a link to <b>' + email + '</b>. Verify it to unlock what you have purchased — this protects your account from anyone else claiming your purchase.') +
+    '<div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-resend">Resend the email</button><a class="btn-ghost au-btn" href="">I have verified — refresh</a>' +
+    '<p class="au-foot"><a href="#" id="au-out">Sign out</a></p>');
+  q$('#au-resend').addEventListener('click', function(){
+    var b = q$('#au-resend'); busy(b, true, 'Resend the email');
+    DBA.api('resend', {}).then(function(r){ busy(b, false, 'Resend the email'); formError(r.ok ? '' : ((r.data && r.data.error) || 'Could not send.')); if (r.ok){ b.textContent = 'Sent — check your inbox'; b.disabled = true; } });
+  });
+  q$('#au-out').addEventListener('click', function(e){ e.preventDefault(); DBA.api('signout', {}).then(function(){ go('/signin'); }); });
+}
+function screenNoAccess(me){
+  screen(brandHead('Hi ' + qesc(me.user.name.split(' ')[0]) + ', you have no active access yet', 'Your account is ready. Choose a bundle or course and it will appear here as soon as the payment is confirmed. If you just paid, it can take a few seconds.') +
+    '<a class="btn-primary au-btn" href="' + DBA.siteUrl('/academy') + '#bundles">Browse bundles</a><a class="btn-ghost au-btn" href="">Refresh</a>' +
+    '<p class="au-foot">Signed in as ' + qesc(me.user.email) + ' · <a href="#" id="au-out">Sign out</a></p>');
+  q$('#au-out').addEventListener('click', function(e){ e.preventDefault(); DBA.api('signout', {}).then(function(){ go('/signin'); }); });
+}
+function screenRedeem(me){
+  if (!me || !me.user) return go('/signin?next=' + encodeURIComponent('/redeem' + location.search));
+  if (!me.entitlements) return screenVerifyPrompt(me);
+  var items = (params().get('items') || '').split(',').filter(Boolean), code = params().get('coupon') || '';
+  var quote = DBA.quote(items, code, me.entitlements.courses);
+  if (quote.coupon.state !== 'applied' || !quote.lines.length) return screen(brandHead('Promotion not applicable', quote.coupon.message || 'Nothing eligible to redeem.') + '<a class="btn-primary au-btn" href="' + DBA.siteUrl('/academy') + '#bundles">Back to the Academy</a>');
+  var fresh = quote.lines.filter(function(l){ return me.entitlements.items.indexOf(l.id) === -1; });
+  if (!fresh.length) return screen(brandHead('You already own this', 'Everything in this order is already on your account.') + '<a class="btn-primary au-btn" href="/">Continue learning</a>');
+  var lines = fresh.map(function(l){ return '<div class="au-line"><span>' + qesc(l.title) + '</span><b>$0</b></div>'; }).join('');
+  screen(brandHead('Confirm your free enrolment', 'Promotion <b>' + qesc(quote.coupon.code) + '</b> covers this order. No payment is taken.') + '<div class="au-lines">' + lines + '</div>' +
+    '<label class="au-check"><input type="checkbox" id="au-consent" /><span>I accept the access, privacy and refund terms. Participation is not a promise of employment or accreditation.</span></label>' +
+    '<label class="au-check"><input type="checkbox" id="au-zero" /><span><b>Confirm zero-payable enrolment.</b> Each promotion can be used once per product.</span></label>' +
+    '<div class="au-error" id="au-error" role="alert"></div><button class="btn-primary au-btn" id="au-submit">Enrol now</button>');
+  q$('#au-submit').addEventListener('click', function(){
+    formError(''); if (!q$('#au-consent').checked || !q$('#au-zero').checked) return formError('Please tick both boxes to continue.');
+    var b = q$('#au-submit'); busy(b, true, 'Enrol now');
+    DBA.api('redeem', { items: items, coupon: code, consent: true, confirmZero: true }).then(function(r){ busy(b, false, 'Enrol now'); if (r.ok) return go('/'); formError((r.data && r.data.error) || 'Could not redeem.'); });
+  });
+}
+
+/* ---------- routing ---------- */
+function home(me){
+  if (!me || !me.user) return go('/signin');
+  if (!me.entitlements) return screenVerifyPrompt(me);
+  if (!me.entitlements.courses.length) return screenNoAccess(me);
+  mountWorkspace(me);
+}
+function route(){
+  var path = location.pathname.replace(/\/+$/, '') || '/';
+  DBA.api('me', {}).then(function(r){
+    if (r.status === 503 || r.status === 404 || r.status === 0) return screenSetup();
+    var me = r.ok && r.data && r.data.signedIn ? r.data : null;
+    if (path === '/signin') return screenSignin(me);
+    if (path === '/signup') return screenSignup(me);
+    if (path === '/forgot') return screenForgot();
+    if (path === '/reset') return screenReset();
+    if (path === '/verify') return screenVerify(me);
+    if (path === '/welcome') return screenWelcome(me);
+    if (path === '/redeem') return screenRedeem(me);
+    return home(me);
+  });
+}
+function mountWorkspace(me){
+  fetch('/academy-app.html').then(function(r){ return r.text(); }).then(function(html){
+    var u = me.user, first = u.name.split(' ')[0], hr = new Date().getHours();
+    var initials = u.name.split(/\s+/).map(function(w){ return w[0]; }).slice(0, 2).join('').toUpperCase();
+    html = html.replace(/Layla Ibrahim/g, qesc(u.name)).replace('Good afternoon, Layla.', (hr < 12 ? 'Good morning, ' : hr < 18 ? 'Good afternoon, ' : 'Good evening, ') + qesc(first) + '.')
+               .replace('<div class="sb-avatar">LI</div>', '<div class="sb-avatar">' + qesc(initials) + '</div>').replace('<span>Demo learner</span>', '<span>Learner</span>')
+               .replace('layla@example.com', qesc(u.email)).replace(/(id="setCountry" type="text" value=")[^"]*/, '$1' + qesc(u.country || ''));
+    ROOT.innerHTML = html;
+    run(me);
+  });
+}
+
+/* ---------- learner workspace ---------- */
+function run(me){
+  var USER = me.user, ENT = me.entitlements;
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -549,49 +750,14 @@ function run(){
     }
   ];
 
-  var EVIDENCE = [
-    { id:'ev-001', title:'DB00-SHARE-01 evidence pack', skill:'Safe file sharing', status:'Verified', date:'02 Sep 2026', visibility:'Private', level:'Independent-in-scenario' },
-    { id:'ev-002', title:'DB-02 interface design submission', skill:'Interface design', status:'Approved', date:'14 Sep 2026', visibility:'Private', level:'Developing' },
-    { id:'ev-003', title:'DB-03 booking flow repair', skill:'Web workflow engineering', status:'Changes Requested', date:'22 Sep 2026', visibility:'Private', level:'Developing' },
-    { id:'ev-004', title:'DB-04 API contract design', skill:'Backend & API', status:'In Review', date:'24 Sep 2026', visibility:'Private', level:'Independent-in-scenario' },
-    { id:'ev-005', title:'DB-05 AI-native feature build', skill:'AI-native engineering', status:'In Review', date:'25 Sep 2026', visibility:'Private', level:'Independent-in-scenario' }
-  ];
+  var EVIDENCE = [];
 
-  var CREDENTIALS = [
-    { id:'DB-AC-2026-0001', name:'Digital Foundations', skill:'Safe file sharing & structured data', issued:'02 Sep 2026', status:'Verified', visible:true, method:'Assessed submission + independent verification' }
-  ];
+  var CREDENTIALS = [];
 
-  var SKILLS = [
-    { name:'Device, browser & account safety', level:'Independent-in-scenario', course:'DB-00', evidence:1 },
-    { name:'Files, naming & structured data', level:'Independent-in-scenario', course:'DB-00', evidence:1 },
-    { name:'AI literacy & output checking', level:'Developing', course:'DB-00', evidence:1 },
-    { name:'Stakeholder interview & user journey', level:'Independent-in-scenario', course:'DB-01', evidence:1 },
-    { name:'Problem validation & measurable outcome', level:'Developing', course:'DB-01', evidence:0 },
-    { name:'Information architecture & user flows', level:'Developing', course:'DB-02', evidence:1 },
-    { name:'Accessibility (WCAG-informed)', level:'Novice / Guided', course:'DB-02', evidence:0 },
-    { name:'Form validation & error handling', level:'Developing', course:'DB-03', evidence:1 },
-    { name:'Permission-aware frontend engineering', level:'Novice / Guided', course:'DB-03', evidence:0 },
-    { name:'API contract design', level:'Independent-in-scenario', course:'DB-04', evidence:1 },
-    { name:'Authorization & audit trails', level:'Developing', course:'DB-04', evidence:1 },
-    { name:'AI-native engineering practice', level:'Novice / Guided', course:'DB-05', evidence:1 },
-    { name:'Staging deployment & rollback', level:'Novice / Guided', course:'DB-06', evidence:0 },
-    { name:'Client delivery & handoff', level:'Novice / Guided', course:'DB-07', evidence:0 }
-  ];
+  var SKILLS = [];
 
-  var ASSESSMENTS = [
-    { name:'DB00-SHARE-01 safe file sharing', layer:'Practical mission', method:'Deterministic lab + rubric', ai:'No-AI', status:'Passed', result:'82 / 100', cls:'ok' },
-    { name:'DB-02 interface design', layer:'Project assessment', method:'Human review', ai:'AI-assisted', status:'Passed', result:'77 / 100', cls:'ok' },
-    { name:'DB-03 booking flow repair', layer:'Practical mission', method:'Human review', ai:'AI-assisted with disclosure', status:'Revision Required', result:'Pending resubmission', cls:'warn' },
-    { name:'DB-04 API contract design', layer:'Project assessment', method:'Human review + verification', ai:'AI-allowed', status:'Under Review', result:'Assessor assigned', cls:'cool' },
-    { name:'DB-05 AI-native feature build', layer:'Practical mission', method:'Human review', ai:'AI-allowed', status:'Under Review', result:'Assessor assigned', cls:'cool' },
-    { name:'DB-22 Final Challenge', layer:'Capstone + verification', method:'Unseen variant + defense', ai:'AI-assisted with disclosure', status:'Upcoming', result:'Scheduled 22 Oct 2026', cls:'neutral' }
-  ];
+  var ASSESSMENTS = [];
 
-  var ORDERS = [
-    { id:'ORD-2026-0412', product:'Digital Foundations (DB-00)', date:'28 Aug 2026', amount:'$3', status:'Paid', invoice:'INV-0412', invoiceStatus:'Issued' },
-    { id:'ORD-2026-0781', product:'AI-Native Builder bundle', date:'01 Sep 2026', amount:'$19', status:'Paid', invoice:'INV-0781', invoiceStatus:'Issued' },
-    { id:'ORD-2026-1145', product:'DB-22 Final Assessment Challenge', date:'20 Oct 2026', amount:'$12', status:'Scheduled', invoice:'INV-1145', invoiceStatus:'Pending' }
-  ];
 
   var MESSAGES = [
     { id:'msg-1', from:'Karim Nassar', initials:'KN', role:'Assessor', title:'Revision requested on booking flow repair', snippet:'Solid testing on slow network. Two issues: the pending state flashes on keyboard navigation, and your accessibility note does not cover focus management after error.', time:'2h ago', unread:true },
@@ -671,7 +837,7 @@ function run(){
   /* ============================================================
      STATE
      ============================================================ */
-  var STORE_KEY = 'db-academy-full-v1';
+  var STORE_KEY = 'db-academy-app:' + USER.email;
   var STUDENT_STATE = loadState();
   function loadState(){
     try {
@@ -683,7 +849,7 @@ function run(){
       activeStage: 6,
       hintsRevealed: { 'm-booking':[0,1,2] },
       evidenceAttached: { 'm-booking':[0,1,2] },
-      supportCases: SUPPORT_CASES.slice(),
+      supportCases: [],
       publicShare: true,
       aggregateReporting: false,
       aiStyle: 'Socratic',
@@ -846,6 +1012,15 @@ function run(){
   /* ============================================================
      CURRICULUM
      ============================================================ */
+  function ownPill(p){
+    var c = DBA.course(p.id); if (!c) return '';
+    return ENT && ENT.courses.indexOf(p.id) > -1 ? '<span class="pill ok">Owned</span>' : '<span class="pill neutral">Locked</span>';
+  }
+  function lockNote(p){
+    var c = DBA.course(p.id);
+    if (!c || (ENT && ENT.courses.indexOf(p.id) > -1)) return '';
+    return '<div class="note-box" style="margin:0 0 14px">' + (c.status === 'live' ? 'This course is not included in your access. <a href="https://digitalburj.com/academy#courses" data-site="/academy#courses" style="color:var(--red);font-weight:700">Get it — ' + DBA.money(c.price) + ' →</a>' : 'This programme opens when it goes Live. <a href="https://digitalburj.com/academy#courses" data-site="/academy#courses" style="color:var(--red);font-weight:700">Join the waitlist →</a>') + '</div>';
+  }
   function priceOf(p){
     var c = DBA.course(p.id);
     if (c) return c.status === 'live' ? DBA.money(c.price) : DBA.money(c.price) + ' · opens soon';
@@ -880,7 +1055,7 @@ function run(){
           '<div><span class="pc-id">' + esc(p.id) + '</span>' +
           '<h3>' + esc(p.title) + '</h3>' +
           '<div class="pc-desc">' + esc(p.desc) + '</div></div>' +
-          statusPill(p.status) +
+          '<div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">' + statusPill(p.status) + ownPill(p) + '</div>' +
         '</div>' +
         '<div class="pc-meta">' +
           '<span class="pc-chip">' + esc(p.type) + '</span>' +
@@ -894,7 +1069,7 @@ function run(){
           return '<div class="module-item"><div class="mi-top"><span class="mi-num">' + esc(m.id) + '</span></div><h4>' + esc(m.title) + '</h4><div class="mi-desc">' + esc(m.desc) + '</div></div>';
         }).join('');
         openModal('Academy programme', p.title,
-          '<p>' + esc(p.desc) + '</p>' +
+          lockNote(p) + '<p>' + esc(p.desc) + '</p>' +
           '<div class="mp-task"><div class="mpt-label">Evidence</div><p>' + esc(p.evidence) + '</p></div>' +
           (p.capstone ? '<div class="mp-task"><div class="mpt-label">Capstone</div><p>' + esc(p.capstone) + '</p></div>' : '') +
           '<div class="mp-task"><div class="mpt-label">Meta</div><p>' + esc(p.type) + ' · ' + esc(p.level) + ' · ' + esc(p.dur) + ' · ' + esc(p.hours) + ' guided hours · ' + esc(priceOf(p)) + '</p></div>' +
@@ -1438,7 +1613,7 @@ function run(){
         var e = EVIDENCE.filter(function(x){ return x.id === b.dataset.evOpen; })[0];
         if (!e) return;
         openModal('Evidence record', e.title,
-          '<p>Owner: Layla Ibrahim · Skill: ' + esc(e.skill) + ' · Assessment: human review · Verifier: assigned where applicable.</p>' +
+          '<p>Owner: ' + esc(USER.name) + ' · Skill: ' + esc(e.skill) + ' · Assessment: human review · Verifier: assigned where applicable.</p>' +
           '<div class="mp-task"><div class="mpt-label">Artifact</div><p>Original submission with versions and hashes.</p></div>' +
           '<div class="mp-task"><div class="mpt-label">Review notes</div><p>Criterion-specific feedback and required changes where applicable.</p></div>' +
           '<div class="mp-task"><div class="mpt-label">Outcome mapping</div><p>Skills and outcomes demonstrated, with support level recorded.</p></div>' +
@@ -1516,6 +1691,7 @@ function run(){
      ============================================================ */
   function renderSkills(){
     var host = $('#skillsList'); host.innerHTML = '';
+    if (!SKILLS.length){ host.innerHTML = '<div class="empty">No skills recorded yet. Skills are added when reviewed work is independently verified.</div>'; return; }
     SKILLS.forEach(function(s){
       var cls = s.level === 'Independent-in-scenario' ? 'ok' : s.level === 'Developing' ? 'warn' : 'neutral';
       var row = el('div', 'row-item');
@@ -1534,6 +1710,7 @@ function run(){
      ============================================================ */
   function renderAssessments(){
     var t = $('#assessmentsTable'); t.innerHTML = '';
+    if (!ASSESSMENTS.length){ t.innerHTML = '<tr><td colspan="6"><div class="empty">No assessments yet. Assessment results appear here after reviewed submissions.</div></td></tr>'; return; }
     ASSESSMENTS.forEach(function(a){
       var tr = document.createElement('tr');
       tr.innerHTML =
@@ -1553,29 +1730,25 @@ function run(){
      ============================================================ */
   function renderOrders(){
     var t = $('#ordersTable'); t.innerHTML = '';
-    ORDERS.forEach(function(o){
-      var statusCls = (o.status === 'Paid' || o.status === 'Free') ? 'ok' : o.status === 'Scheduled' ? 'cool' : 'warn';
+    var orders = (ENT && ENT.orders) || [], paid = 0, coupons = 0;
+    if (!orders.length) t.innerHTML = '<tr><td colspan="6"><div class="empty">No orders yet.</div></td></tr>';
+    orders.forEach(function(o){
+      var refunded = o.status === 'refunded';
+      if (!refunded){ paid += o.amount || 0; if (o.source === 'coupon') coupons++; }
+      var titles = o.items.map(function(id){ var b = DBA.bundle(id), c = DBA.course(id); return b ? b.name : (c ? c.title : id); }).join(', ');
       var tr = document.createElement('tr');
       tr.innerHTML =
-        '<td><span class="td-strong">' + esc(o.id) + '</span></td>' +
-        '<td>' + esc(o.product) + '</td>' +
-        '<td class="td-muted">' + esc(o.date) + '</td>' +
-        '<td class="td-strong">' + esc(o.amount) + '</td>' +
-        '<td><span class="pill ' + statusCls + '">' + esc(o.status) + '</span></td>' +
-        '<td class="td-right"><span class="td-muted">' + esc(o.invoice) + ' · ' + esc(o.invoiceStatus) + '</span></td>';
+        '<td><span class="td-strong">' + esc(o.ref || o.id) + '</span></td><td>' + esc(titles) + '</td>' +
+        '<td class="td-muted">' + esc((o.date || '').slice(0, 10)) + '</td><td class="td-strong">' + (o.amount ? DBA.money(o.amount) : 'Free') + '</td>' +
+        '<td><span class="pill ' + (refunded ? 'warn' : 'ok') + '">' + (refunded ? 'Refunded' : (o.source === 'coupon' ? 'Redeemed' : 'Paid')) + '</span></td>' +
+        '<td class="td-right"><span class="td-muted">' + (o.source === 'coupon' ? 'Promotion ' + esc(o.coupon || '') : 'Stripe · receipt emailed') + '</span></td>';
       t.appendChild(tr);
     });
+    $('#payTotal').textContent = DBA.money(paid); $('#payOrders').textContent = orders.length + ' order' + (orders.length === 1 ? '' : 's');
+    $('#payActive').textContent = ENT ? ENT.items.length : 0; $('#payCoupons').textContent = coupons;
+    $('#payRefunds').textContent = orders.filter(function(o){ return o.status === 'refunded'; }).length;
   }
   renderOrders();
-  function renderLocalOrders(){
-    var host = $('#localOrders'), list = [];
-    try { var st = JSON.parse(localStorage.getItem('db-academy-store-v1') || '{}'); list = st.orders || []; } catch(e){}
-    if (!list.length){ host.innerHTML = '<div class="empty">No requests yet. <a href="/academy#bundles" style="color:var(--red);font-weight:700">Browse bundles →</a></div>'; return; }
-    host.innerHTML = list.map(function(o){
-      return '<div class="row-item"><div class="row-left"><div class="row-icon ' + (o.preview ? 'warn' : 'navy') + '">' + (o.preview ? 'PV' : 'RQ') + '</div><div class="row-body"><div class="row-title">' + esc(o.ref) + ' · ' + esc(o.items.join(', ')) + '</div><div class="row-sub">' + esc(o.date) + ' · $' + esc(o.total) + '</div></div></div><div class="row-actions"><span class="pill ' + (o.preview ? 'warn' : 'neutral') + '">' + esc(o.status) + '</span></div></div>';
-    }).join('');
-  }
-  renderLocalOrders();
 
   /* ============================================================
      SUPPORT
@@ -1602,7 +1775,7 @@ function run(){
   }
   renderSupport();
   (function(){ $('#supportTopic').innerHTML = DBA.SUPPORT_TOPICS.map(function(t){ return '<option>' + esc(t) + '</option>'; }).join(''); })();
-  $('#supportName').value = 'Layla Ibrahim'; $('#supportEmail').value = '';
+  $('#supportName').value = USER.name; $('#supportEmail').value = USER.email;
   $('#supportSubmit').addEventListener('click', function(){
     var topic = $('#supportTopic').value, body = $('#supportBody').value.trim(), name = $('#supportName').value.trim(), email = $('#supportEmail').value.trim();
     if (body.length < 10){ openModal('Support', 'Add a description', '<p>Please describe the issue (at least a short sentence) before submitting.</p>'); return; }
@@ -1698,19 +1871,22 @@ function run(){
     toast('No match found.');
   });
   $('#userMenu').addEventListener('click', function(){
-    openModal('Account', 'Layla Ibrahim (demo)',
-      '<p>Fictional demo learner · AI-Native Product Builder · UAE · English</p>' +
+    openModal('Account', USER.name,
+      '<p>' + esc(USER.email) + (USER.verified ? ' · email verified' : '') + (USER.country ? ' · ' + esc(USER.country) : '') + ' · ' + (ENT ? ENT.courses.length : 0) + ' course(s) with active access</p>' +
       '<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">' +
         '<button class="btn-primary" id="acctSettings">Open settings</button>' +
+        '<a class="btn-ghost" href="https://digitalburj.com/academy#bundles" data-site="/academy#bundles" style="display:inline-flex;align-items:center;text-decoration:none">Get more courses</a>' +
         '<button class="btn-ghost" id="acctSignout">Sign out</button>' +
       '</div>');
     $('#acctSettings').addEventListener('click', function(){ closeModal(); switchView('settings'); });
-    $('#acctSignout').addEventListener('click', function(){ closeModal(); toast('Demo session — there is nothing to sign out of. Real sign-in is setup required.'); });
+    $('#acctSignout').addEventListener('click', function(){ DBA.api('signout', {}).then(function(){ location.href = '/signin'; }); });
   });
 
   /* ============================================================
      INIT
      ============================================================ */
+  $('#setEmail').readOnly = true; $('#setName').readOnly = true;
+  $$('[data-site]').forEach(function(a){ a.href = DBA.siteUrl(a.getAttribute('data-site')); });
   updateCounts();
   function handleHash(){
     var h = (location.hash || '').replace('#','');
@@ -1720,6 +1896,11 @@ function run(){
   handleHash();
 
 }
-function boot(){ var root=document.getElementById("ws-root"); if(!root||!window.DBA||!root.closest('#dc-root')) return false; if(root.getAttribute('data-ready')) return true; root.setAttribute('data-ready','1'); root.innerHTML=BODY; run(); return true; }
-if(!boot()){ var n=0,t=setInterval(function(){ if(boot()||++n>400) clearInterval(t); },50); }
+function tryBoot(){
+  var root = document.getElementById('ws-root');
+  if (!root || !window.DBA || !root.closest('#dc-root')) return false;   // wait for the site runtime's final render
+  if (root.getAttribute('data-ready')) return true;
+  root.setAttribute('data-ready', '1'); ROOT = root; route(); return true;
+}
+if (!tryBoot()){ var n = 0, t = setInterval(function(){ if (tryBoot() || ++n > 400) clearInterval(t); }, 50); }
 })();

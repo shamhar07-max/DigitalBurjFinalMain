@@ -410,3 +410,32 @@
 .ac .demo-bar b{background:rgba(242,58,29,.24);border-color:rgba(242,58,29,.55);color:#ffb093}
 .ac .content{background:transparent}
 @media (max-width:900px){.ac .sidebar{top:0;height:100%;z-index:9400}.ac .sidebar-scrim{z-index:9300}}
+
+/* ---- account screens (sign in / sign up / verify / redeem …) ---- */
+.ac.au{min-height:calc(100vh - 72px);padding:28px 16px 80px;display:flex;align-items:flex-start;justify-content:center;background:var(--bg)}
+.ac .au-card{width:100%;max-width:460px;background:#fff;border:1px solid rgba(15,23,20,.08);border-radius:20px;padding:32px;box-shadow:var(--shadow-md);margin-top:8px}
+.ac .au-card.au-wide{max-width:640px}
+.ac .au-brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:700;font-size:14px;color:var(--ink);margin-bottom:18px}
+.ac .au-brand img{width:44px;height:44px;padding:6px;box-sizing:border-box;border-radius:13px;background:#f6f5f1;object-fit:contain}
+.ac .au-card h1{font-size:clamp(1.4rem,1.1rem + 1vw,1.85rem);line-height:1.1;letter-spacing:-.02em;margin:0}
+.ac .au-lead{color:#4a544f;font-size:15px;line-height:1.6;margin:12px 0 22px}
+.ac .au-card h1 + form,.ac .au-card h1 + .au-lines{margin-top:22px}
+.ac .au-card .field{margin-bottom:14px}
+.ac .au-card .field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.ac .au-card input[type=text],.ac .au-card input[type=email],.ac .au-card input[type=password],.ac .au-card select{width:100%;height:44px;padding:0 13px;border:1px solid rgba(15,23,20,.14);border-radius:12px;background:#fff;font-size:14px;color:var(--ink)}
+.ac .au-card input:focus,.ac .au-card select:focus{outline:none;border-color:#0f1714;box-shadow:0 0 0 3px rgba(242,58,29,.14)}
+.ac .au-card input.has-error{border-color:var(--stop)}
+.ac .au-err{display:block;min-height:0;font-size:12px;color:var(--stop);margin-top:5px;font-weight:500}
+.ac .au-hint{font-size:12px;color:var(--slate-3);margin:-6px 0 14px;line-height:1.5}
+.ac .au-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ac .au-check{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--slate-2);line-height:1.55;margin:10px 0}
+.ac .au-check input{margin-top:3px;width:16px;height:16px;accent-color:#f23a1d;flex:none}
+.ac .au-check a{color:#f23a1d;font-weight:600}
+.ac .au-error{display:none;margin:12px 0;padding:11px 14px;border-radius:10px;background:var(--stop-bg);color:var(--stop);font-size:13px;font-weight:600}
+.ac .au-btn{display:flex;width:100%;height:46px;margin-top:10px;align-items:center;justify-content:center;text-decoration:none;font-size:14.5px;cursor:pointer}
+.ac .au-foot{text-align:center;font-size:13px;color:var(--slate-2);margin:18px 0 0}
+.ac .au-foot a{color:#0f1714;font-weight:600;text-decoration:underline;text-decoration-color:rgba(242,58,29,.5);text-underline-offset:3px}
+.ac .au-lines{border:1px solid var(--line);border-radius:12px;padding:4px 14px;margin-bottom:12px;background:var(--bg)}
+.ac .au-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line-2);font-size:13.5px}
+.ac .au-line:last-child{border-bottom:0}
+@media (max-width:560px){.ac .au-row{grid-template-columns:1fr}.ac .au-card{padding:24px 18px}}

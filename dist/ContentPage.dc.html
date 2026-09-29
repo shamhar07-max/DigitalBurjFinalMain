@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<link rel="stylesheet" href="hero-system.css">
+</head>
+<body>
+<x-dc>
+<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#0f1714">
+<!-- HERO -->
+<section class="db-hero" aria-labelledby="page-hero-title"><x-import component-from-global-scope="hero-reel" slides="{{ p.reel }}" interval="7000" style="position:absolute;inset:0;z-index:-2" hint-size="100%,100%"></x-import>
+  <div class="db-hero-shade" aria-hidden="true"></div>
+  <div class="db-hero-content">
+    <nav aria-label="Breadcrumb" class="db-hero-crumb"><a href="Homepage.dc.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">{{ p.crumb }}</span></nav>
+    <div class="db-hero-grid">
+      <div>
+        <div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">{{ p.hero.eyebrow }}</p><sc-if value="{{ p.badge }}"><span class="db-hero-badge">{{ p.badge }}</span></sc-if></div>
+        <h1 id="page-hero-title" class="db-hero-title">{{ p.hero.h1 }} <span class="db-hero-accent">{{ p.hero.accent }}</span></h1>
+        <p class="db-hero-lead">{{ p.hero.lead }}</p>
+        <div class="db-hero-actions">
+          <a href="{{ p.hero.primary.href }}" style="height:54px;padding:0 26px;border-radius:14px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -14px rgba(242,58,29,.9);transition:background-position .9s cubic-bezier(.22,.8,.24,1),transform .25s" style-hover="background-position:0 0;transform:translateY(-2px);color:#fff">{{ p.hero.primary.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <sc-if value="{{ p.hasSecondary }}"><a href="{{ p.hero.secondary.href }}" style="height:54px;padding:0 24px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.22);color:#f6f5f1;font-weight:600;font-size:15px;display:inline-flex;align-items:center;transition:border-color .25s,background .25s,transform .25s" style-hover="border-color:#f6f5f1;background:rgba(246,245,241,.1);transform:translateY(-2px);color:#fff">{{ p.hero.secondary.label }}</a></sc-if>
+        </div>
+      </div>
+      <aside class="db-hero-panel" aria-label="{{ p.hero.eyebrow }} overview">
+        <div class="db-panel-head"><img class="db-panel-icon" src="{{ p.panelIcon }}" alt=""/><div><span class="db-panel-label">DigitalBurj · {{ p.panelCategory }}</span><strong class="db-panel-title">{{ p.hero.eyebrow }}</strong></div></div>
+        <sc-if value="{{ p.isOrbit }}"><div class="db-panel-orbit"><span></span><img src="{{ p.panelIcon }}" alt=""/></div><p class="db-panel-note">Signals connected across your work</p></sc-if>
+        <sc-if value="{{ p.isBars }}"><p class="db-panel-note">Performance at a glance</p><div class="db-panel-bars"><span style="--h:43%;--delay:.1s"></span><span style="--h:66%;--delay:.2s"></span><span style="--h:51%;--delay:.3s"></span><span style="--h:82%;--delay:.4s"></span><span style="--h:74%;--delay:.5s"></span><span style="--h:100%;--delay:.6s"></span></div></sc-if>
+        <sc-if value="{{ p.isProgress }}"><p class="db-panel-note">From first conversation to outcome</p><div class="db-panel-ring"></div></sc-if>
+        <sc-if value="{{ p.isSteps }}"><p class="db-panel-note">The path forward</p><div style="position:relative;display:grid;gap:10px;margin-top:20px"><sc-for list="{{ p.panelRows }}" as="row" hint-placeholder-count="3"><div class="db-panel-row"><span style="color:#ff8b68">{{ row.n }}</span><span style="flex:1">{{ row.label }}</span><span class="db-panel-badge">↗</span></div></sc-for></div></sc-if>
+        <sc-if value="{{ p.noSteps }}"><div class="db-panel-row"><span style="flex:1">{{ p.panelFirst }}</span><span class="db-panel-badge">LIVE</span></div><div class="db-panel-row"><span style="flex:1">{{ p.panelSecond }}</span><span class="db-panel-badge">↗</span></div></sc-if>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<sc-for list="{{ p.sections }}" as="s" hint-placeholder-count="3">
+  <!-- LOOP -->
+  <sc-if value="{{ s.isLoop }}">
+    <section style="max-width:76rem;margin:0 auto;padding:72px 24px 24px">
+      <div data-reveal="up" style="border-radius:28px;background:#fff;border:1px solid rgba(15,23,20,.08);padding:clamp(28px,4vw,48px)">
+        <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">{{ s.eyebrow }}</p>
+        <h2 style="margin:14px 0 0;font:700 clamp(1.4rem,1.1rem + 1.2vw,2.2rem)/1.15 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        <ol style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <sc-for list="{{ s.loop }}" as="l" hint-placeholder-count="4">
+            <li style="display:flex;align-items:center;gap:10px">
+              <span style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:#f6f5f1;font-weight:600;font-size:15px;transition:background .3s,color .3s" style-hover="background:#0f1714;color:#fff"><span style="font:700 12px 'IBM Plex Sans',sans-serif;color:#f23a1d">{{ l.n }}</span>{{ l.label }}</span>
+              <sc-if value="{{ l.arrow }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b9bfbb" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></sc-if>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- STEPS -->
+  <sc-if value="{{ s.isSteps }}">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:72px 24px">
+      <div data-reveal="up" style="max-width:44rem">
+        <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+        <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+      </div>
+      <ol style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
+        <sc-for list="{{ s.steps }}" as="st" hint-placeholder-count="5">
+          <li data-reveal="up" data-reveal-delay="{{ st.delay }}" style="{{ s.item }}"><div style="height:100%;box-sizing:border-box;position:relative;padding:26px 24px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .4s cubic-bezier(.22,.8,.24,1),border-color .3s" style-hover="transform:translateY(-4px);border-color:#0f1714">
+            <span style="font:700 34px 'IBM Plex Sans',sans-serif;color:transparent;-webkit-text-stroke:1.2px #f23a1d">{{ st.n }}</span>
+            <h3 style="margin:18px 0 0;font:700 18px 'IBM Plex Sans',sans-serif">{{ st.t }}</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#4a544f">{{ st.b }}</p>
+          </div></li>
+        </sc-for>
+      </ol>
+    </section>
+  </sc-if>
+
+  <!-- CARDS -->
+  <sc-if value="{{ s.isCards }}">
+    <section id="{{ s.id }}" style="{{ s.wrapStyle }}">
+      <div style="max-width:76rem;margin:0 auto">
+        <div data-reveal="up" style="max-width:44rem">
+          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:{{ s.accent }}"><span style="width:18px;height:2px;background:{{ s.accent }}"></span>{{ s.eyebrow }}</p>
+          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:{{ s.ink }}">{{ s.h }}</h2>
+          <sc-if value="{{ s.lead }}"><p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:{{ s.sub }}">{{ s.lead }}</p></sc-if>
+        </div>
+        <ul style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
+          <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6">
+            <li data-reveal="up" data-reveal-delay="{{ c.delay }}" style="{{ s.item }}">
+              <a href="{{ c.href }}" data-spot="" style="{{ c.style }}" style-hover="{{ c.hover }}">
+                <span style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 12px 'IBM Plex Sans',sans-serif;color:{{ s.accent }}">{{ c.n }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+                <span style="margin-top:28px;font:700 18px/1.25 'IBM Plex Sans',sans-serif">{{ c.t }}</span>
+                <span style="margin-top:10px;font-size:14px;line-height:1.55;color:{{ s.sub }}">{{ c.b }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- SPLIT -->
+  <sc-if value="{{ s.isSplit }}">
+    <section style="max-width:76rem;margin:0 auto;padding:72px 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:48px;align-items:center">
+        <div data-reveal="{{ s.imgDir }}" style="{{ s.imgOrder }}"><img src="{{ s.media }}" alt="{{ s.eyebrow }}" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:26px"/>
+          
+        </div>
+        <div data-reveal="up">
+          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+          <p style="margin:18px 0 0;font-size:16px;line-height:1.65;color:#3b4541">{{ s.body }}</p>
+          <ul style="list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px">
+            <sc-for list="{{ s.bl }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:12px;font-size:15px;line-height:1.5"><span style="flex-shrink:0;width:22px;height:22px;border-radius:7px;background:#f23a1d;color:#fff;display:grid;place-items:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>{{ b.t }}</li></sc-for>
+          </ul>
+          <sc-if value="{{ s.link }}"><a href="{{ s.link.href }}" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;border-bottom:2px solid #f23a1d;padding-bottom:4px">{{ s.link.label }} →</a></sc-if>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- FAQ -->
+  <sc-if value="{{ s.isFaq }}">
+    <section style="max-width:76rem;margin:0 auto;padding:72px 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px">
+        <div data-reveal="up"><p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">FAQ</p><h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.06 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Questions.</h2></div>
+        <div style="border-top:1px solid rgba(15,23,20,.12)">
+          <sc-for list="{{ s.faqs }}" as="f" hint-placeholder-count="3">
+            <div style="border-bottom:1px solid rgba(15,23,20,.12)">
+              <h3 style="margin:0"><button onclick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border:none;background:none;text-align:left;cursor:pointer;font:600 17px 'Instrument Sans';color:#0f1714">{{ f.q }}<span style="{{ f.iconStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+              <div style="{{ f.panelStyle }}"><div style="overflow:hidden"><p style="margin:0 0 22px;font-size:15px;line-height:1.65;color:#3b4541">{{ f.a }}</p></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- MODULES -->
+  <sc-if value="{{ s.isModules }}">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:72px 24px">
+      <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="max-width:44rem">
+          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        </div>
+        <p style="margin:0;font:700 14px 'IBM Plex Sans',sans-serif;color:#6b746f">{{ s.count }} items</p>
+      </div>
+      <ul style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
+        <sc-for list="{{ s.mods }}" as="m" hint-placeholder-count="6">
+          <li data-reveal="up" data-reveal-delay="{{ m.delay }}" style="{{ s.item }}"><div data-spot="" style="height:100%;box-sizing:border-box;position:relative;display:flex;flex-direction:column;padding:26px 24px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;background-image:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.07),transparent 50%)" style-hover="transform:translateY(-5px);border-color:rgba(242,58,29,.4);box-shadow:0 34px 60px -40px rgba(15,23,20,.5)">
+            <span style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:700 12px 'IBM Plex Sans',sans-serif;color:#f23a1d">{{ m.n }}</span><sc-if value="{{ m.for }}"><span style="font-size:11px;font-weight:600;color:#6b746f;text-align:right;line-height:1.3">{{ m.for }}</span></sc-if></span>
+            <h3 style="margin:20px 0 0;font:700 19px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.005em">{{ m.t }}</h3>
+            <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px">
+              <sc-for list="{{ m.bl }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:10px;font-size:14px;line-height:1.5;color:#3b4541"><span style="flex-shrink:0;margin-top:7px;width:6px;height:6px;border-radius:2px;background:#f23a1d"></span>{{ b.t }}</li></sc-for>
+            </ul>
+            <sc-if value="{{ m.diff }}"><p style="margin:auto 0 0;padding-top:18px;font-size:13px;line-height:1.5;color:#0f1714;border-top:1px dashed rgba(15,23,20,.14);margin-top:18px"><span style="font-weight:700;color:#c9260e">Why it's different · </span>{{ m.diff }}</p></sc-if>
+          </div></li>
+        </sc-for>
+      </ul>
+    </section>
+  </sc-if>
+
+  <!-- PRICING -->
+  <sc-if value="{{ s.isPricing }}">
+    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:72px 24px">
+      <div data-reveal="up" style="max-width:44rem">
+        <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+        <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#4a544f">{{ s.lead }}</p>
+      </div>
+      <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:14px">
+        <sc-for list="{{ s.plans }}" as="pl" hint-placeholder-count="8">
+          <div data-reveal="up" data-reveal-delay="{{ pl.delay }}" style="{{ s.item }}"><div style="{{ pl.style }}" style-hover="transform:translateY(-6px)">
+            <sc-if value="{{ pl.featured }}"><span style="position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px;background:#f23a1d;color:#fff">Most popular</span></sc-if>
+            <p style="margin:0;font:700 15px 'IBM Plex Sans',sans-serif">{{ pl.name }}</p>
+            <p style="margin:22px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font:700 clamp(1.9rem,1.5rem + 1vw,2.5rem) 'IBM Plex Sans',sans-serif">{{ pl.price }}</span><span style="font-size:13px;opacity:.65">{{ pl.per }}</span></p>
+            <p style="margin:14px 0 0;font-size:14px;line-height:1.55;opacity:.78;flex:1">{{ pl.scope }}</p>
+            <a href="Contact.dc.html" style="{{ pl.btn }}">{{ pl.cta }}</a>
+          </div></div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- PAIRS -->
+  <sc-if value="{{ s.isPairs }}">
+    <section style="max-width:76rem;margin:0 auto;padding:72px 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px;align-items:start">
+        <div data-reveal="up">
+          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
+          <h2 style="margin:16px 0 0;font:700 clamp(1.8rem,1.3rem + 2vw,3rem)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+        </div>
+        <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(15,23,20,.12)">
+          <sc-for list="{{ s.rows }}" as="r" hint-placeholder-count="4">
+            <li data-reveal="up" style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding:18px 4px;border-bottom:1px solid rgba(15,23,20,.12);transition:background .25s,padding .35s cubic-bezier(.22,.8,.24,1)" style-hover="background:#fff;padding-left:14px;padding-right:14px">
+              <span style="font-weight:600;font-size:15px">{{ r.a }}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f23a1d" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <span style="font-size:15px;color:#3b4541;text-align:right">{{ r.b }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- CHIPS -->
+  <sc-if value="{{ s.isChips }}">
+    <section style="max-width:76rem;margin:0 auto;padding:56px 24px">
+      <div data-reveal="up" style="border-radius:28px;background:#0f1714;color:#f6f5f1;padding:clamp(28px,4vw,52px);position:relative;overflow:hidden">
+        <div aria-hidden="true" style="position:absolute;right:-8rem;top:-8rem;width:24rem;height:24rem;border-radius:50%;background:radial-gradient(circle,rgba(242,58,29,.3),transparent 65%)"></div>
+        <p style="position:relative;margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ff7a45">{{ s.eyebrow }}</p>
+        <h2 style="position:relative;margin:14px 0 0;font:700 clamp(1.5rem,1.2rem + 1.4vw,2.4rem)/1.12 'IBM Plex Sans',sans-serif;color:#f6f5f1">{{ s.h }}</h2>
+        <sc-if value="{{ s.lead }}"><p style="position:relative;margin:14px 0 0;max-width:36rem;font-size:15px;line-height:1.6;color:rgba(246,245,241,.68)">{{ s.lead }}</p></sc-if>
+        <ul style="position:relative;list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="6"><li style="padding:10px 16px;border-radius:12px;border:1px solid rgba(246,245,241,.16);background:rgba(246,245,241,.04);font-size:14px;font-weight:600;transition:border-color .25s,background .25s" style-hover="border-color:#f23a1d;background:rgba(242,58,29,.12)">{{ c.t }}</li></sc-for>
+        </ul>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- CTA -->
+  <sc-if value="{{ s.isCta }}">
+    <section style="padding:48px 12px 12px">
+      <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:32px;overflow:hidden;background:#0f1714;color:#fff;padding:clamp(56px,7vw,96px) 24px;text-align:center">
+        <div aria-hidden="true" style="position:absolute;left:50%;top:-40%;width:44rem;height:44rem;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(242,58,29,.35),transparent 62%)"></div>
+        <div style="position:relative">
+          <h2 style="margin:0 auto;max-width:44rem;font:700 clamp(1.9rem,1.3rem + 2.6vw,3.8rem)/1.02 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#fff">{{ s.h }}</h2>
+          <sc-if value="{{ s.lead }}"><p style="margin:20px auto 0;max-width:30rem;font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)">{{ s.lead }}</p></sc-if>
+          <div style="margin-top:32px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+            <a href="{{ s.primary.href }}" style="height:54px;padding:0 26px;border-radius:14px;background:#f23a1d;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#ff5533;color:#fff">{{ s.primary.label }} →</a>
+            <sc-if value="{{ s.hasSecondary }}"><a href="{{ s.secondary.href }}" style="height:54px;padding:0 26px;border-radius:14px;border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;display:inline-flex;align-items:center;transition:background .25s" style-hover="background:rgba(255,255,255,.1);color:#fff">{{ s.secondary.label }}</a></sc-if>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+</sc-for>
+<div style="height:72px"></div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;business-ai&quot;,&quot;studio&quot;,&quot;academy&quot;,&quot;talent&quot;,&quot;jobs&quot;,&quot;company&quot;,&quot;solutions&quot;,&quot;industries&quot;,&quot;portfolio&quot;,&quot;get-started&quot;],&quot;default&quot;:&quot;business-ai&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { pages: null, plans: [], faq: "" };
+  componentDidMount() { import("./pages.js").then((m) => this.setState({ pages: m.PAGES, plans: m.PLANS })); }
+  renderVals() {
+    const src = this.state.pages && this.state.pages[this.props.page];
+    const blank = { crumb: "", hero: { eyebrow: "", h1: "", accent: "", lead: "", primary: { label: "", href: "#" }, secondary: { label: "", href: "#" }, img: "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" }, sections: [] };
+    const d = src || blank;
+    const n = (i) => String(i + 1).padStart(2, "0");
+    const cols = (k) => { let best = 3, sc = -1; for (const c of [4, 3, 5, 2]) { const r = k % c, v = r === 0 ? 1 : r / c; if (v > sc + 0.001) { sc = v; best = c; } } return Math.min(best, k || 1); };
+    const item = (k, min = 15) => { const c = cols(k); return `flex:1 1 calc((100% - ${(c - 1) * 14}px) / ${c});min-width:min(100%,${min}rem);display:flex;flex-direction:column`; };
+    const reels = { "business-os": "27,14,16,17,18", "business-ai": "28,21,05,20", growth: "30,23,06", studio: "26,04,13", industries: "industry01,industry02,industry03", academy: "25,12,24", talent: "29,07,24", jobs: "07,29,12", pricing: "32,31,33", company: "33,24,31,32", solutions: "19,20,15,08", portfolio: "32,26,04", "get-started": "31,33,01" };
+    const usedMedia = new Set((reels[this.props.page] || "01,33,31").split(",").map(Number));
+    const fallbackMedia = {
+      "business-os": [15,19,20,22,23,3], "business-ai": [19,22,23,16,6,7],
+      studio: [32,7,15,8,6], academy: [32,3,7,8,29], talent: [29,7,32,3,8],
+      industries: [8,12,13,7,6], growth: [23,30,6,4,13],
+    }[this.props.page] || [2,3,4,6,7,8,9,10,12,13,24,25,26,29,30,32,33];
+    const pickMedia = (source) => {
+      const preferred = Number((source || "").match(/\d+/)?.[0]);
+      const id = [preferred, ...fallbackMedia, ...Array.from({length:33},(_,i)=>i+1)].find(v => v && v !== 11 && !usedMedia.has(v));
+      usedMedia.add(id);
+      return `media/${String(id).padStart(2,"0")}-d.webp`;
+    };
+    const sections = d.sections.map((s, si) => {
+      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", lead: s.lead || "", link: s.link || null, item: item(s.type === "pricing" ? this.state.plans.length : (s.items || []).length, s.type === "modules" ? 17 : 15) };
+      if (s.type === "loop") base.loop = s.items.map((label, i) => ({ label, n: n(i), arrow: i < s.items.length - 1 }));
+      if (s.type === "steps") base.steps = s.items.map((x, i) => ({ ...x, n: n(i), delay: String((i % 3) * 90) }));
+      if (s.type === "cards") {
+        const dark = !!s.dark;
+        Object.assign(base, {
+          wrapStyle: dark ? "background:#0f1714;padding:96px 24px;margin:48px 0" : "padding:72px 24px",
+          accent: dark ? "#ff7a45" : "#f23a1d", ink: dark ? "#f6f5f1" : "#0f1714", sub: dark ? "rgba(246,245,241,.62)" : "#4a544f",
+          cards: s.items.map((c, i) => ({
+            ...c, n: n(i), href: c.href || "Contact.dc.html", delay: String((i % 3) * 80),
+            style: `height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:24px;border-radius:22px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;color:${dark ? "#f6f5f1" : "#0f1714"};background-color:${dark ? "rgba(246,245,241,.04)" : "#fff"};border:1px solid ${dark ? "rgba(246,245,241,.1)" : "rgba(15,23,20,.08)"};background-image:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${dark ? ".18" : ".08"}),transparent 50%)`,
+            hover: `transform:translateY(-5px);border-color:${dark ? "rgba(242,58,29,.5)" : "rgba(242,58,29,.4)"};box-shadow:0 34px 60px -40px rgba(15,23,20,.55);color:${dark ? "#fff" : "#0f1714"}`,
+          })),
+        });
+      }
+      if (s.type === "split") Object.assign(base, { media: this.props.page === "industries" ? `industry/${String((si % 15)+1).padStart(2,"0")}-${["logistics","travel","trading","real-estate","construction","facility","services","recruitment","retail","automotive","hospitality","education","manufacturing","healthcare","ecommerce"][si % 15]}.webp` : pickMedia(s.img), bl: s.bullets.map((t) => ({ t })), imgOrder: s.reverse ? "order:2" : "", imgDir: s.reverse ? "right" : "left" });
+      if (s.type === "faq") base.faqs = s.items.map((f, i) => {
+        const key = `${si}-${i}`, open = this.state.faq === key || (this.state.faq === "" && i === 0);
+        return { ...f, open, toggle: () => this.setState({ faq: open ? "none" : key }),
+          panelStyle: `display:grid;grid-template-rows:${open ? "1fr" : "0fr"};transition:grid-template-rows .45s cubic-bezier(.22,.8,.24,1)`,
+          iconStyle: `flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;transition:transform .4s cubic-bezier(.22,.8,.24,1),background .3s,color .3s;transform:rotate(${open ? 45 : 0}deg);background:${open ? "#f23a1d" : "#fff"};color:${open ? "#fff" : "#0f1714"};border:1px solid ${open ? "#f23a1d" : "rgba(15,23,20,.14)"}` };
+      });
+      if (s.type === "modules") Object.assign(base, { count: s.items.length, mods: s.items.map((m, i) => ({ t: m.t, for: m.for || "", diff: m.diff || "", n: n(i), delay: String((i % 3) * 80), bl: m.bullets.map((t) => ({ t })) })) });
+      if (s.type === "pricing") base.plans = this.state.plans.map((p, i) => {
+        const f = !!p.featured;
+        return { ...p, featured: f, delay: String((i % 4) * 70), cta: p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan",
+          style: `position:relative;display:flex;flex-direction:column;padding:26px 22px;border-radius:22px;min-height:17rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
+          btn: `margin-top:22px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;transition:background .25s,color .25s;${f ? "background:#f23a1d;color:#fff" : "background:#f6f5f1;color:#0f1714;border:1px solid rgba(15,23,20,.1)"}` };
+      });
+      if (s.type === "pairs") base.rows = s.items.map(([a, b]) => ({ a, b }));
+      if (s.type === "chips") base.chips = s.items.map((t) => ({ t }));
+      if (s.type === "cta") Object.assign(base, { hasSecondary: !!s.secondary, secondary: s.secondary || { label: "", href: "#" } });
+      return base;
+    });
+    const variants = { "business-os": "grid", growth: "signal", pricing: "network", "business-ai": "network", studio: "grid", academy: "signal", talent: "network", jobs: "signal", company: "grid", solutions: "network", industries: "grid", portfolio: "signal", "get-started": "signal" };
+    const panelType = ({ "business-ai":"orbit", talent:"orbit", solutions:"orbit", growth:"bars", portfolio:"bars", pricing:"bars", academy:"progress", jobs:"progress", "get-started":"progress", "business-os":"steps", studio:"steps", industries:"steps", company:"steps" })[this.props.page] || "steps";
+    const panelIcons = {"business-os":"business-os","business-ai":"business-ai",growth:"growth",studio:"studio",industries:"industries",academy:"academy",talent:"talent",jobs:"talent",pricing:"business-os",company:"business-os",solutions:"industries",portfolio:"studio","get-started":"growth"};
+    return {
+      p: { ...d, sections, panelType, panelIcon:this.props.page==="industries" ? "industry/hero-panel.webp" : `brand/mark-${panelIcons[this.props.page]||"business-os"}.webp`, panelCategory:this.props.page.replaceAll("-"," "),isOrbit:panelType==="orbit",isBars:panelType==="bars",isProgress:panelType==="progress",isSteps:panelType==="steps",noSteps:panelType!=="steps",panelFirst:d.sections.find(x=>x.h)?.h||"Discover",panelSecond:d.sections.find((x,i)=>i>0&&x.h)?.h||"Build",panelRows: d.sections.filter((x) => x.h).slice(0,3).map((x,i) => ({ n: String(i+1).padStart(2,"0"), label: x.h })), reel: reels[this.props.page] || "01,33,31", variant: variants[this.props.page] || "signal", badge: d.badge || "", hasSecondary: !!d.hero.secondary, hero: { ...d.hero, media: `media/${String(Number((d.hero.img || "").match(/\d+/)?.[0]) || 33).padStart(2,"0")}-d.webp`, secondary: d.hero.secondary || { label: "", href: "#" } } },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

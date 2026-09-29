@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700;800&amp;display=swap">
+<link rel="preload" as="image" href="media/insight01-m.webp" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="media/insight01-d.webp" media="(min-width:701px)" fetchpriority="high">
+<link rel="stylesheet" href="hero-system.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Insights — Business AI, Automation &amp; Software Guides | DigitalBurj</title>
+<meta name="description" content="15 plain-language guides on business AI, workflow automation, MVP development, production-ready software and skills-based hiring."/>
+<meta name="keywords" content="business AI guide, workflow automation guide, how to scope an MVP, CRM vs ERP, AI agent vs chatbot, skills-based hiring"/>
+<meta property="og:title" content="DigitalBurj Insights"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="motion.js"></script>
+<script src="hero-reel.js"></script>
+<style>body{margin:0;background:#f6f5f1}a{color:#0f1714;text-decoration:none}a:hover{color:#f23a1d}::selection{background:#f23a1d;color:#fff}</style>
+<link rel="icon" href="brand/favicon.png"/>
+</helmet>
+<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#0f1714;background:#f6f5f1">
+<dc-import name="SiteHeader" active="insights" hint-size="100%,72px"></dc-import>
+<section class="db-hero" aria-labelledby="insights-hero-title"><x-import component-from-global-scope="hero-reel" slides="insight01,insight02,insight03" interval="7000" style="position:absolute;inset:0;z-index:-2" hint-size="100%,100%"></x-import><div class="db-hero-shade" aria-hidden="true"></div><div class="db-hero-content"><nav aria-label="Breadcrumb" class="db-hero-crumb"><a href="Homepage.dc.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Insights</span></nav><div class="db-hero-grid"><div><div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">DigitalBurj · Insights</p></div><h1 id="insights-hero-title" class="db-hero-title">Field notes on<br/><span class="db-hero-accent">building better.</span></h1><p class="db-hero-lead">Short answer first, then the detail. Every guide also says where its advice stops working.</p></div><aside class="db-editorial-stack" aria-label="Featured ideas"><div class="db-editorial-card"><img src="insight/hero-brief.webp" alt=""/><strong>Build with a clear decision</strong><p>Business AI · A practical field guide</p><span class="line"></span></div><div class="db-editorial-card"><img src="insight/hero-editorial.webp" alt=""/><strong>From pilot to everyday work</strong><p>Systems · People · Evidence</p><span class="line"></span></div></aside></div></div></section>
+<main>
+<section style="max-width:76rem;margin:0 auto;padding:56px 24px 0">
+    <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <sc-for list="{{ cats }}" as="c" hint-placeholder-count="7"><button onclick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+    <label style="margin-left:auto;position:relative;display:flex;align-items:center">
+      <span style="position:absolute;width:1px;height:1px;overflow:hidden">Search articles</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6b746f" stroke-width="2" style="position:absolute;left:14px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input value="{{ q }}" oninput="{{ setQ }}" placeholder="Search guides…" style="height:44px;width:16rem;max-width:70vw;border-radius:12px;border:1px solid rgba(15,23,20,.14);background:#fff;padding:0 14px 0 38px;font:500 14px 'Instrument Sans';outline:none"/>
+    </label>
+  </div>
+</section>
+
+<sc-if value="{{ hasFeature }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:76rem;margin:0 auto;padding:36px 24px 0">
+  <a href="{{ feature.href }}" data-reveal="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));border-radius:28px;overflow:hidden;background:#0f1714;color:#f6f5f1;transition:transform .5s cubic-bezier(.22,.8,.24,1)" style-hover="transform:translateY(-4px);color:#fff"><img src="{{ feature.cover }}" alt="" loading="lazy" style="width:100%;height:100%;min-height:22rem;object-fit:cover"/>
+    
+    <div style="padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:center">
+      <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#ff7a45">Featured · {{ feature.category }}</p>
+      <h2 style="margin:16px 0 0;font:700 clamp(1.5rem,1.1rem + 1.4vw,2.3rem)/1.12 'IBM Plex Sans',sans-serif;letter-spacing:-.01em;color:#f6f5f1">{{ feature.title }}</h2>
+      <p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:rgba(246,245,241,.72)">{{ feature.description }}</p>
+      <span style="margin-top:26px;font-weight:600;font-size:14px;color:#ff7a45">Read the guide · {{ feature.readMin }} min →</span>
+    </div>
+  </a>
+</section>
+</sc-if>
+
+<section aria-label="All articles" style="max-width:76rem;margin:0 auto;padding:36px 24px 96px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(max(16rem,calc((100% - 36px) / 3)),1fr));gap:18px">
+    <sc-for list="{{ items }}" as="a" hint-placeholder-count="9">
+      <a href="{{ a.href }}" data-reveal="up" style="display:flex;flex-direction:column;border-radius:22px;background:#fff;border:1px solid rgba(15,23,20,.08);overflow:hidden;transition:transform .45s cubic-bezier(.22,.8,.24,1),box-shadow .45s" style-hover="transform:translateY(-5px);box-shadow:0 34px 60px -38px rgba(15,23,20,.5);color:#0f1714">
+        
+        <img src="{{ a.cover }}" alt="" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover"/><div style="padding:20px 22px 24px;display:flex;flex-direction:column;flex:1">
+          <p style="margin:0;display:flex;gap:8px;font-size:12px;font-weight:600;color:#6b746f"><span style="color:#f23a1d">{{ a.category }}</span>·<span>{{ a.kind }}</span>·<span>{{ a.readMin }} min</span></p>
+          <h3 style="margin:10px 0 0;font:700 18px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">{{ a.title }}</h3>
+          <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#4a544f">{{ a.description }}</p>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+  <sc-if value="{{ none }}"><p style="padding:40px 0;text-align:center;color:#6b746f">No guides match that search.</p></sc-if>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { list: [], cats: [], cat: "All", q: "" };
+  componentDidMount() { import("./articles.js").then((m) => this.setState({ list: m.ARTICLES, cats: m.CATEGORIES })); }
+  renderVals() {
+    const { list, cats, cat, q } = this.state;
+    const qq = q.trim().toLowerCase();
+    const filtered = list.filter((a) => (cat === "All" || a.category === cat) && (!qq || (a.title + a.description + a.keywords.join(" ")).toLowerCase().includes(qq)));
+    const showFeature = cat === "All" && !qq && filtered.length > 0;
+    const feature = showFeature ? filtered[0] : null;
+    const rest = showFeature ? filtered.slice(1) : filtered;
+    const map = (a) => ({ ...a, href: `Article.dc.html?a=${a.slug}`, cover: a.image });
+    return {
+      cats: ["All", ...cats].map((label) => ({
+        label, on: label === cat, pick: () => this.setState({ cat: label }),
+        style: `height:40px;padding:0 16px;border-radius:999px;font:600 13px 'Instrument Sans';cursor:pointer;transition:all .25s;border:1px solid ${label === cat ? "#0f1714" : "rgba(15,23,20,.14)"};background:${label === cat ? "#0f1714" : "#fff"};color:${label === cat ? "#fff" : "#0f1714"}`,
+      })),
+      q, setQ: (e) => this.setState({ q: e.target.value }),
+      hasFeature: !!feature,
+      feature: feature ? map(feature) : { href: "#", image: "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", category: "", title: "", description: "", readMin: "" },
+      items: rest.map(map),
+      none: list.length > 0 && filtered.length === 0,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

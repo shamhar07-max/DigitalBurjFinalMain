@@ -18,6 +18,8 @@ function courseOf(id){ return window.DBA.course(id) || { title: id, hours: 0, id
 function CUR(){ return window.DBA_CUR || {}; }
 function toast(msg){ var t = document.createElement('div'); t.className = 'mo-toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(function(){ t.remove(); }, 2600); }
 function pageStyle(size){ var s = q$('#pg-style'); if (!s){ s = document.createElement('style'); s.id = 'pg-style'; document.head.appendChild(s); } s.textContent = '@media print{@page{size:' + size + ';margin:' + (size.indexOf('landscape') > -1 ? '0' : '12mm') + '}}'; }
+/* Signed-in area = a closed application: no marketing header/footer/chat widgets, nothing that leads out by accident. */
+function lockApp(on){ document.documentElement.classList.toggle('app-locked', on !== false); }
 function needUser(me){
   if (me && me.user) return true;
   K().go('/signin?next=' + encodeURIComponent(location.pathname + location.search)); return false;
@@ -42,12 +44,13 @@ function shell(me, active, inner){
   var h = '<div class="ac"><div class="mo" id="mo"><aside class="mo-side"><a class="mo-brand" href="/dashboard"><img src="brand/mark-academy.webp" alt="" width="34" height="34"/><span>Academy</span></a><nav class="mo-nav" aria-label="Academy">';
   nav.forEach(function(n){ h += '<a href="' + n[3] + '" data-nav="' + n[0] + '"' + (active === n[0] ? ' class="on" aria-current="page"' : '') + '>' + n[2] + esc(n[1]) + '</a>'; });
   if (isAdmin) h += '<div class="sep"></div><a href="/admin"' + (active === 'admin' ? ' class="on" aria-current="page"' : '') + '>' + IC.shield + (u.demo ? 'Admin (demo)' : 'Admin') + '</a>';
-  h += '<div class="sep"></div><a href="' + window.DBA.siteUrl('/') + '">' + IC.globe + 'digitalburj.com</a><a href="' + window.DBA.siteUrl('/academy') + '">' + IC.book + 'Academy store</a><button type="button" id="moOut">' + IC.out + 'Sign out</button></nav>';
+  h += '<div class="sep"></div><button type="button" id="moOut">' + IC.out + 'Sign out</button></nav>';
   h += '<div class="mo-user"><div class="mo-avatar">' + esc(ini) + '</div><div style="min-width:0"><b>' + esc(u.name) + '</b><span>' + (u.demo ? 'Demo account' : isAdmin ? 'Administrator' : 'Learner') + '</span></div></div></aside>';
   h += '<main class="mo-main" id="moMain"><div class="mo-top"><button type="button" id="moMenu" aria-label="Open menu">☰</button><b>DigitalBurj Academy</b></div>';
   if (u.demo) h += '<div class="mo-banner demo" role="status"><b>Demo account.</b> Every course is unlocked, labs are reviewed automatically and certificates are watermarked DEMO. Data is sample-only and this account cannot be signed back into.<a href="/signup">Create a real account</a></div>';
   else if (!me.entitlements) h += '<div class="mo-banner" role="status">Verify your email (' + esc(u.email) + ') to unlock anything you have purchased. <button type="button" id="bnResend">Resend email</button></div>';
   h += inner + '</main></div></div>';
+  lockApp(true);
   root().innerHTML = h;
   var mo = q$('#mo');
   q$('#moMenu').addEventListener('click', function(){ mo.classList.toggle('open'); });
@@ -177,32 +180,46 @@ function renderLearn(id, cur){
   qa('.lp-nav button:not([disabled])').forEach(function(b){ b.addEventListener('click', function(){ var u = b.getAttribute('data-u'); renderLearn(id, u === 'lab' ? 'lab' : Number(u)); window.scrollTo(0, 0); }); });
   (cur === 'lab' ? bindLab : bindUnit)(id, C, cp, cur);
 }
+function readMins(u){ var t = (u.body || []).join(' ') + ' ' + (u.example || '') + ' ' + (u.steps || []).join(' '); return Math.max(2, Math.round(t.split(/\s+/).length / 180)); }
 function learnUnit(id, C, cp, i){
-  var u = C.units[i], done = !!cp.units[i];
-  var h = '<small style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--red-2)">Unit ' + (i + 1) + ' of ' + C.units.length + '</small><h2>' + esc(u.t) + '</h2><p class="lead">' + esc(u.body) + '</p><ul class="lp-pts">' + u.pts.map(function(p){ return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>';
-  h += '<div class="lp-q"><h4>Checkpoint' + (done ? ' · <span class="mo-pill ok">Passed</span>' : '') + '</h4><p style="margin:0 0 12px;font-size:15px;font-weight:600">' + esc(u.q.p) + '</p><div id="opts">';
-  u.q.o.forEach(function(o, k){ h += '<label class="lp-opt"><input type="radio" name="ans" value="' + k + '"/><span>' + esc(o) + '</span></label>'; });
-  h += '</div><div id="qres" aria-live="polite"></div><div class="ad-row" style="margin-top:12px"><button class="mo-btn red" id="qcheck" type="button">Check answer</button>' + (done ? '<button class="mo-btn ghost" id="qnext" type="button">' + (i + 1 < C.units.length ? 'Next unit →' : 'Go to the lab →') + '</button>' : '') + '</div></div>';
+  var u = C.units[i], done = !!cp.units[i], list = function(a, cls){ return '<ul class="' + cls + '">' + (a || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; };
+  var h = '<small class="lp-kick">Lesson ' + (i + 1) + ' of ' + C.units.length + ' · about ' + readMins(u) + ' min read</small><h2>' + esc(u.t) + '</h2>';
+  if (u.goal) h += '<div class="lp-goal"><b>What you will learn</b><span>' + esc(u.goal) + '</span></div>';
+  h += (u.body || []).map(function(p){ return '<p class="lead">' + esc(p) + '</p>'; }).join('');
+  if (u.example) h += '<div class="lp-call ex"><b>A real example</b><p>' + esc(u.example) + '</p></div>';
+  if (u.steps && u.steps.length) h += '<h3 class="lp-h">Step by step</h3><ol class="lp-steps">' + u.steps.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>';
+  if (u.mistakes && u.mistakes.length) h += '<div class="lp-call warn"><b>Common mistakes to avoid</b>' + list(u.mistakes, 'lp-mist') + '</div>';
+  if (u.terms && u.terms.length) h += '<h3 class="lp-h">Key words</h3><dl class="lp-terms">' + u.terms.map(function(t){ return '<div><dt>' + esc(t[0]) + '</dt><dd>' + esc(t[1]) + '</dd></div>'; }).join('') + '</dl>';
+  if (u.tryit) h += '<div class="lp-call try"><b>Try it yourself</b><p>' + esc(u.tryit) + '</p></div>';
+  h += '<h3 class="lp-h">Key points to remember</h3>' + list(u.pts, 'lp-pts');
+  h += '<div class="lp-q"><h4>Checkpoint — answer both questions' + (done ? ' · <span class="mo-pill ok">Passed</span>' : '') + '</h4>';
+  u.qs.forEach(function(q, n){
+    h += '<fieldset class="lp-qs" data-q="' + n + '"><legend>' + (n + 1) + '. ' + esc(q.p) + '</legend>';
+    q.o.forEach(function(o, k){ h += '<label class="lp-opt"><input type="radio" name="ans' + n + '" value="' + k + '"/><span>' + esc(o) + '</span></label>'; });
+    h += '</fieldset>';
+  });
+  h += '<div id="qres" aria-live="polite"></div><div class="ad-row" style="margin-top:12px"><button class="mo-btn red" id="qcheck" type="button">Check my answers</button>' + (done ? '<button class="mo-btn ghost" id="qnext" type="button">' + (i + 1 < C.units.length ? 'Next lesson →' : 'Go to the lab →') + '</button>' : '') + '</div></div>';
   return h;
 }
 function bindUnit(id, C, cp, i){
-  qa('.lp-opt').forEach(function(l){ l.addEventListener('click', function(){ qa('.lp-opt').forEach(function(x){ x.classList.remove('sel', 'wrong', 'right'); }); l.classList.add('sel'); }); });
-  var next = function(){ var s = courseStats(id); renderLearn(id, i + 1 < C.units.length ? i + 1 : (STATE.prog.courses[id].units.every(Boolean) ? 'lab' : i)); window.scrollTo(0, 0); };
+  qa('.lp-opt').forEach(function(l){ l.addEventListener('click', function(){ var f = l.closest('fieldset'); qa('.lp-opt', f).forEach(function(x){ x.classList.remove('sel', 'wrong', 'right'); }); l.classList.add('sel'); }); });
+  var next = function(){ renderLearn(id, i + 1 < C.units.length ? i + 1 : (STATE.prog.courses[id].units.every(Boolean) ? 'lab' : i)); window.scrollTo(0, 0); };
   var nb = q$('#qnext'); if (nb) nb.addEventListener('click', next);
   q$('#qcheck').addEventListener('click', function(){
-    var sel = q$('input[name=ans]:checked'), res = q$('#qres'); if (!sel){ res.innerHTML = '<div class="mo-msg info">Choose an answer first.</div>'; return; }
+    var res = q$('#qres'), n = C.units[i].qs.length, ans = [];
+    for (var k = 0; k < n; k++){ var sel = q$('input[name=ans' + k + ']:checked'); if (!sel){ res.innerHTML = '<div class="mo-msg info">Please answer both questions first.</div>'; return; } ans.push(Number(sel.value)); }
     var b = q$('#qcheck'); b.disabled = true;
-    api('checkpoint', { course: id, unit: i, answer: Number(sel.value) }).then(function(r){
+    api('checkpoint', { course: id, unit: i, answers: ans }).then(function(r){
       b.disabled = false;
-      if (!r.ok){ res.innerHTML = '<div class="mo-msg err">' + esc((r.data && r.data.error) || 'Could not check the answer.') + '</div>'; return; }
-      var lab = sel.closest('.lp-opt');
+      if (!r.ok){ res.innerHTML = '<div class="mo-msg err">' + esc((r.data && r.data.error) || 'Could not check the answers.') + '</div>'; return; }
+      qa('fieldset.lp-qs').forEach(function(f, k){ var l = q$('input[name=ans' + k + ']:checked').closest('.lp-opt'); l.classList.remove('right', 'wrong'); l.classList.add(r.data.results[k] ? 'right' : 'wrong'); });
       if (r.data.correct){
-        STATE.prog.courses[id].units[i] = new Date().toISOString(); lab.classList.add('right');
-        res.innerHTML = '<div class="mo-msg ok">Correct — checkpoint passed (' + r.data.completed + ' of ' + r.data.total + ').' + (r.data.allDone ? ' The lab is now unlocked.' : '') + '</div>';
-        if (!q$('#qnext')){ var n = document.createElement('button'); n.className = 'mo-btn ghost'; n.id = 'qnext'; n.type = 'button'; n.textContent = (i + 1 < C.units.length ? 'Next unit →' : 'Go to the lab →'); n.addEventListener('click', next); q$('#qcheck').parentNode.appendChild(n); }
+        STATE.prog.courses[id].units[i] = new Date().toISOString();
+        res.innerHTML = '<div class="mo-msg ok">Well done — both correct. Lesson complete (' + r.data.completed + ' of ' + r.data.total + ').' + (r.data.allDone ? ' The lab is now unlocked.' : '') + '</div>';
+        if (!q$('#qnext')){ var nx = document.createElement('button'); nx.className = 'mo-btn ghost'; nx.id = 'qnext'; nx.type = 'button'; nx.textContent = (i + 1 < C.units.length ? 'Next lesson →' : 'Go to the lab →'); nx.addEventListener('click', next); q$('#qcheck').parentNode.appendChild(nx); }
         var nb2 = q$('.lp-nav button[data-u="' + i + '"]'); if (nb2){ nb2.classList.add('done'); nb2.querySelector('.n').textContent = '✓'; }
         if (r.data.allDone){ var lb = q$('.lp-nav button[data-u="lab"]'); if (lb){ lb.disabled = false; lb.removeAttribute('title'); lb.addEventListener('click', function(){ renderLearn(id, 'lab'); }); } }
-      } else { lab.classList.add('wrong'); res.innerHTML = '<div class="mo-msg err">Not quite — re-read the lesson above and try again.</div>'; }
+      } else { var bad = r.data.results.filter(function(x){ return !x; }).length; res.innerHTML = '<div class="mo-msg err">' + bad + ' of ' + n + ' not quite right (marked in red). Re-read the lesson above and change your answer.</div>'; }
     });
   });
 }
@@ -212,6 +229,8 @@ function learnLab(id, C, cp){
   var h = '<small style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--red-2)">Lab &amp; evidence</small><h2>' + esc(L.title) + '</h2><p class="lead">' + esc(L.scenario) + '</p>';
   h += '<div class="mo-scroll"><table class="lp-lab-table"><thead><tr>' + L.cols.map(function(c){ return '<th>' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' + L.rows.map(function(r){ return '<tr>' + r.map(function(x){ return '<td>' + esc(x) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div><p style="font-size:12px;color:var(--slate-3);margin:-2px 0 12px">Fictional data for practice. <button type="button" class="mo-btn ghost sm" id="csvDl">Download CSV</button></p>';
   h += '<h4 style="font-family:var(--head);margin:18px 0 6px">Tasks</h4><ul class="lp-tasks">' + L.tasks.map(function(t){ return '<li><input type="checkbox"/><span>' + esc(t) + '</span></li>'; }).join('') + '</ul><p style="font-size:14px"><b>Deliverable:</b> ' + esc(L.deliverable) + '</p>';
+  if (L.hints && L.hints.length) h += '<details class="lp-det"><summary>Stuck? Show hints</summary><ul class="lp-mist">' + L.hints.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></details>';
+  if (L.rubric && L.rubric.length) h += '<div class="lp-call try"><b>How your work is judged</b><ul class="lp-mist">' + L.rubric.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
   if (st === 'approved') h += '<div class="mo-msg ok" style="margin-top:16px">Approved' + (lab.feedback ? ' — ' + esc(lab.feedback) : '') + '. <a href="' + certLink(id) + '" style="text-decoration:underline">View your certificate →</a></div>';
   else if (st === 'submitted') h += '<div class="mo-msg info" style="margin-top:16px">Submitted ' + esc(date(lab.at)) + ' — waiting for a reviewer. Your completion record is already issued: <a href="' + certLink(id) + '" style="text-decoration:underline">view certificate</a>.</div>';
   else {
@@ -316,8 +335,8 @@ function adCreds(){
 routes['/admin'] = admin;
 
 /* ------------------------------------------------------------------ documents */
-function docPage(inner, size){
-  pageStyle(size || 'A4 portrait');
+function docPage(inner, size, locked){
+  pageStyle(size || 'A4 portrait'); lockApp(locked === undefined ? !!(STATE.me && STATE.me.user) : locked);
   root().innerHTML = '<div class="ac"><div class="dc-page">' + inner + '</div></div>';
 }
 function docTools(extra){
@@ -326,6 +345,7 @@ function docTools(extra){
 function bindPrint(){ var p = q$('#dcPrint'); if (p) p.addEventListener('click', function(){ window.print(); }); }
 function loadDoc(me, cb){
   if (!needUser(me)) return;
+  STATE.me = me;
   var o = P().get('o') || '';
   api('document', { order: o }).then(function(r){
     if (!r.ok) return docPage('<div class="vf bad"><h2>Document not available</h2><p style="color:var(--slate-2)">' + esc((r.data && r.data.error) || 'We could not load this order.') + '</p><a class="mo-btn" href="/dashboard#billing">Back to billing</a></div>');
@@ -383,7 +403,8 @@ function seal(){
   return '<svg class="ct-seal" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sealTop" d="M100 100 m-64 0 a64 64 0 1 1 128 0"/><path id="sealBot" d="M100 100 m-72 0 a72 72 0 0 0 144 0"/><radialGradient id="sg" cx="35%" cy="30%"><stop offset="0" stop-color="#ff7a45"/><stop offset="1" stop-color="#c9260e"/></radialGradient></defs>' + rays + '<circle cx="100" cy="100" r="82" fill="url(#sg)"/><circle cx="100" cy="100" r="74" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 4" opacity=".8"/><circle cx="100" cy="100" r="50" fill="#0f1714"/><path d="M100 68l9 19 21 3-15 15 4 21-19-10-19 10 4-21-15-15 21-3z" fill="#ff7a45"/><text font-family="Arial,sans-serif" font-size="12.5" font-weight="800" letter-spacing="3" fill="#fff"><textPath href="#sealTop" startOffset="50%" text-anchor="middle">DIGITALBURJ ACADEMY</textPath></text><text font-family="Arial,sans-serif" font-size="11" font-weight="800" letter-spacing="3" fill="#fff"><textPath href="#sealBot" startOffset="50%" text-anchor="middle">★ OFFICIAL RECORD ★</textPath></text></svg>';
 }
 function corner(cls){ return '<svg class="ct-corner ' + cls + '" viewBox="0 0 90 90" fill="none" stroke="#0f1714" stroke-width="1.4" aria-hidden="true"><path d="M2 88V20Q2 2 20 2h68"/><path d="M10 88V26Q10 10 26 10h62" stroke="#f23a1d"/><circle cx="20" cy="20" r="5" fill="#f23a1d" stroke="none"/><path d="M30 30q10 0 10-10M42 42q14 0 14-14" stroke-width="1"/></svg>'; }
-function certificate(){
+function certificate(me){
+  STATE.me = me;
   var id = (P().get('id') || '').trim();
   api('credential', { id: id }).then(function(r){
     if (!r.ok) return docPage('<div class="vf bad"><h2>Certificate not found</h2><p style="color:var(--slate-2)">' + esc((r.data && r.data.error) || 'Check the credential ID and try again.') + '</p><a class="mo-btn" href="/credential">Verify a credential</a></div>');
@@ -402,7 +423,8 @@ function certificate(){
 routes['/certificate'] = certificate;
 
 /* public verification */
-function credential(){
+function credential(me){
+  STATE.me = me;
   var id = (P().get('id') || '').trim();
   if (!id){
     docPage('<div class="vf"><h2 style="font-family:var(--head);margin:0 0 8px">Verify a credential</h2><p style="color:var(--slate-2);margin:0 0 16px">Enter the credential ID printed on the certificate.</p><form id="vfForm" class="mo-form" style="margin:0 auto"><input class="mo-in" id="vfId" placeholder="DBA-DB-00-…" autocomplete="off"/><button class="mo-btn red" type="submit">Verify</button></form></div>');

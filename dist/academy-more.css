@@ -268,3 +268,38 @@
   .rc-stage{perspective:none}.rc-printer{display:none}
   .rc-paper-wrap,.rc-paper-wrap *{animation:none!important;transform:none!important}.rc-clip{clip-path:none!important}.rc-stamp{transform:rotate(-14deg) scale(1)!important;opacity:.9!important}
 }
+
+/* ============ locked application mode (signed in): no site header/footer/widgets ============ */
+html.app-locked header:not(#ws-root header),html.app-locked footer:not(#ws-root footer),
+html.app-locked [class*="dbx-"]:not(#ws-root *),html.app-locked [class*="dbs-"]:not(#ws-root *),
+html.app-locked [id^="dbx"]:not(#ws-root *),html.app-locked [id^="dbs"]:not(#ws-root *),
+html.app-locked a[href*="wa.me"]:not(#ws-root a){display:none!important}
+html.app-locked body{background:var(--bg,#f6f5f1)}
+html.app-locked .mo{min-height:100vh}
+html.app-locked .dc-page{min-height:100vh}
+html.app-locked #ws-root{min-height:100vh!important}
+
+/* lesson sections */
+.lp-kick{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--red-2)}
+.lp-goal{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;background:var(--bg);border-left:4px solid var(--red);margin:10px 0 18px;font-size:15px;line-height:1.5}
+.lp-goal b{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-2)}
+.lp-body .lead{margin:0 0 14px}
+.lp-h{font-family:var(--head);font-size:17px;margin:26px 0 10px}
+.lp-call{border-radius:14px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.65;border:1.5px solid var(--line)}
+.lp-call b{display:block;font-family:var(--head);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.lp-call p{margin:0}
+.lp-call.ex{background:#f4f8ff;border-color:#cfe0ff}
+.lp-call.warn{background:#fff6f4;border-color:#ffd3cb}
+.lp-call.try{background:#f3faf4;border-color:#c9e8cf}
+.lp-steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:8px}
+.lp-steps li{counter-increment:s;display:flex;gap:12px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font-size:14.5px;line-height:1.5}
+.lp-steps li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:99px;background:#0f1714;color:#fff;font:700 12px/24px var(--head);text-align:center}
+.lp-mist{margin:0;padding-left:20px;display:grid;gap:6px}
+.lp-terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:0}
+.lp-terms div{padding:12px 14px;border:1.5px solid var(--line);border-radius:12px}
+.lp-terms dt{font-weight:800;font-size:14px}.lp-terms dd{margin:4px 0 0;font-size:13.5px;color:var(--slate-2);line-height:1.5}
+.lp-qs{border:0;padding:0;margin:0 0 16px}
+.lp-qs legend{font-weight:700;font-size:15px;margin-bottom:10px;padding:0}
+.lp-det{margin:14px 0;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px}
+.lp-det summary{cursor:pointer;font-weight:700;font-size:14px}
+@media (prefers-color-scheme:dark){.lp-call.ex,.lp-call.warn,.lp-call.try{background:transparent}}

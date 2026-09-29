@@ -52,10 +52,12 @@ const chk = (label, cond, extra) => { if (!cond) fails++; say((cond ? '  ok  ' :
   await p.click('text=Start course'); await p.waitForSelector('.lp-opt');
   chk('lab locked before checkpoints', await p.locator('.lp-nav button[data-u=lab]').isDisabled());
   for (let u = 0; u < ANS['DB-00'].length; u++) {
-    const n = await p.locator('.lp-opt').count(), wrong = (ANS['DB-00'][u] + 1) % n;
-    await p.locator('.lp-opt').nth(wrong).click(); await p.click('#qcheck'); await p.waitForSelector('.mo-msg.err');
-    if (u === 0) { chk('wrong answer rejected by the server', /Not quite/.test(await p.textContent('#qres'))); await shot(p, '04-learn'); }
-    await p.locator('.lp-opt').nth(ANS['DB-00'][u]).click(); await p.click('#qcheck'); await p.waitForSelector('.mo-msg.ok'); await p.click('#qnext');
+    const key = ANS['DB-00'][u];
+    const pick = async (k, i) => p.locator('fieldset.lp-qs').nth(i).locator('.lp-opt').nth(k).click();
+    const wrong = (key[0] + 1) % 3; await pick(wrong, 0); for (let i = 1; i < key.length; i++) await pick(key[i], i);
+    await p.click('#qcheck'); await p.waitForSelector('.mo-msg.err');
+    if (u === 0) { chk('wrong answer rejected by the server', /not quite right/.test(await p.textContent('#qres'))); await shot(p, '04-learn'); }
+    await pick(key[0], 0); await p.click('#qcheck'); await p.waitForSelector('.mo-msg.ok'); await p.click('#qnext');
   }
   await p.waitForSelector('#labForm'); chk('lab unlocked after all checkpoints', !(await p.locator('.lp-nav button[data-u=lab]').isDisabled()));
   await p.fill('#lb-t', 'too short'); await p.click('#lb-b'); chk('short evidence rejected', /80 characters/.test(await p.textContent('#lb-r')));
@@ -103,16 +105,21 @@ const chk = (label, cond, extra) => { if (!cond) fails++; say((cond ? '  ok  ' :
   await pd.goto(APP + '/start', { waitUntil: 'networkidle' }); await pd.click('#au-demo'); await pd.waitForSelector('.mo-banner.demo');
   chk('demo dashboard has all 14 courses unlocked', (await pd.locator('.mo-course:not(.locked)').count()) === 14);
   await pd.goto(APP + '/admin', { waitUntil: 'networkidle' }); await pd.waitForSelector('.mo-tile'); chk('demo admin preview is read-only sample data', /read-only/.test(await pd.textContent('h1')));
-  await pd.evaluate(async (ans) => { for (let u = 0; u < ans.length; u++) await fetch('/api/academy', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'checkpoint', course: 'PC-AC01', unit: u, answer: ans[u] }) }); }, ANS['PC-AC01']);
+  await pd.evaluate(async (ans) => { for (let u = 0; u < ans.length; u++) await fetch('/api/academy', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'checkpoint', course: 'PC-AC01', unit: u, answers: ans[u] }) }); }, ANS['PC-AC01']);
   await pd.goto(APP + '/learn?c=PC-AC01&u=lab', { waitUntil: 'networkidle' }); await pd.waitForSelector('#labForm');
   await pd.fill('#lb-t', 'Reconciled the bank statement to the ledger: outstanding cheque 221 of 900 and a 150 bank fee, leaving both at 12,250. Journal: debit bank charges 150, credit bank 150.');
   await pd.click('#lb-b'); await pd.waitForSelector('.mo-msg.ok:has-text("Approved")'); await pd.click('text=View your certificate');
   await pd.waitForSelector('.ct-wm'); chk('demo certificate carries the DEMO watermark', /DEMO/.test(await pd.textContent('.ct-wm'))); await pd.waitForTimeout(1300); await shot(pd, '12-demo-certificate');
 
-  say('11 header/footer inside the app');
-  await pd.goto(APP + '/dashboard', { waitUntil: 'networkidle' });
-  const [nav] = await Promise.all([pd.waitForURL(LAND + '/**', { timeout: 8000 }).catch(() => null), pd.click('header a[href*="pricing"]').catch(() => null)]);
-  chk('clicking Pricing in the header lands on digitalburj.com/pricing', /localhost:8123\/pricing/.test(pd.url()), pd.url());
+  say('11 locked dashboard: no site header/footer/widgets after sign-in');
+  await pd.goto(APP + '/dashboard', { waitUntil: 'networkidle' }); await pd.waitForSelector('.mo-main');
+  const vis = await pd.evaluate(() => ['header', 'footer', '[class*=chat]', '[id*=chat]'].map(sel => Array.from(document.querySelectorAll(sel)).some(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden'; })));
+  chk('header hidden', !vis[0]); chk('footer hidden', !vis[1]); chk('chat widget hidden', !vis[2] && !vis[3]);
+  chk('locked class set', await pd.evaluate(() => document.documentElement.classList.contains('app-locked')));
+  await shot(pd, '13-locked-dashboard');
+  await pd.goto(APP + '/learn?c=DB-00&u=0', { waitUntil: 'networkidle' }); await pd.waitForSelector('.lp-call.ex');
+  chk('lesson shows goal, example, steps, mistakes, key words, try-it', (await pd.locator('.lp-goal, .lp-call.ex, .lp-steps, .lp-call.warn, .lp-terms, .lp-call.try').count()) >= 6);
+  await shot(pd, '14-lesson');
 
   say('ERRORS', errs); if (errs.length) fails++;
   say(fails ? `\n${fails} check(s) failed` : '\nall checks passed'); process.exitCode = fails ? 1 : 0; await b.close();

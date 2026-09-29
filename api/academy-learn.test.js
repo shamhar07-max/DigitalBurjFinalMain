@@ -24,9 +24,11 @@ async function register(name, email) {
 }
 async function passCourse(cookie, course) {
   for (let u = 0; u < ANSWERS[course].length; u++) {
-    const wrong = (ANSWERS[course][u] + 1) % CUR[course].units[u].q.o.length;
-    let r = await call(cookie, { action: "checkpoint", course, unit: u, answer: wrong }); assert.strictEqual(r.json.correct, false, "wrong answer");
-    r = await call(cookie, { action: "checkpoint", course, unit: u, answer: ANSWERS[course][u] }); assert.strictEqual(r.json.correct, true);
+    const key = ANSWERS[course][u], wrong = key.map((a, i) => (i === 0 ? (a + 1) % CUR[course].units[u].qs[i].o.length : a));
+    let r = await call(cookie, { action: "checkpoint", course, unit: u, answers: wrong }); assert.strictEqual(r.json.correct, false, "wrong answer");
+    assert.deepStrictEqual(r.json.results, key.map((_, i) => i !== 0));
+    r = await call(cookie, { action: "checkpoint", course, unit: u, answers: [0] }); assert.strictEqual(r.status, 400, "wrong answer count");
+    r = await call(cookie, { action: "checkpoint", course, unit: u, answers: key }); assert.strictEqual(r.json.correct, true);
   }
 }
 const EVIDENCE = "Cleaned the inventory into five columns, renamed the file 2026-03-14_stock_v1 and shared it view-only with two named colleagues.";
@@ -39,8 +41,8 @@ const EVIDENCE = "Cleaned the inventory into five columns, renamed the file 2026
   // ---- signed out / unowned
   assert.strictEqual((await call("", { action: "progress" })).status, 401);
   const learner = await register("Lena Park", "lena@example.com");
-  assert.strictEqual((await call(learner, { action: "checkpoint", course: "DB-00", unit: 0, answer: 1 })).status, 403, "course not owned");
-  assert.strictEqual((await call(learner, { action: "checkpoint", course: "XX-99", unit: 0, answer: 1 })).status, 400);
+  assert.strictEqual((await call(learner, { action: "checkpoint", course: "DB-00", unit: 0, answers: [1, 1] })).status, 403, "course not owned");
+  assert.strictEqual((await call(learner, { action: "checkpoint", course: "XX-99", unit: 0, answers: [1, 1] })).status, 400);
   await A._.addOrder(dep(), "lena@example.com", { id: "cs_l1", ref: "ORD-L1", source: "stripe", items: ["DB-00"], amount: 3, currency: "USD", date: new Date().toISOString(), status: "active" });
 
   // ---- checkpoints are graded on the server

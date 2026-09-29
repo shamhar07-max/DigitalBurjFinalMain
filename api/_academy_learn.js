@@ -71,12 +71,13 @@ async function progress(b, deps) {
 
 async function checkpoint(b, deps) {
   const { err, user, course } = await learner(b, deps, true); if (err) return err;
-  const u = Number(b.unit), a = Number(b.answer), key = ANSWERS[course];
-  if (!Number.isInteger(u) || u < 0 || u >= key.length || !Number.isInteger(a)) return fail(400, "Invalid answer.");
+  const u = Number(b.unit), key = ANSWERS[course], answers = Array.isArray(b.answers) ? b.answers.map(Number) : null;
+  if (!Number.isInteger(u) || u < 0 || u >= key.length || !answers || answers.length !== key[u].length || !answers.every(Number.isInteger)) return fail(400, "Invalid answer.");
   const p = await getProg(deps, user.email), c = courseProg(p, course);
-  const correct = a === key[u];
+  const results = answers.map((a, i) => a === key[u][i]);
+  const correct = results.every(Boolean);
   if (correct && !c.units[u]) { c.units[u] = new Date().toISOString(); await putJSON(deps.kv, KEY.prog(user.email), p); }
-  return ok({ ok: true, correct, done: !!c.units[u], allDone: allUnitsDone(c), completed: c.units.filter(Boolean).length, total: key.length });
+  return ok({ ok: true, correct, results, done: !!c.units[u], allDone: allUnitsDone(c), completed: c.units.filter(Boolean).length, total: key.length });
 }
 
 async function submit(b, deps) {

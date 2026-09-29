@@ -106,7 +106,7 @@ function run(){
      ============================================================ */
   function renderAccount(){
     var strip = $('#acctStrip'), btn = $('#signInBtn');
-    if (!ACCT || !ACCT.user){ strip.style.display = 'none'; btn.textContent = 'Sign in'; btn.setAttribute('data-app', '/signin'); btn.href = DBA.appUrl('/signin'); return; }
+    if (!ACCT || !ACCT.user){ strip.style.display = 'none'; btn.textContent = 'Get started'; btn.setAttribute('data-app', '/signup'); btn.href = DBA.appUrl('/signup'); var hs = $('#heroStart'); if (hs){ hs.setAttribute('data-app', '/signup'); hs.href = DBA.appUrl('/signup'); } return; }
     btn.textContent = 'Continue learning'; btn.setAttribute('data-app', '/'); btn.href = DBA.appUrl('/');
     var e = ACCT.entitlements, paid = 0;
     if (e) e.orders.forEach(function(o){ if (o.status !== 'refunded') paid += o.amount || 0; });

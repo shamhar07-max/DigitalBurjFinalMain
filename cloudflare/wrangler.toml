@@ -3,7 +3,8 @@ main = "worker.js"
 compatibility_date = "2026-09-01"
 
 [vars]
-COMMIT = "b89ec9ab8a306652c516606dab33c8d74fb933d3"
+# ADMIN_EMAILS = "you@example.com"   # comma-separated; enables /admin for verified addresses
+COMMIT = "616014aeb66b3364b0a429b18b210c27c45754ec"
 CONTACT_TO = "support@digitalburj.com"
 MAIL_FROM = "DigitalBurj <support@digitalburj.com>"
 RESEND_SEGMENT_ID = "88a89ee2-94b2-4fea-a785-44132c73ff05"

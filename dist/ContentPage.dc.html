@@ -8,6 +8,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
+<link rel="icon" href="brand/favicon.png">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
@@ -295,7 +296,7 @@ class Component extends DCLogic {
       if (s.type === "cards") {
         const dark = !!s.dark;
         Object.assign(base, {
-          wrapStyle: dark ? "background:#0f1714;padding:36px 24px;margin:48px 0" : "padding:44px 24px",
+          wrapStyle: dark ? "background:#0f1714;padding:40px 0;margin:28px 0" : "padding:44px 0",
           accent: dark ? "#ff7a45" : "#f23a1d", ink: dark ? "#f6f5f1" : "#0f1714", sub: dark ? "rgba(246,245,241,.62)" : "#4a544f",
           cards: s.items.map((c, i) => ({
             ...c, n: n(i), href: c.href || "Contact.dc.html", delay: String((i % 3) * 80),

@@ -8,12 +8,13 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
+<link rel="icon" href="brand/favicon.png">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
 <x-dc>
 <header style="position:sticky;top:0;z-index:60;padding:10px 12px 0;font-family:'Instrument Sans',system-ui,sans-serif">
-  <div style="max-width:76rem;margin:0 auto;height:62px;display:flex;align-items:center;gap:8px;padding:0 8px 0 18px;border-radius:18px;background:rgba(246,245,241,.82);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(15,23,20,.08);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -28px rgba(15,23,20,.45)">
+  <div class="db-nav-inner" style="max-width:76rem;margin:0 auto;height:62px;display:flex;align-items:center;gap:8px;padding:0 18px;border-radius:18px;background:rgba(246,245,241,.82);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(15,23,20,.08);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -28px rgba(15,23,20,.45)">
     <button onclick="{{ toggleSheet }}" aria-label="Open menu" style="{{ burgerStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f1714" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
     <a href="Homepage.dc.html" aria-label="DigitalBurj home" style="display:flex;align-items:center;flex-shrink:0;margin-right:12px"><img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/></a>
     <nav aria-label="Primary" style="{{ navStyle }}">
@@ -50,7 +51,7 @@
       <span style="{{ kbdStyle }}">Search</span>
       <kbd style="{{ kbdStyle2 }}">⌘K</kbd>
     </button>
-    <a href="GetStarted.dc.html" style="height:42px;padding:0 18px;border-radius:12px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font:600 14px 'Instrument Sans';display:inline-flex;align-items:center;gap:8px;box-shadow:0 10px 24px -10px rgba(242,58,29,.8);transition:background-position .8s cubic-bezier(.22,.8,.24,1),transform .25s;flex-shrink:0" style-hover="background-position:0 0;transform:translateY(-1px)">Get Started<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="db-nav-cta" href="GetStarted.dc.html" style="height:42px;padding:0 18px;border-radius:12px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font:600 14px 'Instrument Sans';display:inline-flex;align-items:center;gap:8px;box-shadow:0 10px 24px -10px rgba(242,58,29,.8);transition:background-position .8s cubic-bezier(.22,.8,.24,1),transform .25s;flex-shrink:0" style-hover="background-position:0 0;transform:translateY(-1px)">Get Started<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </header>
 
@@ -104,7 +105,7 @@ class Component extends DCLogic {
     { name: "DigitalBurj AI", line: "AI employees that act through controlled tools.", href: "BusinessAI.dc.html", icon: "brand/mark-business-ai.webp" },
     { name: "Growth", line: "Websites, SEO, AEO, AI search, social and ads.", href: "Growth.dc.html", icon: "brand/mark-growth.webp" },
     { name: "Studio", line: "Web apps, mobile apps, custom ERP and integrations.", href: "Studio.dc.html", icon: "brand/mark-studio.webp" },
-    { name: "Industry Solutions", line: "Vertical modules for 13 sectors on one core.", href: "Industries.dc.html", icon: "brand/mark-industries.webp" },
+    { name: "Industry Solutions", line: "Vertical modules for 15 sectors on one core.", href: "Industries.dc.html", icon: "brand/mark-industries.webp" },
     { name: "Academy", line: "Onboarding, certification and digital skills.", href: "Academy.dc.html", icon: "brand/mark-academy.webp" },
     { name: "Verified Talent", line: "Specialists with the evidence attached.", href: "Talent.dc.html", icon: "brand/mark-talent.webp" },
   ];

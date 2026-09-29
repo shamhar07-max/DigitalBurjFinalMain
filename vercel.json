@@ -1,0 +1,113 @@
+{
+  "redirects": [
+    {
+      "source": "/business-os",
+      "destination": "/BusinessOS.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/growth",
+      "destination": "/Growth.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/Pricing.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/business-ai",
+      "destination": "/BusinessAI.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/studio",
+      "destination": "/Studio.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/academy",
+      "destination": "/Academy.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/talent",
+      "destination": "/Talent.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/jobs",
+      "destination": "/Jobs.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/insights",
+      "destination": "/Insights.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/company",
+      "destination": "/Company.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/Contact.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/Solutions.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/industries",
+      "destination": "/Industries.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/Portfolio.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/get-started",
+      "destination": "/GetStarted.dc.html",
+      "permanent": true
+    },
+    {
+      "source": "/insights/:slug",
+      "destination": "/Article.dc.html?a=:slug",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(fonts|vendor)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(media|brand|industry|insight)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}

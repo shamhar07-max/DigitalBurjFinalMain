@@ -8,16 +8,16 @@ export const PLANS = [
   { name: "Business OS", price: "$41", per: "/mo", scope: "Core operations for a growing SME.", featured: true },
   { name: "Business OS Pro", price: "$81", per: "/mo", scope: "Broader ERP, HR and workflow capability." },
   { name: "Industry OS", price: "$136–218", per: "/mo", scope: "Core plus one vertical operations module." },
-  { name: "Business AI", price: "$27+", per: "/mo add-on", scope: "Defined AI usage and agents on top of any plan." },
+  { name: "DigitalBurj AI", price: "$27+", per: "/mo add-on", scope: "Defined AI usage and agents on top of any plan." },
   { name: "Enterprise", price: "Custom", per: "", scope: "Dedicated deployment, advanced integration and support." },
 ];
 
 
-// Odoo-class ERP apps + Wafeq-class accounting — the full service catalogue DigitalBurj implements, and what it adds on top.
-const odooWafeq = () => ({
-  type: "directory", id: "odoo-wafeq", eyebrow: "Odoo · Wafeq · and more",
-  h: "Everything Odoo and Wafeq do — we deliver it, and go further.",
-  lead: "Already run on Odoo or Wafeq, or planning to? DigitalBurj implements, customises, migrates and supports every app below — natively in the Business OS or on your existing stack — and adds the AI, growth and industry layers they don't.",
+// The full DigitalBurj service catalogue, grouped by function.
+const fullServices = () => ({
+  type: "directory", id: "services", eyebrow: "Complete service catalogue",
+  h: "Every service your business runs on, delivered by DigitalBurj.",
+  lead: "From accounting and CRM to supply chain, HR, marketing and projects — DigitalBurj implements, customises, migrates and supports every service below, natively in the Business OS or alongside your existing systems, with AI, growth and industry layers built in.",
   groups: [
     { t: "Finance & accounting", items: ["Accounting & GL", "Invoicing & quotes", "Purchase orders & bills", "Expenses", "Bank feeds & reconciliation", "Multi-currency", "VAT / tax returns", "e-Invoicing (UAE · KSA)", "Fixed assets", "40+ financial reports", "Budgets & cost centres", "Documents & e-sign"] },
     { t: "Sales & CRM", items: ["CRM & pipelines", "Sales orders", "Point of Sale", "Subscriptions", "Rental", "Quotation builder", "Commissions & targets", "Customer portal"] },
@@ -27,16 +27,16 @@ const odooWafeq = () => ({
     { t: "Marketing", items: ["Email marketing", "SMS marketing", "Social marketing", "Marketing automation", "Events", "Surveys", "WhatsApp campaigns", "Lead scoring"] },
     { t: "Services & projects", items: ["Projects & tasks", "Timesheets", "Field service", "Planning & shifts", "Helpdesk", "Appointments & booking", "Contracts & SLAs", "Client portal"] },
     { t: "Productivity & platform", items: ["Discuss & chat", "Approvals", "Knowledge base", "VoIP", "WhatsApp Business", "IoT", "Studio (no-code)", "API & integrations", "Data migration"] },
-    { t: "And more — only at DigitalBurj", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "13 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
+    { t: "Beyond the core", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "13 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
   ],
-  note: "Odoo and Wafeq are trademarks of their respective owners. Named here to describe the services we deliver."
+  note: ""
 });
 
-// Full sector directory — 95+ business types across 10 categories.
+// Sector directory — 95+ business types across 11 categories.
 const allSectors = () => ({
-  type: "directory", id: "all-sectors", eyebrow: "Every sector",
-  h: "If you run a business, there's a setup for it.",
-  lead: "Beyond our 13 deep vertical modules, DigitalBurj configures the Business OS for the sectors below — the same core, tuned to how each one actually works.",
+  type: "directory", id: "sectors", eyebrow: "Industries we serve",
+  h: "One core, configured for how each industry works.",
+  lead: "Deep vertical modules for our core sectors, and tuned configurations for every business type below — all on the same Business OS.",
   groups: [
     { t: "Business services", items: ["Accounting firm", "Audit & certification", "Law firm", "Marketing agency", "Talent acquisition", "IT hardware & support", "Software reseller", "Billboard rental", "Environmental agency"] },
     { t: "Culture & arts", items: ["Arts & crafts", "Gallery", "Museum", "Library", "Theater", "Concert halls", "Photography", "Tattoo shop"] },
@@ -75,7 +75,7 @@ export const PAGES = {
         M("Workflow Automation", "SMEs with repetitive admin", ["Triggers, conditions, actions, delays, escalations and retries", "Overdue invoice reminders, lead assignment, stock and licence-expiry alerts", "Execution history for every run"], "Automation is auditable and never bypasses business controls."),
         M("Communications & Dashboards", "Owners and every department", ["WhatsApp Business for enquiries, quotes, payments and owner briefs", "Unified inbox across WhatsApp, email and website chat", "Owner Command Center: cash, receivables, profit, approvals and exceptions", "Department dashboards for sales, finance, HR, inventory and more"], "The owner sees the business in one view, on their phone."),
       ] },
-      odooWafeq(),
+      fullServices(),
       { type: "chips", eyebrow: "Where we never cut cost", h: "Cheaper, never weaker.", lead: "Shared modules and self-service onboarding keep prices low. These stay non-negotiable.", items: ["Security", "Accounting accuracy", "Tax logic", "Backups & restore testing", "Tenant isolation", "Permissions", "Audit logs", "Privacy controls", "Regulatory validation"] },
       { type: "faq", items: [
         { q: "Do industry modules duplicate CRM or finance?", a: "No. Industry modules extend the Business OS. CRM, finance, HR, identity and documents are shared, so data is never entered twice." },
@@ -87,7 +87,7 @@ export const PAGES = {
   },
   "business-ai": {
     crumb: "DigitalBurj AI", lockup: "brand/business-ai-lockup.webp",
-    hero: { eyebrow: "DigitalBurj AI", h1: "AI employees", accent: "inside real operations.", lead: "Copilots and agents for owners, sales, service, finance, HR and operations — working on your authorised data, through controlled tools, with a person approving what matters.", primary: { label: "Add Business AI", href: "Pricing.dc.html" }, secondary: { label: "See the agents", href: "#agents" }, img: "img/21-d.jpg" },
+    hero: { eyebrow: "DigitalBurj AI", h1: "AI employees", accent: "inside real operations.", lead: "Copilots and agents for owners, sales, service, finance, HR and operations — working on your authorised data, through controlled tools, with a person approving what matters.", primary: { label: "Add DigitalBurj AI", href: "Pricing.dc.html" }, secondary: { label: "See the agents", href: "#agents" }, img: "img/21-d.jpg" },
     sections: [
       { type: "loop", eyebrow: "The AI rule", h: "No unrestricted database access. Ever.", items: ["Authenticate", "Authorise", "Use approved tools", "Validate", "Approve high-risk action", "Audit"] },
       { type: "modules", id: "agents", eyebrow: "Eight AI services", h: "Who they help and what they do.", items: [
@@ -101,7 +101,7 @@ export const PAGES = {
         M("AI Knowledge Base", "Employees", ["Answers from SOPs, policies, manuals and contracts", "Permission-aware: people only see what they're allowed to", "Product knowledge for sales and support"], "The answer respects the asker's permissions."),
       ] },
       { type: "split", eyebrow: "When to add AI", h: "After the data is reliable.", body: "We add agents only once processes, data and permissions are in place — otherwise AI just makes mistakes faster.", bullets: ["Core system works fully without AI", "Consequential actions pass through permissioned APIs", "Usage limits keep AI costs predictable"], img: "img/19-d.jpg", link: { label: "Read the responsible AI checklist", href: "Article.dc.html?a=responsible-ai-checklist" } },
-      cta("Give every team an AI colleague.", "Business AI is an add-on to any plan, with defined usage.", { label: "See pricing", href: "Pricing.dc.html" }, { label: "Talk to us", href: "Contact.dc.html" }),
+      cta("Give every team an AI colleague.", "DigitalBurj AI is an add-on to any plan, with defined usage.", { label: "See pricing", href: "Pricing.dc.html" }, { label: "Talk to us", href: "Contact.dc.html" }),
     ],
   },
   growth: {
@@ -141,22 +141,24 @@ export const PAGES = {
   },
   industries: {
     crumb: "Industry Solutions", lockup: "brand/industries-lockup.webp",
-    hero: { eyebrow: "DigitalBurj Industry Solutions", h1: "Built for how", accent: "your sector works.", lead: "Vertical modules for 13 sectors that extend the Business OS — so logistics, travel, property or construction workflows sit on the same CRM, finance and HR.", primary: { label: "Discuss your operation", href: "Contact.dc.html" }, secondary: { label: "Industry OS pricing", href: "Pricing.dc.html" }, img: "img/22-d.jpg" },
+    hero: { eyebrow: "DigitalBurj Industry Solutions", h1: "Built for how", accent: "your sector works.", lead: "Vertical modules for 15 sectors that extend the Business OS — so logistics, travel, property or construction workflows sit on the same CRM, finance and HR.", primary: { label: "Discuss your operation", href: "Contact.dc.html" }, secondary: { label: "Industry OS pricing", href: "Pricing.dc.html" }, img: "img/22-d.jpg" },
     sections: [
       { type: "modules", eyebrow: "Sector modules", h: "What each industry module includes.", items: [
         M("Logistics & Freight", "Forwarders, transporters, 3PLs", ["Rates, quotations and shipments — FCL/LCL, air and road", "Containers, customs workflow, transport and drivers", "Warehouse, POD, job costing and customer portal"], "Profitability per job, not per month."),
         M("Travel & Tourism", "Agencies and DMCs", ["Travel CRM, quotations and bookings", "Flights, hotels, transfers, attractions and visas", "Suppliers, refunds and booking profitability"], ""),
+        M("Trading & Distribution", "Importers, wholesalers and distributors", ["Price lists, customer pricing and quotations", "Orders, stock, delivery and returns", "Receivables, supplier bills and margin analysis"], ""),
         M("Real Estate", "Brokerages and property managers", ["Listings, units, owners, tenants and agents", "Leads, viewings, sales and leases", "Rent, commissions, maintenance and portals"], ""),
         M("Construction & Contracting", "Contractors and fit-out firms", ["Tenders, estimates, budgets and procurement", "Subcontractors, labour, site, equipment, quality and safety", "Variations, progress billing and costing"], ""),
         M("Facility Management", "FM providers", ["Contracts, sites and assets", "Preventive maintenance, work orders and SLA", "Technicians, parts, field app and billing"], ""),
+        M("Professional Services", "Consultancies and firms", ["CRM, projects and time", "Contracts, billing and documents", "Client portal"], ""),
+        M("Recruitment", "Agencies and in-house teams", ["Clients, jobs and candidates", "ATS, interviews and placements", "Documents and billing"], ""),
         M("Retail", "Stores and chains", ["POS, inventory and purchasing", "Pricing, promotions and loyalty", "E-commerce and delivery"], ""),
-        M("Manufacturing", "Small and mid-size plants", ["BOM, planning and work orders", "Materials, production and quality", "Maintenance, costing and traceability"], ""),
         M("Automotive", "Workshops, dealers and rentals", ["Vehicles and customers", "Service and repair jobs, parts and warranty", "Sales and rentals"], ""),
         M("Hospitality", "Hotels and restaurants", ["Reservations, guests and rooms", "Housekeeping and restaurant POS", "Inventory, staff and billing"], ""),
         M("Education", "Schools and training centres", ["Admissions, students and classes", "Attendance, faculty and fees", "Parent and student portals"], ""),
-        M("Recruitment", "Agencies and in-house teams", ["Clients, jobs and candidates", "ATS, interviews and placements", "Documents and billing"], ""),
-        M("Professional Services", "Consultancies and firms", ["CRM, projects and time", "Contracts, billing and documents", "Client portal"], ""),
+        M("Manufacturing", "Small and mid-size plants", ["BOM, planning and work orders", "Materials, production and quality", "Maintenance, costing and traceability"], ""),
         M("Healthcare Administration", "Clinics and medical groups", ["Appointments and patient administration", "Billing, inventory, staff and procurement", "Clinical systems kept separate"], "Administration only — clinical records stay in clinical systems."),
+        M("E-commerce", "Online sellers and brands", ["Catalogue, checkout and payment gateways", "Orders, fulfilment, returns and refunds", "Inventory and finance posting in one flow"], ""),
       ] },
       allSectors(),
       cta("Industry OS: the core plus your sector.", null, { label: "See Industry OS", href: "Pricing.dc.html" }, { label: "Talk to us", href: "Contact.dc.html" }),
@@ -202,7 +204,7 @@ export const PAGES = {
       { type: "modules", eyebrow: "Launch bundles", h: "What each bundle includes.", items: [
         M("Business Starter", "Small teams getting organised", ["CRM, customers, quotations and invoices", "Expenses, tasks and documents", "Dashboard and WhatsApp alerts"], ""),
         M("Business Pro", "Growing SMEs", ["Everything in Starter", "Accounting, procurement and inventory", "HR and workflow automation"], ""),
-        M("Business AI", "Owners who want leverage", ["Everything in Pro", "AI Executive, AI Sales and AI Support", "Owner WhatsApp intelligence"], ""),
+        M("DigitalBurj AI", "Owners who want leverage", ["Everything in Pro", "AI Executive, AI Sales and AI Support", "Owner WhatsApp intelligence"], ""),
         M("Industry OS", "Sector-specific operations", ["Everything in Pro", "One sector operations module", "Portals and mobile as natural add-ons"], ""),
       ] },
       { type: "pairs", eyebrow: "Services", h: "Subscription vs. project work.", items: [["SaaS", "Monthly / annual subscription"], ["Basic onboarding", "Included or low-cost"], ["Data migration", "Project fee"], ["Custom workflow or integration", "Project fee"], ["Website or mobile app", "Project fee"], ["Digital marketing, SEO / GEO", "Monthly retainer"], ["Dedicated hosting, priority support", "Add-on"]] },

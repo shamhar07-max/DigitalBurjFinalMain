@@ -10,6 +10,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
+<link rel="icon" href="brand/favicon.png">
 <link rel="stylesheet" href="hero-system.css">
 </head>
 <body>
@@ -36,9 +37,9 @@
       <div><p style="margin:0;font-weight:600;font-size:14px;color:#fff" itemprop="author">DigitalBurj Editorial</p><p style="margin:2px 0 0;font-size:13px;color:rgba(246,245,241,.72)">{{ a.readMin }} min read · <time itemprop="datePublished" datetime="{{ a.date }}">{{ a.dateLabel }}</time></p></div>
       <button onclick="{{ copyLink }}" class="db-hero-ghostbtn" style="margin-left:auto">{{ copyLabel }}</button>
     </div>
-  </div><aside class="db-article-art" aria-hidden="true"><img src="{{ a.image }}" alt="" fetchpriority="high"/></aside></div></div></header>
+  </div><aside class="db-article-art" aria-hidden="true"><img src="{{ a.image }}" alt="" loading="lazy" decoding="async"/></aside></div></div></header>
 
-  <div style="max-width:72rem;margin:0 auto;padding:36px 24px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:48px;align-items:start">
+  <div style="max-width:76rem;margin:0 auto;padding:36px 24px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:48px;align-items:start">
     <aside style="position:sticky;top:110px;grid-column:span 1">
       <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#6b746f">On this page</p>
       <ol style="margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px;border-left:2px solid rgba(15,23,20,.1)">
@@ -70,7 +71,7 @@
   </div>
 </article>
 
-<section aria-labelledby="rel-h" style="max-width:72rem;margin:0 auto;padding:28px 24px 56px">
+<section aria-labelledby="rel-h" style="max-width:76rem;margin:0 auto;padding:28px 24px 56px">
   <h2 id="rel-h" style="margin:0;font:700 26px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Keep reading</h2>
   <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:16px">
     <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">

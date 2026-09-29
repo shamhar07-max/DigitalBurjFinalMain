@@ -11,7 +11,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="icon" href="brand/favicon.png">
-<link rel="stylesheet" href="hero-system.css?v=6">
+<link rel="stylesheet" href="hero-system.css?v=7">
 </head>
 <body>
 <x-dc>
@@ -54,10 +54,10 @@ a:hover{color:#f23a1d}
       <h1 id="hero-h" class="db-hero-title db-hero-title--glossy">Learn. Build.<br/><span class="db-hero-accent">Transform.</span></h1>
       <p class="db-hero-lead">The technology stack of a larger enterprise — CRM, finance, HR, AI, growth and custom software — without the enterprise complexity or the enterprise price.</p>
       <div class="db-hero-actions">
-        <a href="GetStarted.dc.html" style="height:54px;padding:0 26px;border-radius:14px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -14px rgba(242,58,29,.9);transition:background-position .9s cubic-bezier(.22,.8,.24,1),transform .25s" style-hover="background-position:0 0;transform:translateY(-2px);color:#fff">Start with a problem
+        <a href="GetStarted.dc.html" style="height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -14px rgba(242,58,29,.9);transition:background-position .9s cubic-bezier(.22,.8,.24,1),transform .25s" style-hover="background-position:0 0;transform:translateY(-2px);color:#fff">Start with a problem
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#divisions" style="height:54px;padding:0 24px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.22);color:#f6f5f1;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:border-color .25s,background .25s,transform .25s" style-hover="border-color:#f6f5f1;background:rgba(246,245,241,.1);transform:translateY(-2px);color:#fff">Explore the ecosystem</a>
+        <a href="#divisions" style="height:46px;padding:0 22px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.22);color:#f6f5f1;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:border-color .25s,background .25s,transform .25s" style-hover="border-color:#f6f5f1;background:rgba(246,245,241,.1);transform:translateY(-2px);color:#fff">Explore the ecosystem</a>
       </div>
       <dl class="db-hero-meta">
         <div><dt style="font-size:12px;color:rgba(246,245,241,.55);letter-spacing:.04em">Divisions</dt><dd data-count="7" style="margin:6px 0 0;font:700 30px 'Plus Jakarta Sans',sans-serif;color:#f6f5f1">7</dd></div>
@@ -280,18 +280,18 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- FAQ -->
-<section aria-labelledby="faq-h" style="max-width:76rem;margin:0 auto;padding:28px 24px 60px">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px">
+<section aria-labelledby="faq-h" style="max-width:76rem;margin:0 auto;padding:20px 24px 28px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:28px 40px">
     <div data-reveal="up">
       <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>FAQ</p>
-      <h2 id="faq-h" style="margin:12px 0 0;font:700 clamp(1.6rem,1.2rem + 1.5vw,2.4rem)/1.05 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Quick answers.</h2>
-      <p style="margin:18px 0 0;font-size:15px;color:#4a544f">Still unsure? <a href="Contact.dc.html" style="color:#f23a1d;font-weight:600;text-decoration:underline">Send us a message</a>.</p>
+      <h2 id="faq-h" style="margin:12px 0 0;font:700 clamp(1.35rem,1.1rem + .9vw,1.8rem)/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Quick answers.</h2>
+      <p style="margin:10px 0 0;font-size:14px;color:#4a544f">Still unsure? <a href="Contact.dc.html" style="color:#f23a1d;font-weight:600;text-decoration:underline">Send us a message</a>.</p>
     </div>
     <div style="border-top:1px solid rgba(15,23,20,.12)">
       <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
         <div style="border-bottom:1px solid rgba(15,23,20,.12)">
-          <h3 style="margin:0"><button onclick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;border:none;background:none;text-align:left;cursor:pointer;font:600 17px 'Instrument Sans',sans-serif;color:#0f1714">{{ f.q }}<span style="{{ f.iconStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
-          <div style="{{ f.panelStyle }}"><div style="overflow:hidden"><p style="margin:0 0 24px;max-width:40rem;font-size:15px;line-height:1.65;color:#3b4541">{{ f.a }}</p></div></div>
+          <h3 style="margin:0"><button onclick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border:none;background:none;text-align:left;cursor:pointer;font:600 15px 'Instrument Sans',sans-serif;color:#0f1714">{{ f.q }}<span style="{{ f.iconStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <div style="{{ f.panelStyle }}"><div style="overflow:hidden"><p style="margin:0 0 14px;max-width:40rem;font-size:14px;line-height:1.6;color:#3b4541">{{ f.a }}</p></div></div>
         </div>
       </sc-for>
     </div>
@@ -299,15 +299,15 @@ a:hover{color:#f23a1d}
 </section>
 
 <!-- CTA -->
-<section aria-labelledby="cta-h" style="padding:0 12px 12px">
-  <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:22px;overflow:hidden;background:#f23a1d;color:#fff;padding:clamp(56px,8vw,104px) 24px;text-align:center">
+<section aria-labelledby="cta-h" style="padding:0 12px 8px">
+  <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:22px;overflow:hidden;background:#f23a1d;color:#fff;padding:clamp(28px,4vw,44px) 24px;text-align:center">
     <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at center,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,#000,transparent 70%)"></div>
     <div style="position:relative">
-      <h2 id="cta-h" style="margin:0 auto;max-width:48rem;font:700 clamp(2rem,1.3rem + 3vw,4.2rem)/1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#fff">Tell us what isn't working.</h2>
-      <p style="margin:22px auto 0;max-width:30rem;font-size:17px;line-height:1.6;color:rgba(255,255,255,.9)">Pick the closest option and we'll route you to the right team. No sales script.</p>
-      <div style="margin-top:34px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
-        <a href="GetStarted.dc.html" style="height:54px;padding:0 26px;border-radius:14px;background:#0f1714;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:transform .25s" style-hover="transform:translateY(-2px);color:#fff">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="Contact.dc.html" style="height:54px;padding:0 26px;border-radius:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:600;display:inline-flex;align-items:center;transition:background .25s" style-hover="background:rgba(255,255,255,.24);color:#fff">Contact us</a>
+      <h2 id="cta-h" style="margin:0 auto;max-width:48rem;font:700 clamp(1.45rem,1.1rem + 1.4vw,2.2rem)/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#fff">Tell us what isn't working.</h2>
+      <p style="margin:10px auto 0;max-width:30rem;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.9)">Pick the closest option and we'll route you to the right team. No sales script.</p>
+      <div style="margin-top:18px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+        <a href="GetStarted.dc.html" style="height:46px;padding:0 22px;border-radius:14px;background:#0f1714;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:transform .25s" style-hover="transform:translateY(-2px);color:#fff">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="Contact.dc.html" style="height:46px;padding:0 22px;border-radius:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:600;display:inline-flex;align-items:center;transition:background .25s" style-hover="background:rgba(255,255,255,.24);color:#fff">Contact us</a>
       </div>
     </div>
   </div>

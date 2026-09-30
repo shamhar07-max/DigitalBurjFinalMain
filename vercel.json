@@ -231,6 +231,10 @@
       "destination": "/BusinessAI.dc.html"
     },
     {
+      "source": "/clearing-os",
+      "destination": "/clearing-os.html"
+    },
+    {
       "source": "/growth",
       "destination": "/Growth.dc.html"
     },

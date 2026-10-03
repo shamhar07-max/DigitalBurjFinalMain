@@ -4,7 +4,7 @@ compatibility_date = "2026-09-01"
 
 [vars]
 # ADMIN_EMAILS = "you@example.com"   # comma-separated; enables /admin for verified addresses
-COMMIT = "25209ddceab62b4caef4bca44a9f34f0a1d2e86f"
+COMMIT = "864c15bf5d41322595214b1be6598ac86c031b98"
 CONTACT_TO = "support@digitalburj.com"
 MAIL_FROM = "DigitalBurj <support@digitalburj.com>"
 RESEND_SEGMENT_ID = "88a89ee2-94b2-4fea-a785-44132c73ff05"

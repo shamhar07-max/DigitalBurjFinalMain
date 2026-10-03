@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root = path.resolve(import.meta.dirname, '..');
+const worker = fs.readFileSync(path.join(root, 'cloudflare/worker.js'), 'utf8');
+const routes = fs.readFileSync(path.join(root, 'cloudflare/seo-routes.js'), 'utf8').replace('export const SEO_ROUTES', 'const SEO_ROUTES');
+const marker = 'import { SEO_ROUTES } from "./seo-routes.js";';
+if (!worker.includes(marker)) throw new Error('Worker route import changed; review the dashboard bundle builder.');
+const bundle = worker.replace(marker, routes);
+if (/^import /m.test(bundle)) throw new Error('Dashboard bundle still has an external import.');
+fs.writeFileSync(path.join(root, 'cloudflare/worker-dashboard.mjs'), '// Generated dashboard deployment bundle. Run npm run build.\n' + bundle);
+console.log('Built single-file Cloudflare dashboard Worker; existing environment bindings are required.');

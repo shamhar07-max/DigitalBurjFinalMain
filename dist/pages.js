@@ -27,7 +27,7 @@ const fullServices = () => ({
     { t: "Marketing", items: ["Email marketing", "SMS marketing", "Social marketing", "Marketing automation", "Events", "Surveys", "WhatsApp campaigns", "Lead scoring"] },
     { t: "Services & projects", items: ["Projects & tasks", "Timesheets", "Field service", "Planning & shifts", "Helpdesk", "Appointments & booking", "Contracts & SLAs", "Client portal"] },
     { t: "Productivity & platform", items: ["Discuss & chat", "Approvals", "Knowledge base", "VoIP", "WhatsApp Business", "IoT", "Studio (no-code)", "API & integrations", "Data migration"] },
-    { t: "Beyond the core", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "13 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
+    { t: "Beyond the core", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "15 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
   ],
   note: ""
 });
@@ -299,3 +299,39 @@ export const PAGES = {
     ],
   },
 };
+
+// Keep in-page navigation on its own canonical page when HTML uses a root base URL.
+for (const [slug, page] of Object.entries(PAGES)) {
+  const visit = value => {
+    if (!value || typeof value !== "object") return;
+    for (const [key, child] of Object.entries(value)) {
+      if (key === "href" && typeof child === "string" && child.startsWith("#")) value[key] = "/" + slug + child;
+      else visit(child);
+    }
+  };
+  visit(page);
+}
+
+// Answers reuse the service scope above; no invented outcomes or credentials.
+const serviceAnswers = {
+  "business-ai": [
+    { q: "What is DigitalBurj AI?", a: "DigitalBurj AI adds assistants and agents for sales, service, finance, HR and operations. They use approved business data and permissioned tools, with human approval for consequential actions." },
+    { q: "Should we automate before adding AI?", a: "Start with a defined process, reliable data and clear permissions. Stable rules and integrations may solve the problem without AI. Add AI where language, documents or exceptions make it useful." },
+    { q: "Is AI included without usage limits?", a: "No. DigitalBurj AI is an add-on with defined usage. Scope, integrations and approval requirements should be agreed before implementation." }
+  ],
+  growth: [
+    { q: "What is the difference between SEO, AEO and GEO?", a: "SEO improves discovery in search. AEO focuses on answering visitor questions clearly. GEO focuses on visibility in generative search experiences. They share crawlable pages, useful content and consistent business information." },
+    { q: "Can you guarantee a first-place ranking or AI citation?", a: "No. Search engines and AI services choose their results. DigitalBurj improves the website and measures visibility and enquiries; rankings and citations cannot be guaranteed." },
+    { q: "How should growth results be measured?", a: "Track qualified enquiries and their sources alongside search impressions, clicks and conversions. Connect enquiries to CRM records so traffic can be evaluated against business outcomes." }
+  ],
+  studio: [
+    { q: "When does a business need custom software?", a: "Custom software is appropriate when a defined workflow cannot be handled adequately by standard modules or existing tools. Start with discovery and scope the unique requirements before development." },
+    { q: "Can DigitalBurj connect existing systems?", a: "Studio includes API and system integration work. Feasibility depends on the systems, available APIs, permissions and required data flows, which are assessed during discovery." },
+    { q: "How are custom projects priced?", a: "Custom development is scoped and quoted separately from shared platform subscriptions. Requirements, integrations and migration work determine the project scope." }
+  ]
+};
+for (const [slug, items] of Object.entries(serviceAnswers)) {
+  const sections = PAGES[slug].sections;
+  const index = sections.findIndex(section => section.type === "cta");
+  sections.splice(index < 0 ? sections.length : index, 0, { type: "faq", items });
+}

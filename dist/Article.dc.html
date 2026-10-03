@@ -107,25 +107,13 @@ class Component extends DCLogic {
   state = { list: null, copied: false };
   componentDidMount() {
     import("./articles.js?v=5").then((m) => {
-      this.setState({ list: m.ARTICLES }, () => this.applySeo());
+      this.setState({ list: m.ARTICLES });
     });
   }
   current() {
     const list = this.state.list || [];
     const slug = new URLSearchParams(window.location.search).get("a") || decodeURIComponent(window.location.pathname.replace(/\/+$/, "").split("/").pop() || "");
     return list.find((x) => x.slug === slug) || list[0];
-  }
-  applySeo() {
-    const a = this.current(); if (!a) return;
-    document.title = `${a.title} | DigitalBurj Insights`;
-    const set = (sel, attr, key, val) => { let el = document.head.querySelector(sel); if (!el) { el = document.createElement("meta"); el.setAttribute(attr, key); document.head.appendChild(el); } el.setAttribute("content", val); };
-    set('meta[name="description"]', "name", "description", a.description);
-    set('meta[name="keywords"]', "name", "keywords", a.keywords.join(", "));
-    set('meta[property="og:title"]', "property", "og:title", a.title);
-    set('meta[property="og:description"]', "property", "og:description", a.description);
-    let ld = document.getElementById("article-ld");
-    if (!ld) { ld = document.createElement("script"); ld.type = "application/ld+json"; ld.id = "article-ld"; document.head.appendChild(ld); }
-    ld.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: a.title, description: a.description, image: a.image, datePublished: a.date, keywords: a.keywords.join(", "), author: { "@type": "Organization", name: "DigitalBurj" }, publisher: { "@type": "Organization", name: "DigitalBurj" } });
   }
   renderVals() {
     const a = this.current();
@@ -143,7 +131,7 @@ class Component extends DCLogic {
         kw: a.keywords.map((t) => ({ t: t.replace(/\s+/g, "") })),
         sections: a.sections.map((s) => ({ h: s.h, id: id(s.h), paras: s.p.map((t) => ({ t })) })),
       },
-      toc: a.sections.map((s) => ({ h: s.h, href: `#${id(s.h)}` })),
+      toc: a.sections.map((s) => ({ h: s.h, href: `/insights/${a.slug}#${id(s.h)}` })),
       reel: "insight01,insight02,insight03", related: [...same, ...others].slice(0, 3).map((r) => ({ ...r, href: `/insights/${r.slug}` })),
       copyLabel: this.state.copied ? "Copied ✓" : "Copy link",
       copyLink: () => { try { navigator.clipboard.writeText(window.location.href); } catch (e) {} this.setState({ copied: true }); },

@@ -159,3 +159,21 @@ html,body{overflow-x:clip}
 
 /* Sticky side columns only make sense in two-column layouts */
 @media(max-width:900px){[style*="position: sticky"]:not(header),[style*="position:sticky"]:not(header){position:static!important}}
+
+/* Header layout follows available space before and after JavaScript starts. */
+.db-site-header .db-nav-inner{min-width:0}
+.db-site-header .db-nav-inner>a,.db-site-header nav a,.db-site-header nav button{white-space:nowrap}
+.db-site-header .db-nav-inner>button{flex-shrink:0}
+@media(max-width:1199px){
+ .db-site-header nav[aria-label="Primary"]{display:none!important}
+ .db-site-header button[aria-label="Open menu"]{display:grid!important;place-items:center;width:40px;height:40px;border:0;background:transparent;cursor:pointer;margin-left:-8px}
+ .db-site-header button[aria-label^="Search"] span,.db-site-header button[aria-label^="Search"] kbd{display:none!important}
+}
+@media(min-width:1200px){.db-site-header button[aria-label="Open menu"]{display:none!important}}
+@media(max-width:380px){
+ .db-site-header .db-nav-inner{padding-left:8px!important;padding-right:8px!important}
+ .db-site-header .db-header-wordmark{width:96px}
+ .db-site-header a[aria-label="DigitalBurj home"]{margin-right:0!important}
+ .db-site-header .db-nav-cta{padding:0 8px!important;font-size:12px!important}
+ .db-site-header button[aria-label^="Search"]{padding:0 6px!important}
+}

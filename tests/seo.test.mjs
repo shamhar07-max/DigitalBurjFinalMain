@@ -37,6 +37,7 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     assert(!snapshot.querySelector('form'),'fallback cannot submit an unhandled form');
     assert(snapshot.querySelector('footer a[href="/contact"]'));
     assert(snapshot.querySelector('a[href="/company"]'));
+    assert.equal(snapshot.querySelectorAll('.db-fallback-menu nav a').length,16);
     for(const link of snapshot.querySelectorAll('a[href^="/"]')) {
       const url=new URL(link.getAttribute('href'),origin);
       assert(routes[url.pathname] || fs.existsSync(path.join(dist,url.pathname)),route+' broken internal link '+url.pathname);
@@ -130,6 +131,24 @@ test('interactive runtime replaces snapshots and retains working controls',async
       assert.equal(document.querySelectorAll('link[rel=canonical]').length,1);
       assert.equal(document.querySelector('link[rel=canonical]').href,origin+route);
       assert.equal(document.querySelectorAll('script[src*="googletagmanager"]').length,1);
+      if(route==='/'){
+        for(const width of [320,375,768,1024,1199,1200,1440]){
+          Object.defineProperty(dom.window,'innerWidth',{value:width,configurable:true});
+          dom.window.dispatchEvent(new dom.window.Event('resize'));
+          await new Promise(r=>setTimeout(r,20));
+          assert.equal(document.querySelector('nav[aria-label="Primary"]').style.display,width<1200?'none':'flex');
+        }
+        Object.defineProperty(dom.window,'innerWidth',{value:375,configurable:true});
+        dom.window.dispatchEvent(new dom.window.Event('resize'));
+        await new Promise(r=>setTimeout(r,20));
+        document.querySelector('button[aria-label="Open menu"]').click();
+        await new Promise(r=>setTimeout(r,20));
+        assert(document.querySelector('button[aria-label="Close menu"]'));
+        assert.equal(document.querySelector('button[aria-label="Open menu"]').getAttribute('aria-expanded'),'true');
+        document.querySelector('button[aria-label="Close menu"]').click();
+        await new Promise(r=>setTimeout(r,20));
+        assert(!document.querySelector('button[aria-label="Close menu"]'));
+      }
       if(route==='/contact')assert(document.querySelector('#dc-root form input[type=email]'));
       if(route==='/insights'){
         const input=document.querySelector('#dc-root input');

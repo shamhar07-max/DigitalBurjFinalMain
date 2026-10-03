@@ -86,11 +86,6 @@
       "permanent": true
     },
     {
-      "source": "/favicon.ico",
-      "destination": "/brand/favicon.png",
-      "permanent": true
-    },
-    {
       "source": "/Article.dc.html",
       "has": [
         {

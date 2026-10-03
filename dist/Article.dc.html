@@ -20,7 +20,9 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
-<link rel="icon" href="brand/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/brand/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="hero-system.css?v=7">
 </head>
 <body>
@@ -34,7 +36,7 @@
 
 <script src="hero-reel.js?v=5"></script>
 <style>body{margin:0;background:#f6f5f1}a{color:#0f1714;text-decoration:none}a:hover{color:#f23a1d}::selection{background:#f23a1d;color:#fff}</style>
-<link rel="icon" href="brand/favicon.png"/>
+
 </helmet>
 <div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#0f1714;background:#f6f5f1">
 <dc-import name="SiteHeader" active="insights" hint-size="100%,72px"></dc-import>
@@ -129,7 +131,7 @@ class Component extends DCLogic {
         kw: a.keywords.map((t) => ({ t: t.replace(/\s+/g, "") })),
         sections: a.sections.map((s) => ({ h: s.h, id: id(s.h), paras: s.p.map((t) => ({ t })) })),
       },
-      toc: a.sections.map((s) => ({ h: s.h, href: `#${id(s.h)}` })),
+      toc: a.sections.map((s) => ({ h: s.h, href: `/insights/${a.slug}#${id(s.h)}` })),
       reel: "insight01,insight02,insight03", related: [...same, ...others].slice(0, 3).map((r) => ({ ...r, href: `/insights/${r.slug}` })),
       copyLabel: this.state.copied ? "Copied ✓" : "Copy link",
       copyLink: () => { try { navigator.clipboard.writeText(window.location.href); } catch (e) {} this.setState({ copied: true }); },

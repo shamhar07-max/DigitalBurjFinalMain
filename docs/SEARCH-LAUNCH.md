@@ -32,7 +32,7 @@ The Worker uses commit-scoped KV and cache keys. Updating COMMIT selects new HTM
 4. Request indexing for the homepage and the important service/company pages. Submit `https://digitalburj.com/sitemap.xml` and check its processing status. Repeated requests for the same URL do not accelerate processing.
 5. Do not use temporary removals on the homepage to replace the VelozTrade title: that can hide the entire current homepage. A new crawl and processing of the corrected page is the appropriate first step. The search result title, site name, snippet and favicon are chosen by Google; changes are not immediate or guaranteed.
 6. Inspect old indexed URLs. Redirect an old URL only if there is a genuinely equivalent new page. Unrelated retired trading pages should return a true 404 or 410 rather than redirecting every old URL to the new homepage. The release returns 404 for unknown paths.
-7. Check the favicon URL directly and request recrawling of the homepage. The existing linked PNG is square, 32 × 32. A larger approved master icon would improve the favicon asset quality; do not replace it with an unrelated division logo or an invented mark.
+7. Check the favicon URL directly and request recrawling of the homepage. The approved favicon release is preserved: a 96 × 96 PNG, a real ICO file and a 180 × 180 Apple touch icon. Keep these URLs stable.
 8. Once the Google tag is live, verify Realtime in the matching Analytics property. Analytics installation does not update Google Search branding or guarantee indexing.
 
 ## Search and AI visibility follow-through

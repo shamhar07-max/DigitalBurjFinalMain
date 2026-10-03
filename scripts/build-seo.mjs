@@ -137,7 +137,7 @@ for(const route of allRoutes) {
   if(serviceRoutes.includes(route.slice(1))) graph.push({'@type':'Service','@id':canonical+'#service',name:PAGES[route.slice(1)]?.crumb || title,description,url:canonical,provider:{'@id':org['@id']}});
 
   // Metadata belongs in the initial head, not only in a client-side helmet.
-  for(const n of document.querySelectorAll('title, meta[name="description"],meta[name="keywords"],meta[name="robots"],meta[property^="og:"],meta[name^="twitter:"],link[rel="canonical"],link[rel="icon"],script[type="application/ld+json"]')) n.remove();
+  for(const n of document.querySelectorAll('title, meta[name="description"],meta[name="keywords"],meta[name="robots"],meta[property^="og:"],meta[name^="twitter:"],link[rel="canonical"],link[rel="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"],script[type="application/ld+json"]')) n.remove();
   const base=document.createElement('base'); base.setAttribute('href','/');
   document.head.querySelectorAll('base').forEach(n=>n.remove());
   document.head.insertBefore(base,document.head.querySelector('script[src="./support.js"]'));
@@ -146,7 +146,9 @@ for(const route of allRoutes) {
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="${canonical}">
-<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/brand/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <meta name="application-name" content="DigitalBurj">
 <meta property="og:site_name" content="DigitalBurj">
 <meta property="og:type" content="${article?'article':'website'}">
@@ -172,7 +174,7 @@ for(const route of allRoutes) {
   document.head.insertAdjacentHTML('beforeend','<style>'+[...styles].join('\n')+'</style><link rel="stylesheet" href="/seo-prerender.css"><script src="/seo-prerender.js" defer></script>');
   document.body.insertAdjacentHTML('afterbegin',`<div id="seo-prerender" data-heading="${esc(h1)}">${staticDoc.body.innerHTML}</div>`);
   const file='/seo-pages/'+(route==='/'?'home':route.slice(1))+'.html';
-  write(path.join(dist,file),document.toString()+'\n');
+  write(path.join(dist,file),document.toString().replace(/[ \t]+$/gm, '')+'\n');
   routes[route]=file;
 }
 write(path.join(dist,'seo-routes.json'),JSON.stringify(routes,null,2)+'\n');
@@ -185,7 +187,7 @@ config.rewrites=Object.entries(routes).map(([source,destination])=>({source,dest
 config.redirects=config.redirects.filter(r=>r.source!=='/Article.dc.html');
 config.redirects.push({source:'/Article.dc.html',has:[{type:'query',key:'a',value:'(?<slug>.+)'}],destination:'/insights/:slug',permanent:true});
 config.redirects.push({source:'/Article.dc.html',destination:'/insights',permanent:true});
-config.redirects.push({source:'/favicon.ico',destination:'/brand/favicon.png',permanent:true});
+config.redirects=config.redirects.filter(r=>r.source!=='/favicon.ico');
 config.redirects=config.redirects.filter((r,i,list)=>list.findIndex(x=>JSON.stringify(x)===JSON.stringify(r))===i);
 const generatedRedirects=Object.entries(routes).map(([destination,source])=>({source,destination,permanent:true}));
 config.redirects=config.redirects.filter(r=>!r.source.startsWith('/seo-pages/')).concat(generatedRedirects);

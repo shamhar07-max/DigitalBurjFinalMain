@@ -26,6 +26,7 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     assert(head.querySelector('meta[name=description]').getAttribute('content').length>60,route);
     assert(!/noindex/.test(head.querySelector('meta[name=robots]').getAttribute('content')));
     assert.equal(head.querySelectorAll('link[rel=icon]').length,1);
+    assert.equal(head.querySelector('link[rel=icon]').getAttribute('sizes'),'96x96');
     assert.equal((html.match(/googletagmanager.com\/gtag\/js/g)||[]).length,1);
     assert.match(html,/<head>\s*<!-- Google tag \(gtag.js\) -->/);
     const snapshot=document.querySelector('#seo-prerender');
@@ -39,6 +40,7 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     for(const link of snapshot.querySelectorAll('a[href^="/"]')) {
       const url=new URL(link.getAttribute('href'),origin);
       assert(routes[url.pathname] || fs.existsSync(path.join(dist,url.pathname)),route+' broken internal link '+url.pathname);
+      if(url.hash && url.pathname===route) assert(snapshot.querySelector('[id="'+decodeURIComponent(url.hash.slice(1))+'"]'),route+' missing anchor '+url.hash);
     }
     const data=JSON.parse(head.querySelector('#digitalburj-schema').textContent);
     assert(data['@graph'].some(x=>x['@type']==='WebSite'&&x.name==='DigitalBurj'));
@@ -47,10 +49,14 @@ test('every canonical URL has crawlable content and consistent brand signals wit
       const article=articles.ARTICLES.find(x=>'/insights/'+x.slug===route);
       for(const section of article.sections) assert(snapshot.textContent.includes(section.h));
       assert(data['@graph'].some(x=>x['@type']==='Article'&&x.headline===article.title));
+      for(const link of snapshot.querySelectorAll('aside ol a')) assert.equal(new URL(link.getAttribute('href'),origin).pathname,route);
     }
     assert(read('sitemap.xml').includes('<loc>'+origin+route+'</loc>'));
   }
   assert.equal(Object.keys(routes).length,31);
+  const png=fs.readFileSync(path.join(dist,'brand/favicon.png'));
+  assert.equal(png.readUInt32BE(16),96); assert.equal(png.readUInt32BE(20),96);
+  for(const route of ['/business-ai','/growth','/studio']) assert(read(routes[route]).includes('type="application/ld+json"') && read(routes[route]).includes('DigitalBurj'));
 });
 
 test('Worker serves the generated HTML, redirects duplicates, and returns real 404s',async()=>{
@@ -77,6 +83,7 @@ test('Worker serves the generated HTML, redirects duplicates, and returns real 4
     }
     assert.equal((await request('/insights/nonexistent-article')).status,404);
     assert.equal((await request('/old-veloztrade-page')).status,404);
+    for(const route of ['/favicon.ico','/brand/favicon.png','/brand/apple-touch-icon.png']) assert.equal((await request(route)).status,200,route);
     assert.equal((await request('/%ZZ')).status,400);
     assert.equal((await request('/SiteHeader.dc.html')).headers.get('x-robots-tag'),'noindex, follow');
     const head=await request('/business-os',{method:'HEAD'}); assert.equal(head.status,200); assert.equal(await head.text(),'');

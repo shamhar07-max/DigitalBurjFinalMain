@@ -166,7 +166,7 @@ for(const route of allRoutes) {
   const snapshot=renderComponent(name,{},route,styles);
   const staticDoc=parseHTML('<html><body>'+snapshot+'</body></html>').document;
   const header=staticDoc.querySelector('.db-site-header .db-nav-inner');
-  if(header) header.insertAdjacentHTML('afterbegin','<details class="db-fallback-menu"><summary>Menu</summary><nav aria-label="Site navigation">'+Object.keys(routeFiles).map(url=>'<a href="'+url+'">'+esc(url==='/'?'Home':url==='/business-ai'?'DigitalBurj AI':PAGES[url.slice(1)]?.crumb||routeFiles[url].replace(/([a-z])([A-Z])/g,'$1 $2'))+'</a>').join('')+'</nav></details>');
+  if(header) header.querySelector('a[aria-label="DigitalBurj home"]').insertAdjacentHTML('afterend','<details class="db-fallback-menu"><summary aria-label="Open navigation"><span class="db-fallback-desktop">Ecosystem ⌄</span><svg class="db-fallback-mobile" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></summary><nav aria-label="Site navigation">'+Object.keys(routeFiles).map(url=>'<a href="'+url+'">'+esc(url==='/'?'Home':url==='/business-ai'?'DigitalBurj AI':PAGES[url.slice(1)]?.crumb||routeFiles[url].replace(/([a-z])([A-Z])/g,'$1 $2'))+'</a>').join('')+'</nav></details>');
   // Open fallback FAQ answers; the enhanced page restores the existing accordion.
   for(const el of staticDoc.querySelectorAll('[style]')) {
     el.setAttribute('style',el.getAttribute('style').replace(/grid-template-rows:0fr/g,'grid-template-rows:1fr'));

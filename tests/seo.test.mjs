@@ -38,6 +38,10 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     assert(snapshot.querySelector('footer a[href="/contact"]'));
     assert(snapshot.querySelector('a[href="/company"]'));
     assert.equal(snapshot.querySelectorAll('.db-fallback-menu nav a').length,16);
+    const fallbackSummary=snapshot.querySelector('.db-fallback-menu summary');
+    assert.equal(fallbackSummary.textContent,'Ecosystem ⌄');
+    assert(fallbackSummary.querySelector('svg'));
+    assert.equal(snapshot.querySelector('.db-fallback-menu').previousElementSibling.getAttribute('aria-label'),'DigitalBurj home');
     for(const link of snapshot.querySelectorAll('a[href^="/"]')) {
       const url=new URL(link.getAttribute('href'),origin);
       assert(routes[url.pathname] || fs.existsSync(path.join(dist,url.pathname)),route+' broken internal link '+url.pathname);

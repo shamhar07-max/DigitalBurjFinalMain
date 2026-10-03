@@ -64,7 +64,7 @@ a:hover{color:#f23a1d}
     <div>
       <div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">DigitalBurj</p><a href="/get-started" class="db-hero-badge"><span style="width:6px;height:6px;border-radius:9px;background:#ff7a45;animation:pulseDot 2s infinite"></span>Now booking · Free process review →</a></div>
       <h1 id="hero-h" class="db-hero-title db-hero-title--glossy">Learn. Build.<br/><span class="db-hero-accent">Transform.</span></h1>
-      <p class="db-hero-lead">The technology stack of a larger enterprise — CRM, finance, HR, AI, growth and custom software — without the enterprise complexity or the enterprise price.</p>
+      <p class="db-hero-lead">DigitalBurj connects business software, AI automation, digital growth and custom software development in one technology ecosystem for small and medium-sized businesses.</p>
       <div class="db-hero-actions">
         <a href="/get-started" style="height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -14px rgba(242,58,29,.9);transition:background-position .9s cubic-bezier(.22,.8,.24,1),transform .25s" style-hover="background-position:0 0;transform:translateY(-2px);color:#fff">Start with a problem
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -126,7 +126,7 @@ a:hover{color:#f23a1d}
   <ul style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:16px">
     <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="7">
       <li data-reveal="up" data-reveal-delay="{{ d.delay }}" style="flex:1 1 calc((100% - 48px) / 4);min-width:min(100%,16rem);display:flex">
-        <a href="{{ d.href }}" data-spot="" style="{{ d.style }}" style-hover="{{ d.hover }}">
+        <a href="{{ d.href }}" data-spot="" style="{{ d.style }}" style-hover="transform:translateY(-6px);border-color:#f23a1d">
           <span style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
             <span style="width:52px;height:52px;border-radius:14px;background:#f6f5f1;display:grid;place-items:center;overflow:hidden;flex-shrink:0"><img src="{{ d.icon }}" alt="" loading="lazy" decoding="async" style="width:42px;height:42px;object-fit:contain"/></span>
             <span style="font:700 13px 'Plus Jakarta Sans',sans-serif;opacity:.5">{{ d.n }}</span>
@@ -339,7 +339,7 @@ class Component extends DCLogic {
     { name: "DigitalBurj AI", line: "AI Executive, Sales, Service, Finance, HR and Operations — acting only through controlled tools.", href: "/business-ai", icon: "brand/mark-business-ai.webp", tags: ["Agents", "Copilots", "Documents"] },
     { name: "Growth", line: "Websites, e-commerce, SEO, AEO, AI search, social and performance marketing — attributed in the CRM.", href: "/growth", icon: "brand/mark-growth.webp", tags: ["SEO", "AEO / GEO", "Ads"] },
     { name: "Studio", line: "Custom web apps, mobile apps, custom ERP and integrations built on the DigitalBurj core.", href: "/studio", icon: "brand/mark-studio.webp", tags: ["Web", "Mobile", "APIs"] },
-    { name: "Industry Solutions", line: "Vertical modules for logistics, travel, property, construction, retail and more.", href: "/industries", icon: "brand/mark-industries.webp", tags: ["13 sectors", "Portals"] },
+    { name: "Industry Solutions", line: "Vertical modules for logistics, travel, property, construction, retail and more.", href: "/industries", icon: "brand/mark-industries.webp", tags: ["15 sectors", "Portals"] },
     { name: "Academy", line: "Learn it, apply it, prove it — Academy courses and bundles from $3.", href: "/academy", icon: "brand/mark-academy.webp", tags: ["Onboarding", "Certification"] },
     { name: "Verified Talent", line: "Developers, marketers, accountants and specialists — every skill linked to evidence.", href: "/talent", icon: "brand/mark-talent.webp", tags: ["Evidence", "Marketplace"] },
   ];

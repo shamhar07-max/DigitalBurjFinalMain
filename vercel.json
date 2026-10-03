@@ -81,6 +81,16 @@
       "permanent": true
     },
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/brand/favicon.png",
+      "permanent": true
+    },
+    {
       "source": "/Article.dc.html",
       "has": [
         {
@@ -93,8 +103,163 @@
       "permanent": true
     },
     {
-      "source": "/index.html",
+      "source": "/Article.dc.html",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/home.html",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/business-os.html",
+      "destination": "/business-os",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/business-ai.html",
+      "destination": "/business-ai",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/growth.html",
+      "destination": "/growth",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/studio.html",
+      "destination": "/studio",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/industries.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/academy.html",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/talent.html",
+      "destination": "/talent",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/jobs.html",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/pricing.html",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/company.html",
+      "destination": "/company",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/solutions.html",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/portfolio.html",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/get-started.html",
+      "destination": "/get-started",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights.html",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/what-is-business-ai.html",
+      "destination": "/insights/what-is-business-ai",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/when-should-a-company-automate-a-workflow.html",
+      "destination": "/insights/when-should-a-company-automate-a-workflow",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/what-is-workflow-automation.html",
+      "destination": "/insights/what-is-workflow-automation",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/ai-agent-vs-chatbot.html",
+      "destination": "/insights/ai-agent-vs-chatbot",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/crm-vs-erp.html",
+      "destination": "/insights/crm-vs-erp",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/what-makes-software-production-ready.html",
+      "destination": "/insights/what-makes-software-production-ready",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/how-to-scope-an-mvp.html",
+      "destination": "/insights/how-to-scope-an-mvp",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/mvp-vs-prototype.html",
+      "destination": "/insights/mvp-vs-prototype",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/what-is-rbac.html",
+      "destination": "/insights/what-is-rbac",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/what-is-evidence-based-learning.html",
+      "destination": "/insights/what-is-evidence-based-learning",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/what-does-verified-professional-capability-mean.html",
+      "destination": "/insights/what-does-verified-professional-capability-mean",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/skills-based-hiring-guide.html",
+      "destination": "/insights/skills-based-hiring-guide",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/document-automation-in-logistics.html",
+      "destination": "/insights/document-automation-in-logistics",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/real-estate-lead-response-automation.html",
+      "destination": "/insights/real-estate-lead-response-automation",
+      "permanent": true
+    },
+    {
+      "source": "/seo-pages/insights/responsible-ai-checklist.html",
+      "destination": "/insights/responsible-ai-checklist",
       "permanent": true
     }
   ],
@@ -125,76 +290,143 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/(SiteHeader|SiteFooter|ContentPage).dc.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
       "source": "/",
-      "destination": "/Homepage.dc.html"
+      "destination": "/seo-pages/home.html"
     },
     {
       "source": "/business-os",
-      "destination": "/BusinessOS.dc.html"
+      "destination": "/seo-pages/business-os.html"
     },
     {
       "source": "/business-ai",
-      "destination": "/BusinessAI.dc.html"
+      "destination": "/seo-pages/business-ai.html"
     },
     {
       "source": "/growth",
-      "destination": "/Growth.dc.html"
+      "destination": "/seo-pages/growth.html"
     },
     {
       "source": "/studio",
-      "destination": "/Studio.dc.html"
+      "destination": "/seo-pages/studio.html"
     },
     {
       "source": "/industries",
-      "destination": "/Industries.dc.html"
+      "destination": "/seo-pages/industries.html"
     },
     {
       "source": "/academy",
-      "destination": "/Academy.dc.html"
+      "destination": "/seo-pages/academy.html"
     },
     {
       "source": "/talent",
-      "destination": "/Talent.dc.html"
+      "destination": "/seo-pages/talent.html"
     },
     {
       "source": "/jobs",
-      "destination": "/Jobs.dc.html"
+      "destination": "/seo-pages/jobs.html"
     },
     {
       "source": "/pricing",
-      "destination": "/Pricing.dc.html"
+      "destination": "/seo-pages/pricing.html"
     },
     {
       "source": "/company",
-      "destination": "/Company.dc.html"
+      "destination": "/seo-pages/company.html"
     },
     {
       "source": "/solutions",
-      "destination": "/Solutions.dc.html"
+      "destination": "/seo-pages/solutions.html"
     },
     {
       "source": "/portfolio",
-      "destination": "/Portfolio.dc.html"
+      "destination": "/seo-pages/portfolio.html"
     },
     {
       "source": "/get-started",
-      "destination": "/GetStarted.dc.html"
+      "destination": "/seo-pages/get-started.html"
     },
     {
       "source": "/contact",
-      "destination": "/Contact.dc.html"
+      "destination": "/seo-pages/contact.html"
     },
     {
       "source": "/insights",
-      "destination": "/Insights.dc.html"
+      "destination": "/seo-pages/insights.html"
     },
     {
-      "source": "/insights/:slug",
-      "destination": "/Article.dc.html"
+      "source": "/insights/what-is-business-ai",
+      "destination": "/seo-pages/insights/what-is-business-ai.html"
+    },
+    {
+      "source": "/insights/when-should-a-company-automate-a-workflow",
+      "destination": "/seo-pages/insights/when-should-a-company-automate-a-workflow.html"
+    },
+    {
+      "source": "/insights/what-is-workflow-automation",
+      "destination": "/seo-pages/insights/what-is-workflow-automation.html"
+    },
+    {
+      "source": "/insights/ai-agent-vs-chatbot",
+      "destination": "/seo-pages/insights/ai-agent-vs-chatbot.html"
+    },
+    {
+      "source": "/insights/crm-vs-erp",
+      "destination": "/seo-pages/insights/crm-vs-erp.html"
+    },
+    {
+      "source": "/insights/what-makes-software-production-ready",
+      "destination": "/seo-pages/insights/what-makes-software-production-ready.html"
+    },
+    {
+      "source": "/insights/how-to-scope-an-mvp",
+      "destination": "/seo-pages/insights/how-to-scope-an-mvp.html"
+    },
+    {
+      "source": "/insights/mvp-vs-prototype",
+      "destination": "/seo-pages/insights/mvp-vs-prototype.html"
+    },
+    {
+      "source": "/insights/what-is-rbac",
+      "destination": "/seo-pages/insights/what-is-rbac.html"
+    },
+    {
+      "source": "/insights/what-is-evidence-based-learning",
+      "destination": "/seo-pages/insights/what-is-evidence-based-learning.html"
+    },
+    {
+      "source": "/insights/what-does-verified-professional-capability-mean",
+      "destination": "/seo-pages/insights/what-does-verified-professional-capability-mean.html"
+    },
+    {
+      "source": "/insights/skills-based-hiring-guide",
+      "destination": "/seo-pages/insights/skills-based-hiring-guide.html"
+    },
+    {
+      "source": "/insights/document-automation-in-logistics",
+      "destination": "/seo-pages/insights/document-automation-in-logistics.html"
+    },
+    {
+      "source": "/insights/real-estate-lead-response-automation",
+      "destination": "/seo-pages/insights/real-estate-lead-response-automation.html"
+    },
+    {
+      "source": "/insights/responsible-ai-checklist",
+      "destination": "/seo-pages/insights/responsible-ai-checklist.html"
     }
-  ]
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }

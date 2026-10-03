@@ -3,6 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "echo Static site ready"
+    "build": "node scripts/build-seo.mjs",
+    "test": "node tests/seo.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "linkedom": "0.18.12"
   }
 }

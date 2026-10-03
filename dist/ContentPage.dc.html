@@ -90,7 +90,7 @@
         <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
           <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6">
             <li data-reveal="up" data-reveal-delay="{{ c.delay }}" style="{{ s.item }}">
-              <a href="{{ c.href }}" data-spot="" style="{{ c.style }}" style-hover="{{ c.hover }}">
+              <a href="{{ c.href }}" data-spot="" style="{{ c.style }}" style-hover="transform:translateY(-5px);border-color:#f23a1d">
                 <span style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:{{ s.accent }}">{{ c.n }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
                 <span style="margin-top:16px;font:700 16px/1.25 'Plus Jakarta Sans',sans-serif">{{ c.t }}</span>
                 <span style="margin-top:10px;font-size:14px;line-height:1.55;color:{{ s.sub }}">{{ c.b }}</span>

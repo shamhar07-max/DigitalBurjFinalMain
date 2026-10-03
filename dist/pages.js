@@ -27,7 +27,7 @@ const fullServices = () => ({
     { t: "Marketing", items: ["Email marketing", "SMS marketing", "Social marketing", "Marketing automation", "Events", "Surveys", "WhatsApp campaigns", "Lead scoring"] },
     { t: "Services & projects", items: ["Projects & tasks", "Timesheets", "Field service", "Planning & shifts", "Helpdesk", "Appointments & booking", "Contracts & SLAs", "Client portal"] },
     { t: "Productivity & platform", items: ["Discuss & chat", "Approvals", "Knowledge base", "VoIP", "WhatsApp Business", "IoT", "Studio (no-code)", "API & integrations", "Data migration"] },
-    { t: "Beyond the core", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "13 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
+    { t: "Beyond the core", more: true, items: ["AI employees with audited tools", "WhatsApp-first owner briefs", "Owner Command Center", "Growth: SEO, AEO & AI search", "Custom ERP & mobile apps", "15 industry modules", "Academy & certification", "Verified Talent", "Arabic + English, regional compliance"] },
   ],
   note: ""
 });

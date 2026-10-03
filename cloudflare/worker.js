@@ -3,7 +3,10 @@
 // once from the public GitHub repo, stored in KV, then served from KV + the edge cache), routes clean URLs,
 // and implements /api/contact, /api/subscribe and /api/lead (Resend).
 
+import { SEO_ROUTES } from "./seo-routes.js";
+
 const REPO = "shamhar07-max/DigitalBurjFinalMain";
+const GENERATED_REDIRECTS = Object.fromEntries(Object.entries(SEO_ROUTES).map(([route, file]) => [file, route]));
 
 const PAGES = {
   "/": "/Homepage.dc.html", "/business-os": "/BusinessOS.dc.html", "/business-ai": "/BusinessAI.dc.html", "/growth": "/Growth.dc.html",
@@ -60,6 +63,7 @@ async function serveStatic(request, path, env, ctx) {
   if (!f) return null;
   const etag = `"${env.COMMIT.slice(0, 12)}-${path.length}-${f.body.byteLength}"`;
   const headers = { "content-type": f.type, "cache-control": cacheControl(path), etag, ...SECURITY };
+  if (/^\/(SiteHeader|SiteFooter|ContentPage)\.dc\.html$/.test(path)) headers["x-robots-tag"] = "noindex, follow";
   if (request.headers.get("if-none-match") === etag) return new Response(null, { status: 304, headers });
   const res = new Response(request.method === "HEAD" ? null : f.body, { status: 200, headers });
   if (request.method === "GET") ctx.waitUntil(cache.put(cacheKey, res.clone()));
@@ -157,7 +161,8 @@ async function warm(env) {
   try {
     const have = new Set(); let cursor;
     do { const l = await env.SITE.list({ prefix: `${env.COMMIT}:`, cursor }); l.keys.forEach((k) => have.add(k.name)); cursor = l.list_complete ? undefined : l.cursor; } while (cursor);
-    const missing = FILES.filter((p) => !have.has(`${env.COMMIT}:/${p}`));
+    const releaseFiles = [...new Set([...Object.values(SEO_ROUTES).map(p => p.slice(1)), "seo-prerender.js", "seo-prerender.css", ...FILES])];
+    const missing = releaseFiles.filter((p) => !have.has(`${env.COMMIT}:/${p}`));
     let n = 0;
     for (const p of missing) {
       if (n >= 20) break;
@@ -165,7 +170,7 @@ async function warm(env) {
       if (up.ok) { await env.SITE.put(`${env.COMMIT}:/${p}`, await up.arrayBuffer(), { metadata: { type: TYPES[ext(p)] || "application/octet-stream" } }); n++; }
       else (status.failed ||= []).push(`${p}:${up.status}`);
     }
-    status.total = FILES.length; status.mirroredNow = n; status.remaining = missing.length - n;
+    status.total = releaseFiles.length; status.mirroredNow = n; status.remaining = missing.length - n;
   } catch (e) { status.error = String(e).slice(0, 300); }
   await env.SITE.put("_warm", JSON.stringify(status));
 }
@@ -187,13 +192,16 @@ export default {
     }
     if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405 });
 
+    if (url.protocol === "http:" && url.hostname === "digitalburj.com") return Response.redirect(`https://digitalburj.com${path}${url.search}`, 301);
+
     if (path.length > 1 && path.endsWith("/")) return Response.redirect(`${url.origin}${path.replace(/\/+$/, "")}${url.search}`, 301);
     if (LEGACY[path]) return Response.redirect(`${url.origin}${LEGACY[path]}${url.search}`, 301);
-    if (path === "/Article.dc.html" && url.searchParams.get("a")) return Response.redirect(`${url.origin}/insights/${encodeURIComponent(url.searchParams.get("a"))}`, 301);
+    if (path === "/Article.dc.html") return Response.redirect(`${url.origin}/insights${url.searchParams.get("a") ? "/" + encodeURIComponent(url.searchParams.get("a")) : ""}`, 301);
+    if (GENERATED_REDIRECTS[path]) return Response.redirect(`${url.origin}${GENERATED_REDIRECTS[path]}${url.search}`, 301);
+    if (path === "/favicon.ico") return Response.redirect(`${url.origin}/brand/favicon.png`, 301);
 
-    let file = PAGES[path];
-    if (!file && /^\/insights\/[^/]+$/.test(path)) file = "/Article.dc.html";
-    file = file || decodeURIComponent(path);
+    let file = SEO_ROUTES[path] || PAGES[path];
+    try { file = file || decodeURIComponent(path); } catch { return new Response("Bad request", { status: 400 }); }
     if (file.includes("..")) return new Response("Bad request", { status: 400 });
 
     const res = await serveStatic(request, file, env, ctx);

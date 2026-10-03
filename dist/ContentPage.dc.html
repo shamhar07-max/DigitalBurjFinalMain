@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preload" as="script" href="vendor/react.production.min.js"><link rel="preload" as="script" href="vendor/react-dom.production.min.js">
+
 <script src="./support.js"></script>
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
@@ -179,7 +179,7 @@
             <p style="margin:0;font:700 15px 'Plus Jakarta Sans',sans-serif">{{ pl.name }}</p>
             <p style="margin:22px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font:700 clamp(1.6rem,1.3rem + .8vw,2.1rem) 'Plus Jakarta Sans',sans-serif">{{ pl.price }}</span><span style="font-size:13px;opacity:.65">{{ pl.per }}</span></p>
             <p style="margin:14px 0 0;font-size:14px;line-height:1.55;opacity:.78;flex:1">{{ pl.scope }}</p>
-            <a href="/contact" style="{{ pl.btn }}">{{ pl.cta }}</a>
+            <a href="{{ pl.href }}" style="{{ pl.btn }}">{{ pl.cta }}</a>
           </div></div>
         </sc-for>
       </div>
@@ -272,7 +272,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;business-ai&quot;,&quot;studio&quot;,&quot;academy&quot;,&quot;talent&quot;,&quot;jobs&quot;,&quot;company&quot;,&quot;solutions&quot;,&quot;industries&quot;,&quot;portfolio&quot;,&quot;get-started&quot;],&quot;default&quot;:&quot;business-ai&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   state = { pages: null, plans: [], faq: "" };
-  componentDidMount() { import("./pages.js?v=5").then((m) => this.setState({ pages: m.PAGES, plans: m.PLANS })); }
+  componentDidMount() { import("./pages.js?v=7").then((m) => this.setState({ pages: m.PAGES, plans: m.PLANS })); }
   renderVals() {
     const src = this.state.pages && this.state.pages[this.props.page];
     const blank = { crumb: "", hero: { eyebrow: "", h1: "", accent: "", lead: "", primary: { label: "", href: "#" }, secondary: { label: "", href: "#" }, img: "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" }, sections: [] };
@@ -294,7 +294,7 @@ class Component extends DCLogic {
       return `media/${String(id).padStart(2,"0")}-d.webp`;
     };
     const sections = d.sections.map((s, si) => {
-      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", isDirectory: s.type === "directory", note: s.note || "", lead: s.lead || "", link: s.link || null, item: item(s.type === "pricing" ? this.state.plans.length : (s.items || []).length, s.type === "modules" ? 17 : 15) };
+      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", isDirectory: s.type === "directory", note: s.note || "", lead: s.lead || "", link: s.link || null, item: item(s.type === "pricing" ? (s.plans || this.state.plans).length : (s.items || []).length, s.type === "modules" ? 17 : 15) };
       if (s.type === "loop") base.loop = s.items.map((label, i) => ({ label, n: n(i), arrow: i < s.items.length - 1 }));
       if (s.type === "steps") base.steps = s.items.map((x, i) => ({ ...x, n: n(i), delay: String((i % 3) * 90) }));
       if (s.type === "cards") {
@@ -317,10 +317,10 @@ class Component extends DCLogic {
           iconStyle: `flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;transition:transform .4s cubic-bezier(.22,.8,.24,1),background .3s,color .3s;transform:rotate(${open ? 45 : 0}deg);background:${open ? "#f23a1d" : "#fff"};color:${open ? "#fff" : "#0f1714"};border:1px solid ${open ? "#f23a1d" : "rgba(15,23,20,.14)"}` };
       });
       if (s.type === "modules") Object.assign(base, { count: s.items.length, mods: s.items.map((m, i) => ({ t: m.t, for: m.for || "", diff: m.diff || "", n: n(i), delay: String((i % 3) * 80), bl: m.bullets.map((t) => ({ t })) })) });
-      if (s.type === "pricing") base.plans = this.state.plans.map((p, i) => {
+      if (s.type === "pricing") base.plans = (s.plans || this.state.plans).map((p, i) => {
         const f = !!p.featured;
-        return { ...p, featured: f, delay: String((i % 4) * 70), cta: p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan",
-          style: `position:relative;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
+        return { ...p, featured: f, delay: String((i % 4) * 70), href: p.href || "/contact", cta: p.cta || (p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan"),
+          style: `position:relative;height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
           btn: `margin-top:22px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;transition:background .25s,color .25s;${f ? "background:#f23a1d;color:#fff" : "background:#f6f5f1;color:#0f1714;border:1px solid rgba(15,23,20,.1)"}` };
       });
       if (s.type === "pairs") base.rows = s.items.map(([a, b]) => ({ a, b }));

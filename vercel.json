@@ -1,16 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/academy/workspace",
-      "destination": "https://academy.digitalburj.com/",
-      "permanent": true
-    },
-    {
-      "source": "/AcademyWorkspace.dc.html",
-      "destination": "https://academy.digitalburj.com/",
-      "permanent": true
-    },
-    {
       "source": "/Homepage.dc.html",
       "destination": "/",
       "permanent": true
@@ -138,86 +128,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/signin",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/signup",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/verify",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/forgot",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/reset",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/welcome",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
-    {
-      "source": "/redeem",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.digitalburj.com"
-        }
-      ],
-      "destination": "/AcademyApp.dc.html"
-    },
     {
       "source": "/",
       "destination": "/Homepage.dc.html"

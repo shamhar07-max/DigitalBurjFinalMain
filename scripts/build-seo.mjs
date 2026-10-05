@@ -42,7 +42,7 @@ const titles = {
 const org = {
   '@type':'Organization', '@id':origin+'/#organization', name:'DigitalBurj', alternateName:'Digital Burj', url:origin+'/',
   description:'DigitalBurj provides business software, AI automation, digital growth, custom software development, industry solutions, practical learning and verified talent.',
-  logo:{'@type':'ImageObject', url:origin+'/brand/wordmark-clear.png', width:1617, height:308},
+  logo:{'@type':'ImageObject', url:origin+'/brand/apple-touch-icon.png', width:180, height:180},
   image:origin+'/brand/opengraph.png', email:'support@digitalburj.com', telephone:'+971552998583',
   contactPoint:{'@type':'ContactPoint', contactType:'customer support', email:'support@digitalburj.com', telephone:'+971552998583', url:origin+'/contact'}
 };

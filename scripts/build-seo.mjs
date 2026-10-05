@@ -42,7 +42,7 @@ const titles = {
 const org = {
   '@type':'Organization', '@id':origin+'/#organization', name:'DigitalBurj', alternateName:'Digital Burj', url:origin+'/',
   description:'DigitalBurj provides business software, AI automation, digital growth, custom software development, industry solutions, practical learning and verified talent.',
-  logo:{'@type':'ImageObject', url:origin+'/brand/apple-touch-icon.png', width:180, height:180},
+  logo:{"@type":"ImageObject", url:origin+"/brand/favicon-512.png", width:512, height:512},
   image:origin+'/brand/opengraph.png', email:'support@digitalburj.com', telephone:'+971552998583',
   contactPoint:{'@type':'ContactPoint', contactType:'customer support', email:'support@digitalburj.com', telephone:'+971552998583', url:origin+'/contact'}
 };
@@ -137,7 +137,7 @@ for(const route of allRoutes) {
   if(serviceRoutes.includes(route.slice(1))) graph.push({'@type':'Service','@id':canonical+'#service',name:PAGES[route.slice(1)]?.crumb || title,description,url:canonical,provider:{'@id':org['@id']}});
 
   // Metadata belongs in the initial head, not only in a client-side helmet.
-  for(const n of document.querySelectorAll('title, meta[name="description"],meta[name="keywords"],meta[name="robots"],meta[property^="og:"],meta[name^="twitter:"],link[rel="canonical"],link[rel="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"],script[type="application/ld+json"]')) n.remove();
+  for(const n of document.querySelectorAll('title, meta[name="description"],meta[name="keywords"],meta[name="robots"],meta[property^="og:"],meta[name^="twitter:"],link[rel="canonical"],link[rel="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"],link[rel="manifest"],script[type="application/ld+json"]')) n.remove();
   const base=document.createElement('base'); base.setAttribute('href','/');
   document.head.querySelectorAll('base').forEach(n=>n.remove());
   document.head.insertBefore(base,document.head.querySelector('script[src="./support.js"]'));
@@ -146,9 +146,12 @@ for(const route of allRoutes) {
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="${canonical}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="/brand/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/brand/favicon-192.png">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
 <meta name="application-name" content="DigitalBurj">
 <meta property="og:site_name" content="DigitalBurj">
 <meta property="og:type" content="${article?'article':'website'}">

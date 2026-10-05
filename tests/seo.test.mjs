@@ -25,8 +25,9 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     assert.equal(head.querySelector('meta[property="og:site_name"]').getAttribute('content'),'DigitalBurj');
     assert(head.querySelector('meta[name=description]').getAttribute('content').length>60,route);
     assert(!/noindex/.test(head.querySelector('meta[name=robots]').getAttribute('content')));
-    assert.equal(head.querySelectorAll('link[rel=icon]').length,1);
-    assert.equal(head.querySelector('link[rel=icon]').getAttribute('sizes'),'96x96');
+    assert.deepEqual([...head.querySelectorAll('link[rel=icon]')].map(l=>l.getAttribute('href')),['/favicon.svg','/brand/favicon.png','/brand/favicon-192.png']);
+    assert.equal(head.querySelector('link[rel=icon][type="image/png"]').getAttribute('sizes'),'96x96');
+    assert.equal(head.querySelector('link[rel=manifest]').getAttribute('href'),'/manifest.webmanifest');
     assert.equal((html.match(/googletagmanager.com\/gtag\/js/g)||[]).length,1);
     assert.match(html,/<head>\s*<!-- Google tag \(gtag.js\) -->/);
     const snapshot=document.querySelector('#seo-prerender');

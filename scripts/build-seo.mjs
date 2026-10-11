@@ -22,12 +22,12 @@ const routeFiles = {
   '/portfolio':'Portfolio', '/get-started':'GetStarted', '/contact':'Contact', '/insights':'Insights'
 };
 const titles = {
-  '/':'DigitalBurj | Business Software, AI & Digital Solutions',
-  '/business-os':'Business OS: CRM, ERP, HR & Payroll | DigitalBurj',
-  '/business-ai':'Business AI Agents & Workflow Automation | DigitalBurj',
+  '/':'DigitalBurj | Business Software & AI Automation UAE',
+  '/business-os':'Business Management Software for UAE SMEs | DigitalBurj',
+  '/business-ai':'AI Automation for UAE Businesses | DigitalBurj',
   '/growth':'SEO, AI Search & Digital Growth Services | DigitalBurj',
-  '/studio':'Custom Software, Web & App Development | DigitalBurj',
-  '/industries':'Industry Software & Automation Solutions | DigitalBurj',
+  '/studio':'Web & App Development Services UAE | DigitalBurj',
+  '/industries':'Industry Business Software Solutions UAE | DigitalBurj',
   '/academy':'DigitalBurj Academy | Practical Technology Learning',
   '/talent':'Verified Talent & Evidence-Based Hiring | DigitalBurj',
   '/jobs':'Jobs & Professional Opportunities | DigitalBurj',
@@ -38,6 +38,15 @@ const titles = {
   '/get-started':'Start Your DigitalBurj Project | Business Technology',
   '/contact':'Contact DigitalBurj | Book a Free Process Review',
   '/insights':'Software, AI & Automation Insights | DigitalBurj'
+};
+// Human-reviewed search snippets for commercial pages. These describe the existing
+// service catalogue, not guaranteed capabilities, rankings, or customer outcomes.
+const seoDescriptions = {
+  '/': 'DigitalBurj provides business software, AI workflow automation, custom web and app development, and practical technology learning for UAE businesses and teams.',
+  '/business-os': 'Explore DigitalBurj Business OS for UAE SMEs: CRM, invoicing, accounting, HR, payroll, inventory, projects and connected business workflows.',
+  '/business-ai': 'Discover DigitalBurj AI agents for customer service, sales, finance and operations, with controlled workflows and integration options for UAE businesses.',
+  '/studio': 'DigitalBurj Studio builds custom websites, web applications, mobile apps, ERP extensions and API integrations for businesses in the UAE.',
+  '/industries': 'Explore configurable DigitalBurj business software for UAE sectors including logistics, restaurants, retail, services and other SME operations.'
 };
 const org = {
   '@type':'Organization', '@id':origin+'/#organization', name:'DigitalBurj', alternateName:'Digital Burj', url:origin+'/',
@@ -120,7 +129,7 @@ for(const route of allRoutes) {
   const original=source(name);
   const document=parseHTML(read(name+'.dc.html')).document;
   const title=article?article.title+' | DigitalBurj Insights':titles[route];
-  const description=article?.description || original.querySelector('meta[name="description"]')?.getAttribute('content') || org.description;
+  const description=article?.description || seoDescriptions[route] || original.querySelector('meta[name="description"]')?.getAttribute('content') || org.description;
   const canonical=origin+route;
   const image=article?new URL(article.image,origin+'/').href:org.image;
   const schemaPage={'@type':route==='/company'?'AboutPage':route==='/contact'?'ContactPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:'en',isPartOf:{'@id':website['@id']},about:{'@id':org['@id']}};

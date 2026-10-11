@@ -4,6 +4,12 @@
 
 The release combines the approved favicon assets with 31 crawlable pages, unique titles, descriptions, canonical URLs, social metadata, organization/site identity, service/article/breadcrumb structured data, sitemap and robots directives. It preserves GA4 G-XM0TZ7W0GN once per page. The same readable content is available to visitors and crawlers. Existing article explanations, takeaways and FAQs are included in initial HTML. AI, growth and studio service FAQs answer scope, suitability and pricing questions using existing business information.
 
+The 11 October 2026 repository update adds FAQ structured data sourced directly from visible FAQ answers, an article collection list, shared organization references for article authors and service providers, editorial links to the company page, a clearer Growth search description and explicit AIO answers. `llms.txt` is an optional directory of canonical content; it is not required by Google and has no guaranteed effect on AI citations. FAQ markup describes the content; commercial sites should not expect Google's restricted FAQ rich result eligibility.
+
+Run `npm run build` and `npm test` for source and generated release validation. `VERIFY_ORIGIN=http://127.0.0.1:3000 npm run verify:live` runs the public-release checks against the local Worker adapter while keeping canonical identity on `https://digitalburj.com`. Without the override, the command checks production. It now detects stale structured data, robots directives and the content directory in addition to page metadata and assets. Local success does not establish production deployment, Search Console indexing, analytics collection, or AI citations.
+
+Email routing and Gmail SMTP setup are tracked separately in `docs/EMAIL-SETUP.md`; adding addresses to a repository manifest does not activate them.
+
 This implements the site's technical foundation. Search rankings, citations, enquiries and revenue remain measured outcomes, not guaranteed deliverables. Off-site authority, verified business profiles, real project evidence and ongoing editorial review require continued work.
 
 ## Dashboard deployment
@@ -11,7 +17,7 @@ This implements the site's technical foundation. Search rankings, citations, enq
 The production Worker is `digitalburj-site`. Changing its COMMIT variable alone does not install the new routes.
 
 1. Save the current deployment version and COMMIT value for rollback.
-2. In Worker Settings, update only COMMIT to the content commit recorded in `cloudflare/wrangler.toml`. Save/deploy the variable change. Existing templates remain available to the old Worker during this step.
+2. Commit and publish the generated release files to the GitHub repository, then record that exact full content commit. The checked-in `cloudflare/wrangler.toml` pin predates the 11 October update and must not be used for the new release. In Worker Settings, update only COMMIT to the new published content commit. Save/deploy the variable change. Existing templates remain available to the old Worker during this step.
 3. Click Edit code. Replace the existing Worker entry module with the entire generated `cloudflare/worker-dashboard.mjs` file. This is a self-contained ES module: no extra route file needs uploading. Deploy it to production.
 4. Keep the existing SITE KV binding, secrets, contact settings and domain routes. Do not deploy the placeholder KV ID from the checked-in wrangler configuration.
 5. Run `npm run verify:live` from a network allowed to access the public website. A blocked diagnostic client does not establish a crawler block. Use Search Console live inspection to verify Google's access.

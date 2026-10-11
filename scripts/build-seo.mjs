@@ -45,6 +45,7 @@ const seoDescriptions = {
   '/': 'DigitalBurj provides business software, AI workflow automation, custom web and app development, and practical technology learning for UAE businesses and teams.',
   '/business-os': 'Explore DigitalBurj Business OS for UAE SMEs: CRM, invoicing, accounting, HR, payroll, inventory, projects and connected business workflows.',
   '/business-ai': 'Discover DigitalBurj AI agents for customer service, sales, finance and operations, with controlled workflows and integration options for UAE businesses.',
+  '/growth': 'DigitalBurj helps businesses improve SEO, answer engine optimisation and AI search visibility with crawlable content, clear answers and measured enquiries.',
   '/studio': 'DigitalBurj Studio builds custom websites, web applications, mobile apps, ERP extensions and API integrations for businesses in the UAE.',
   '/industries': 'Explore configurable DigitalBurj business software for UAE sectors including logistics, restaurants, retail, services and other SME operations.'
 };
@@ -132,8 +133,18 @@ for(const route of allRoutes) {
   const description=article?.description || seoDescriptions[route] || original.querySelector('meta[name="description"]')?.getAttribute('content') || org.description;
   const canonical=origin+route;
   const image=article?new URL(article.image,origin+'/').href:org.image;
-  const schemaPage={'@type':route==='/company'?'AboutPage':route==='/contact'?'ContactPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:'en',isPartOf:{'@id':website['@id']},about:{'@id':org['@id']}};
+  const schemaPage={'@type':route==='/company'?'AboutPage':route==='/contact'?'ContactPage':route==='/insights'?'CollectionPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:'en',isPartOf:{'@id':website['@id']},about:{'@id':org['@id']}};
   const graph=[org,website,schemaPage];
+  const questions=(PAGES[route.slice(1)]?.sections || []).filter(s=>s.type==='faq').flatMap(s=>s.items);
+  if(questions.length) {
+    schemaPage['@type']=[schemaPage['@type'],'FAQPage'];
+    schemaPage.mainEntity=questions.map((item,i)=>({'@type':'Question','@id':canonical+'#question-'+(i+1),name:item.q,acceptedAnswer:{'@type':'Answer',text:item.a}}));
+  }
+  if(route==='/insights') {
+    const list={'@type':'ItemList','@id':canonical+'#articles',name:'DigitalBurj Insights',numberOfItems:ARTICLES.length,itemListElement:ARTICLES.map((a,i)=>({'@type':'ListItem',position:i+1,name:a.title,url:origin+'/insights/'+a.slug}))};
+    graph.push(list);
+    schemaPage.mainEntity={'@id':list['@id']};
+  }
   if(route!=='/') {
     const items=[{name:'DigitalBurj',item:origin+'/'}];
     if(article)items.push({name:'Insights',item:origin+'/insights'});
@@ -141,9 +152,12 @@ for(const route of allRoutes) {
     graph.push({'@type':'BreadcrumbList','@id':canonical+'#breadcrumb',itemListElement:items.map((x,i)=>({'@type':'ListItem',position:i+1,...x}))});
     schemaPage.breadcrumb={'@id':canonical+'#breadcrumb'};
   }
-  if(article) graph.push({'@type':'Article','@id':canonical+'#article',headline:article.title,description:article.description,image,datePublished:article.date,author:{'@type':'Organization',name:'DigitalBurj',url:origin+'/company'},publisher:{'@id':org['@id']},mainEntityOfPage:{'@id':schemaPage['@id']},inLanguage:'en'});
+  if(article) {
+    graph.push({'@type':'Article','@id':canonical+'#article',headline:article.title,description:article.description,image,datePublished:article.date,author:{'@id':org['@id']},publisher:{'@id':org['@id']},mainEntityOfPage:{'@id':schemaPage['@id']},articleSection:article.category,keywords:article.keywords,inLanguage:'en'});
+    schemaPage.mainEntity={'@id':canonical+'#article'};
+  }
   const serviceRoutes=['business-os','business-ai','growth','studio','industries','academy','talent','solutions'];
-  if(serviceRoutes.includes(route.slice(1))) graph.push({'@type':'Service','@id':canonical+'#service',name:PAGES[route.slice(1)]?.crumb || title,description,url:canonical,provider:{'@id':org['@id']}});
+  if(serviceRoutes.includes(route.slice(1))) graph.push({'@type':'Service','@id':canonical+'#service',name:PAGES[route.slice(1)]?.crumb || title,description,url:canonical,provider:{'@id':org['@id']},mainEntityOfPage:{'@id':schemaPage['@id']}});
 
   // Metadata belongs in the initial head, not only in a client-side helmet.
   for(const n of document.querySelectorAll('title, meta[name="description"],meta[name="keywords"],meta[name="robots"],meta[property^="og:"],meta[name^="twitter:"],link[rel="canonical"],link[rel="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"],link[rel="manifest"],script[type="application/ld+json"]')) n.remove();
@@ -210,4 +224,6 @@ config.headers=config.headers.filter(h=>h.source!==noindex.source).concat(noinde
 write(path.join(root,'vercel.json'),JSON.stringify(config,null,2)+'\n');
 write(path.join(dist,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+allRoutes.map(route=>'  <url><loc>'+origin+route+'</loc></url>').join('\n')+'\n</urlset>\n');
 write(path.join(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: https://digitalburj.com/sitemap.xml\n');
+// Optional human-readable content directory, not a ranking or citation signal.
+write(path.join(dist,'llms.txt'),'# DigitalBurj\n\n> '+org.description+'\n\nThis directory links to the same public content served to visitors. It is not a separate crawler copy. Service availability and pricing are described on the linked pages.\n\n## Company and services\n\n'+Object.keys(routeFiles).filter(route=>!['/jobs','/portfolio','/get-started','/insights'].includes(route)).map(route=>'- ['+titles[route].split(' | ')[0]+']('+origin+route+')').join('\n')+'\n\n## Practical guides\n\n'+ARTICLES.map(a=>'- ['+a.title+']('+origin+'/insights/'+a.slug+'): '+a.description).join('\n')+'\n\n## Contact\n\nUse the [contact page]('+origin+'/contact) for current public contact details.\n');
 console.log('Built '+allRoutes.length+' crawlable pages with initial HTML, metadata and structured data.');

@@ -321,6 +321,8 @@ const serviceAnswers = {
   ],
   growth: [
     { q: "What is the difference between SEO, AEO and GEO?", a: "SEO improves discovery in search. AEO focuses on answering visitor questions clearly. GEO focuses on visibility in generative search experiences. They share crawlable pages, useful content and consistent business information." },
+    { q: "What does AIO mean for a business website?", a: "AIO is commonly used to mean AI optimisation, although the term has no single standard definition. For a business website, it means making accurate information easy for people and AI search services to understand through readable pages, direct answers, consistent identity and clear sources." },
+    { q: "Does AI search need separate pages or special schema?", a: "No separate AI version of a page is needed. Publish useful content for visitors, keep it crawlable and use structured data that matches visible information. Special files or schema do not guarantee inclusion in AI answers." },
     { q: "Can you guarantee a first-place ranking or AI citation?", a: "No. Search engines and AI services choose their results. DigitalBurj improves the website and measures visibility and enquiries; rankings and citations cannot be guaranteed." },
     { q: "How should growth results be measured?", a: "Track qualified enquiries and their sources alongside search impressions, clicks and conversions. Connect enquiries to CRM records so traffic can be evaluated against business outcomes." }
   ],

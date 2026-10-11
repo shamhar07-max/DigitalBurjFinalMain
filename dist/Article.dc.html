@@ -51,7 +51,7 @@
     <h1 itemprop="headline" class="db-hero-title db-hero-title--long">{{ a.title }}</h1>
     <p itemprop="description" class="db-hero-lead">{{ a.description }}</p>
     <div class="db-hero-meta">
-      <div><p style="margin:0;font-weight:600;font-size:14px;color:#fff" itemprop="author">DigitalBurj Editorial</p><p style="margin:2px 0 0;font-size:13px;color:rgba(246,245,241,.72)">{{ a.readMin }} min read · <time itemprop="datePublished" datetime="{{ a.date }}">{{ a.dateLabel }}</time></p></div>
+      <div><p style="margin:0;font-weight:600;font-size:14px;color:#fff" itemprop="author"><a href="/company" style="color:inherit">DigitalBurj Editorial</a></p><p style="margin:2px 0 0;font-size:13px;color:rgba(246,245,241,.72)">{{ a.readMin }} min read · <time itemprop="datePublished" datetime="{{ a.date }}">{{ a.dateLabel }}</time></p></div>
       <button onclick="{{ copyLink }}" class="db-hero-ghostbtn" style="margin-left:auto">{{ copyLabel }}</button>
     </div>
   </div><aside class="db-article-art" aria-hidden="true"><img src="{{ a.image }}" alt="" loading="lazy" decoding="async"/></aside></div></div></header>

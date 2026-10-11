@@ -18,7 +18,7 @@ Lighthouse's structured-data audit is manual and did not automatically validate 
 
 ## Outstanding external checks
 
-At review time, HTTPS requests to `digitalburj.com` and GitHub's API received network-proxy 403 responses. Native Git read/write is a separate route. Domain additions were saved in the environment draft; saving does not apply them to the running instance. Production response behavior, deployment, Search Console/Bing indexing and remote GitHub Actions status remain unverified. Performance and accessibility categories were not audited in this SEO run.
+At review time, HTTPS requests to `digitalburj.com` and GitHub's API received network-proxy 403 responses. Native Git reads succeeded through the platform proxy, but pushing the feature branch was rejected: the authenticated account `loadbyton-byte` lacks write permission to `shamhar07-max/DigitalBurjFinalMain`. Domain additions were saved in the environment draft; saving does not apply them to the running instance or grant repository permissions. Production response behavior, deployment, Search Console/Bing indexing and remote GitHub Actions status remain unverified. Performance and accessibility categories were not audited in this SEO run.
 
 The Cloudflare content pin must point to the newly published content commit and the matching Worker bundle must be deployed with the existing real SITE binding. A Git merge by itself does not update that pin.
 

@@ -1,0 +1,42 @@
+# DigitalBurj
+
+> DigitalBurj provides business software, AI automation, digital growth, custom software development, industry solutions, practical learning and verified talent.
+
+This directory links to the same public content served to visitors. It is not a separate crawler copy. Service availability and pricing are described on the linked pages.
+
+## Company and services
+
+- [DigitalBurj](https://digitalburj.com/)
+- [Business Management Software for UAE SMEs](https://digitalburj.com/business-os)
+- [AI Automation for UAE Businesses](https://digitalburj.com/business-ai)
+- [SEO, AI Search & Digital Growth Services](https://digitalburj.com/growth)
+- [Web & App Development Services UAE](https://digitalburj.com/studio)
+- [Industry Business Software Solutions UAE](https://digitalburj.com/industries)
+- [DigitalBurj Academy](https://digitalburj.com/academy)
+- [Verified Talent & Evidence-Based Hiring](https://digitalburj.com/talent)
+- [Business Software & Service Pricing](https://digitalburj.com/pricing)
+- [About DigitalBurj](https://digitalburj.com/company)
+- [Business Technology Solutions](https://digitalburj.com/solutions)
+- [Contact DigitalBurj](https://digitalburj.com/contact)
+
+## Practical guides
+
+- [What is Business AI? A practical definition for operators](https://digitalburj.com/insights/what-is-business-ai): Business AI is the practical use of AI and automation to make operations faster and more reliable — judged by response time, error rate and cost, not by novelty.
+- [When should a company automate a workflow? A decision guide](https://digitalburj.com/insights/when-should-a-company-automate-a-workflow): Which workflows are ready for automation, which aren't, and a simple scoring method for deciding what to automate first.
+- [What is workflow automation? Triggers, conditions and actions explained](https://digitalburj.com/insights/what-is-workflow-automation): Workflow automation moves work through defined steps automatically using triggers, conditions and actions. Here's how it works and where it fails.
+- [AI agent vs chatbot: what's the real difference?](https://digitalburj.com/insights/ai-agent-vs-chatbot): A chatbot replies in conversation. An AI agent takes actions using tools. The difference changes how you design safeguards.
+- [CRM vs ERP: which system does your business actually need?](https://digitalburj.com/insights/crm-vs-erp): CRM manages customer relationships and sales; ERP manages operations and finance. How to tell which problem you have — and when you need both.
+- [What makes software production-ready?](https://digitalburj.com/insights/what-makes-software-production-ready): Production-ready software is correct, secure, observable, recoverable and maintainable. A checklist we use before any release.
+- [How to scope an MVP without building too much](https://digitalburj.com/insights/how-to-scope-an-mvp): A step-by-step method to scope a minimum viable product: one core action, one user, and a written list of what you won't build.
+- [MVP vs prototype: what is the difference?](https://digitalburj.com/insights/mvp-vs-prototype): A prototype explores an idea; an MVP puts it in front of real users doing real work. Choosing the wrong one wastes months.
+- [What is RBAC (role-based access control)?](https://digitalburj.com/insights/what-is-rbac): Role-based access control grants permissions to roles rather than individual users — the foundation of secure internal software.
+- [What is evidence-based learning — and why certificates aren't enough](https://digitalburj.com/insights/what-is-evidence-based-learning): Learners finish with proof of what they can do, not just a certificate of attendance. How our build–break–fix–explain loop works.
+- [What does 'verified professional capability' actually mean?](https://digitalburj.com/insights/what-does-verified-professional-capability-mean): Verified capability means a skill is supported by evidence that has been independently checked. Here's how we label the difference.
+- [Skills-based hiring: a practical guide for employers](https://digitalburj.com/insights/skills-based-hiring-guide): How to write role requirements as capabilities, assess them fairly, and shortlist faster — without relying on degree filters.
+- [Where to start with document automation in logistics](https://digitalburj.com/insights/document-automation-in-logistics): A practical starting point for logistics companies automating bills of lading, invoices and delivery notes — without disrupting operations.
+- [Real estate lead response: why the first hour decides the deal](https://digitalburj.com/insights/real-estate-lead-response-automation): Portal and WhatsApp leads cool fast. How brokerages capture, qualify and route every enquiry within minutes — with agents still in control.
+- [A responsible AI checklist for mid-sized companies](https://digitalburj.com/insights/responsible-ai-checklist): Human oversight, data minimisation, logging and clear limits — the practical safeguards every AI deployment should have before launch.
+
+## Contact
+
+Use the [contact page](https://digitalburj.com/contact) for current public contact details.

@@ -1,0 +1,50 @@
+{
+  "domain": "digitalburj.com",
+  "provider": "Cloudflare Email Service",
+  "status": "pending-cloudflare-access-and-destination-verification",
+  "delivery": "forward-to-existing-Gmail-inboxes",
+  "addresses": [
+    {
+      "address": "info@digitalburj.com",
+      "role": "general enquiries",
+      "destination": "digitalburjos@gmail.com"
+    },
+    {
+      "address": "support@digitalburj.com",
+      "role": "customer support",
+      "destination": "digitalburjos@gmail.com"
+    },
+    {
+      "address": "contact@digitalburj.com",
+      "role": "contact enquiries",
+      "destination": "digitalburjos@gmail.com"
+    },
+    {
+      "address": "shameem@digitalburj.com",
+      "role": "personal",
+      "destination": "digitalburjos@gmail.com"
+    },
+    {
+      "address": "aarifkamal@digitalburj.com",
+      "role": "personal",
+      "destination": "digitalburjos@gmail.com"
+    },
+    {
+      "address": "talha2980@digitalburj.com",
+      "role": "personal",
+      "destination": "digitalburjos@gmail.com"
+    },
+    {
+      "address": "irfanhabeeb@digitalburj.com",
+      "role": "personal",
+      "destination": "digitalburjos@gmail.com"
+    }
+  ],
+  "smtp": {
+    "host": "smtp.mx.cloudflare.net",
+    "port": 465,
+    "security": "implicit TLS",
+    "username": "api_token",
+    "credential": "Cloudflare Email Sending API token entered securely in Gmail; never commit"
+  }
+}

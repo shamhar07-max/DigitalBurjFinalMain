@@ -65,12 +65,49 @@ test('every canonical URL has crawlable content and consistent brand signals wit
   for(const route of ['/business-ai','/growth','/studio']) assert(read(routes[route]).includes('type="application/ld+json"') && read(routes[route]).includes('DigitalBurj'));
 });
 
+test('answer and AI discovery data matches visible content and canonical destinations',()=> {
+  for(const [route,file] of Object.entries(routes)) {
+    const {document}=parseHTML(read(file));
+    const graph=JSON.parse(document.querySelector('#digitalburj-schema').textContent)['@graph'];
+    const page=graph.find(n=>n['@id']===origin+route+'#webpage');
+    const faq=(pages.PAGES[route.slice(1)]?.sections || []).filter(s=>s.type==='faq').flatMap(s=>s.items);
+    const visible=document.querySelector('#seo-prerender').textContent.replace(/\s+/g,' ').trim();
+    if(faq.length) {
+      assert(page['@type'].includes('FAQPage'),route);
+      assert.equal(page.mainEntity.length,faq.length);
+      for(const question of page.mainEntity) {
+        assert.equal(question['@type'],'Question');
+        assert.equal(question.acceptedAnswer['@type'],'Answer');
+        assert(visible.includes(question.name),route+' visible question');
+        assert(visible.includes(question.acceptedAnswer.text),route+' visible answer');
+      }
+    }
+    if(route.startsWith('/insights/')) {
+      const article=graph.find(n=>n['@type']==='Article');
+      assert.equal(article.author['@id'],origin+'/#organization');
+      assert.equal(page.mainEntity['@id'],article['@id']);
+      assert.equal(document.querySelector('time[itemprop="datePublished"]').getAttribute('datetime'),article.datePublished);
+      assert(document.querySelector('[itemprop="author"] a[href="/company"]'));
+    }
+  }
+  const {document}=parseHTML(read(routes['/insights']));
+  const graph=JSON.parse(document.querySelector('#digitalburj-schema').textContent)['@graph'];
+  const list=graph.find(n=>n['@type']==='ItemList');
+  assert.equal(list.numberOfItems,articles.ARTICLES.length);
+  for(const item of list.itemListElement) assert(routes[new URL(item.url).pathname]);
+  const directory=read('llms.txt');
+  for(const match of directory.matchAll(/\]\((https:\/\/digitalburj\.com[^)]+)\)/g)) assert(routes[new URL(match[1]).pathname]);
+  for(const a of articles.ARTICLES) assert(directory.includes(origin+'/insights/'+a.slug));
+  assert(read('robots.txt').includes('Disallow: /api/'));
+});
+
 test('commercial pages explain their actual UAE search intent in search snippets',()=> {
   const expected = {
     '/': ['Business Software & AI Automation UAE','business software'],
     '/business-os': ['Business Management Software for UAE SMEs','CRM'],
     '/business-ai': ['AI Automation for UAE Businesses','AI agents'],
     '/studio': ['Web & App Development Services UAE','websites'],
+    '/growth': ['SEO, AI Search & Digital Growth','answer engine'],
     '/industries': ['Industry Business Software Solutions UAE','logistics']
   };
   for (const [route,[title,descriptionTerm]] of Object.entries(expected)) {
@@ -106,6 +143,10 @@ test('Worker serves the generated HTML, redirects duplicates, and returns real 4
     assert.equal((await request('/insights/nonexistent-article')).status,404);
     assert.equal((await request('/old-veloztrade-page')).status,404);
     for(const route of ['/favicon.ico','/brand/favicon.png','/brand/apple-touch-icon.png']) assert.equal((await request(route)).status,200,route);
+    for(const route of ['/llms.txt','/robots.txt','/sitemap.xml']) {
+      const res=await request(route); assert.equal(res.status,200,route);
+      assert.equal(await res.text(),read(route.slice(1)),route+' current release content');
+    }
     assert.equal((await request('/%ZZ')).status,400);
     assert.equal((await request('/SiteHeader.dc.html')).headers.get('x-robots-tag'),'noindex, follow');
     const head=await request('/business-os',{method:'HEAD'}); assert.equal(head.status,200); assert.equal(await head.text(),'');

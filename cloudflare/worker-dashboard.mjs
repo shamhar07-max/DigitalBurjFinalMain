@@ -196,7 +196,7 @@ async function warm(env) {
   try {
     const have = new Set(); let cursor;
     do { const l = await env.SITE.list({ prefix: `${env.COMMIT}:`, cursor }); l.keys.forEach((k) => have.add(k.name)); cursor = l.list_complete ? undefined : l.cursor; } while (cursor);
-    const releaseFiles = [...new Set([...Object.values(SEO_ROUTES).map(p => p.slice(1)), "seo-prerender.js", "seo-prerender.css", ...FILES])];
+    const releaseFiles = [...new Set([...Object.values(SEO_ROUTES).map(p => p.slice(1)), "seo-prerender.js", "seo-prerender.css", "llms.txt", ...FILES])];
     const missing = releaseFiles.filter((p) => !have.has(`${env.COMMIT}:/${p}`));
     let n = 0;
     for (const p of missing) {

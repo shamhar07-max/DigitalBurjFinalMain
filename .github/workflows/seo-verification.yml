@@ -1,0 +1,53 @@
+name: SEO build and live verification
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'dist/**'
+      - 'cloudflare/**'
+      - 'package*.json'
+      - '.github/workflows/seo-verification.yml'
+  push:
+    branches:
+      - 'claude/blissful-hawking-p3i8px'
+  workflow_dispatch:
+    inputs:
+      verify_live:
+        description: 'Check every public route on digitalburj.com (run after deployment)'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+  verify-public-deployment:
+    if: github.event_name == 'workflow_dispatch' && inputs.verify_live
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Check canonical URLs, schema, generated HTML, sitemap and status codes
+        run: npm run verify:live

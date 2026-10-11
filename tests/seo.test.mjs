@@ -65,6 +65,22 @@ test('every canonical URL has crawlable content and consistent brand signals wit
   for(const route of ['/business-ai','/growth','/studio']) assert(read(routes[route]).includes('type="application/ld+json"') && read(routes[route]).includes('DigitalBurj'));
 });
 
+test('commercial pages explain their actual UAE search intent in search snippets',()=> {
+  const expected = {
+    '/': ['Business Software & AI Automation UAE','business software'],
+    '/business-os': ['Business Management Software for UAE SMEs','CRM'],
+    '/business-ai': ['AI Automation for UAE Businesses','AI agents'],
+    '/studio': ['Web & App Development Services UAE','websites'],
+    '/industries': ['Industry Business Software Solutions UAE','logistics']
+  };
+  for (const [route,[title,descriptionTerm]] of Object.entries(expected)) {
+    const {document}=parseHTML(read(routes[route]));
+    assert(document.title.includes(title),route+' title must match search intent');
+    assert(document.querySelector('meta[name="description"]').getAttribute('content').includes(descriptionTerm),route+' description must describe available services');
+    assert.equal(document.querySelector('link[rel="canonical"]').getAttribute('href'),origin+route);
+  }
+});
+
 test('Worker serves the generated HTML, redirects duplicates, and returns real 404s',async()=>{
   const worker=(await import('../cloudflare/worker.js')).default;
   const originalFetch=globalThis.fetch;

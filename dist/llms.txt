@@ -15,7 +15,7 @@ This directory links to the same public content served to visitors. It is not a 
 - [DigitalBurj Academy](https://digitalburj.com/academy)
 - [Verified Talent & Evidence-Based Hiring](https://digitalburj.com/talent)
 - [Business Software & Service Pricing](https://digitalburj.com/pricing)
-- [About DigitalBurj](https://digitalburj.com/company)
+- [About DigitalBurj (Digital Burj)](https://digitalburj.com/company)
 - [Business Technology Solutions](https://digitalburj.com/solutions)
 - [Contact DigitalBurj](https://digitalburj.com/contact)
 

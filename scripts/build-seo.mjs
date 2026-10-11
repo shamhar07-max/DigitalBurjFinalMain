@@ -32,7 +32,7 @@ const titles = {
   '/talent':'Verified Talent & Evidence-Based Hiring | DigitalBurj',
   '/jobs':'Jobs & Professional Opportunities | DigitalBurj',
   '/pricing':'Business Software & Service Pricing | DigitalBurj',
-  '/company':'About DigitalBurj | Software, AI, Growth & Learning',
+  '/company':'About DigitalBurj (Digital Burj) | UAE Technology Services',
   '/solutions':'Business Technology Solutions | DigitalBurj',
   '/portfolio':'Software & Automation Project Examples | DigitalBurj',
   '/get-started':'Start Your DigitalBurj Project | Business Technology',
@@ -42,7 +42,10 @@ const titles = {
 // Human-reviewed search snippets for commercial pages. These describe the existing
 // service catalogue, not guaranteed capabilities, rankings, or customer outcomes.
 const seoDescriptions = {
-  '/': 'DigitalBurj provides business software, AI workflow automation, custom web and app development, and practical technology learning for UAE businesses and teams.',
+  '/company': 'Meet DigitalBurj (Digital Burj), a technology partner for UAE SMEs: connected business software, AI automation, SEO, web and app development, and learning.',
+  '/solutions': 'Find DigitalBurj solutions for disconnected CRM and ERP data, manual approvals, document processing, lead follow-up and custom software needs.',
+  '/pricing': 'Compare DigitalBurj business software plans, CRM and ERP modules, AI add-ons, and separately quoted web development, implementation and SEO services.',
+  '/': 'DigitalBurj (Digital Burj) provides CRM and ERP business software, AI automation, SEO, and custom web and app development for UAE businesses.',
   '/business-os': 'Explore DigitalBurj Business OS for UAE SMEs: CRM, invoicing, accounting, HR, payroll, inventory, projects and connected business workflows.',
   '/business-ai': 'Discover DigitalBurj AI agents for customer service, sales, finance and operations, with controlled workflows and integration options for UAE businesses.',
   '/growth': 'DigitalBurj helps businesses improve SEO, answer engine optimisation and AI search visibility with crawlable content, clear answers and measured enquiries.',

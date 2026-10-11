@@ -118,6 +118,35 @@ test('commercial pages explain their actual UAE search intent in search snippets
   }
 });
 
+test('both brand spellings are visible and share one canonical company identity',()=>{
+  for(const route of ['/','/company']) {
+    const {document}=parseHTML(read(routes[route]));
+    assert.match(document.querySelector('#seo-prerender').textContent,/DigitalBurj \(Digital Burj\)/,route+' visible alternate brand spelling');
+    assert.match(document.querySelector('meta[name="description"]').getAttribute('content'),/Digital Burj/,route+' brand description');
+    const graph=JSON.parse(document.querySelector('#digitalburj-schema').textContent)['@graph'];
+    assert.equal(graph.find(n=>n['@type']==='Organization').alternateName,'Digital Burj');
+    assert.equal(document.querySelector('link[rel="canonical"]').getAttribute('href'),origin+route);
+  }
+});
+
+test('service landing pages explain their search intent and link to useful next steps',()=>{
+  const expected={
+    '/business-os':[/CRM.*ERP.*UAE/i,'/insights/crm-vs-erp'],
+    '/business-ai':[/AI automation.*UAE/i,'/insights/ai-agent-vs-chatbot'],
+    '/growth':[/SEO.*digital growth.*UAE/i,'/studio'],
+    '/studio':[/Web.*app development.*UAE/i,'/insights/how-to-scope-an-mvp'],
+    '/industries':[/Industry.*software.*UAE/i,'/insights/document-automation-in-logistics']
+  };
+  for(const [route,[heading,nextStep]] of Object.entries(expected)) {
+    const {document}=parseHTML(read(routes[route]));
+    const content=document.querySelector('#seo-prerender');
+    assert.match(content.querySelector('h1').textContent.replace(/\s+/g,' '),heading,route+' descriptive service heading');
+    const links=[...content.querySelectorAll('main a[href]')].map(a=>a.getAttribute('href'));
+    assert(links.includes(nextStep),route+' contextual next-step link');
+    assert(links.includes('/contact'),route+' enquiry destination');
+  }
+});
+
 test('Worker serves the generated HTML, redirects duplicates, and returns real 404s',async()=>{
   const worker=(await import('../cloudflare/worker.js')).default;
   const originalFetch=globalThis.fetch;

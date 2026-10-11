@@ -56,8 +56,13 @@ const allSectors = () => ({
 export const PAGES = {
   "business-os": {
     crumb: "Business OS", lockup: "brand/business-os-lockup.webp", badge: "The reusable core",
-    hero: { eyebrow: "DigitalBurj Business OS", h1: "One operating system", accent: "for the whole business.", lead: "CRM, sales, accounting, procurement, inventory, HR, payroll, projects, documents, approvals and automation — built once, shared by every team and every industry module.", primary: { label: "See plans", href: "/pricing" }, secondary: { label: "Explore modules", href: "#modules" }, img: "img/15-d.jpg" },
+    hero: { eyebrow: "DigitalBurj Business OS", h1: "CRM & ERP software", accent: "for UAE businesses.", lead: "Business management software connecting CRM, sales, accounting, procurement, inventory, HR, payroll, projects, documents, approvals and automation — built once, shared by every team and every industry module.", primary: { label: "See plans", href: "/pricing" }, secondary: { label: "Explore modules", href: "#modules" }, img: "img/15-d.jpg" },
     sections: [
+      { type: "cards", eyebrow: "Explore and compare", h: "Choose your business software", items: [
+        { t: "CRM vs ERP: which system do you need?", b: "Compare customer relationship management with enterprise resource planning before choosing your modules.", href: "/insights/crm-vs-erp" },
+        { t: "Workflow automation explained", b: "Understand how triggers, conditions and actions connect routine business tasks.", href: "/insights/what-is-workflow-automation" },
+        { t: "Business software pricing", b: "Compare starting plans and the scope of separately priced implementation work.", href: "/pricing" },
+      ] },
       { type: "loop", eyebrow: "One lifecycle", h: "Data flows from sales to operations to finance — typed once.", items: ["Lead", "Quote", "Order", "Delivery", "Invoice", "Payment"] },
       { type: "modules", id: "modules", eyebrow: "14 core modules", h: "Everything an SME runs on.", items: [
         M("Company & Administration", "Every software customer", ["Legal entities, branches, departments, teams and users", "Currencies, languages, tax settings, numbering and custom fields", "Role, department, record and field-level permissions with audit history", "Multi-company and multi-branch without duplicated master data"], "Owners configure practical access rules without a developer."),
@@ -87,8 +92,13 @@ export const PAGES = {
   },
   "business-ai": {
     crumb: "DigitalBurj AI", lockup: "brand/business-ai-lockup.webp",
-    hero: { eyebrow: "DigitalBurj AI", h1: "AI employees", accent: "inside real operations.", lead: "Copilots and agents for owners, sales, service, finance, HR and operations — working on your authorised data, through controlled tools, with a person approving what matters.", primary: { label: "Add DigitalBurj AI", href: "/pricing" }, secondary: { label: "See the agents", href: "#agents" }, img: "img/21-d.jpg" },
+    hero: { eyebrow: "DigitalBurj AI", h1: "AI automation", accent: "for UAE businesses.", lead: "AI agents and workflow automation for owners, sales, service, finance, HR and operations — working on your authorised data, through controlled tools, with a person approving what matters.", primary: { label: "Add DigitalBurj AI", href: "/pricing" }, secondary: { label: "See the agents", href: "#agents" }, img: "img/21-d.jpg" },
     sections: [
+      { type: "cards", eyebrow: "Explore and compare", h: "Plan a practical AI implementation", items: [
+        { t: "AI agent vs chatbot", b: "Understand the difference between answering questions and acting through controlled business tools.", href: "/insights/ai-agent-vs-chatbot" },
+        { t: "When should you automate a workflow?", b: "Check process reliability, permissions and exceptions before adding automation.", href: "/insights/when-should-a-company-automate-a-workflow" },
+        { t: "Responsible AI checklist", b: "Review data access, human approvals and operational safeguards.", href: "/insights/responsible-ai-checklist" },
+      ] },
       { type: "loop", eyebrow: "The AI rule", h: "No unrestricted database access. Ever.", items: ["Authenticate", "Authorise", "Use approved tools", "Validate", "Approve high-risk action", "Audit"] },
       { type: "modules", id: "agents", eyebrow: "Eight AI services", h: "Who they help and what they do.", items: [
         M("AI Executive", "Owner / CEO", ["Daily briefing on cash, receivables, sales and operations", "Pending approvals and employee exceptions", "Recommended next actions"], "Your morning brief arrives on WhatsApp before the first meeting."),
@@ -106,8 +116,13 @@ export const PAGES = {
   },
   growth: {
     crumb: "Growth", lockup: "brand/growth-lockup.webp", badge: "Connected to CRM",
-    hero: { eyebrow: "DigitalBurj Growth", h1: "Demand you can", accent: "trace to revenue.", lead: "Websites, e-commerce, SEO, answer-engine and AI-search visibility, social, performance marketing and content — every channel connected to the CRM, so you see which ones actually pay.", primary: { label: "Plan your growth", href: "/contact" }, secondary: { label: "See services", href: "#services" }, img: "img/23-d.jpg" },
+    hero: { eyebrow: "DigitalBurj Growth", h1: "SEO & digital growth", accent: "for UAE businesses.", lead: "Websites, e-commerce, SEO, answer-engine and AI-search visibility, social, performance marketing and content — every channel connected to the CRM, so you see which ones actually pay.", primary: { label: "Plan your growth", href: "/contact" }, secondary: { label: "See services", href: "#services" }, img: "img/23-d.jpg" },
     sections: [
+      { type: "cards", eyebrow: "Explore and compare", h: "Connect search visibility to your business", items: [
+        { t: "Websites and app development", b: "Build the website, customer portal or integration your growth workflow needs.", href: "/studio" },
+        { t: "CRM and lead management", b: "Connect enquiries to customer records, follow-ups and pipeline reporting.", href: "/business-os" },
+        { t: "Discuss your SEO scope", b: "Review your website, search goals and measurement needs before planning a retainer.", href: "/contact" },
+      ] },
       { type: "loop", eyebrow: "Attribution first", h: "Every channel ends in the same customer record.", items: ["Website", "Search", "Social", "Ads", "CRM", "Revenue"] },
       { type: "modules", id: "services", eyebrow: "Eight growth services", h: "What we run for you.", items: [
         M("Business Website", "Corporate, service and industry sites", ["Responsive design and CMS", "SEO, analytics and structured data", "CRM forms, WhatsApp, performance and security"], "Every form lands in the CRM with its source."),
@@ -125,8 +140,13 @@ export const PAGES = {
   },
   studio: {
     crumb: "Studio", lockup: "brand/studio-lockup.webp",
-    hero: { eyebrow: "DigitalBurj Studio", h1: "Build what", accent: "deserves to exist.", lead: "Custom web apps, mobile apps, industry ERP and integrations — built on the DigitalBurj core, so you only pay for what's genuinely unique to you.", primary: { label: "Start a project", href: "/contact" }, secondary: { label: "Our ventures", href: "/portfolio" }, img: "img/20-d.jpg" },
+    hero: { eyebrow: "DigitalBurj Studio", h1: "Web & app development", accent: "for UAE businesses.", lead: "Custom web apps, mobile apps, industry ERP and integrations — built on the DigitalBurj core, so you only pay for what's genuinely unique to you.", primary: { label: "Start a project", href: "/contact" }, secondary: { label: "Our ventures", href: "/portfolio" }, img: "img/20-d.jpg" },
     sections: [
+      { type: "cards", eyebrow: "Explore and compare", h: "Plan your software project", items: [
+        { t: "How to scope an MVP", b: "Define the user problem and the smallest useful release before committing to development.", href: "/insights/how-to-scope-an-mvp" },
+        { t: "MVP vs prototype", b: "Choose between a learning prototype and a usable first product.", href: "/insights/mvp-vs-prototype" },
+        { t: "Production-ready software checklist", b: "Review correctness, security, observability, recovery and maintainability.", href: "/insights/what-makes-software-production-ready" },
+      ] },
       { type: "loop", eyebrow: "The method", h: "Discovery → Product design → Engineering → Deployment.", items: ["Discovery", "Product design", "Engineering", "Deployment"] },
       { type: "modules", eyebrow: "Four Studio services", h: "What Studio builds.", items: [
         M("Custom Web Apps", "Businesses and founders", ["Customer and vendor portals", "Booking systems and marketplaces", "Internal apps, SaaS and management platforms"], "Scoped after a demand check, with a written 'won't build' list."),
@@ -141,8 +161,13 @@ export const PAGES = {
   },
   industries: {
     crumb: "Industry Solutions", lockup: "brand/industries-lockup.webp",
-    hero: { eyebrow: "DigitalBurj Industry Solutions", h1: "Built for how", accent: "your sector works.", lead: "Vertical modules for 15 sectors that extend the Business OS — so logistics, travel, property or construction workflows sit on the same CRM, finance and HR.", primary: { label: "Discuss your operation", href: "/contact" }, secondary: { label: "Industry OS pricing", href: "/pricing" }, img: "img/22-d.jpg" },
+    hero: { eyebrow: "DigitalBurj Industry Solutions", h1: "Industry business software", accent: "for UAE operations.", lead: "Vertical modules for 15 sectors that extend the Business OS — so logistics, travel, property or construction workflows sit on the same CRM, finance and HR.", primary: { label: "Discuss your operation", href: "/contact" }, secondary: { label: "Industry OS pricing", href: "/pricing" }, img: "img/22-d.jpg" },
     sections: [
+      { type: "cards", eyebrow: "Explore and compare", h: "Explore industry workflows", items: [
+        { t: "Document automation in logistics", b: "Start with one document workflow and define validation and exception handling.", href: "/insights/document-automation-in-logistics" },
+        { t: "Real estate lead response", b: "Connect enquiries, assignment and follow-up in property operations.", href: "/insights/real-estate-lead-response-automation" },
+        { t: "Shared CRM, finance and HR", b: "See the Business OS foundation used by sector modules.", href: "/business-os" },
+      ] },
       { type: "modules", eyebrow: "Sector modules", h: "What each industry module includes.", items: [
         M("Logistics & Freight", "Forwarders, transporters, 3PLs", ["Rates, quotations and shipments — FCL/LCL, air and road", "Containers, customs workflow, transport and drivers", "Warehouse, POD, job costing and customer portal"], "Profitability per job, not per month."),
         M("Travel & Tourism", "Agencies and DMCs", ["Travel CRM, quotations and bookings", "Flights, hotels, transfers, attractions and visas", "Suppliers, refunds and booking profitability"], ""),
@@ -243,8 +268,14 @@ export const PAGES = {
   },
   company: {
     crumb: "Company",
-    hero: { eyebrow: "About DigitalBurj", h1: "One relationship.", accent: "One platform.", lead: "DigitalBurj gives SMEs the technology stack of a larger enterprise — without the enterprise complexity or price. One provider, one account, one customer record, one owner dashboard, one AI layer, one support relationship.", primary: { label: "Contact us", href: "/contact" }, secondary: { label: "How we deliver", href: "#delivery" }, img: "img/33-d.jpg" },
+    hero: { eyebrow: "About DigitalBurj", h1: "One relationship.", accent: "One platform.", lead: "DigitalBurj (Digital Burj) gives SMEs in the UAE the technology stack of a larger enterprise — without the enterprise complexity or price. One provider, one account, one customer record, one owner dashboard, one AI layer, one support relationship.", primary: { label: "Contact us", href: "/contact" }, secondary: { label: "How we deliver", href: "#delivery" }, img: "img/33-d.jpg" },
     sections: [
+      { type: "cards", eyebrow: "Explore and compare", h: "Explore DigitalBurj services", items: [
+        { t: "CRM and ERP software", b: "Connected business management, accounting, inventory, HR and workflow modules.", href: "/business-os" },
+        { t: "AI automation", b: "AI agents and copilots working through controlled tools and human approvals.", href: "/business-ai" },
+        { t: "SEO and digital growth", b: "Search visibility, websites and acquisition connected to CRM measurement.", href: "/growth" },
+        { t: "Web and app development", b: "Custom applications, mobile apps and API integrations.", href: "/studio" },
+      ] },
       { type: "steps", id: "delivery", eyebrow: "Customer delivery", h: "Twelve steps from discovery to continuous improvement.", items: [
         { t: "Discovery", b: "Business model, people, branches, tools, workflows and growth needs." }, { t: "Digital audit", b: "Website, CRM, ERP, finance, HR, marketing, security and manual work." },
         { t: "Gap map", b: "Current state → problem → module → benefit → priority." }, { t: "Implementation plan", b: "Immediate, 30-day, 90-day and future roadmap." },

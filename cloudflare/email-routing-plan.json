@@ -1,43 +1,50 @@
 {
   "domain": "digitalburj.com",
   "provider": "Cloudflare Email Service",
-  "status": "pending-cloudflare-access-and-destination-verification",
+  "status": "routing-active-smtp-pending-authorization",
   "delivery": "forward-to-existing-Gmail-inboxes",
   "addresses": [
     {
       "address": "info@digitalburj.com",
       "role": "general enquiries",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     },
     {
       "address": "support@digitalburj.com",
       "role": "customer support",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     },
     {
       "address": "contact@digitalburj.com",
       "role": "contact enquiries",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     },
     {
       "address": "shameem@digitalburj.com",
       "role": "personal",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     },
     {
       "address": "aarifkamal@digitalburj.com",
       "role": "personal",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     },
     {
       "address": "talha2980@digitalburj.com",
       "role": "personal",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     },
     {
       "address": "irfanhabeeb@digitalburj.com",
       "role": "personal",
-      "destination": "digitalburjos@gmail.com"
+      "destination": "digitalburjos@gmail.com",
+      "routing_status": "active"
     }
   ],
   "smtp": {
@@ -45,6 +52,15 @@
     "port": 465,
     "security": "implicit TLS",
     "username": "api_token",
-    "credential": "Cloudflare Email Sending API token entered securely in Gmail; never commit"
+    "credential": "Cloudflare Email Sending API token entered securely in Gmail; never commit",
+    "status": "pending-email-sending-access-and-gmail-setup",
+    "api_check": "Cloudflare Email Sending subdomains endpoint returned HTTP 401 Unauthorized."
+  },
+  "destination_verified": true,
+  "routing_verification": "All seven Cloudflare rules enabled and point to the verified Gmail destination; inbox delivery not tested.",
+  "dmarc": {
+    "name": "_dmarc.digitalburj.com",
+    "policy": "v=DMARC1; p=none;",
+    "status": "configured-non-enforcing-no-report-recipient"
   }
 }

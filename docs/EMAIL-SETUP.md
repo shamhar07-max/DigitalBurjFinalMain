@@ -4,7 +4,15 @@ Requested configuration: three role aliases (`info`, `support`, `contact`) and f
 
 Cloudflare Email Routing forwards incoming messages to existing Gmail inboxes. Cloudflare Email Sending supplies SMTP for Gmail's Send mail as. These are separate configurations. This setup does not create four new hosted inboxes or Google Workspace logins. Each personal address needs an existing destination Gmail inbox.
 
-The seven-address manifest is in `cloudflare/email-routing-plan.json`. The user selected `digitalburjos@gmail.com` as the destination for all seven addresses. This yields one receiving inbox with seven identities; independent personal inboxes would require additional destinations. No live routing rules, mailbox accounts, DNS changes, or SMTP credentials have been created by this repository change.
+The seven-address manifest is in `cloudflare/email-routing-plan.json`. The user selected `digitalburjos@gmail.com` as the destination for all seven addresses. This yields one receiving inbox with seven identities; independent personal inboxes would require additional destinations.
+
+## Current verified configuration — 11 October 2026
+
+Cloudflare confirms the Gmail destination is verified, Email Routing is enabled and ready, and all seven requested rules are active with exactly that destination. Existing rules for info, support, shameem and irfanhabeeb were updated; contact, aarifkamal and talha2980 were created. The unrelated enquiry rule and disabled catch-all were preserved. Root MX and the existing Cloudflare SPF record were preserved. A non-enforcing DMARC TXT record (`v=DMARC1; p=none;`) was added because no DMARC record existed; no reporting address or enforcement was enabled.
+
+These are verified routing settings, not proof of inbox delivery. Actual forwarding and Gmail Send mail as remain to be tested. No Gmail inboxes or SMTP passwords were created.
+
+The supplied Cloudflare credential can manage routing and DNS. The authoritative Email Sending subdomains endpoint returned HTTP 401, code 2036, Unauthorized. Sending-domain state and SMTP readiness remain unverified. Ensure Email Sending is enabled on the account and supply a token with the required Email Sending permission through secure settings. Never put the token in Git or chat.
 
 ## Incoming mail
 
@@ -40,7 +48,7 @@ The existing `/api/contact`, `/api/lead` and `/api/subscribe` endpoints use Rese
 
 ## Access still required
 
-Configuration requires authorized Cloudflare account/zone access, the destination Gmail mapping, destination owners' verification clicks, and Gmail Send mail as verification. For API-based routing configuration, supply a scoped Cloudflare token through secure environment settings, with the zone/account read access, DNS edit and Email Routing permissions required by the operations. The SMTP sending token is entered directly in Gmail. No passwords belong in chat.
+Routing access and destination verification are complete. Remaining prerequisites are Email Sending authorization, sending-domain onboarding/verification, Gmail Send mail as configuration and verification, and real delivery tests. The SMTP sending token is entered directly in Gmail. No passwords belong in chat.
 
 Authoritative references checked on 11 October 2026:
 

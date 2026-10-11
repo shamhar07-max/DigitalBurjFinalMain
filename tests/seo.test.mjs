@@ -71,7 +71,11 @@ test('commercial pages explain their actual UAE search intent in search snippets
     '/business-os': ['Business Management Software for UAE SMEs','CRM'],
     '/business-ai': ['AI Automation for UAE Businesses','AI agents'],
     '/studio': ['Web & App Development Services UAE','websites'],
-    '/industries': ['Industry Business Software Solutions UAE','logistics']
+    '/industries': ['Industry Business Software Solutions UAE','logistics'],
+    '/academy': ['DigitalBurj Academy | Practical Technology Learning','practical learning'],
+    '/growth': ['SEO, AI Search & Digital Growth Services','SEO'],
+    '/pricing': ['Business Software & Service Pricing','business software plans'],
+    '/solutions': ['Business Technology Solutions','software']
   };
   for (const [route,[title,descriptionTerm]] of Object.entries(expected)) {
     const {document}=parseHTML(read(routes[route]));

@@ -1,0 +1,36 @@
+name: SEO build and tests
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/build-seo.mjs'
+      - 'tests/seo.test.mjs'
+      - 'dist/**'
+      - 'cloudflare/**'
+      - 'package*.json'
+      - '.github/workflows/seo-ci.yml'
+  push:
+    branches:
+      - 'seo/**'
+
+permissions:
+  contents: read
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build crawlable pages and metadata
+        run: npm run build
+      - name: Test generated pages and runtime
+        run: npm test
+      - name: Confirm generated route count
+        run: node -e "const fs=require('fs');const routes=JSON.parse(fs.readFileSync('dist/seo-routes.json','utf8'));if(Object.keys(routes).length!==31)process.exit(1)"

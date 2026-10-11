@@ -35,6 +35,13 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - name: Verify generated SEO release files are committed
+        run: |
+          git diff --exit-code -- dist/seo-pages dist/seo-routes.json dist/sitemap.xml cloudflare/seo-routes.js
+          if [ -n "$(git ls-files --others --exclude-standard dist/seo-pages)" ]; then
+            echo 'Untracked SEO release files found; commit generated output before deploying.'
+            exit 1
+          fi
       - run: npm test
   verify-public-deployment:
     if: github.event_name == 'workflow_dispatch' && inputs.verify_live

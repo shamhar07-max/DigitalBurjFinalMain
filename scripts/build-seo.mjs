@@ -46,7 +46,11 @@ const seoDescriptions = {
   '/business-os': 'Explore DigitalBurj Business OS for UAE SMEs: CRM, invoicing, accounting, HR, payroll, inventory, projects and connected business workflows.',
   '/business-ai': 'Discover DigitalBurj AI agents for customer service, sales, finance and operations, with controlled workflows and integration options for UAE businesses.',
   '/studio': 'DigitalBurj Studio builds custom websites, web applications, mobile apps, ERP extensions and API integrations for businesses in the UAE.',
-  '/industries': 'Explore configurable DigitalBurj business software for UAE sectors including logistics, restaurants, retail, services and other SME operations.'
+  '/industries': 'Explore configurable DigitalBurj business software for UAE sectors including logistics, restaurants, retail, services and other SME operations.',
+  '/academy': 'Explore DigitalBurj Academy for practical learning in software development, AI tools and digital skills through project-based training.',
+  '/growth': 'Explore DigitalBurj digital growth services including SEO, answer engine optimization, AI search visibility and conversion-focused website improvements.',
+  '/pricing': 'Compare DigitalBurj business software plans, AI add-ons and custom deployment options. Explore entry-level and scalable plans for different needs.',
+  '/solutions': 'Discover DigitalBurj software, AI automation and custom integration solutions for sales, finance, operations and business workflows.'
 };
 const org = {
   '@type':'Organization', '@id':origin+'/#organization', name:'DigitalBurj', alternateName:'Digital Burj', url:origin+'/',

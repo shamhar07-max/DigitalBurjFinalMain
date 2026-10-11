@@ -1,7 +1,7 @@
 {
   "domain": "digitalburj.com",
-  "provider": "Cloudflare Email Service",
-  "status": "routing-active-smtp-pending-authorization",
+  "provider": "Cloudflare Email Routing",
+  "status": "routing-active-resend-dns-corrected-gmail-setup-pending",
   "delivery": "forward-to-existing-Gmail-inboxes",
   "addresses": [
     {
@@ -48,13 +48,19 @@
     }
   ],
   "smtp": {
-    "host": "smtp.mx.cloudflare.net",
+    "host": "smtp.resend.com",
     "port": 465,
     "security": "implicit TLS",
-    "username": "api_token",
-    "credential": "Cloudflare Email Sending API token entered securely in Gmail; never commit",
-    "status": "pending-email-sending-access-and-gmail-setup",
-    "api_check": "Cloudflare Email Sending subdomains endpoint returned HTTP 401 Unauthorized."
+    "username": "resend",
+    "credential": "Resend sending API key entered securely in Gmail; never commit",
+    "status": "pending-resend-verification-restart-and-gmail-setup",
+    "free_plan": {
+      "emails_per_month": 3000,
+      "emails_per_day": 100,
+      "custom_domains": 3,
+      "verified_date": "2026-10-11",
+      "source": "https://resend.com/pricing"
+    }
   },
   "destination_verified": true,
   "routing_verification": "All seven Cloudflare rules enabled and point to the verified Gmail destination; inbox delivery not tested.",
@@ -62,5 +68,20 @@
     "name": "_dmarc.digitalburj.com",
     "policy": "v=DMARC1; p=none;",
     "status": "configured-non-enforcing-no-report-recipient"
+  },
+  "sending_provider": "Resend",
+  "sending_dns": {
+    "send.digitalburj.com": {
+      "type": "CNAME",
+      "content": "send.forge.rmta.net",
+      "proxied": false,
+      "verified": "Cloudflare API and public DNS"
+    },
+    "rsend.digitalburj.com": {
+      "type": "CNAME",
+      "content": "rsend-apne1.forge.rmta.net",
+      "proxied": false,
+      "verified": "Cloudflare API"
+    }
   }
 }

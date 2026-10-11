@@ -2,7 +2,7 @@
 
 Requested configuration: three role aliases (`info`, `support`, `contact`) and four personal addresses (`shameem`, `aarifkamal`, `talha2980`, `irfanhabeeb`), all at `digitalburj.com`.
 
-Cloudflare Email Routing forwards incoming messages to existing Gmail inboxes. Cloudflare Email Sending supplies SMTP for Gmail's Send mail as. These are separate configurations. This setup does not create four new hosted inboxes or Google Workspace logins. Each personal address needs an existing destination Gmail inbox.
+Cloudflare Email Routing forwards incoming messages to existing Gmail inboxes. Resend supplies SMTP for Gmail's Send mail as on its free tier. These are separate configurations. This setup does not create four new hosted inboxes or Google Workspace logins. Each personal address needs an existing destination Gmail inbox.
 
 The seven-address manifest is in `cloudflare/email-routing-plan.json`. The user selected `digitalburjos@gmail.com` as the destination for all seven addresses. This yields one receiving inbox with seven identities; independent personal inboxes would require additional destinations.
 
@@ -12,7 +12,9 @@ Cloudflare confirms the Gmail destination is verified, Email Routing is enabled 
 
 These are verified routing settings, not proof of inbox delivery. Actual forwarding and Gmail Send mail as remain to be tested. No Gmail inboxes or SMTP passwords were created.
 
-The supplied Cloudflare credential can manage routing and DNS. The authoritative Email Sending subdomains endpoint returned HTTP 401, code 2036, Unauthorized. Sending-domain state and SMTP readiness remain unverified. Ensure Email Sending is enabled on the account and supply a token with the required Email Sending permission through secure settings. Never put the token in Git or chat.
+The supplied Cloudflare credential manages routing and DNS. Cloudflare Email Sending was not selected because the user requested a free alternative. Resend's official pricing, checked on 11 October 2026, includes SMTP relay on Free: 3,000 emails per month, 100 per day and 3 custom domains. Those are account-wide limits, including website email usage.
+
+Resend's dashboard showed verified DKIM and `rsend`, with the `send` CNAME pending. Cloudflare contained the new CNAME alongside legacy Amazon SES MX/SPF records at `send.digitalburj.com`. The legacy records were backed up outside the repository and removed. `send` now has only `send.forge.rmta.net`; `rsend` points to `rsend-apne1.forge.rmta.net`. Both are DNS-only. Public DNS confirms the `send` CNAME. Domain-root receiving MX/SPF and existing DKIM were preserved. Resend dashboard verification should be restarted; its final status and authenticated SMTP delivery remain unverified.
 
 ## Incoming mail
 
@@ -24,22 +26,22 @@ The supplied Cloudflare credential can manage routing and DNS. The authoritative
 
 ## Sending from Gmail
 
-Cloudflare introduced authenticated SMTP submission in June 2026. Current documented settings:
+Use Resend SMTP with the verified `digitalburj.com` domain:
 
 | Gmail SMTP setting | Value |
 | --- | --- |
-| Server | `smtp.mx.cloudflare.net` |
+| Server | `smtp.resend.com` |
 | Port | `465` |
 | Security | SSL / implicit TLS |
-| Username | `api_token` (literal text) |
-| Password | Cloudflare API token with Email Sending: Edit |
+| Username | `resend` |
+| Password | A Resend sending API key |
 
-1. Enable Email Sending and onboard `digitalburj.com` under Compute → Email Service → Email Sending. Use the actual records Cloudflare generates, including its sending bounce subdomain and DKIM key. Routing and sending have separate verification states.
-2. Confirm domain verification and the account's current sending limits and plan. SMTP is documented as a beta service; use only an account where sending is enabled.
-3. Create the sending token securely. Enter it in Gmail's SMTP password field; do not paste it into chat, the manifest, Git, or an environment setup script. A token can send from onboarded domains in its account, so it is an account credential, not a per-address mailbox password.
-4. In each recipient's Gmail account, open Settings → See all settings → Accounts and Import → Send mail as → Add another email address. Enter the approved display name and matching DigitalBurj address, then the SMTP settings above. Complete Gmail's verification via the already working forwarding rule.
-5. Choose whether to reply from the address the message was sent to and set the desired default sender. Test each identity to an external recipient. Inspect Gmail Show original for aligned DKIM and DMARC results; check Cloudflare sending logs for actual delivery. Do not infer delivery from SMTP acceptance alone.
+1. In the Resend domain page, select **restart verification** after the DNS correction and confirm every required record is verified. Keep Resend Receiving disabled because incoming mail uses Cloudflare forwarding.
+2. Create a Resend sending API key scoped to `digitalburj.com` and enter it directly into Gmail. Do not put it in chat or Git. Seven sender addresses on one domain do not require seven custom domains.
+3. In `digitalburjos@gmail.com`, open Settings → See all settings → Accounts and Import → Send mail as → Add another email address. Enter each approved DigitalBurj address and the SMTP settings above. Complete Gmail's verification through the working Cloudflare forwarding rules.
+4. Choose the desired default sender and whether to reply from the address the message was sent to. Test each identity to an external recipient and inspect Show original for DKIM/DMARC alignment. Check Resend delivery logs; SMTP acceptance alone does not establish delivery.
 
+The official SMTP settings and prerequisites were checked at https://resend.com/docs/send-with-smtp. Current free-plan limits were checked at https://resend.com/pricing.
 DMARC: preserve any existing policy. If none exists, begin with a monitoring policy while validating all legitimate senders; tighten only after alignment is verified. Do not add a report recipient until that receiving address is confirmed working.
 
 ## Website forms
@@ -48,7 +50,7 @@ The existing `/api/contact`, `/api/lead` and `/api/subscribe` endpoints use Rese
 
 ## Access still required
 
-Routing access and destination verification are complete. Remaining prerequisites are Email Sending authorization, sending-domain onboarding/verification, Gmail Send mail as configuration and verification, and real delivery tests. The SMTP sending token is entered directly in Gmail. No passwords belong in chat.
+Routing access and destination verification are complete. Remaining prerequisites are Resend verification restart, a Resend sending API key, Gmail Send mail as configuration and verification, and real delivery tests. The SMTP sending token is entered directly in Gmail. No passwords belong in chat.
 
 Authoritative references checked on 11 October 2026:
 

@@ -1,6 +1,8 @@
 name: SEO build and live verification
 
 on:
+  schedule:
+    - cron: '17 3 * * *'
   pull_request:
     paths:
       - 'scripts/**'
@@ -44,7 +46,7 @@ jobs:
           fi
       - run: npm test
   verify-public-deployment:
-    if: github.event_name == 'workflow_dispatch' && inputs.verify_live
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.verify_live)
     needs: build-and-test
     runs-on: ubuntu-latest
     timeout-minutes: 15

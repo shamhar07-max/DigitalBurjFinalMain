@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/host-grotesk-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
@@ -14,44 +15,82 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="hero-system.css?v=7">
+<link rel="stylesheet" href="hero-system.css?v=8">
 </head>
 <body>
 <x-dc>
-<footer class="db-foot" style="font-family:'Instrument Sans',system-ui,sans-serif">
-  <div class="db-foot-inner" style="max-width:76rem;margin:0 auto">
-    <div class="db-foot-top">
-      <div class="db-foot-brand">
+<footer class="db-foot">
+  <div class="db-foot-inner">
+    <div class="db-foot-grid">
+      <!-- Left: Brand, Tagline & Newsletter Pill -->
+      <div>
+        <a href="/" aria-label="DigitalBurj" style="display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.94)">
+          <img src="brand/wordmark-480.webp" alt="DigitalBurj" style="display:block;width:124px;height:auto"/>
+        </a>
         <p class="db-foot-tag">Learn. Build. <span>Transform.</span></p>
         <p class="db-foot-copy">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
         <form class="db-foot-form" onsubmit="{{ subscribe }}" novalidate>
           <label for="nl-email" class="db-foot-sr">Email address</label>
-          <input id="nl-email" type="email" required placeholder="you@company.com" value="{{ email }}" oninput="{{ setEmail }}" autocomplete="email"/>
+          <input id="nl-email" type="email" required placeholder="Your work email" value="{{ email }}" oninput="{{ setEmail }}" autocomplete="email"/>
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="db-foot-hp" value="{{ hp }}" oninput="{{ setHp }}"/>
-          <button type="submit" disabled="{{ busy }}">{{ subLabel }}</button>
+          <button type="submit" disabled="{{ busy }}">{{ subLabel }}<span style="width:28px;height:28px;border-radius:50%;background:#14070b;color:#f2ba3e;display:grid;place-items:center" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
         </form>
         <p class="db-foot-note" style="{{ noteStyle }}" role="status">{{ note }}</p>
         <p class="db-foot-contact"><a href="mailto:support@digitalburj.com">support@digitalburj.com</a><span aria-hidden="true">·</span><a href="https://wa.me/971552998583" target="_blank" rel="noopener">WhatsApp +971 55 299 8583</a></p>
       </div>
-      <div class="db-foot-cols">
-        <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
-          <nav class="db-foot-col" aria-label="{{ c.h }}">
-            <p class="db-foot-h">{{ c.h }}</p>
-            <ul>
-              <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}">{{ l.label }}</a></li></sc-for>
-            </ul>
-          </nav>
-        </sc-for>
+
+      <!-- Center: Signature Serrated Thermal Paper Receipt (Tallysoft Centerpiece) -->
+      <div class="db-receipt-slot">
+        <div class="db-receipt-paper" data-receipt="">
+          <div style="text-align:center">
+            <img src="brand/wordmark-480.webp" alt="DigitalBurj" style="width:118px;height:auto;margin:0 auto;display:block"/>
+            <p style="margin:8px 0 0;font-size:11.5px;color:#7d6a6f;letter-spacing:.02em">Registry #2026 · One unified stack</p>
+          </div>
+          <ul class="db-receipt-rows">
+            <sc-for list="{{ receipt }}" as="r" hint-placeholder-count="10">
+              <li><a href="{{ r.href }}"><span>{{ r.label }}</span><span class="db-receipt-dots" aria-hidden="true"></span><span class="db-receipt-num">{{ r.n }}</span></a></li>
+            </sc-for>
+          </ul>
+          <div class="db-receipt-total">
+            <span style="font:600 17px/1 'Host Grotesk',sans-serif;color:#1e0f14">Total</span>
+            <span style="padding:6px 12px;border-radius:999px;background:#f2ba3e;color:#1e0f14;font:600 12px/1 'Host Grotesk',sans-serif">Every workflow, connected</span>
+          </div>
+          <svg class="db-receipt-barcode" viewBox="0 0 180 38" aria-hidden="true" fill="#1e0f14">
+            <rect x="2" y="2" width="3" height="34"/><rect x="7" y="2" width="1.5" height="34"/><rect x="11" y="2" width="4" height="34"/><rect x="18" y="2" width="2" height="34"/><rect x="22" y="2" width="1.5" height="34"/><rect x="27" y="2" width="3.5" height="34"/><rect x="33" y="2" width="1.5" height="34"/><rect x="37" y="2" width="2.5" height="34"/><rect x="43" y="2" width="4" height="34"/><rect x="50" y="2" width="1.5" height="34"/><rect x="54" y="2" width="3" height="34"/><rect x="60" y="2" width="2" height="34"/><rect x="65" y="2" width="4" height="34"/><rect x="72" y="2" width="1.5" height="34"/><rect x="76" y="2" width="2.5" height="34"/><rect x="81" y="2" width="1.5" height="34"/><rect x="86" y="2" width="4" height="34"/><rect x="93" y="2" width="2" height="34"/><rect x="98" y="2" width="3.5" height="34"/><rect x="104" y="2" width="1.5" height="34"/><rect x="108" y="2" width="2.5" height="34"/><rect x="114" y="2" width="4" height="34"/><rect x="121" y="2" width="1.5" height="34"/><rect x="126" y="2" width="3" height="34"/><rect x="132" y="2" width="2" height="34"/><rect x="137" y="2" width="4" height="34"/><rect x="144" y="2" width="1.5" height="34"/><rect x="148" y="2" width="3" height="34"/><rect x="154" y="2" width="2" height="34"/><rect x="159" y="2" width="1.5" height="34"/><rect x="164" y="2" width="4" height="34"/><rect x="171" y="2" width="2" height="34"/><rect x="175" y="2" width="3" height="34"/>
+          </svg>
+          <p style="margin:6px 0 0;text-align:center;font-size:11px;color:#7d6a6f">support@digitalburj.com · +971 55 299 8583</p>
+        </div>
+      </div>
+
+      <!-- Right: Status Pill & Structured Navigation Columns -->
+      <div class="db-foot-right">
+        <span class="db-status-pill"><i></i>All systems connected · UAE SMEs</span>
+        <div class="db-foot-cols">
+          <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+            <nav class="db-foot-col" aria-label="{{ c.h }}">
+              <p class="db-foot-h">{{ c.h }}</p>
+              <ul>
+                <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}">{{ l.label }}</a></li></sc-for>
+              </ul>
+            </nav>
+          </sc-for>
+        </div>
       </div>
     </div>
+
     <div class="db-foot-bar">
-      <p>© 2026 DigitalBurj. All rights reserved.</p>
-      <div class="db-foot-links"><a href="sitemap.xml">Sitemap</a><a href="/contact">Contact</a><button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
+      <p>© 2026 DigitalBurj (Digital Burj). All rights reserved.</p>
+      <div class="db-foot-links">
+        <a href="sitemap.xml">Sitemap</a>
+        <a href="/company">About</a>
+        <a href="/contact">Contact</a>
+        <button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+      </div>
     </div>
   </div>
 </footer>
-<a href="https://wa.me/971552998583" target="_blank" rel="noopener" aria-label="Chat with DigitalBurj on WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:55;width:56px;height:56px;border-radius:18px;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .3s cubic-bezier(.22,.8,.24,1)" style-hover="transform:translateY(-3px) scale(1.04)">
-  <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor"><path d="M16 3.2C8.9 3.2 3.2 8.9 3.2 16c0 2.3.6 4.5 1.7 6.4L3.1 28.8l6.6-1.7A12.8 12.8 0 1 0 16 3.2Zm5.7 15.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.3c.2.2 2.2 3.4 5.4 4.8 2.7 1.1 3.3.9 3.8.8.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+<a href="https://wa.me/971552998583" target="_blank" rel="noopener" aria-label="Chat with DigitalBurj on WhatsApp" class="db-wa-fab">
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor"><path d="M16 3.2C8.9 3.2 3.2 8.9 3.2 16c0 2.3.6 4.5 1.7 6.4L3.1 28.8l6.6-1.7A12.8 12.8 0 1 0 16 3.2Zm5.7 15.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.3c.2.2 2.2 3.4 5.4 4.8 2.7 1.1 3.3.9 3.8.8.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
 </a>
 
 </x-dc>
@@ -59,10 +98,22 @@
 class Component extends DCLogic {
   state = { email: "", hp: "", status: "idle", msg: "" };
   cols = [
-    { h: "Platform", links: [["Business OS", "/business-os"], ["DigitalBurj AI", "/business-ai"], ["Growth", "/growth"], ["Studio", "/studio"], ["Industry Solutions", "/industries"]] },
+    { h: "Platform", links: [["Business OS", "/business-os"], ["DigitalBurj AI", "/business-ai"], ["Growth", "/growth"], ["Studio", "/studio"], ["Industry Solutions", "/industries"], ["Solutions", "/solutions"]] },
     { h: "People", links: [["Academy", "/academy"], ["Verified Talent", "/talent"], ["Jobs", "/jobs"], ["Insights", "/insights"]] },
     { h: "Company", links: [["About", "/company"], ["Pricing", "/pricing"], ["Portfolio", "/portfolio"], ["Contact", "/contact"], ["Get Started", "/get-started"]] },
   ].map((c) => ({ h: c.h, links: c.links.map(([label, href]) => ({ label, href })) }));
+  receipt = [
+    ["Business OS", "/business-os"],
+    ["DigitalBurj AI", "/business-ai"],
+    ["Growth & SEO", "/growth"],
+    ["Studio", "/studio"],
+    ["Industries", "/industries"],
+    ["Academy", "/academy"],
+    ["Pricing", "/pricing"],
+    ["Insights", "/insights"],
+    ["Company", "/company"],
+    ["Contact", "/contact"],
+  ].map(([label, href], i) => ({ label, href, n: String(i + 1).padStart(2, "0") }));
   async subscribe(e) {
     e.preventDefault();
     const email = this.state.email.trim();
@@ -79,11 +130,11 @@ class Component extends DCLogic {
   renderVals() {
     const st = this.state.status;
     return {
-      cols: this.cols, email: this.state.email, hp: this.state.hp,
+      cols: this.cols, receipt: this.receipt, email: this.state.email, hp: this.state.hp,
       setEmail: (e) => this.setState({ email: e.target.value }), setHp: (e) => this.setState({ hp: e.target.value }),
       busy: st === "busy", subLabel: st === "busy" ? "Subscribing…" : st === "done" ? "Subscribed ✓" : "Subscribe",
       note: this.state.msg || "Monthly field notes on automation and building software. No spam.",
-      noteStyle: st === "error" ? "color:#ff8a70" : st === "done" ? "color:#7ee2a0" : "",
+      noteStyle: st === "error" ? "color:#ff9b80" : st === "done" ? "color:#f2ba3e" : "",
       subscribe: (e) => this.subscribe(e),
       toTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
     };

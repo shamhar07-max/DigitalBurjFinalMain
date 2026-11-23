@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/host-grotesk-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
@@ -14,87 +15,102 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="hero-system.css?v=7">
+<link rel="stylesheet" href="hero-system.css?v=8">
 </head>
 <body>
 <x-dc>
-<header class="db-site-header" style="position:sticky;top:0;z-index:60;padding:10px 12px 0;font-family:'Instrument Sans',system-ui,sans-serif">
-  <div class="db-nav-inner" style="max-width:76rem;margin:0 auto;height:62px;display:flex;align-items:center;gap:8px;padding:0 18px;border-radius:18px;background:rgba(246,245,241,.82);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(15,23,20,.08);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -28px rgba(15,23,20,.45)">
-    <button onclick="{{ toggleSheet }}" aria-label="Open menu" aria-expanded="{{ sheetOpen }}" style="{{ burgerStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f1714" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-    <a href="/" aria-label="DigitalBurj home" style="display:flex;align-items:center;flex-shrink:0;margin-right:12px"><img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/></a>
-    <nav aria-label="Primary" style="{{ navStyle }}">
+<header class="db-site-header">
+  <div class="db-nav-inner">
+    <button onclick="{{ toggleSheet }}" aria-label="Open menu" aria-expanded="{{ sheetOpen }}" style="{{ burgerStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e0f14" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h11"/></svg></button>
+    <a href="/" aria-label="DigitalBurj home" style="display:flex;align-items:center;flex-shrink:0;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(30,15,20,.07);box-shadow:0 8px 24px -12px rgba(20,7,11,.14)"><img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/></a>
+
+    <nav aria-label="Primary" class="db-nav-pill" style="{{ navStyle }}">
       <div onmouseenter="{{ openMega }}" onmouseleave="{{ closeMega }}" style="position:relative">
-        <button onclick="{{ toggleMega }}" aria-expanded="{{ megaOpen }}" style="height:40px;padding:0 14px;border:none;background:transparent;border-radius:10px;font:500 14px 'Instrument Sans',sans-serif;color:#0f1714;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:rgba(15,23,20,.05)">Ecosystem<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="{{ chevStyle }}"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button onclick="{{ toggleMega }}" aria-expanded="{{ megaOpen }}" class="{{ ecoClass }}">Ecosystem<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="{{ chevStyle }}"><path d="M6 9l6 6 6-6"/></svg></button>
         <sc-if value="{{ megaOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="position:absolute;top:100%;left:-16px;padding-top:12px;width:min(44rem,92vw)">
-            <div style="border-radius:20px;background:#fff;border:1px solid rgba(15,23,20,.08);box-shadow:0 40px 80px -30px rgba(15,23,20,.4);padding:8px;display:grid;grid-template-columns:1.35fr 1fr;gap:8px">
-              <div style="display:grid;gap:4px">
-                <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="5">
-                  <a href="{{ d.href }}" style="display:flex;gap:12px;align-items:center;padding:9px 10px;border-radius:12px;transition:background .25s" style-hover="background:#f6f5f1">
-                    <img src="{{ d.icon }}" alt="" class="db-nav-brandmark"/>
-                    <span><span style="display:block;font-weight:600;font-size:14px;color:#0f1714">{{ d.name }}</span><span style="display:block;font-size:12.5px;line-height:1.4;color:#5d6560;margin-top:1px">{{ d.line }}</span></span>
-                  </a>
-                </sc-for>
+          <div class="db-mega-wrap">
+            <div class="db-mega-card">
+              <div class="db-mega-head">
+                <span style="color:#1e0f14;font-weight:600">DigitalBurj Ecosystem</span>
+                <span>7 connected divisions</span>
               </div>
-              <a href="/get-started" style="position:relative;overflow:hidden;border-radius:14px;background:#0f1714;color:#f6f5f1;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;min-height:15rem;isolation:isolate">
-                <img src="media/01-m.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%"/>
-                <span aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(11,16,14,.96) 0%,rgba(11,16,14,.78) 42%,rgba(11,16,14,.12) 100%)"></span>
-                <span style="position:relative;font:600 11px 'Instrument Sans';letter-spacing:.16em;text-transform:uppercase;color:#ff9a75">Not sure where to start?</span>
-                <span style="position:relative;margin-top:6px;font:700 18px/1.25 'Plus Jakarta Sans',sans-serif">Tell us the problem. We'll route it.</span>
-                <span style="position:relative;margin-top:12px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">Get started →</span>
-              </a>
+              <div class="db-mega-grid">
+                <div class="db-mega-list">
+                  <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="7">
+                    <a href="{{ d.href }}" class="db-mega-item">
+                      <img src="{{ d.icon }}" alt="" class="db-nav-brandmark"/>
+                      <span>
+                        <span style="display:block;font-weight:600;font-size:14px;color:#1e0f14">{{ d.name }}</span>
+                        <span style="display:block;font-size:12px;line-height:1.38;color:#7d6a6f;margin-top:2px">{{ d.line }}</span>
+                      </span>
+                    </a>
+                  </sc-for>
+                </div>
+                <a href="/get-started" class="db-mega-feature">
+                  <img src="media/33-m.webp" alt="" loading="lazy" decoding="async"/>
+                  <span style="position:relative;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(242,186,62,.2);border:1px solid rgba(242,186,62,.45);font-size:11px;font-weight:600;color:#f2ba3e;align-self:flex-start">Free · 30 min review</span>
+                  <span style="position:relative;margin-top:10px;font:500 20px/1.15 'Host Grotesk',sans-serif;letter-spacing:-.02em">Tell us the bottleneck. We'll route it.</span>
+                  <span style="position:relative;margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#f2ba3e">Start here ↗</span>
+                </a>
+              </div>
             </div>
           </div>
         </sc-if>
       </div>
       <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
-        <a href="{{ l.href }}" style="{{ l.style }}" style-hover="background:rgba(15,23,20,.05)">{{ l.label }}</a>
+        <a href="{{ l.href }}" class="{{ l.cls }}">{{ l.label }}</a>
       </sc-for>
     </nav>
-    <button onclick="{{ openSearch }}" aria-label="Search (Ctrl K)" style="margin-left:auto;height:40px;padding:0 12px;border-radius:12px;border:1px solid rgba(15,23,20,.1);background:#fff;display:flex;align-items:center;gap:10px;color:#5d6560;font:500 13px 'Instrument Sans';cursor:pointer;transition:border-color .2s" style-hover="border-color:rgba(15,23,20,.3)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <span style="{{ kbdStyle }}">Search</span>
-      <kbd style="{{ kbdStyle2 }}">⌘K</kbd>
-    </button>
-    <a class="db-nav-cta" href="/get-started" style="height:42px;padding:0 18px;border-radius:12px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font:600 14px 'Instrument Sans';display:inline-flex;align-items:center;gap:8px;box-shadow:0 10px 24px -10px rgba(242,58,29,.8);transition:background-position .8s cubic-bezier(.22,.8,.24,1),transform .25s;flex-shrink:0" style-hover="background-position:0 0;transform:translateY(-1px)">Get Started<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+    <div class="db-nav-right">
+      <button onclick="{{ openSearch }}" aria-label="Search (Ctrl K)" class="db-nav-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span style="{{ kbdStyle }}">Search</span>
+        <kbd style="{{ kbdStyle2 }}">⌘K</kbd>
+      </button>
+      <a class="db-btn db-btn--dark db-nav-cta" href="/get-started">Get Started<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+    </div>
   </div>
 </header>
 
 <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
-  <div onclick="{{ toggleSheet }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,23,20,.55);backdrop-filter:blur(4px);font-family:'Instrument Sans',sans-serif">
-    <div onclick="{{ stop }}" style="position:absolute;top:10px;left:10px;bottom:10px;width:min(22rem,calc(100% - 20px));border-radius:16px;background:#f6f5f1;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px 10px"><img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/><button onclick="{{ toggleSheet }}" aria-label="Close menu" style="width:36px;height:36px;border-radius:10px;border:1px solid rgba(15,23,20,.1);background:#fff;cursor:pointer">✕</button></div>
-      <div style="flex:1;overflow:auto;padding:8px 12px">
-        <p style="margin:10px 6px 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a918c">Ecosystem</p>
-        <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="5">
-          <a href="{{ d.href }}" style="display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:12px" style-hover="background:#fff"><img src="{{ d.icon }}" alt="" style="width:30px;height:30px;object-fit:contain"/><span style="font-weight:600;color:#0f1714">{{ d.name }}</span></a>
+  <div onclick="{{ toggleSheet }}" style="position:fixed;inset:0;z-index:95;background:rgba(20,7,11,.58);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:'Host Grotesk',sans-serif">
+    <div onclick="{{ stop }}" style="position:absolute;top:12px;left:12px;bottom:12px;width:min(22.5rem,calc(100% - 24px));border-radius:24px;background:#fbf6f0;border:1px solid #e1d5c8;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 36px 70px -20px rgba(20,7,11,.55)">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px 12px;border-bottom:1px solid #e1d5c8">
+        <img src="brand/wordmark-480.webp" alt="DigitalBurj" class="db-header-wordmark"/>
+        <button onclick="{{ toggleSheet }}" aria-label="Close menu" style="width:38px;height:38px;border-radius:50%;border:1px solid #e1d5c8;background:#fff;color:#1e0f14;cursor:pointer;font-size:15px">✕</button>
+      </div>
+      <div style="flex:1;overflow:auto;padding:12px 14px">
+        <p style="margin:6px 8px 8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7d6a6f">Ecosystem</p>
+        <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="7">
+          <a href="{{ d.href }}" style="display:flex;align-items:center;gap:12px;padding:10px 10px;border-radius:14px;color:#1e0f14" style-hover="background:#efe6dc"><img src="{{ d.icon }}" alt="" style="width:30px;height:30px;object-fit:contain;border-radius:8px;background:#fff;padding:3px"/><span style="font-weight:500;font-size:15px">{{ d.name }}</span></a>
         </sc-for>
-        <p style="margin:18px 6px 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a918c">Explore</p>
+        <p style="margin:18px 8px 8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7d6a6f">Explore</p>
         <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
-          <a href="{{ l.href }}" style="display:block;padding:12px 8px;border-radius:12px;font-weight:600;color:#0f1714" style-hover="background:#fff">{{ l.label }}</a>
+          <a href="{{ l.href }}" style="display:block;padding:11px 10px;border-radius:14px;font-weight:500;font-size:15px;color:#1e0f14" style-hover="background:#efe6dc">{{ l.label }}</a>
         </sc-for>
       </div>
-      <div style="padding:14px"><a href="/get-started" style="height:48px;border-radius:14px;background:#f23a1d;color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center">Get Started</a></div>
+      <div style="padding:14px;border-top:1px solid #e1d5c8"><a href="/get-started" class="db-btn db-btn--dark db-btn--full">Get Started<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
     </div>
   </div>
 </sc-if>
 
 <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
-  <div onclick="{{ closeSearch }}" style="position:fixed;inset:0;z-index:95;background:rgba(15,23,20,.5);backdrop-filter:blur(6px);display:flex;justify-content:center;padding:12vh 16px 0;font-family:'Instrument Sans',sans-serif">
-    <div onclick="{{ stop }}" role="dialog" aria-label="Search" style="width:min(38rem,100%);height:fit-content;border-radius:20px;background:#fff;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);overflow:hidden">
-      <div style="display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(15,23,20,.08)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5d6560" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input ref="{{ searchRef }}" value="{{ query }}" oninput="{{ setQuery }}" placeholder="Search pages and articles…" style="flex:1;border:none;outline:none;font:500 16px 'Instrument Sans';color:#0f1714;background:transparent"/>
-        <kbd style="font:600 11px 'Instrument Sans';color:#8a918c;border:1px solid rgba(15,23,20,.12);border-radius:6px;padding:2px 6px">ESC</kbd>
+  <div onclick="{{ closeSearch }}" style="position:fixed;inset:0;z-index:100;background:rgba(20,7,11,.56);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;justify-content:center;padding:12vh 16px 0;font-family:'Host Grotesk',sans-serif">
+    <div onclick="{{ stop }}" role="dialog" aria-label="Search" style="width:min(39rem,100%);height:fit-content;border-radius:24px;background:#fff;border:1px solid #e1d5c8;box-shadow:0 40px 90px -24px rgba(20,7,11,.58);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #e1d5c8;background:#fbf6f0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7d6a6f" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input ref="{{ searchRef }}" value="{{ query }}" oninput="{{ setQuery }}" placeholder="Search divisions, solutions and guides…" style="flex:1;border:none;outline:none;font:500 16px 'Host Grotesk',sans-serif;color:#1e0f14;background:transparent"/>
+        <kbd style="font:600 11px 'Host Grotesk',sans-serif;color:#7d6a6f;border:1px solid #e1d5c8;border-radius:8px;padding:3px 7px;background:#fff">ESC</kbd>
       </div>
-      <div style="max-height:22rem;overflow:auto;padding:8px">
+      <div style="max-height:23rem;overflow:auto;padding:8px">
         <sc-for list="{{ results }}" as="r" hint-placeholder-count="6">
-          <a href="{{ r.href }}" style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border-radius:12px" style-hover="background:#f6f5f1">
-            <span style="font-weight:600;font-size:14px;color:#0f1714">{{ r.label }}</span>
-            <span style="font-size:12px;color:#8a918c">{{ r.kind }}</span>
+          <a href="{{ r.href }}" style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;color:#1e0f14" style-hover="background:#f7f4ef">
+            <span style="font-weight:500;font-size:14.5px">{{ r.label }}</span>
+            <span style="font-size:12px;padding:4px 10px;border-radius:999px;background:#efe6dc;color:#4a393e">{{ r.kind }}</span>
           </a>
         </sc-for>
-        <sc-if value="{{ noResults }}"><p style="padding:16px;margin:0;color:#5d6560;font-size:14px">No matches. Try "automation" or "MVP".</p></sc-if>
+        <sc-if value="{{ noResults }}"><p style="padding:18px;margin:0;color:#7d6a6f;font-size:14px">No matches. Try "automation", "CRM" or "MVP".</p></sc-if>
       </div>
     </div>
   </div>
@@ -111,7 +127,7 @@ class Component extends DCLogic {
     { name: "Growth", line: "Websites, SEO, AEO, AI search, social and ads.", href: "/growth", icon: "brand/mark-growth.webp" },
     { name: "Studio", line: "Web apps, mobile apps, custom ERP and integrations.", href: "/studio", icon: "brand/mark-studio.webp" },
     { name: "Industry Solutions", line: "Vertical modules for 15 sectors on one core.", href: "/industries", icon: "brand/mark-industries.webp" },
-    { name: "Academy", line: "Learn it, apply it, prove it — courses and bundles from $3.", href: "/academy", icon: "brand/mark-academy.webp" },
+    { name: "Academy", line: "Learn it, apply it, prove it — courses from $3.", href: "/academy", icon: "brand/mark-academy.webp" },
     { name: "Verified Talent", line: "Specialists with the evidence attached.", href: "/talent", icon: "brand/mark-talent.webp" },
   ];
   linkData = [
@@ -145,7 +161,8 @@ class Component extends DCLogic {
   openSearch = () => { this.setState({ searchOpen: true }, () => setTimeout(() => this.searchRef.current && this.searchRef.current.focus(), 30)); };
   renderVals() {
     const { megaOpen, sheetOpen, searchOpen, query, narrow } = this.state;
-    const active = this.props.active;
+    const active = this.props.active || "";
+    const isEcoActive = !active || ["business-os", "business-ai", "growth", "studio", "academy", "talent", "solutions", "portfolio"].includes(active);
     const all = [...this.index, ...((this.articles || []).map((a) => ({ label: a.title, href: `/insights/${a.slug}`, kind: "Article" })))];
     const q = query.trim().toLowerCase();
     const results = (q ? all.filter((r) => r.label.toLowerCase().includes(q)) : all).slice(0, 10);
@@ -153,12 +170,13 @@ class Component extends DCLogic {
     return {
       megaOpen, sheetOpen, searchOpen, query, results, noResults: results.length === 0,
       divisions: this.divisions,
-      links: this.linkData.map((l) => ({ ...l, style: `height:40px;padding:0 14px;border-radius:10px;display:flex;align-items:center;font-size:14px;font-weight:500;color:${l.key === active ? "#f23a1d" : "#0f1714"};transition:background .2s` })),
-      navStyle: narrow ? "display:none" : "display:flex;align-items:center;gap:2px",
-      burgerStyle: narrow ? "display:grid;place-items:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;margin-left:-8px" : "display:none",
+      ecoClass: isEcoActive ? "db-nav-link is-active" : "db-nav-link",
+      links: this.linkData.map((l) => ({ ...l, cls: l.key === active ? "db-nav-link is-active" : "db-nav-link" })),
+      navStyle: narrow ? "display:none" : "display:flex;align-items:center;gap:4px",
+      burgerStyle: narrow ? "display:grid;place-items:center" : "display:none",
       kbdStyle: narrow ? "display:none" : "",
-      kbdStyle2: narrow ? "display:none" : "font:600 11px 'Instrument Sans';color:#8a918c;border:1px solid rgba(15,23,20,.12);border-radius:6px;padding:1px 5px",
-      chevStyle: `transition:transform .3s;transform:rotate(${megaOpen ? 180 : 0}deg)`,
+      kbdStyle2: narrow ? "display:none" : "",
+      chevStyle: `transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate(${megaOpen ? 180 : 0}deg)`,
       searchRef: this.searchRef,
       openMega: () => !narrow && this.setState({ megaOpen: true }),
       closeMega: () => this.setState({ megaOpen: false }),

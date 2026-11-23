@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/host-grotesk-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
@@ -14,49 +15,99 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="hero-system.css?v=7">
+<link rel="stylesheet" href="hero-system.css?v=8">
 </head>
 <body>
 <x-dc>
-<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#0f1714">
-<!-- HERO -->
-<section class="db-hero" aria-labelledby="page-hero-title"><x-import component-from-global-scope="hero-reel" slides="{{ p.reel }}" interval="7000" style="position:absolute;inset:0;z-index:-2" hint-size="100%,100%"></x-import>
-  <div class="db-hero-shade" aria-hidden="true"></div>
-  <div class="db-hero-content">
-    <div class="db-hero-grid">
+<div class="db-page-shell">
+<!-- TALLYSOFT SUBPAGE HERO (Rounded Travertine Stage + Floating Saffron Index Disc) -->
+<section class="db-sub-hero-outer" aria-labelledby="page-hero-title">
+  <div class="db-sub-hero-stage">
+    <div class="db-ts-hero-aura" aria-hidden="true" style="right:-6%;top:-18%;opacity:.65"></div>
+    <div class="db-sub-hero-grid" style="position:relative;z-index:2">
       <div>
-        <div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">{{ p.hero.eyebrow }}</p><sc-if value="{{ p.badge }}"><span class="db-hero-badge">{{ p.badge }}</span></sc-if></div>
-        <h1 id="page-hero-title" class="db-hero-title">{{ p.hero.h1 }} <span class="db-hero-accent">{{ p.hero.accent }}</span></h1>
-        <p class="db-hero-lead">{{ p.hero.lead }}</p>
-        <div class="db-hero-actions">
-          <a href="{{ p.hero.primary.href }}" style="height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(110deg,#f23a1d 0%,#f23a1d 40%,#ff7a45 50%,#f23a1d 60%,#f23a1d 100%);background-size:250% 100%;background-position:100% 0;color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -14px rgba(242,58,29,.9);transition:background-position .9s cubic-bezier(.22,.8,.24,1),transform .25s" style-hover="background-position:0 0;transform:translateY(-2px);color:#fff">{{ p.hero.primary.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <sc-if value="{{ p.hasSecondary }}"><a href="{{ p.hero.secondary.href }}" style="height:46px;padding:0 22px;border-radius:14px;background:rgba(246,245,241,.04);border:1px solid rgba(246,245,241,.22);color:#f6f5f1;font-weight:600;font-size:15px;display:inline-flex;align-items:center;transition:border-color .25s,background .25s,transform .25s" style-hover="border-color:#f6f5f1;background:rgba(246,245,241,.1);transform:translateY(-2px);color:#fff">{{ p.hero.secondary.label }}</a></sc-if>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+          <p class="db-kicker-dot" style="margin:0;color:#4a393e">{{ p.hero.eyebrow }}</p>
+          <sc-if value="{{ p.badge }}"><span style="padding:5px 11px;border-radius:999px;background:#fcecc2;border:1px solid rgba(45,17,26,.12);font:600 12px/1 'Host Grotesk',sans-serif;color:#2d111a">{{ p.badge }}</span></sc-if>
+        </div>
+        <div class="db-sub-hero-title-row">
+          <h1 id="page-hero-title" class="db-h1-sub" data-blur-text="">{{ p.hero.h1 }} {{ p.hero.accent }}</h1>
+          <span class="db-index-disc" aria-hidden="true" style="margin-top:6px">{{ p.discNum }}</span>
         </div>
       </div>
-      <aside class="db-hero-panel" aria-label="{{ p.hero.eyebrow }} overview">
-        <div class="db-panel-head"><img class="db-panel-icon" src="{{ p.panelIcon }}" alt=""/><div><span class="db-panel-label">DigitalBurj · {{ p.panelCategory }}</span><strong class="db-panel-title">{{ p.hero.eyebrow }}</strong></div></div>
-        <sc-if value="{{ p.isOrbit }}"><div class="db-panel-orbit"><span></span><img src="{{ p.panelIcon }}" alt=""/></div><p class="db-panel-note">Signals connected across your work</p></sc-if>
-        <sc-if value="{{ p.isBars }}"><p class="db-panel-note">Performance at a glance</p><div class="db-panel-bars"><span style="--h:43%;--delay:.1s"></span><span style="--h:66%;--delay:.2s"></span><span style="--h:51%;--delay:.3s"></span><span style="--h:82%;--delay:.4s"></span><span style="--h:74%;--delay:.5s"></span><span style="--h:100%;--delay:.6s"></span></div></sc-if>
-        <sc-if value="{{ p.isProgress }}"><p class="db-panel-note">From first conversation to outcome</p><div class="db-panel-ring"></div></sc-if>
-        <sc-if value="{{ p.isSteps }}"><p class="db-panel-note">The path forward</p><div style="position:relative;display:grid;gap:10px;margin-top:20px"><sc-for list="{{ p.panelRows }}" as="row" hint-placeholder-count="3"><div class="db-panel-row"><span style="color:#ff8b68">{{ row.n }}</span><span style="flex:1">{{ row.label }}</span><span class="db-panel-badge">↗</span></div></sc-for></div></sc-if>
-        <sc-if value="{{ p.noSteps }}"><div class="db-panel-row"><span style="flex:1">{{ p.panelFirst }}</span><span class="db-panel-badge">LIVE</span></div><div class="db-panel-row"><span style="flex:1">{{ p.panelSecond }}</span><span class="db-panel-badge">↗</span></div></sc-if>
-      </aside>
+
+      <div>
+        <p class="db-lead" style="max-width:30rem">{{ p.hero.lead }}</p>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px">
+          <a href="{{ p.hero.primary.href }}" class="db-btn db-btn--dark">{{ p.hero.primary.label }}<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+          <sc-if value="{{ p.hasSecondary }}"><a href="{{ p.hero.secondary.href }}" class="db-btn db-btn--white">{{ p.hero.secondary.label }}<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></sc-if>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<sc-for list="{{ p.sections }}" as="s" hint-placeholder-count="3">
-  <!-- LOOP -->
+<!-- FULL-BLEED ROUNDED PHOTO SHOWCASE BANNER (Tallysoft /platform signature) -->
+<section class="db-sub-hero-media-outer" aria-label="{{ p.hero.eyebrow }} visual showcase">
+  <div class="db-sub-hero-banner" data-reveal="scale">
+    <x-import component-from-global-scope="hero-reel" slides="{{ p.reel }}" interval="7000" style="position:absolute;inset:0;z-index:0" hint-size="100%,100%"></x-import>
+    <div class="db-sub-hero-banner-shade" aria-hidden="true"></div>
+    <div class="db-sub-hero-banner-bar">
+      <div class="db-glass-toast" style="align-self:auto">
+        <img src="{{ p.panelIcon }}" alt="" style="width:34px;height:34px;object-fit:contain;border-radius:10px;background:#fff;padding:4px"/>
+        <div>
+          <div style="font:600 13px 'Host Grotesk',sans-serif">{{ p.hero.eyebrow }}</div>
+          <div style="font-size:12px;color:rgba(255,246,236,.72)">{{ p.panelFirst }}</div>
+        </div>
+      </div>
+      <div class="db-bento-pills" style="margin-top:0">
+        <sc-for list="{{ p.panelRows }}" as="row" hint-placeholder-count="3">
+          <span class="db-bento-pill">{{ row.n }} · {{ row.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<sc-for list="{{ p.sections }}" as="s" hint-placeholder-count="4">
+  <!-- LOOP (Connected Horizontal Workflow Strip) -->
   <sc-if value="{{ s.isLoop }}">
-    <section style="max-width:76rem;margin:0 auto;padding:44px 24px 12px">
-      <div data-reveal="up" style="border-radius:20px;background:#fff;border:1px solid rgba(15,23,20,.08);padding:clamp(22px,3vw,34px)">
-        <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">{{ s.eyebrow }}</p>
-        <h2 style="margin:14px 0 0;font:700 clamp(1.25rem,1.05rem + .8vw,1.7rem)/1.15 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
-        <ol style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-          <sc-for list="{{ s.loop }}" as="l" hint-placeholder-count="4">
-            <li style="display:flex;align-items:center;gap:10px">
-              <span style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:#f6f5f1;font-weight:600;font-size:15px;transition:background .3s,color .3s" style-hover="background:#0f1714;color:#fff"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ l.n }}</span>{{ l.label }}</span>
-              <sc-if value="{{ l.arrow }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b9bfbb" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></sc-if>
+    <section style="background:#fff;padding:clamp(52px,6vw,84px) 0 12px">
+      <div class="db-container">
+        <div data-reveal="up" style="border-radius:28px;background:#f7f4ef;border:1px solid #e1d5c8;padding:clamp(26px,3.5vw,44px)">
+          <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+          <h2 class="db-h2-editorial" style="margin-top:12px;max-width:44rem">{{ s.h }}</h2>
+          <ol style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+            <sc-for list="{{ s.loop }}" as="l" hint-placeholder-count="6">
+              <li style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:#fff;border:1px solid #e1d5c8;font:500 15px 'Host Grotesk',sans-serif;color:#1e0f14;transition:background .3s,color .3s,border-color .3s" style-hover="background:#2d111a;color:#fff;border-color:#2d111a">
+                  <span style="width:24px;height:24px;border-radius:50%;background:#f2ba3e;color:#1e0f14;display:grid;place-items:center;font:600 11px 'Host Grotesk',sans-serif">{{ l.n }}</span>{{ l.label }}
+                </span>
+                <sc-if value="{{ l.arrow }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a6958b" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></sc-if>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- STEPS (Sticky Alternating Tints / Numbered Cards) -->
+  <sc-if value="{{ s.isSteps }}">
+    <section id="{{ s.id }}" style="background:#f7f4ef;padding:clamp(60px,7vw,104px) 0;margin-top:28px">
+      <div class="db-container">
+        <div data-reveal="up" style="max-width:46rem">
+          <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+          <h2 class="db-h2-display" style="margin-top:14px" data-blur-text="">{{ s.h }}</h2>
+        </div>
+        <ol style="list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17.5rem),1fr));gap:16px">
+          <sc-for list="{{ s.steps }}" as="st" hint-placeholder-count="4">
+            <li data-reveal="up" data-reveal-delay="{{ st.delay }}">
+              <div style="{{ st.cardStyle }}">
+                <span class="{{ st.discCls }}">{{ st.n }}</span>
+                <h3 class="db-h3-card" style="margin-top:20px">{{ st.t }}</h3>
+                <p style="margin:10px 0 0;font-size:14.5px;line-height:1.58;opacity:.8">{{ st.b }}</p>
+              </div>
             </li>
           </sc-for>
         </ol>
@@ -64,41 +115,23 @@
     </section>
   </sc-if>
 
-  <!-- STEPS -->
-  <sc-if value="{{ s.isSteps }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div data-reveal="up" style="max-width:44rem">
-        <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-        <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
-      </div>
-      <ol style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
-        <sc-for list="{{ s.steps }}" as="st" hint-placeholder-count="5">
-          <li data-reveal="up" data-reveal-delay="{{ st.delay }}" style="{{ s.item }}"><div style="height:100%;box-sizing:border-box;position:relative;padding:20px 20px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .4s cubic-bezier(.22,.8,.24,1),border-color .3s" style-hover="transform:translateY(-4px);border-color:#0f1714">
-            <span style="font:700 34px 'Plus Jakarta Sans',sans-serif;color:transparent;-webkit-text-stroke:1.2px #f23a1d">{{ st.n }}</span>
-            <h3 style="margin:12px 0 0;font:700 16px 'Plus Jakarta Sans',sans-serif">{{ st.t }}</h3>
-            <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#4a544f">{{ st.b }}</p>
-          </div></li>
-        </sc-for>
-      </ol>
-    </section>
-  </sc-if>
-
-  <!-- CARDS -->
+  <!-- CARDS (Tallysoft Interactive Row Morph List!) -->
   <sc-if value="{{ s.isCards }}">
-    <section id="{{ s.id }}" style="{{ s.wrapStyle }}">
-      <div style="max-width:76rem;margin:0 auto">
-        <div data-reveal="up" style="max-width:44rem">
-          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:{{ s.accent }}"><span style="width:18px;height:2px;background:{{ s.accent }}"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:{{ s.ink }}">{{ s.h }}</h2>
-          <sc-if value="{{ s.lead }}"><p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:{{ s.sub }}">{{ s.lead }}</p></sc-if>
+    <section id="{{ s.id }}" style="background:#fff;padding:clamp(56px,7vw,96px) 0">
+      <div class="db-container">
+        <div data-reveal="up" style="max-width:46rem;margin-bottom:36px">
+          <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+          <h2 class="db-h2-display" style="margin-top:12px">{{ s.h }}</h2>
+          <sc-if value="{{ s.lead }}"><p class="db-lead" style="margin-top:14px">{{ s.lead }}</p></sc-if>
         </div>
-        <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
-          <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6">
-            <li data-reveal="up" data-reveal-delay="{{ c.delay }}" style="{{ s.item }}">
-              <a href="{{ c.href }}" data-spot="" style="{{ c.style }}" style-hover="transform:translateY(-5px);border-color:#f23a1d">
-                <span style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:{{ s.accent }}">{{ c.n }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-                <span style="margin-top:16px;font:700 16px/1.25 'Plus Jakarta Sans',sans-serif">{{ c.t }}</span>
-                <span style="margin-top:10px;font-size:14px;line-height:1.55;color:{{ s.sub }}">{{ c.b }}</span>
+        <ul class="db-cases-list">
+          <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="4">
+            <li>
+              <a href="{{ c.href }}" class="db-case-row" style="grid-template-columns:56px minmax(0,1.25fr) minmax(0,1.15fr) 52px">
+                <span class="db-case-idx">{{ c.n }}</span>
+                <span class="db-case-title" style="font-size:clamp(1.25rem,1rem + .9vw,1.75rem)">{{ c.t }}</span>
+                <span class="db-case-desc">{{ c.b }}</span>
+                <span class="db-case-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
               </a>
             </li>
           </sc-for>
@@ -107,104 +140,68 @@
     </section>
   </sc-if>
 
-  <!-- SPLIT -->
+  <!-- SPLIT (Editorial Photo + Saffron Checkmarks) -->
   <sc-if value="{{ s.isSplit }}">
-    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:48px;align-items:center">
-        <div data-reveal="{{ s.imgDir }}" style="{{ s.imgOrder }}"><img src="{{ s.media }}" alt="{{ s.eyebrow }}" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px"/>
-          
-        </div>
-        <div data-reveal="up">
-          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
-          <p style="margin:18px 0 0;font-size:16px;line-height:1.65;color:#3b4541">{{ s.body }}</p>
-          <ul style="list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px">
-            <sc-for list="{{ s.bl }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:12px;font-size:15px;line-height:1.5"><span style="flex-shrink:0;width:22px;height:22px;border-radius:7px;background:#f23a1d;color:#fff;display:grid;place-items:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>{{ b.t }}</li></sc-for>
-          </ul>
-          <sc-if value="{{ s.link }}"><a href="{{ s.link.href }}" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;border-bottom:2px solid #f23a1d;padding-bottom:4px">{{ s.link.label }} →</a></sc-if>
-        </div>
-      </div>
-    </section>
-  </sc-if>
-
-  <!-- FAQ -->
-  <sc-if value="{{ s.isFaq }}">
-    <section style="max-width:76rem;margin:0 auto;padding:28px 24px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:24px 40px">
-        <div data-reveal="up"><p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d">FAQ</p><h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.06 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">Questions.</h2></div>
-        <div style="border-top:1px solid rgba(15,23,20,.12)">
-          <sc-for list="{{ s.faqs }}" as="f" hint-placeholder-count="3">
-            <div style="border-bottom:1px solid rgba(15,23,20,.12)">
-              <h3 style="margin:0"><button onclick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border:none;background:none;text-align:left;cursor:pointer;font:600 15px 'Instrument Sans';color:#0f1714">{{ f.q }}<span style="{{ f.iconStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
-              <div style="{{ f.panelStyle }}"><div style="overflow:hidden"><p style="margin:0 0 14px;font-size:14px;line-height:1.6;color:#3b4541">{{ f.a }}</p></div></div>
+    <section style="background:#fff;padding:clamp(56px,7vw,96px) 0">
+      <div class="db-container">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:clamp(28px,5vw,64px);align-items:center">
+          <div data-reveal="{{ s.imgDir }}" style="{{ s.imgOrder }}">
+            <div style="border-radius:28px;overflow:hidden;border:1px solid #e1d5c8;box-shadow:0 24px 48px -20px rgba(20,7,11,.2)">
+              <img src="{{ s.media }}" alt="{{ s.eyebrow }}" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover"/>
             </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-  </sc-if>
-
-  <!-- MODULES -->
-  <sc-if value="{{ s.isModules }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-        <div style="max-width:44rem">
-          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
-        </div>
-        <p style="margin:0;font:700 14px 'Plus Jakarta Sans',sans-serif;color:#6b746f">{{ s.count }} items</p>
-      </div>
-      <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
-        <sc-for list="{{ s.mods }}" as="m" hint-placeholder-count="6">
-          <li data-reveal="up" data-reveal-delay="{{ m.delay }}" style="{{ s.item }}"><div data-spot="" style="height:100%;box-sizing:border-box;position:relative;display:flex;flex-direction:column;padding:20px 20px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;background-image:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.07),transparent 50%)" style-hover="transform:translateY(-5px);border-color:rgba(242,58,29,.4);box-shadow:0 34px 60px -40px rgba(15,23,20,.5)">
-            <span style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ m.n }}</span><sc-if value="{{ m.for }}"><span style="font-size:11px;font-weight:600;color:#6b746f;text-align:right;line-height:1.3">{{ m.for }}</span></sc-if></span>
-            <h3 style="margin:14px 0 0;font:700 17px/1.25 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em">{{ m.t }}</h3>
-            <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px">
-              <sc-for list="{{ m.bl }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:10px;font-size:14px;line-height:1.5;color:#3b4541"><span style="flex-shrink:0;margin-top:7px;width:6px;height:6px;border-radius:2px;background:#f23a1d"></span>{{ b.t }}</li></sc-for>
+          </div>
+          <div data-reveal="up">
+            <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+            <h2 class="db-h2-display" style="margin-top:14px">{{ s.h }}</h2>
+            <p class="db-lead" style="margin-top:18px">{{ s.body }}</p>
+            <ul style="list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px">
+              <sc-for list="{{ s.bl }}" as="b" hint-placeholder-count="3">
+                <li style="display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.5;color:#1e0f14">
+                  <span style="flex-shrink:0;margin-top:2px;width:22px;height:22px;border-radius:50%;background:#f2ba3e;color:#1e0f14;display:grid;place-items:center;font-size:11px;font-weight:700">✓</span>
+                  <span>{{ b.t }}</span>
+                </li>
+              </sc-for>
             </ul>
-            <sc-if value="{{ m.diff }}"><p style="margin:auto 0 0;padding-top:18px;font-size:13px;line-height:1.5;color:#0f1714;border-top:1px dashed rgba(15,23,20,.14);margin-top:18px"><span style="font-weight:700;color:#c9260e">Why it's different · </span>{{ m.diff }}</p></sc-if>
-          </div></li>
-        </sc-for>
-      </ul>
-    </section>
-  </sc-if>
-
-  <!-- PRICING -->
-  <sc-if value="{{ s.isPricing }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div data-reveal="up" style="max-width:44rem">
-        <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-        <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
-        <p style="margin:14px 0 0;font-size:15px;color:#4a544f">{{ s.lead }}</p>
-      </div>
-      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:14px">
-        <sc-for list="{{ s.plans }}" as="pl" hint-placeholder-count="8">
-          <div data-reveal="up" data-reveal-delay="{{ pl.delay }}" style="{{ s.item }}"><div style="{{ pl.style }}" style-hover="transform:translateY(-6px)">
-            <sc-if value="{{ pl.featured }}"><span style="position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px;background:#f23a1d;color:#fff">Most popular</span></sc-if>
-            <p style="margin:0;font:700 15px 'Plus Jakarta Sans',sans-serif">{{ pl.name }}</p>
-            <p style="margin:22px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font:700 clamp(1.6rem,1.3rem + .8vw,2.1rem) 'Plus Jakarta Sans',sans-serif">{{ pl.price }}</span><span style="font-size:13px;opacity:.65">{{ pl.per }}</span></p>
-            <p style="margin:14px 0 0;font-size:14px;line-height:1.55;opacity:.78;flex:1">{{ pl.scope }}</p>
-            <a href="{{ pl.href }}" style="{{ pl.btn }}">{{ pl.cta }}</a>
-          </div></div>
-        </sc-for>
-      </div>
-    </section>
-  </sc-if>
-
-  <!-- PAIRS -->
-  <sc-if value="{{ s.isPairs }}">
-    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px;align-items:start">
-        <div data-reveal="up">
-          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
+            <sc-if value="{{ s.link }}">
+              <div style="margin-top:28px">
+                <a href="{{ s.link.href }}" class="db-btn db-btn--dark">{{ s.link.label }}<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+              </div>
+            </sc-if>
+          </div>
         </div>
-        <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(15,23,20,.12)">
-          <sc-for list="{{ s.rows }}" as="r" hint-placeholder-count="4">
-            <li data-reveal="up" style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding:18px 4px;border-bottom:1px solid rgba(15,23,20,.12);transition:background .25s,padding .35s cubic-bezier(.22,.8,.24,1)" style-hover="background:#fff;padding-left:14px;padding-right:14px">
-              <span style="font-weight:600;font-size:15px">{{ r.a }}</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f23a1d" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              <span style="font-size:15px;color:#3b4541;text-align:right">{{ r.b }}</span>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- MODULES (Tallysoft Bento Spotlight Grid) -->
+  <sc-if value="{{ s.isModules }}">
+    <section id="{{ s.id }}" style="background:#fff;padding:clamp(56px,7vw,96px) 0">
+      <div class="db-container">
+        <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <div style="max-width:46rem">
+            <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+            <h2 class="db-h2-display" style="margin-top:12px">{{ s.h }}</h2>
+          </div>
+          <span style="padding:8px 16px;border-radius:999px;background:#efe6dc;font:600 13px 'Host Grotesk',sans-serif;color:#2d111a">{{ s.count }} modules</span>
+        </div>
+        <ul style="list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr));gap:16px">
+          <sc-for list="{{ s.mods }}" as="m" hint-placeholder-count="6">
+            <li data-reveal="up" data-reveal-delay="{{ m.delay }}">
+              <div data-spot="" class="db-mod-card">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                  <span style="width:34px;height:34px;border-radius:50%;background:#f2ba3e;color:#1e0f14;display:grid;place-items:center;font:600 12px 'Host Grotesk',sans-serif">{{ m.n }}</span>
+                  <sc-if value="{{ m.for }}"><span style="font-size:12px;font-weight:500;color:#7d6a6f;text-align:right;line-height:1.3">{{ m.for }}</span></sc-if>
+                </div>
+                <h3 class="db-h3-card" style="margin-top:18px;font-size:21px">{{ m.t }}</h3>
+                <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px">
+                  <sc-for list="{{ m.bl }}" as="b" hint-placeholder-count="3">
+                    <li style="display:flex;gap:10px;font-size:14.5px;line-height:1.5;color:#4a393e"><span style="flex-shrink:0;margin-top:7px;width:6px;height:6px;border-radius:50%;background:#2d111a"></span><span>{{ b.t }}</span></li>
+                  </sc-for>
+                </ul>
+                <sc-if value="{{ m.diff }}">
+                  <p style="margin:auto 0 0;padding-top:16px;font-size:13.5px;line-height:1.5;color:#1e0f14;border-top:1px dashed #e1d5c8;margin-top:18px"><span style="font-weight:600;color:#2d111a">Why it's different · </span>{{ m.diff }}</p>
+                </sc-if>
+              </div>
             </li>
           </sc-for>
         </ul>
@@ -212,65 +209,150 @@
     </section>
   </sc-if>
 
-  <!-- CHIPS -->
+  <!-- PRICING (Tallysoft Alabaster Grid + Elevated Dark Featured Card) -->
+  <sc-if value="{{ s.isPricing }}">
+    <section id="{{ s.id }}" class="db-pricing-sec">
+      <div class="db-container">
+        <div data-reveal="up" style="max-width:46rem">
+          <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+          <h2 class="db-h2-display" style="margin-top:12px">{{ s.h }}</h2>
+          <p class="db-lead" style="margin-top:14px">{{ s.lead }}</p>
+        </div>
+        <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17.5rem),1fr));gap:18px;align-items:stretch">
+          <sc-for list="{{ s.plans }}" as="pl" hint-placeholder-count="8">
+            <div data-reveal="up" data-reveal-delay="{{ pl.delay }}" class="{{ pl.cardCls }}" style="transform:none">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                <p style="margin:0;font:500 20px 'Host Grotesk',sans-serif">{{ pl.name }}</p>
+                <sc-if value="{{ pl.featured }}"><span class="db-plan-pop-badge">Most popular</span></sc-if>
+              </div>
+              <p style="margin:20px 0 0;display:flex;align-items:baseline;gap:6px">
+                <span style="font:500 clamp(2rem,1.5rem + 1vw,2.6rem)/1 'Host Grotesk',sans-serif;letter-spacing:-.04em">{{ pl.price }}</span>
+                <span style="font-size:13px;opacity:.62">{{ pl.per }}</span>
+              </p>
+              <p style="margin:14px 0 24px;font-size:14.5px;line-height:1.55;opacity:.8;flex:1">{{ pl.scope }}</p>
+              <a href="{{ pl.href }}" class="{{ pl.btnCls }}">{{ pl.cta }}<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- PAIRS (Tallysoft Interactive Morph Rows) -->
+  <sc-if value="{{ s.isPairs }}">
+    <section style="background:#fff;padding:clamp(56px,7vw,96px) 0">
+      <div class="db-container">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:48px;align-items:start">
+          <div data-reveal="up">
+            <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+            <h2 class="db-h2-display" style="margin-top:12px">{{ s.h }}</h2>
+          </div>
+          <ul class="db-cases-list">
+            <sc-for list="{{ s.rows }}" as="r" hint-placeholder-count="5">
+              <li class="db-case-row" style="grid-template-columns:1fr auto 1fr;padding:20px 14px;cursor:default">
+                <span style="font:500 16px 'Host Grotesk',sans-serif">{{ r.a }}</span>
+                <span style="width:32px;height:32px;border-radius:50%;background:#f2ba3e;color:#1e0f14;display:grid;place-items:center;font-weight:700">→</span>
+                <span class="db-case-desc" style="text-align:right;font-weight:500">{{ r.b }}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- CHIPS (Deep Imperial Oxblood Rounded Stage) -->
   <sc-if value="{{ s.isChips }}">
-    <section style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div data-reveal="up" style="border-radius:20px;background:#0f1714;color:#f6f5f1;padding:clamp(22px,3vw,36px);position:relative;overflow:hidden">
-        <div aria-hidden="true" style="position:absolute;right:-8rem;top:-8rem;width:24rem;height:24rem;border-radius:50%;background:radial-gradient(circle,rgba(242,58,29,.3),transparent 65%)"></div>
-        <p style="position:relative;margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ff7a45">{{ s.eyebrow }}</p>
-        <h2 style="position:relative;margin:14px 0 0;font:700 clamp(1.3rem,1.1rem + 1vw,1.85rem)/1.12 'Plus Jakarta Sans',sans-serif;color:#f6f5f1">{{ s.h }}</h2>
-        <sc-if value="{{ s.lead }}"><p style="position:relative;margin:14px 0 0;max-width:36rem;font-size:15px;line-height:1.6;color:rgba(246,245,241,.68)">{{ s.lead }}</p></sc-if>
-        <ul style="position:relative;list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
-          <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="6"><li style="padding:10px 16px;border-radius:12px;border:1px solid rgba(246,245,241,.16);background:rgba(246,245,241,.04);font-size:14px;font-weight:600;transition:border-color .25s,background .25s" style-hover="border-color:#f23a1d;background:rgba(242,58,29,.12)">{{ c.t }}</li></sc-for>
+    <section style="padding:16px 16px 32px;background:#fff">
+      <div data-reveal="scale" style="max-width:1360px;margin:0 auto;border-radius:32px;background:radial-gradient(65% 65% at 85% 0%,#4e1e2c 0%,#2d111a 52%,#14070b 100%);color:#fff;padding:clamp(32px,4.5vw,56px)">
+        <p class="db-kicker-dot" style="margin:0;color:rgba(255,246,236,.72)">{{ s.eyebrow }}</p>
+        <h2 class="db-h2-display" style="margin-top:14px;color:#fff">{{ s.h }}</h2>
+        <sc-if value="{{ s.lead }}"><p style="margin:14px 0 0;max-width:38rem;font-size:16px;line-height:1.55;color:rgba(255,246,236,.72)">{{ s.lead }}</p></sc-if>
+        <ul style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="8">
+            <li class="db-bento-pill" style="padding:11px 18px;font-size:14px">{{ c.t }}</li>
+          </sc-for>
         </ul>
       </div>
     </section>
   </sc-if>
 
-  <!-- DIRECTORY (same card system as MODULES) -->
+  <!-- DIRECTORY (Clean Grouped Cards) -->
   <sc-if value="{{ s.isDirectory }}">
-    <section id="{{ s.id }}" style="max-width:76rem;margin:0 auto;padding:44px 24px">
-      <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-        <div style="max-width:44rem">
-          <p style="margin:0;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f23a1d"><span style="width:18px;height:2px;background:#f23a1d"></span>{{ s.eyebrow }}</p>
-          <h2 style="margin:12px 0 0;font:700 clamp(1.5rem,1.15rem + 1.25vw,2.15rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ s.h }}</h2>
-          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#4a544f">{{ s.lead }}</p>
+    <section id="{{ s.id }}" style="background:#f7f4ef;padding:clamp(60px,7vw,104px) 0">
+      <div class="db-container">
+        <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <div style="max-width:46rem">
+            <p class="db-kicker-dot" style="margin:0">{{ s.eyebrow }}</p>
+            <h2 class="db-h2-display" style="margin-top:12px">{{ s.h }}</h2>
+            <p class="db-lead" style="margin-top:14px">{{ s.lead }}</p>
+          </div>
+          <span style="padding:8px 16px;border-radius:999px;background:#f2ba3e;font:600 13px 'Host Grotesk',sans-serif;color:#1e0f14">{{ s.total }} items</span>
         </div>
-        <p style="margin:0;font:700 14px 'Plus Jakarta Sans',sans-serif;color:#6b746f">{{ s.total }} items</p>
+        <ul style="list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr));gap:16px">
+          <sc-for list="{{ s.groups }}" as="g" hint-placeholder-count="6">
+            <li data-reveal="up" data-reveal-delay="{{ g.delay }}">
+              <div data-spot="" class="db-mod-card">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                  <span style="width:34px;height:34px;border-radius:50%;background:#2d111a;color:#f2ba3e;display:grid;place-items:center;font:600 12px 'Host Grotesk',sans-serif">{{ g.num }}</span>
+                  <span style="font-size:12px;font-weight:600;color:#7d6a6f">{{ g.n }} items</span>
+                </div>
+                <h3 class="db-h3-card" style="margin-top:16px;font-size:20px">{{ g.t }}</h3>
+                <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 14px">
+                  <sc-for list="{{ g.chips }}" as="c" hint-placeholder-count="6">
+                    <li style="display:flex;gap:8px;font-size:13.5px;line-height:1.42;color:#4a393e"><span style="flex-shrink:0;margin-top:6px;width:5px;height:5px;border-radius:50%;background:#f2ba3e"></span><span>{{ c.t }}</span></li>
+                  </sc-for>
+                </ul>
+              </div>
+            </li>
+          </sc-for>
+        </ul>
+        <sc-if value="{{ s.note }}"><p style="margin:18px 0 0;font-size:12.5px;color:#7d6a6f">{{ s.note }}</p></sc-if>
       </div>
-      <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px">
-        <sc-for list="{{ s.groups }}" as="g" hint-placeholder-count="6">
-          <li data-reveal="up" data-reveal-delay="{{ g.delay }}" style="{{ s.item }}"><div data-spot="" style="height:100%;box-sizing:border-box;position:relative;display:flex;flex-direction:column;padding:20px 20px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;background-image:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,.07),transparent 50%)" style-hover="transform:translateY(-5px);border-color:rgba(242,58,29,.4);box-shadow:0 34px 60px -40px rgba(15,23,20,.5)">
-            <span style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:700 12px 'Plus Jakarta Sans',sans-serif;color:#f23a1d">{{ g.num }}</span><span style="font-size:11px;font-weight:600;color:#6b746f;text-align:right;line-height:1.3">{{ g.n }} items</span></span>
-            <h3 style="margin:14px 0 0;font:700 17px/1.25 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em">{{ g.t }}</h3>
-            <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 14px">
-              <sc-for list="{{ g.chips }}" as="c" hint-placeholder-count="6"><li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#3b4541"><span style="flex-shrink:0;margin-top:7px;width:6px;height:6px;border-radius:2px;background:#f23a1d"></span>{{ c.t }}</li></sc-for>
-            </ul>
-          </div></li>
-        </sc-for>
-      </ul>
-      <sc-if value="{{ s.note }}"><p style="margin:16px 0 0;font-size:12px;color:#6b746f">{{ s.note }}</p></sc-if>
     </section>
   </sc-if>
 
-  <!-- CTA -->
-  <sc-if value="{{ s.isCta }}">
-    <section style="padding:16px 12px 4px">
-      <div data-reveal="scale" style="position:relative;max-width:86rem;margin:0 auto;border-radius:22px;overflow:hidden;background:#0f1714;color:#fff;padding:clamp(28px,4vw,44px) 24px;text-align:center">
-        <div aria-hidden="true" style="position:absolute;left:50%;top:-40%;width:44rem;height:44rem;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(242,58,29,.35),transparent 62%)"></div>
-        <div style="position:relative">
-          <h2 style="margin:0 auto;max-width:44rem;font:700 clamp(1.4rem,1.1rem + 1.2vw,2rem)/1.12 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#fff">{{ s.h }}</h2>
-          <sc-if value="{{ s.lead }}"><p style="margin:10px auto 0;max-width:30rem;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.72)">{{ s.lead }}</p></sc-if>
-          <div style="margin-top:18px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
-            <a href="{{ s.primary.href }}" style="height:46px;padding:0 22px;border-radius:14px;background:#f23a1d;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#ff5533;color:#fff">{{ s.primary.label }} →</a>
-            <sc-if value="{{ s.hasSecondary }}"><a href="{{ s.secondary.href }}" style="height:46px;padding:0 22px;border-radius:14px;border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;display:inline-flex;align-items:center;transition:background .25s" style-hover="background:rgba(255,255,255,.1);color:#fff">{{ s.secondary.label }}</a></sc-if>
+  <!-- FAQ (Exact Tallysoft Asymmetric Layout + Dark "Still curious?" Card) -->
+  <sc-if value="{{ s.isFaq }}">
+    <section class="db-faq-sec">
+      <div class="db-container db-faq-grid">
+        <div class="db-faq-list">
+          <sc-for list="{{ s.faqs }}" as="f" hint-placeholder-count="3">
+            <div class="db-faq-item">
+              <h3 style="margin:0"><button type="button" onclick="{{ f.toggle }}" aria-expanded="{{ f.open }}" class="db-faq-btn"><span>{{ f.q }}</span><span class="{{ f.circleCls }}" aria-hidden="true">{{ f.symbol }}</span></button></h3>
+              <div style="{{ f.panelStyle }}"><div style="overflow:hidden"><p style="margin:0 0 22px;max-width:42rem;font-size:15.5px;line-height:1.6;color:#4a393e">{{ f.a }}</p></div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:sticky;top:112px" data-reveal="up">
+          <h2 class="db-h2-display">Questions,<br/>answered.</h2>
+          <div class="db-faq-still-card">
+            <h3 style="margin:0;font:500 22px 'Host Grotesk',sans-serif;color:#fff">Still curious?</h3>
+            <p style="margin:10px 0 20px;font-size:14.5px;line-height:1.5;color:rgba(255,246,236,.72)">Talk directly to our team. A real specialist replies within one business day.</p>
+            <a href="/contact" class="db-btn db-btn--accent" style="height:46px;padding:4px 6px 4px 18px">Talk to us<span class="db-btn-circle" style="width:34px;height:34px" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
           </div>
         </div>
       </div>
     </section>
   </sc-if>
+
+  <!-- CTA (Tallysoft Rounded Dark Photo Stage) -->
+  <sc-if value="{{ s.isCta }}">
+    <section class="db-waitlist-outer">
+      <div data-reveal="scale" class="db-waitlist-stage" style="min-height:22rem;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)">
+        <img src="media/33-d.webp" alt="" loading="lazy" decoding="async"/>
+        <div>
+          <h2 class="db-h2-display" style="color:#fff">{{ s.h }}</h2>
+          <sc-if value="{{ s.lead }}"><p style="margin:14px 0 0;max-width:34rem;font-size:16px;line-height:1.55;color:rgba(255,246,236,.8)">{{ s.lead }}</p></sc-if>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
+          <a href="{{ s.primary.href }}" class="db-btn db-btn--accent">{{ s.primary.label }}<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+          <sc-if value="{{ s.hasSecondary }}"><a href="{{ s.secondary.href }}" class="db-btn db-btn--ghost">{{ s.secondary.label }}<span class="db-btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></sc-if>
+        </div>
+      </div>
+    </section>
+  </sc-if>
 </sc-for>
-<div style="height:16px"></div>
 </div>
 
 </x-dc>
@@ -283,8 +365,6 @@ class Component extends DCLogic {
     const blank = { crumb: "", hero: { eyebrow: "", h1: "", accent: "", lead: "", primary: { label: "", href: "#" }, secondary: { label: "", href: "#" }, img: "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" }, sections: [] };
     const d = src || blank;
     const n = (i) => String(i + 1).padStart(2, "0");
-    const cols = (k) => { let best = 3, sc = -1; for (const c of [4, 3, 5, 2]) { const r = k % c, v = r === 0 ? 1 : r / c; if (v > sc + 0.001) { sc = v; best = c; } } return Math.min(best, k || 1); };
-    const item = (k, min = 15) => { const c = cols(k); return `flex:1 1 calc((100% - ${(c - 1) * 14}px) / ${c});min-width:min(100%,${min}rem);display:flex;flex-direction:column`; };
     const reels = { "business-os": "27,14,16,17,18", "business-ai": "28,21,05,20", growth: "30,23,06", studio: "26,04,13", industries: "industry01,industry02,industry03", academy: "25,12,24", talent: "29,07,24", jobs: "07,29,12", pricing: "32,31,33", company: "33,24,31,32", solutions: "19,20,15,08", portfolio: "32,26,04", "get-started": "31,33,01" };
     const usedMedia = new Set((reels[this.props.page] || "01,33,31").split(",").map(Number));
     const fallbackMedia = {
@@ -298,50 +378,71 @@ class Component extends DCLogic {
       usedMedia.add(id);
       return `media/${String(id).padStart(2,"0")}-d.webp`;
     };
+    const stepBg = [
+      "height:100%;border-radius:24px;padding:28px;background:#fff;color:#1e0f14;border:1px solid #e1d5c8",
+      "height:100%;border-radius:24px;padding:28px;background:#efe6dc;color:#1e0f14;border:1px solid #e1d5c8",
+      "height:100%;border-radius:24px;padding:28px;background:#fcecc2;color:#1e0f14;border:1px solid rgba(45,17,26,.1)",
+      "height:100%;border-radius:24px;padding:28px;background:#2d111a;color:#fff;border:1px solid #2d111a"
+    ];
     const sections = d.sections.map((s, si) => {
-      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", isDirectory: s.type === "directory", note: s.note || "", lead: s.lead || "", link: s.link || null, item: item(s.type === "pricing" ? (s.plans || this.state.plans).length : (s.items || []).length, s.type === "modules" ? 17 : 15) };
+      const base = { ...s, id: s.id || `s${si}`, isLoop: s.type === "loop", isSteps: s.type === "steps", isCards: s.type === "cards", isSplit: s.type === "split", isFaq: s.type === "faq", isCta: s.type === "cta", isModules: s.type === "modules", isPricing: s.type === "pricing", isPairs: s.type === "pairs", isChips: s.type === "chips", isDirectory: s.type === "directory", note: s.note || "", lead: s.lead || "", link: s.link || null };
       if (s.type === "loop") base.loop = s.items.map((label, i) => ({ label, n: n(i), arrow: i < s.items.length - 1 }));
-      if (s.type === "steps") base.steps = s.items.map((x, i) => ({ ...x, n: n(i), delay: String((i % 3) * 90) }));
+      if (s.type === "steps") base.steps = s.items.map((x, i) => ({
+        ...x, n: n(i), delay: String((i % 4) * 70),
+        cardStyle: stepBg[i % 4],
+        discCls: i % 4 === 3 ? "db-index-disc" : "db-index-disc db-index-disc--dark",
+      }));
       if (s.type === "cards") {
-        const dark = !!s.dark;
-        Object.assign(base, {
-          wrapStyle: dark ? "background:#0f1714;padding:40px 0;margin:28px 0" : "padding:44px 0",
-          accent: dark ? "#ff7a45" : "#f23a1d", ink: dark ? "#f6f5f1" : "#0f1714", sub: dark ? "rgba(246,245,241,.62)" : "#4a544f",
-          cards: s.items.map((c, i) => ({
-            ...c, n: n(i), href: c.href || "/contact", delay: String((i % 3) * 80),
-            style: `height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:18px;border-radius:16px;min-height:9.5rem;transition:transform .45s cubic-bezier(.22,.8,.24,1),border-color .3s,box-shadow .45s;color:${dark ? "#f6f5f1" : "#0f1714"};background-color:${dark ? "rgba(246,245,241,.04)" : "#fff"};border:1px solid ${dark ? "rgba(246,245,241,.1)" : "rgba(15,23,20,.08)"};background-image:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(242,58,29,${dark ? ".18" : ".08"}),transparent 50%)`,
-            hover: `transform:translateY(-5px);border-color:${dark ? "rgba(242,58,29,.5)" : "rgba(242,58,29,.4)"};box-shadow:0 34px 60px -40px rgba(15,23,20,.55);color:${dark ? "#fff" : "#0f1714"}`,
-          })),
-        });
+        base.cards = s.items.map((c, i) => ({ ...c, n: n(i), href: c.href || "/contact" }));
       }
-      if (s.type === "split") Object.assign(base, { media: this.props.page === "industries" ? `industry/${String((si % 15)+1).padStart(2,"0")}-${["logistics","travel","trading","real-estate","construction","facility","services","recruitment","retail","automotive","hospitality","education","manufacturing","healthcare","ecommerce"][si % 15]}.webp` : pickMedia(s.img), bl: s.bullets.map((t) => ({ t })), imgOrder: s.reverse ? "order:2" : "", imgDir: s.reverse ? "right" : "left" });
+      if (s.type === "split") Object.assign(base, {
+        media: this.props.page === "industries" ? `industry/${String((si % 15)+1).padStart(2,"0")}-${["logistics","travel","trading","real-estate","construction","facility","services","recruitment","retail","automotive","hospitality","education","manufacturing","healthcare","ecommerce"][si % 15]}.webp` : pickMedia(s.img),
+        bl: s.bullets.map((t) => ({ t })), imgOrder: s.reverse ? "order:2" : "", imgDir: s.reverse ? "right" : "left"
+      });
       if (s.type === "faq") base.faqs = s.items.map((f, i) => {
         const key = `${si}-${i}`, open = this.state.faq === key || (this.state.faq === "" && i === 0);
-        return { ...f, open, toggle: () => this.setState({ faq: open ? "none" : key }),
-          panelStyle: `display:grid;grid-template-rows:${open ? "1fr" : "0fr"};transition:grid-template-rows .45s cubic-bezier(.22,.8,.24,1)`,
-          iconStyle: `flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;transition:transform .4s cubic-bezier(.22,.8,.24,1),background .3s,color .3s;transform:rotate(${open ? 45 : 0}deg);background:${open ? "#f23a1d" : "#fff"};color:${open ? "#fff" : "#0f1714"};border:1px solid ${open ? "#f23a1d" : "rgba(15,23,20,.14)"}` };
+        return {
+          ...f, open,
+          symbol: open ? "−" : "+",
+          circleCls: open ? "db-faq-circle is-open" : "db-faq-circle",
+          toggle: () => this.setState({ faq: open ? "none" : key }),
+          panelStyle: `display:grid;grid-template-rows:${open ? "1fr" : "0fr"};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)`
+        };
       });
-      if (s.type === "modules") Object.assign(base, { count: s.items.length, mods: s.items.map((m, i) => ({ t: m.t, for: m.for || "", diff: m.diff || "", n: n(i), delay: String((i % 3) * 80), bl: m.bullets.map((t) => ({ t })) })) });
+      if (s.type === "modules") Object.assign(base, { count: s.items.length, mods: s.items.map((m, i) => ({ t: m.t, for: m.for || "", diff: m.diff || "", n: n(i), delay: String((i % 3) * 70), bl: m.bullets.map((t) => ({ t })) })) });
       if (s.type === "pricing") base.plans = (s.plans || this.state.plans).map((p, i) => {
         const f = !!p.featured;
-        return { ...p, featured: f, delay: String((i % 4) * 70), href: p.href || "/contact", cta: p.cta || (p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan"),
-          style: `position:relative;height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:20px 18px;border-radius:16px;min-height:13rem;transition:transform .45s cubic-bezier(.22,.8,.24,1);${f ? "background:#0f1714;color:#f6f5f1;border:1px solid #0f1714;box-shadow:0 40px 70px -40px rgba(242,58,29,.6)" : "background:#fff;color:#0f1714;border:1px solid rgba(15,23,20,.08)"}`,
-          btn: `margin-top:22px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;transition:background .25s,color .25s;${f ? "background:#f23a1d;color:#fff" : "background:#f6f5f1;color:#0f1714;border:1px solid rgba(15,23,20,.1)"}` };
+        return {
+          ...p, featured: f, delay: String((i % 4) * 70),
+          href: p.href || "/contact",
+          cta: p.cta || (p.price === "Custom" ? "Talk to sales" : p.price === "$0" ? "Start free" : "Choose plan"),
+          cardCls: f ? "db-plan-card db-plan-card--featured" : "db-plan-card",
+          btnCls: f ? "db-btn db-btn--accent db-btn--full" : "db-btn db-btn--dark db-btn--full"
+        };
       });
       if (s.type === "pairs") base.rows = s.items.map(([a, b]) => ({ a, b }));
       if (s.type === "directory") Object.assign(base, {
-        total: s.groups.reduce((n, g) => n + g.items.length, 0), item: item(s.groups.length),
-        groups: s.groups.map((g, i) => ({ t: g.t, n: g.items.length, num: n(i), delay: String((i % 3) * 80), chips: g.items.map((t) => ({ t })) })),
+        total: s.groups.reduce((acc, g) => acc + g.items.length, 0),
+        groups: s.groups.map((g, i) => ({ t: g.t, n: g.items.length, num: n(i), delay: String((i % 3) * 70), chips: g.items.map((t) => ({ t })) })),
       });
       if (s.type === "chips") base.chips = s.items.map((t) => ({ t }));
       if (s.type === "cta") Object.assign(base, { hasSecondary: !!s.secondary, secondary: s.secondary || { label: "", href: "#" } });
       return base;
     });
-    const variants = { "business-os": "grid", growth: "signal", pricing: "network", "business-ai": "network", studio: "grid", academy: "signal", talent: "network", jobs: "signal", company: "grid", solutions: "network", industries: "grid", portfolio: "signal", "get-started": "signal" };
-    const panelType = ({ "business-ai":"orbit", talent:"orbit", solutions:"orbit", growth:"bars", portfolio:"bars", pricing:"bars", academy:"progress", jobs:"progress", "get-started":"progress", "business-os":"steps", studio:"steps", industries:"steps", company:"steps" })[this.props.page] || "steps";
-    const panelIcons = {"business-os":"business-os","business-ai":"business-ai",growth:"growth",studio:"studio",industries:"industries",academy:"academy",talent:"talent",jobs:"talent",pricing:"business-os",company:"business-os",solutions:"industries",portfolio:"studio","get-started":"growth"};
+    const discMap = { "business-os":"14", "business-ai":"08", growth:"08", studio:"04", industries:"15", academy:"14", talent:"03", jobs:"01", pricing:"08", company:"12", solutions:"08", portfolio:"05", "get-started":"09" };
+    const panelIcons = { "business-os":"business-os", "business-ai":"business-ai", growth:"growth", studio:"studio", industries:"industries", academy:"academy", talent:"talent", jobs:"talent", pricing:"business-os", company:"business-os", solutions:"industries", portfolio:"studio", "get-started":"growth" };
     return {
-      p: { ...d, sections, panelType, panelIcon:this.props.page==="industries" ? "industry/hero-panel.webp" : `brand/mark-${panelIcons[this.props.page]||"business-os"}.webp`, panelCategory:this.props.page.replaceAll("-"," "),isOrbit:panelType==="orbit",isBars:panelType==="bars",isProgress:panelType==="progress",isSteps:panelType==="steps",noSteps:panelType!=="steps",panelFirst:d.sections.find(x=>x.h)?.h||"Discover",panelSecond:d.sections.find((x,i)=>i>0&&x.h)?.h||"Build",panelRows: d.sections.filter((x) => x.h).slice(0,3).map((x,i) => ({ n: String(i+1).padStart(2,"0"), label: x.h })), reel: reels[this.props.page] || "01,33,31", variant: variants[this.props.page] || "signal", badge: d.badge || "", hasSecondary: !!d.hero.secondary, hero: { ...d.hero, media: `media/${String(Number((d.hero.img || "").match(/\d+/)?.[0]) || 33).padStart(2,"0")}-d.webp`, secondary: d.hero.secondary || { label: "", href: "#" } } },
+      p: {
+        ...d, sections,
+        discNum: discMap[this.props.page] || "07",
+        panelIcon: this.props.page === "industries" ? "industry/hero-panel.webp" : `brand/mark-${panelIcons[this.props.page] || "business-os"}.webp`,
+        panelFirst: d.sections.find(x => x.h)?.h || "One unified stack",
+        panelRows: d.sections.filter((x) => x.h).slice(0, 3).map((x, i) => ({ n: n(i), label: x.h })),
+        reel: reels[this.props.page] || "01,33,31",
+        badge: d.badge || "",
+        hasSecondary: !!d.hero.secondary,
+        hero: { ...d.hero, secondary: d.hero.secondary || { label: "", href: "#" } }
+      },
     };
   }
 }

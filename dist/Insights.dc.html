@@ -16,6 +16,7 @@
 <script src="./support.js"></script>
 <link rel="preload" as="image" href="media/insight01-m.webp" media="(max-width:700px)" fetchpriority="high">
 <link rel="preload" as="image" href="media/insight01-d.webp" media="(min-width:701px)" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/host-grotesk-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
@@ -25,7 +26,7 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="hero-system.css?v=7">
+<link rel="stylesheet" href="hero-system.css?v=8">
 <title>Insights — AI, Automation &amp; Software Guides | DigitalBurj</title>
 </head>
 <body>
@@ -35,59 +36,91 @@
 <meta name="description" content="15 plain-language guides on business AI, workflow automation, MVP development, production-ready software and skills-based hiring."/>
 <meta name="keywords" content="business AI guide, workflow automation guide, how to scope an MVP, CRM vs ERP, AI agent vs chatbot, skills-based hiring"/>
 <meta property="og:title" content="DigitalBurj Insights"/>
-<script src="motion.js?v=5"></script>
-<script src="engage.js?v=3" defer=""></script>
-
-<script src="hero-reel.js?v=5"></script>
-<style>body{margin:0;background:#f6f5f1}a{color:#0f1714;text-decoration:none}a:hover{color:#f23a1d}::selection{background:#f23a1d;color:#fff}</style>
-
+<script src="motion.js?v=6" defer=""></script>
+<script src="engage.js?v=4" defer=""></script>
+<style>body{margin:0;background:#ffffff;color:#1e0f14}</style>
 </helmet>
-<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#0f1714;background:#f6f5f1">
-<dc-import name="SiteHeader" active="insights" hint-size="100%,72px"></dc-import>
-<section class="db-hero" aria-labelledby="insights-hero-title"><x-import component-from-global-scope="hero-reel" slides="insight01,insight02,insight03" interval="7000" style="position:absolute;inset:0;z-index:-2" hint-size="100%,100%"></x-import><div class="db-hero-shade" aria-hidden="true"></div><div class="db-hero-content"><div class="db-hero-grid"><div><div class="db-hero-eyebrow-row"><p class="db-hero-eyebrow">DigitalBurj · Insights</p></div><h1 id="insights-hero-title" class="db-hero-title">Field notes on<br/><span class="db-hero-accent">building better.</span></h1><p class="db-hero-lead">Short answer first, then the detail. Every guide also says where its advice stops working.</p></div><aside class="db-flow" aria-label="Idea to impact workflow"><div class="db-flow-head"><div class="db-flow-title">From idea to everyday work<small>Systems · People · Evidence</small></div><span class="db-flow-live">Live</span></div><ol class="db-flow-steps"><li class="db-flow-step" style="--i:0"><span class="db-flow-node" aria-hidden="true">01</span><div class="db-flow-copy"><strong>Start with a clear decision</strong><span>Frame the problem before any tooling.</span></div></li><li class="db-flow-step" style="--i:1"><span class="db-flow-node" aria-hidden="true">02</span><div class="db-flow-copy"><strong>Pilot it small</strong><span>One team, one workflow, real numbers.</span></div></li><li class="db-flow-step" style="--i:2"><span class="db-flow-node" aria-hidden="true">03</span><div class="db-flow-copy"><strong>Connect the systems</strong><span>CRM, finance, HR and AI in one flow.</span></div></li><li class="db-flow-step" style="--i:3"><span class="db-flow-node" aria-hidden="true">04</span><div class="db-flow-copy"><strong>Prove it with evidence</strong><span>Measure, review and scale what works.</span></div></li></ol><div class="db-flow-bar" aria-hidden="true"></div></aside></div></div></section>
+
+<div class="db-page-shell">
+<dc-import name="SiteHeader" active="insights" hint-size="100%,80px"></dc-import>
+
 <main>
-<section style="max-width:76rem;margin:0 auto;padding:36px 24px 0">
-    <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-    <sc-for list="{{ cats }}" as="c" hint-placeholder-count="7"><button onclick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
-    <label style="margin-left:auto;position:relative;display:flex;align-items:center">
-      <span style="position:absolute;width:1px;height:1px;overflow:hidden">Search articles</span>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6b746f" stroke-width="2" style="position:absolute;left:14px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input value="{{ q }}" oninput="{{ setQ }}" placeholder="Search guides…" style="height:44px;width:16rem;max-width:70vw;border-radius:12px;border:1px solid rgba(15,23,20,.14);background:#fff;padding:0 14px 0 38px;font:500 14px 'Instrument Sans';outline:none"/>
-    </label>
+<!-- TALLYSOFT /blog ("The Count 42") EDITORIAL HERO -->
+<section class="db-sub-hero-outer" aria-labelledby="insights-hero-title">
+  <div class="db-sub-hero-stage">
+    <div class="db-sub-hero-grid">
+      <div>
+        <p class="db-kicker-dot" style="margin:0 0 14px;color:#4a393e">DigitalBurj · Insights</p>
+        <div class="db-sub-hero-title-row">
+          <h1 id="insights-hero-title" class="db-h1-sub" data-blur-text="">Field notes on building better.</h1>
+          <span class="db-index-disc" aria-label="15 guides">15</span>
+        </div>
+      </div>
+      <div>
+        <p class="db-lead">Short answer first, then the detail. Every guide also says where its advice stops working.</p>
+        <label style="margin-top:20px;position:relative;display:flex;align-items:center;max-width:24rem">
+          <span class="db-foot-sr">Search articles</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7d6a6f" stroke-width="2" style="position:absolute;left:16px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input value="{{ q }}" oninput="{{ setQ }}" placeholder="Search guides…" style="height:48px;width:100%;border-radius:999px;border:1px solid #e1d5c8;background:#fff;padding:0 44px 0 42px;font:400 14.5px 'Host Grotesk',sans-serif;color:#1e0f14;outline:none;box-shadow:0 8px 20px -12px rgba(20,7,11,.15)"/>
+          <span aria-hidden="true" style="position:absolute;right:12px;width:24px;height:24px;border-radius:50%;background:#efe6dc;color:#7d6a6f;display:grid;place-items:center;font:600 11px 'Host Grotesk',sans-serif">/</span>
+        </label>
+      </div>
+    </div>
   </div>
 </section>
 
-<sc-if value="{{ hasFeature }}" hint-placeholder-val="{{ true }}">
-<section style="max-width:76rem;margin:0 auto;padding:36px 24px 0">
-  <a href="{{ feature.href }}" data-reveal="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));border-radius:20px;overflow:hidden;background:#0f1714;color:#f6f5f1;transition:transform .5s cubic-bezier(.22,.8,.24,1)" style-hover="transform:translateY(-4px);color:#fff"><img src="{{ feature.cover }}" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;min-height:22rem;object-fit:cover"/>
-    
-    <div style="padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;justify-content:center">
-      <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#ff7a45">Featured · {{ feature.category }}</p>
-      <h2 style="margin:12px 0 0;font:700 clamp(1.3rem,1.1rem + 1vw,1.85rem)/1.12 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;color:#f6f5f1">{{ feature.title }}</h2>
-      <p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:rgba(246,245,241,.72)">{{ feature.description }}</p>
-      <span style="margin-top:26px;font-weight:600;font-size:14px;color:#ff7a45">Read the guide · {{ feature.readMin }} min →</span>
+<!-- CATEGORY PILL BAR -->
+<section style="background:#fff;padding:34px 0 0">
+  <div class="db-container">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-bottom:24px;border-bottom:1px solid #e1d5c8">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="7">
+        <button type="button" onclick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+      </sc-for>
     </div>
-  </a>
+  </div>
+</section>
+
+<!-- FEATURED GUIDE -->
+<sc-if value="{{ hasFeature }}" hint-placeholder-val="{{ true }}">
+<section style="background:#fff;padding:36px 0 0">
+  <div class="db-container">
+    <a href="{{ feature.href }}" data-reveal="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));border-radius:28px;overflow:hidden;background:#14070b;color:#fff;transition:transform .5s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-4px)">
+      <img src="{{ feature.cover }}" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;min-height:22rem;object-fit:cover;display:block"/>
+      <div style="padding:clamp(26px,3.5vw,44px);display:flex;flex-direction:column;justify-content:center">
+        <span style="align-self:flex-start;padding:6px 12px;border-radius:999px;background:#f2ba3e;color:#1e0f14;font:600 12px 'Host Grotesk',sans-serif">Featured · {{ feature.category }}</span>
+        <h2 class="db-h2-editorial" style="margin-top:18px;color:#fff">{{ feature.title }}</h2>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.58;color:rgba(255,246,236,.74)">{{ feature.description }}</p>
+        <span style="margin-top:26px;font:600 14.5px 'Host Grotesk',sans-serif;color:#f2ba3e">Read the guide · {{ feature.readMin }} min ↗</span>
+      </div>
+    </a>
+  </div>
 </section>
 </sc-if>
 
-<section aria-label="All articles" style="max-width:76rem;margin:0 auto;padding:28px 24px 56px">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(max(16rem,calc((100% - 36px) / 3)),1fr));gap:18px">
-    <sc-for list="{{ items }}" as="a" hint-placeholder-count="9">
-      <a href="{{ a.href }}" data-reveal="up" style="display:flex;flex-direction:column;border-radius:16px;background:#fff;border:1px solid rgba(15,23,20,.08);overflow:hidden;transition:transform .45s cubic-bezier(.22,.8,.24,1),box-shadow .45s" style-hover="transform:translateY(-5px);box-shadow:0 34px 60px -38px rgba(15,23,20,.5);color:#0f1714">
-        
-        <img src="{{ a.cover }}" alt="" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/10;object-fit:cover"/><div style="padding:20px 22px 24px;display:flex;flex-direction:column;flex:1">
-          <p style="margin:0;display:flex;gap:8px;font-size:12px;font-weight:600;color:#6b746f"><span style="color:#f23a1d">{{ a.category }}</span>·<span>{{ a.kind }}</span>·<span>{{ a.readMin }} min</span></p>
-          <h3 style="margin:10px 0 0;font:700 18px/1.3 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em">{{ a.title }}</h3>
-          <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#4a544f">{{ a.description }}</p>
-        </div>
-      </a>
-    </sc-for>
+<!-- ALL GUIDES 3-COLUMN GRID -->
+<section aria-label="All articles" style="background:#fff;padding:32px 0 clamp(68px,8vw,104px)">
+  <div class="db-container">
+    <div class="db-editorial-grid">
+      <sc-for list="{{ items }}" as="a" hint-placeholder-count="9">
+        <a href="{{ a.href }}" class="db-editorial-card" data-reveal="up">
+          <div class="db-editorial-card-img"><img src="{{ a.cover }}" alt="" loading="lazy" decoding="async"/></div>
+          <div style="padding:22px 22px 26px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:8px;align-items:center;font:600 12px 'Host Grotesk',sans-serif;color:#7d6a6f">
+              <span style="padding:4px 10px;border-radius:999px;background:#efe6dc;color:#2d111a">{{ a.category }}</span>
+              <span>{{ a.kind }}</span><span>·</span><span>{{ a.readMin }} min</span>
+            </div>
+            <h3 style="margin:12px 0 0;font:500 20px/1.26 'Host Grotesk',sans-serif;letter-spacing:-.015em;color:#1e0f14">{{ a.title }}</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#4a393e">{{ a.description }}</p>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+    <sc-if value="{{ none }}"><p style="padding:48px 0;text-align:center;font-size:16px;color:#7d6a6f">No guides match that search.</p></sc-if>
   </div>
-  <sc-if value="{{ none }}"><p style="padding:40px 0;text-align:center;color:#6b746f">No guides match that search.</p></sc-if>
 </section>
 </main>
-<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
 </div>
 
 </x-dc>
@@ -106,11 +139,11 @@ class Component extends DCLogic {
     return {
       cats: ["All", ...cats].map((label) => ({
         label, on: label === cat, pick: () => this.setState({ cat: label }),
-        style: `height:40px;padding:0 16px;border-radius:999px;font:600 13px 'Instrument Sans';cursor:pointer;transition:all .25s;border:1px solid ${label === cat ? "#0f1714" : "rgba(15,23,20,.14)"};background:${label === cat ? "#0f1714" : "#fff"};color:${label === cat ? "#fff" : "#0f1714"}`,
+        style: `height:40px;padding:0 18px;border-radius:999px;font:500 13.5px 'Host Grotesk',sans-serif;cursor:pointer;transition:all .3s cubic-bezier(.22,1,.36,1);border:1px solid ${label === cat ? "#2d111a" : "#e1d5c8"};background:${label === cat ? "#2d111a" : "#fff"};color:${label === cat ? "#fff" : "#1e0f14"}`,
       })),
       q, setQ: (e) => this.setState({ q: e.target.value }),
       hasFeature: !!feature,
-      feature: feature ? map(feature) : { href: "#", image: "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", category: "", title: "", description: "", readMin: "" },
+      feature: feature ? map(feature) : { href: "#", cover: "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", category: "", title: "", description: "", readMin: "" },
       items: rest.map(map),
       none: list.length > 0 && filtered.length === 0,
     };

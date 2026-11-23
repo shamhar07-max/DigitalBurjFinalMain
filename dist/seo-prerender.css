@@ -1,29 +1,25 @@
 /* The same page is served to visitors and crawlers, including without JS. */
 x-dc{display:none!important}
 html:not(.dc-enhanced) #dc-root{display:none!important}
-#seo-prerender [data-reveal]{opacity:1!important;transform:none!important}
-#seo-prerender .db-flow-step{opacity:1!important}
+#seo-prerender [data-reveal],#seo-prerender [data-blur-text],#seo-prerender .db-receipt-paper{opacity:1!important;transform:none!important;filter:none!important}
 #seo-prerender .db-site-header button{display:none!important}
 #seo-prerender .db-site-header nav[aria-label="Primary"]{display:none!important}
 #seo-prerender .db-nav-cta{margin-left:auto}
-.db-fallback-menu{flex:none;position:relative;font:500 13px 'Instrument Sans',sans-serif}
-.db-fallback-menu summary{cursor:pointer;padding:10px 6px;border-radius:8px}
-.db-fallback-menu nav{position:absolute;top:100%;left:0;width:min(250px,75vw);max-height:70vh;overflow:auto;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:12px;padding:8px;box-shadow:0 12px 30px #0002}
-.db-fallback-menu nav a{display:block;padding:9px 12px;color:#0f1714}
-.db-fallback-menu nav a:hover{background:#f6f5f1}
-
-/* Match the enhanced header on first paint; no temporary Menu label. */
-.db-fallback-menu summary{list-style:none;display:flex;align-items:center;justify-content:center;height:40px;box-sizing:border-box;color:#0f1714}
+.db-fallback-menu{flex:none;position:relative;font:500 13.5px 'Host Grotesk','Instrument Sans',sans-serif}
+.db-fallback-menu summary{cursor:pointer;padding:10px 8px;border-radius:999px;list-style:none;display:flex;align-items:center;justify-content:center;height:40px;box-sizing:border-box;color:#1e0f14;background:rgba(255,255,255,.88);border:1px solid rgba(30,15,20,.08)}
 .db-fallback-menu summary::-webkit-details-marker{display:none}
+.db-fallback-menu nav{position:absolute;top:calc(100% + 8px);left:0;width:min(250px,75vw);max-height:70vh;overflow:auto;box-sizing:border-box;background:#fff;border:1px solid #e1d5c8;border-radius:16px;padding:8px;box-shadow:0 24px 48px -12px rgba(20,7,11,.18);z-index:99}
+.db-fallback-menu nav a{display:block;padding:9px 12px;border-radius:10px;color:#1e0f14}
+.db-fallback-menu nav a:hover{background:#fcecc2}
 .db-fallback-desktop{display:none}
 @media(min-width:1200px){
  #seo-prerender .db-site-header nav[aria-label="Primary"]{display:flex!important}
  .db-fallback-menu{font-size:14px}
- .db-fallback-menu summary{padding:0 14px}
+ .db-fallback-menu summary{padding:0 16px}
  .db-fallback-desktop{display:inline}
  .db-fallback-mobile{display:none}
 }
 @media(max-width:1199px){
- .db-fallback-menu{order:-1;margin-left:-8px}
- .db-fallback-menu summary{width:40px;padding:0}
+ .db-fallback-menu{order:-1}
+ .db-fallback-menu summary{width:42px;padding:0}
 }

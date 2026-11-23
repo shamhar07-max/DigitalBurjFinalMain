@@ -1,0 +1,11 @@
+name = "digitalburj-site"
+main = "cloudflare/worker.js"
+compatibility_date = "2026-09-01"
+keep_vars = true
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true
+html_handling = "none"
+not_found_handling = "none"
